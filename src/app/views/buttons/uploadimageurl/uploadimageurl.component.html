@@ -1,0 +1,74 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Upload Image </strong>
+                </div>
+                <div class="card-body">
+
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                        </div>
+
+                        <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Image</label>
+                                <div class="col-md-6">
+                                    <input id="file" type="file" (change)=fileupload($event) class="form-control" (change)="onFileChange($event)">
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Uploaded Image</label>
+                            <div class="col-md-6">
+                                <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">URL</label>
+                            <div class="col-md-6">
+                                <input type="text" [(ngModel)]="Pic" name="Pic" id="text-input" class="form-control"
+                                    placeholder="URL">
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button (click)="Banner_save()" class="btn btn-sm btn-primary float-right mt-5"><i
+                                            class="fa fa-save"></i>Save</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i>
+                                        Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+                    <!-- <div class="form-group">
+                    <label for="file">File</label>
+                    <input 
+                        
+                        id="file" 
+                        type="file" 
+                        class="form-control"
+                        (change)="onFileChange($event)">
+                </div>
+                
+                <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+                    
+                <button class="btn btn-primary" type="submit">Submit</button> -->
+
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+
+    </div>

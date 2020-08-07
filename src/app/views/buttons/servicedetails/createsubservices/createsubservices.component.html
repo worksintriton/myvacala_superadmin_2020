@@ -1,0 +1,383 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Sub Service</strong>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
+                            <div class="col-md-6">
+                                <select class="form-control" (change)="vechiclt_type_select()" [(ngModel)]="VehicleType"
+                                    name="VehicleType">
+                                    <option value=undefined>Select Vehicle Type</option>
+                                    <ng-container *ngFor="let list of vehicle_type;">
+                                        <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                                    </ng-container>
+                                </select>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="VehicleType != undefined">
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Main Service</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" [(ngModel)]="mainservice_id" name="mainServiceId">
+                                        <option value=undefined>Select Main Service</option>
+                                        <ng-container *ngFor="let list of mainservice_list">
+                                            <option value="{{list._id}}">{{list.Service_Name}}</option>
+                                        </ng-container>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Sub Service Name</label>
+                                <div class="col-md-6">
+                                    <input type="text" [(ngModel)]="SubServiceName" name="SubServiceName"
+                                        id="text-input" class="form-control" placeholder="Sub-Service Name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Specifications</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="subtitle" [(ngModel)]="subtitle" id="text-input"
+                                        class="form-control" placeholder="Specifications">
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="">
+                                        <button (click)="addspecificationRow()" class="btn btn-sm btn-primary"><i
+                                                class="fa fa-plus"></i>Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Specification List</label>
+                                <div class="col-md-6">
+                                    <table class="table table-bordered table-striped table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Specification</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dynamic of specification_new; let i = index;">
+                                                <td>{{dynamic}}</td>
+                                                <td> <button (click)="deleteRow(dynamic,i)"
+                                                        class="btn  btn-sm btn-danger">Delete</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Price</label>
+                                <div class="col-md-6">
+                                    <input type="text" [(ngModel)]="Service_Cost" name="Service_Cost" id="text-input"
+                                        class="form-control" placeholder="Price">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Discount Price</label>
+                                <div class="col-md-6">
+                                    <input type="text" [(ngModel)]="Discount_price" name="Discount_price"
+                                        id="text-input" class="form-control" placeholder="DiscountPrice">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Included</label>
+                                <div class="col-md-4">
+                                    <input type="text" [(ngModel)]="Included" name="Inc" id="text-input"
+                                        class="form-control" placeholder="Included">
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="">
+                                        <button (click)="addRow()" class="btn btn-sm btn-primary"><i
+                                                class="fa fa-plus"></i>Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Included List</label>
+                                <div class="col-md-6">
+                                    <table class="table table-bordered table-striped table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Included</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dynamic of Included_new; let i = index;">
+                                                <td>{{dynamic.title}}</td>
+                                                <td> <button (click)="deleteRow_new(dynamic,i)"
+                                                        class="btn  btn-sm btn-danger">Delete</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Count</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" [(ngModel)]="Count" name="count">
+                                        <option value=undefined>Select</option>
+                                        <option value= true>Single</option>
+                                        <option value= false>Multiple</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Image Upload</label>
+                                <div class="col-md-6">
+                                    <input type="file" style="display: none;" (change)="fileupload($event)"
+                                        id="myFil"><label
+                                        style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                        for="myFil">Choose image</label> <img *ngIf="Pic != undefined" src="{{Pic}}"
+                                        style="float: right;;width: 30px;height: 30px;">
+                                    <span style="color:red">Image Size 50*50</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Thump Line Image</label>
+                                <div class="col-md-5">
+                                    <input type="file" style="display: none;" (change)="fileupload1($event)"
+                                        id="myFile"><label
+                                        style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                        for="myFile">Choose image</label> <img *ngIf="Pic1 != undefined" src="{{Pic1}}"
+                                        style="float: right;;width: 30px;height: 30px;">
+                                    <span style="color:red">Image Size 50*50</span>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="">
+                                        <button (click)="addimg()" class="btn btn-sm btn-primary"><i
+                                                class="fa fa-plus"></i>Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Thump Line Image List</label>
+                                <div class="col-md-6">
+                                    <table class="table table-bordered table-striped table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center;">Image</th>
+                                                <th style="text-align: center;">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dynamic of Thmp_list; let i = index;">
+                                                <td style="text-align: center;"><img src="{{dynamic}}"
+                                                        style="width: 30px;height: 30px;"></td>
+                                                <td style="text-align: center;"> <button (click)="deleteimg(dynamic,i)"
+                                                        class="btn  btn-sm btn-danger">Delete</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="text-input">Vehilcle List</label>
+                                <div class="col-md-6">
+
+                                    <table class="table table-bordered table-striped table-sm mt-3">
+                                        <thead>
+                                            <tr>
+
+                                                <th>S.No</th>
+                                                <th>Vehicle Type</th>
+                                                <th>Vehicle Name</th>
+                                                <th>Vehicle Manufacturer</th>
+                                                <!-- <th>Fuel Type</th>
+                                            <th>Year of Manufacture </th> -->
+                                                <th>
+                                                    <ng-container *ngIf="VehicleType == '5f0c0cfc2f857d66950cf25f'">
+                                                        Vehicle Body Type</ng-container>
+                                                    <ng-container *ngIf="VehicleType == '5f0c0d092f857d66950cf260'">
+                                                        Vehicle CC</ng-container>
+
+                                                </th>
+                                                <!-- <th>Vehicle Image</th> -->
+                                                <th>Action</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            <ng-container *ngFor="let item of vehicledetails_list; let i = index;">
+                                                <tr>
+
+                                                    <td>{{i+1}}</td>
+                                                    <td>
+                                                        <ng-container
+                                                            *ngIf="item.Vehicle_Type == '5f0c0cfc2f857d66950cf25f'">
+                                                            Four Wheeler</ng-container>
+                                                        <ng-container
+                                                            *ngIf="item.Vehicle_Type == '5f0c0d092f857d66950cf260'">
+                                                            Two Wheeler</ng-container>
+
+                                                    </td>
+                                                    <td>{{item.Vehicle_Name}}</td>
+                                                    <td>{{item.Vehicle_Brand_Name}}</td>
+                                                    <!-- <td>
+                                                    <ng-container *ngFor="let y of item.Fuel_Type; let i=index">
+                                                        {{y.Fuel_Type}}
+                                                        <ng-container *ngIf="i+1 < item.Fuel_Type.length">,
+                                                        </ng-container>
+                                                    </ng-container>
+                                                </td>
+                                                <td>{{item.mfg_year_start}}-{{item.mfg_year_end}}</td> -->
+                                                    <td>
+                                                        <ng-container *ngFor="let y of item.Vehicle_Model; let i=index">
+                                                            {{y.VehicleModel_Name}}
+                                                            <ng-container *ngIf="i+1 < item.Vehicle_Model.length">,
+                                                            </ng-container>
+                                                        </ng-container>
+                                                    </td>
+                                                    <!-- <td><img height="50" width="50" src={{item.Vehicle_Image}}
+                                                        alt="Noimage"></td> -->
+                                                    <td *ngIf='item.status=="true"'> <button
+                                                            class="btn btn-sm btn-primary"
+                                                            (click)="get_vehicle_list(item,i)">Add</button></td>
+                                                    <td *ngIf='item.status=="false"'><button
+                                                            class="btn btn-sm btn-danger"
+                                                            (click)="remove_vehicle_list(item,i)">Remove</button></td>
+                                                </tr>
+                                            </ng-container>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button (click)="subservicecreation()"
+                                            class="btn btn-sm btn-primary float-right mt-5"><i
+                                                class="fa fa-save"></i>Save</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button type="button" (click)="reset()" class="btn btn-sm btn-danger mt-5"><i
+                                                class="fa fa-ban"></i>
+                                            Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <h4 class="card-title pt-4">Sub Service List</h4>
+                        <div class="box-filter">
+                            <div class="filter-row">
+                                <div class="filter-row-item">
+                                    <label class="col-form-label" for="text-input">Main Service:</label>
+                                    <select class="form-control" [(ngModel)]="mainservice_fil_data"
+                                        name="mainservice_fil_data">
+                                        <option value=undefined>Select Main Service</option>
+                                        <ng-container *ngFor="let list of mainservice_list">
+                                            <option value="{{list._id}}">{{list.Service_Name}}</option>
+                                        </ng-container>
+                                    </select>
+
+
+                                </div>
+                                <div class="filter-row-item">
+
+                                    <label class="col-form-label" for="text-input">Vehicle:</label>
+
+                                    <select class="form-control" [(ngModel)]="Vehiclename_fil_data"
+                                        name="Vehiclename_fil_data">
+                                        <option value=undefined style="display: none;">Select Manufacturer</option>
+                                        <ng-container *ngFor="let list of vehicle_list;">
+                                            <option value="{{list._id}}">{{list.Vehicle_Name}}</option>
+                                        </ng-container>
+                                    </select>
+
+
+                                </div>
+
+                                <div class="filter-row-item">
+
+                                    <div style="margin-top: 38px;">
+                                        <button class="btn btn-sm btn-primary" (click)="filter(item)">Filter</button>
+                                        <button class="btn btn-sm btn-primary" (click)="refresh(item)">Refresh</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="overflow-x: scroll;">
+                            <table class="table table-striped table-bordered table-sm" [svData]="masterservice_list"
+                                #sv="svDataTable" [svRowsOnPage]="5" svSortBy="name" svSortOrder="asc">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Main Service</th>
+                                        <th>Sub Service Name</th>
+                                        <th>Vehicle</th>
+                                        <th>Price</th>
+                                        <th>Discount_Price</th>
+                                        <th>Included</th>
+                                        <th>Image</th>
+                                        <th>Thum_line Image</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let ite of sv.data; let i = index;">
+                                        <td>{{i+1}}</td>
+                                        <td>{{ite.Service_id.Service_Name}}</td>
+                                        <td>{{ite.sub_ser_Title}}</td>
+                                        <td>{{ite.Vehicle_Name_id[0].Vehicle_Name}}</td>
+                                        <td>{{ite.Original_Price}}</td>
+                                        <td>{{ite.Discount_Price}}</td>
+                                        <td>
+                                            <ng-container *ngFor="let inc of ite.ItemList ; let i=index">
+                                                {{inc.title}}<ng-container *ngIf="i+1 < ite.ItemList.length">,
+                                                </ng-container>
+                                            </ng-container>
+                                        </td>
+                                        <td><img height="50" width="50" src={{ite.sub_ser_image}} alt="Noimage">
+                                        </td>
+                                        <td>
+                                            <ng-container *ngFor="let src of ite.sub_ser_display_img">
+                                                <img height="20px" width="20px" src={{src}} alt="Noimage">
+                                            </ng-container>
+
+                                        </td>
+                                        <td><button (click)="editservice(ite)" class="btn btn-sm btn-success">
+                                                <li class="fa fa-edit">Edit</li>
+                                            </button>
+                                            <button (click)="deleteservice(ite._id)"
+                                                class="btn btn-sm btn-danger">Delete</button>
+                                            <!-- <button (click)="deleteservice(item._id)" class="btn btn-sm btn-danger">
+                                                    <li class="fa fa-ban">Disable</li>
+                                                </button> -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="10">
+                                            <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]">
+                                            </sv-bootstrap-paginator>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.row-->
+</div>

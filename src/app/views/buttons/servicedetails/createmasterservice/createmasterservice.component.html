@@ -1,0 +1,190 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Master Service</strong>
+                    <!-- <button (click)="open_banner()" class="btn btn-sm btn-primary float-right" >Open Banner</button>                -->
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Service Name</label>
+                            <div class="col-md-6">
+                                <input type="text" maxlength="25" [(ngModel)]="ServiceName" name="ServiceName"
+                                    id="text-input" name="text-input" class="form-control" placeholder="Service Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Description</label>
+                            <div class="col-md-6">
+                                <textarea name="Description" [(ngModel)]="Description" id="text-input" rows="4"
+                                    class="form-control" placeholder="Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Image Upload</label>
+                            <div class="col-md-6">
+                                <input type="file" style="display: none;" (change)="fileupload($event)" id="myFile"><label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;" for="myFile">Choose image</label> <img *ngIf="Pic != undefined"
+                                        src="{{Pic}}" style="float: right;;width: 30px;height: 30px;">
+                                <span style="color:red">Image Size 50*50</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Locations</label>
+                            <div class="col-md-6">
+
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+
+                                            <th>S.No</th>
+                                            <th>Location</th>
+                                            <th>Location_Image</th>
+                                            <th>Pincode</th>
+                                            <th>Action</th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let items of Location_list; let i = index;">
+                                            <tr>
+                                                <!-- <td> <input type="checkbox" value={{item.VehicleModel_Name}} (click)="get_vehicle_model()" ></td> -->
+                                                <td>{{i+1}}</td>
+                                                <td>{{items.Display_Name}}</td>
+                                                <td><img height="50" width="50" src={{items.Image}} alt="Noimage"></td>
+                                                <td>
+                                                    <ng-container *ngFor="let t of items.Pincodes; let i=index">
+                                                        {{t}}
+                                                        <ng-container *ngIf="(i+1) < items.Pincodes.length">,
+                                                        </ng-container>
+                                                    </ng-container>
+                                                </td>
+                                                <td *ngIf='items.status=="true"'> <button class="btn btn-sm btn-primary"
+                                                        (click)="get_location_name(items,i)">Add</button></td>
+                                                <td *ngIf='items.status=="false"'><button class="btn btn-sm btn-danger"
+                                                        (click)="remove_location_name(items,i)">Remove</button></td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="https://www.latlong.net/category/cities-102-15-2.html" target="blank"><label
+                                        class="col-from-label">For Ref</label></a>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="text-input">Vehilcle Type</label>
+                    <div class="col-md-6">
+                     
+                      <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                          <tr>
+                             
+                            <th>S.No</th>
+                            <th>Vehicle Type</th>
+                            <th>Action</th>
+                          </tr>
+                          
+                        </thead>
+                        <tbody>
+                          <ng-container *ngFor="let items of vehiclelist; let i = index;">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{items.Vehicle_Type}}</td>                                       
+                                <td><button class="btn btn-sm btn-primary" (click)="get_vehicle_name(items)" >Add</button></td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                      </table>  
+                    </div>
+                  </div> 
+             -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button (click)="masterservicecreation()"
+                                        class="btn btn-sm btn-primary float-right mt-5"><i
+                                            class="fa fa-save"></i>Save</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i>
+                                        Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <h4 class="card-title pt-4">Service List</h4>
+                    <div class=" box-filter col-md-12" style="padding-bottom: 20px;">
+                        <label class="col-form-label" style="font-weight: 600;width: 100%;" for="text-input">Location</label>
+                        <div style="width: 30%; display: inline-block;">
+                            <select class="form-control"  [(ngModel)]="Location_fil_data"
+                                name="Location_fil_data">
+                                <option value=undefined style="display: none;">Select Type</option>
+                                <ng-container *ngFor="let list of Location_list;">
+                                    <option value="{{list.Display_Name}}">{{list.Display_Name}}</option>
+                                </ng-container>
+                            </select>
+                        </div>
+                        <div style="display: inline;">
+                            <button class="btn btn-sm btn-primary" 
+                                (click)="filter(item)">Filter</button>
+                            <button class="btn btn-sm btn-primary" 
+                                (click)="refresh(item)">Refresh</button>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-bordered table-sm" [svData]="service_list" #sv="svDataTable"
+                        [svRowsOnPage]="10" svSortBy="name" svSortOrder="asc">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Image</th>
+                                <th>Service Name</th>
+                                <th>Description</th>
+                                <th>Location</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of sv.data; let i = index;">
+                                <td>{{i+1}}</td>
+                                <td><img height="50" width="50" src={{item.Service_Image}} alt="Noimage"></td>
+                                <td>{{item.Masterservice_Name}}</td>
+                                <td>{{item.Desc}}</td>
+                                <td>
+                                    <ng-container *ngFor="let items of item.Serviceavailable_Location; let j = index;">
+                                        {{items}}, </ng-container>
+                                </td>
+                                <td><button (click)="editservice(item)" class="btn btn-sm btn-success">
+                                        <li class="fa fa-edit">Edit</li>
+                                    </button>
+                                    <!-- <button (click)="deleteservice(item._id)" class="btn btn-sm btn-danger">Delete</button></td> -->
+                                    <!-- <td><button (click)="open_mainservice(item._id)" class="btn btn-sm btn-danger"><li class="fa fa-ban">Disable</li> </button></td> -->
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.row-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+.filter-row{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px  0px 20px 0;
+}
+.filter-row-item{
+    flex-basis: 33%;
+}
+label{   
+     width: 100%;
+     font-weight: 600;
+    }

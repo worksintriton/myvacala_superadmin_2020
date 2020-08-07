@@ -1,0 +1,133 @@
+<div class="animated fadeIn">
+    <!--/.row-->
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <select name="service" class="form-control">
+                    <option value="">Location</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <select name="service" class="form-control">
+                    <option value="">Service Type</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <select name="service" class="form-control">
+                    <option value="">Sub Service Type</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <form class="form-inline">
+                <div class="input-group input-group-sm">
+                    <input class="form-control" type="search" placeholder="Mobile Number" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="input-group date" id="reservationdate_to" data-target-input="nearest">
+                <input type="date" class="form-control datetimepicker-input" name="todate"
+                    data-target="#reservationdate_to" required />
+                <div class="input-group-append" data-target="#reservationdate_to" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="form-group">
+                <select name="service" class="form-control">
+                    <option value="">Payment Type</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Booking List
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <button class="btn btn-sm btn-primary float-right mt-2"><i
+                                    class="fa fa-save"></i>Excel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div style="overflow-x:auto;">
+                        <table style=" width:auto" id="example" class="table table-bordered table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Booking Id</th>
+                                    <th>CName</th>
+                                    <th>CPhone</th>
+                                    <th>Services</th>
+                                    <th>SubServices</th>
+                                    <th>Pickup_Location</th>
+                                    <th>Pickup_Date </th>
+                                    <th>Pickup_City</th>
+                                    <th>Delivery_Date</th>
+                                    <th>Vehicle_No</th>
+                                    <th>Vehicle_Type</th>
+                                    <th>Booking_Date</th>
+                                    <th>Final_Bill_Payed</th>
+                                    <th>Vendor_Invoice</th>
+                                    <th>Job_Card</th>
+                                    <th>Customer_Invoice</th>
+                                    <th>Order_value</th>
+                                    <th>Workshop_Location</th>
+                                    <th>Workshop_Name</th>
+                                    <th>Current_Booking_Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let item of Booking_List; let i = index;">
+                                    <tr>
+                                        <td>{{i+1}}</td>
+                    <td><a (click)="open_new_page(item)" style="color: blue; text-decoration: underline;" >{{item.Booking_id}}</a></td>
+                    <td>{{item.Customer_Name}}</td>
+                    <td>{{item.Customer_Phone}}</td>
+                    <th>{{item.Services}}</th>
+                    <th>{{item.Subserivces}}</th>
+                    <th><a style="color: cadetblue; text-decoration: underline;" href="#">View</a></th>
+                    <td>{{item.Pickup_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                    <th>{{item.Customer_Address}}</th>
+                    <td>{{item.Delivery_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                    <td>{{item.Vehicle_No}}</td>
+                    <td>{{item.Vehicle_Type}}</td>
+                    <td>{{item.Booking_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                    <td>{{item.Final_bill_payed}}</td>
+                    <td>{{item.Vendor_Invoice}}</td>
+                    <td>{{item.Job_Card}}</td>
+                    <td>{{item.Customer_Invoice}}</td>
+                    <td>{{item.Order_Value}}</td>
+                    <td>{{item.Workshop_Location}}</td>
+                    <td>{{item.Workshop_Name}}</td>
+                    <td>{{item.Booking_Status}}</td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</div>

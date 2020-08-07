@@ -1,0 +1,16 @@
+// If you want to override variables do it here
+@import "variables";
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+// If you want to add something do it here
+@import "custom";
+:host::ng-deep .sidebar-fixed .sidebar {
+    width: 250px !important;
+}
+.box-filter{
+    padding: 10px;
+box-shadow: 0px 1px 4px 0px #8e8e8e;
+border-radius: 10px;
+margin-bottom: 15px;
+
+}

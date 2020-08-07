@@ -1,0 +1,123 @@
+<div class="animated fadeIn">
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">                        
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Booking Id</label>
+                            <div class="col-md-6">
+                            <input type="text" [(ngModel)]="BookingId" name="BookingId" id="text-input" 
+                                class="form-control" disabled placeholder="Booking Id">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Mobile No</label>
+                            <div class="col-md-6">
+                            <input type="text" [(ngModel)]="mobile" name="mobile" id="text-input" 
+                                class="form-control" disabled placeholder="Mobile No">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Customer Name</label>
+                            <div class="col-md-6">
+                            <input type="text" [(ngModel)]="cname" name="cname" id="text-input" 
+                                class="form-control" disabled placeholder="Customer Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Vehicle No</label>
+                            <div class="col-md-6">
+                            <input type="text" [(ngModel)]="vehicle" name="vehicle" id="text-input" 
+                                class="form-control"  placeholder="vehicle No">
+                            </div>
+                        </div>                        
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
+                            <div class="col-md-6">
+                            <input type="text" [(ngModel)]="vehicletype" name="vehicletype" id="text-input" 
+                                class="form-control"  placeholder="vehicle Type">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Booking Start Date and Time</label>
+                            <div class="col-md-3">
+                            <input type="date" [(ngModel)]="BookingSTime" name="BookingSTime" id="text-input" 
+                                class="form-control" >
+                            </div>
+                            <div class="col-md-3">
+                                <input type="time"  name="VendorID" id="text_time" 
+                                class="form-control"  placeholder="Sub Floor Name">
+                        </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="BookingSTime">Booking End Date and Time</label>
+                            <div class="col-md-3">
+                            <input type="date" [(ngModel)]="BookingSTime" name="BookingSTime" id="BookingSTime" 
+                                class="form-control" >
+                            </div>
+                            <div class="col-md-3">
+                                <input type="time"  name="VendorID" id="text_time1" 
+                                class="form-control"  placeholder="Sub Floor Name">
+                        </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="pickupsDate">Check Start Date and Time</label>
+                            <div class="col-md-3">
+                            <input type="date" [(ngModel)]="pickupsDate" name="pickupsDate" id="pickupsDate" 
+                                class="form-control" >
+                            </div>
+                            <div class="col-md-3">
+                                <input type="time" name="pickupstimes" id="pickupstimes" 
+                                    class="form-control" >
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="pickupsDate">CheckOut End Date</label>
+                            <div class="col-md-3">
+                            <input type="date" name="pickupsDate" id="pickupsDate" 
+                                class="form-control" >
+                            </div>
+                            <div class="col-md-3">
+                                <input type="time"  name="pickupEndTime" id="pickupsTime" 
+                                    class="form-control"  placeholder="PickupTime">
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="Time">Actual Time of Usage Parking Space</label>
+                            <div class="col-md-6">
+                            <input type="text"  name="pickupsTime" 
+                                class="form-control"  placeholder="Actual Time of Usage Parking Space">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="Time">Final Amount Paid</label>
+                            <div class="col-md-6">
+                            <input type="text"  name="pickupsTime" 
+                                class="form-control"  placeholder="Final Amount Paid">
+                            </div>
+                        </div>
+                        
+                        
+                   <div class="row">                
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <button (click)="subservicecreation()" class="btn btn-sm btn-primary float-right mt-5" ><i class="fa fa-save"></i>Save</button>               
+                        </div>                  
+                    </div>                  
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <button (click)="back_to_page()" class="btn btn-sm btn-success mt-5" ><i class="fa fa-save"></i>Back</button>               
+                        </div>                  
+                    </div>  
+                </div>   
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

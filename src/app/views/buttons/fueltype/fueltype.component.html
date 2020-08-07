@@ -1,0 +1,138 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Fuel Type</strong>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Fuel Type</label>
+                            <div class="col-md-6">
+                                <input type="text" [(ngModel)]="fuelType" name="fuelType" id="text-input"
+                                    class="form-control" placeholder="FuelType">
+                            </div>
+                            <div *ngIf="FuelError">
+                                <div class="text-danger">{{FuelErrorMsg}}</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Color Code</label>
+                            <div class="col-md-6 colorr">
+                                <div (click)="view_drop  = !view_drop" class="se-c">
+                                    <ng-container *ngIf="!view_drop && colorCode == undefined">Select Color</ng-container>
+                                    <ng-container *ngIf="view_drop"> Close <i style="float: right;top: -7px;"
+                                            class="fa fa-times" aria-hidden="true"></i>
+                                    </ng-container>
+                                    <ng-container *ngIf="!view_drop && colorCode != undefined">{{colorCode}}</ng-container>
+                                </div>
+                                <ng-container *ngIf="view_drop">
+                                    <div class="se-color">
+                                        <ng-container *ngFor="let col of color; let i = index;">
+                                            <div>
+                                                <input [(ngModel)]="colorCode" (ngModelChange)="view_drop  = !view_drop" type="radio" name="color"
+                                                    value="{{col.name}}" id="{{col.name}}"><label for="{{col.name}}"><i
+                                                        [ngStyle]="{'color': col.code}" class="fa fa-circle"
+                                                        aria-hidden="true"></i> {{col.name}}</label>
+                                            </div>
+                                        </ng-container>
+
+                                    </div>
+                                </ng-container>
+
+                                <!-- <select class="form-control" [(ngModel)]="colorCode" name="VehicleType">
+                                    <option value=undefined selected>Select</option>
+
+                                    <option value="#008000"><i style="color:#008000" class="fa fa-circle"
+                                            aria-hidden="true"></i> Green</option>
+                                    <option value="#0276FD"><i style="color:#0276FD" class="fa fa-circle"
+                                            aria-hidden="true"></i> Picasso Blue</option>
+                                    <option value="#138F6A"><i style="color:#138F6A" class="fa fa-circle"
+                                            aria-hidden="true"></i> Garden hose</option>
+                                    <option value="#5D478B"><i style="color:#5D478B" class="fa fa-circle"
+                                            aria-hidden="true"></i> Medium purple4</option>
+                                    <option value="#646F5E"><i style="color:#646F5E" class="fa fa-circle"
+                                            aria-hidden="true"></i> seaweed</option>
+                                    <option value="#6959CD"><i style="color:#6959CD" class="fa fa-circle"
+                                            aria-hidden="true"></i> Slateblue3</option>
+                                    <option value="#6E6E6E"><i style="color:#6E6E6E" class="fa fa-circle"
+                                            aria-hidden="true"></i> Gray43</option>
+                                    <option value="#802A2A"><i style="color:#802A2A" class="fa fa-circle"
+                                            aria-hidden="true"></i> Brown</option>
+                                    <option value="#871F78"><i style="color:#871F78" class="fa fa-circle"
+                                            aria-hidden="true"></i> Darkpurple</option>
+                                    <option value="#993300"><i style="color:#993300" class="fa fa-circle"
+                                            aria-hidden="true"></i> Chocolate</option>
+                                    <option value="#CC00FF"><i style="color:#CC00FF" class="fa fa-circle"
+                                            aria-hidden="true"></i> Grape </option>
+                                </select> -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button (click)="fuelType_Save()" class="btn btn-sm btn-primary float-right mt-5"><i
+                                            class="fa fa-save"></i>Save</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i>
+                                        Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <h4 class="card-title pt-4">Fuel List</h4>
+                    <table class="table table-striped table-bordered table-sm" [svData]="fuelList" #sv="svDataTable"
+                        [svRowsOnPage]="10" svSortBy="name" svSortOrder="asc">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Fuel Type</th>
+                                <th>Color Code</th>
+                                <th>Color</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of sv.data; let i = index;">
+                                <td>{{i+1}}</td>
+                                <td>{{item.Fuel_Type}}</td>
+                                <td><i [ngStyle]="{'color': item.Background_Color}" class="fa fa-circle"
+                                        aria-hidden="true"></i>
+                                    {{item.Background_Color}}</td>
+                                <td>{{item.Background_Color_name}}</td>
+                                <td><button (click)="editservice(item)" class="btn btn-success">
+                                        <li class="fa fa-edit">Edit</li>
+                                    </button>
+                                    <button (click)="FuelType_delete(item._id)" class="btn btn-danger">
+                                        <li class="fa fa-trash">Delete</li>
+                                    </button></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.row-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+            </div>
+        </div>
+    </div>
+</div>

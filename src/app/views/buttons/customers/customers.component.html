@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Customer List</strong>
+        </div>
+        <div class="card-body">
+
+          <h4 class="card-title pt-4">Customer List</h4>
+          <button (click)="exportAsXLSX()" class="btn btn-sm btn-success" style="float: right;margin-bottom: 10px;"><i class="fa fa-cloud-download" aria-hidden="true"></i> Excel </button>
+          <table class="table table-striped table-bordered table-sm" [svData]="customer_list" #sv="svDataTable"
+            [svRowsOnPage]="10" svSortBy="name" svSortOrder="asc">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Created At</th>
+                <th>Customer Phonenumber</th>
+                <th>DOB</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of sv.data; let i = index;">
+                <td>{{i+1}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Email}}</td>
+                <td>{{item.createdAt | date:'dd/MM/yyyy'}}</td>
+                <td>{{item.Phone}}</td>
+                <td>{{item.DOB}}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6">
+                  <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/.row-->
+
+</div>

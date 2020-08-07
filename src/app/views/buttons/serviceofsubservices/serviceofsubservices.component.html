@@ -1,0 +1,287 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Main Service</strong>
+                    <!-- <button (click)="open_banner()" class="btn btn-sm btn-primary float-right" >Open Main Service Banner</button> -->
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Master Service</label>
+                            <div class="col-md-6">
+                                <select class="form-control" [(ngModel)]="MasterServiceName" name="MasterServiceName">
+
+                                    <option value="5f1ac41b55abee4870516567">Book a Mechanic</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
+              <div class="col-md-6">
+                <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType"
+                >
+                  <option>Select Vehicle Type</option>
+                  <ng-container *ngFor="let list of vehicle_list;
+                  ">
+                  <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                  </ng-container>
+                </select>
+              </div>
+              <div *ngIf="subserviceError">
+                <div class="text-danger">{{subserviceErrorMsg}}</div>
+              </div>
+            </div> -->
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Main Service Name</label>
+                            <div class="col-md-6">
+                                <input type="text" [(ngModel)]="mainServiceName" name="mainServiceName" id="text-input"
+                                    name="text-input" class="form-control" placeholder="Main Service Name">
+                            </div>
+                            <div *ngIf="subserviceError">
+                                <div class="text-danger">{{subserviceErrorMsg}}</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Description</label>
+                            <div class="col-md-6">
+                                <textarea name="Description" [(ngModel)]="Description" id="text-input" rows="4"
+                                    class="form-control" placeholder="Description"></textarea>
+                            </div>
+                            <div *ngIf="desError">
+                                <div class="text-danger">{{desErrorMsg}}</div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="text-input">Popular</label>
+                    <div class="col-md-6">
+                      <select class="form-control">
+                        <option>Popular</option>
+                        <option>Non Popular</option>
+                      </select>
+                    </div>
+                  </div>    -->
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Image Upload</label>
+                            <div class="col-md-6">
+                                <input type="file" style="display: none;" (change)="fileupload($event)"
+                                    id="myFile"><label
+                                    style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                    for="myFile">Choose image</label> <img *ngIf="Pic != undefined" src="{{Pic}}"
+                                    style="float: right;;width: 30px;height: 30px;"> <br>
+                                <span style="color:red">Image Size 50*50</span>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+                            <label class="col-md-4 col-form-label" for="text-input">Vehilcle Type</label>
+                            <div class="col-md-6">
+
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+
+                                            <th>S.No</th>
+                                            <th>Vehicle Type</th>
+                                            <th>Action</th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let items of vehicle_list; let i = index;">
+                                            <tr>
+                                                <td> <input type="checkbox" value={{item.VehicleModel_Name}} (click)="get_vehicle_model()" ></td>
+                                                <td>{{i+1}}</td>
+                                                <td>{{items.Vehicle_Type}}</td>
+
+                                                <td *ngIf='items.status=="true"'> <button class="btn btn-sm btn-primary" (click)="get_vehicle_name(items,i)">Add</button></td>
+                                                <td *ngIf='items.status=="false"'><button class="btn btn-sm btn-danger" (click)="remove_vehicle_name(items,i)">Remove</button></td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> -->
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
+                            <div class="col-md-6">
+                                <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType">
+                                    <option>Select Vehicle Type</option>
+                                    <ng-container *ngFor="let list of vehicle_list;">
+                                        <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                                    </ng-container>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Popular Service</label>
+                            <div class="col-md-6">
+                                <select class="form-control" [(ngModel)]="Popular_Vehicle" name="Popular_Vehicle">
+                                    <option value=undefiend>Select</option>
+                                    <option value=true>Yes</option>
+                                    <option value=false>No</option>
+                                </select>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="form-group row">
+                            <label class="col-md-4 col-form-label" for="text-input">Vehilcle List</label>
+                            <div class="col-md-6">
+
+                                <table class="table table-bordered table-striped table-sm mt-3">
+                                    <thead>
+                                        <tr>
+
+                                            <th>S.No</th>
+                                            <th>Vehicle Type</th>
+                                            <th>Vehicle Model</th>
+                                            <th>Vehicle Manufacturer</th>
+                                            <th>Fuel Type</th>
+                                            <th>Year of Manufacture </th>
+                                            <th>Vehicle Body Type</th>
+                                            <th>Vehicle Image</th>
+                                            <th>Action</th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let item of vehicledetails_list; let i = index;">
+                                            <tr>
+
+                                                <td>{{i+1}}</td>
+                                                <td>{{item.Vehicle_Type}}</td>
+                                                <td>{{item.Vehicle_Name}}</td>
+                                                <td>{{item.Vehicle_Brand_Name}}</td>
+                                                <td>
+                                                    <ng-container *ngFor="let y of item.Fuel_Type; let i=index">{{y.Fuel_Type}}
+                                                        <ng-container *ngIf="i+1 < item.Fuel_Type.length">,</ng-container>
+                                                    </ng-container>
+                                                </td>
+                                                <td>{{item.mfg_year_start}}-{{item.mfg_year_end}}</td>
+                                                <td>
+                                                    <ng-container *ngFor="let y of item.Vehicle_Model; let i=index">{{y.VehicleModel_Name}}
+                                                        <ng-container *ngIf="i+1 < item.Vehicle_Model.length">,</ng-container>
+                                                    </ng-container>
+                                                </td>
+                                                <td><img height="50" width="50" src={{item.Vehicle_Image}} alt="Noimage"></td>
+                                                <td *ngIf='item.status=="true"'> <button class="btn btn-sm btn-primary" (click)="get_vehicle_list(items,i)">Add</button></td>
+                                                <td *ngIf='item.status=="false"'><button class="btn btn-sm btn-danger" (click)="remove_vehicle_list(items,i)">Remove</button></td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button (click)="subservicecreation()"
+                                        class="btn btn-sm btn-primary float-right mt-5"><i
+                                            class="fa fa-save"></i>Save</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i>
+                                        Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="card-title pt-4">Main Service List</h4>
+                        <div class="box-filter">
+                            <div class="filter-row">
+
+                                <div class="filter-row-item">
+
+                                    <label class="col-form-label" for="text-input">Master Service</label>
+
+                                    <select class="form-control" [(ngModel)]="master_fil_data" name="master_fil_data">
+                                        <option value=undefined style="display: none;">Select Manufacturer</option>
+                                        <ng-container *ngFor="let list of masterservice_list;">
+                                            <option value="{{list._id}}">{{list.Masterservice_Name}}</option>
+                                        </ng-container>
+                                    </select>
+
+
+                                </div>
+                                <div class="filter-row-item">
+                                    <label class="col-form-label" for="text-input">Vehicle Type:</label>
+                                    <select class="form-control" [(ngModel)]="VehicleType_fil_data"
+                                        name="VehicleType_fil_data">
+                                        <option value=undefined style="display: none;">Select Type</option>
+                                        <ng-container *ngFor="let list of vehicle_list;">
+                                            <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                                        </ng-container>
+                                    </select>
+
+
+                                </div>
+                                <div class="filter-row-item">
+                                    <div style="margin-top: 38px;">
+                                        <button class="btn btn-sm btn-primary" (click)="filter(item)">Filter</button>
+                                        <button class="btn btn-sm btn-primary" (click)="refresh(item)">Refresh</button>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <table class="table table-striped table-bordered table-sm" [svData]="mainservice_list"
+                            #sv="svDataTable" [svRowsOnPage]="10" svSortBy="name" svSortOrder="asc">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Master Service</th>
+                                    <th>Vehicle Type</th>
+                                    <th>Main Service Name</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of sv.data; let i = index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.Master_Service_id.Masterservice_Name}}</td>
+                                    <td>{{item.Vehicle_Type_id.Vehicle_Type}}</td>
+                                    <td>{{item.Service_Name}}</td>
+                                    <td>{{item.Desc}}</td>
+                                    <td><img height="50" width="50" src={{item.Service_Image}} alt="Noimage"></td>
+                                    <td><button (click)="editservice(item)" class="btn btn-sm btn-success">
+                                            <li class="fa fa-edit">Edit</li>
+                                        </button>
+                                        <button (click)="deleteservice(item._id)" class="btn btn-sm btn-danger">
+                                            <li class="fa fa-ban">Delete</li>
+                                        </button>
+
+                                        <!-- <button (click)="popular(item)" class="btn btn-sm"
+                                            [ngClass]="{'btn-danger' : item.Popular == true, 'btn-success': item.Popular == false}">
+                                            <ng-container *ngIf="item.Popular == false">Make popular</ng-container>
+                                            <ng-container *ngIf="item.Popular == true">Unpopular</ng-container>
+                                        </button> -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7">
+                                        <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.row-->
+</div>

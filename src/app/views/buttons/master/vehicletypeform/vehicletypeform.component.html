@@ -1,0 +1,146 @@
+<div class="animated fadeIn">
+    <!--/.row-->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i>Vehicle Type 
+          </div>
+          <div class="card-body">
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+              <div class="form-group row">
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
+                <div class="col-md-6">
+                <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType"
+                >
+                  <option>Select Vehicle Type</option>
+                  <ng-container *ngFor="let list of vehicle_list;
+                  ">
+                  <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                  </ng-container>
+                </select>
+              </div>
+                  <!-- <input type="text" [(ngModel)]="VehicleType" name ="VehicleType" id="text-input" name="text-input" class="form-control" placeholder="Vehicle Type"> -->
+                </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Image</label>
+                <div class="col-md-6">
+                  <input type="file" name ="VehicleType" id="text-input" name="text-input" class="form-control" placeholder="Vehicle Type">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Name</label>
+                <div class="col-md-6">
+                  <input type="text" [(ngModel)]="VehicleName" name ="VehicleType" id="text-input" name="text-input" class="form-control" placeholder="Vehicle Brand">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Brand</label>
+                <div class="col-md-6">
+                  <input type="text" [(ngModel)]="VehicleBrand" name ="VehicleBrand" id="text-input" name="text-input" class="form-control" placeholder="Vehicle Brand">
+                </div>
+              </div>
+            
+                  <div class="row">                
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <button (click)="vehicle_save()" class="btn btn-sm btn-primary float-right mt-5" ><i class="fa fa-save"></i>Save</button>               
+                        </div>                  
+                    </div>  
+                     <div class="col-md-6">
+                        <div class="form-group">
+                              <button type="reset"  class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i> Reset</button>  
+                        </div>                  
+                    </div> 
+                </div>
+            </form>
+            <!-- <h4 class="card-title pt-4">Service List</h4>
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Vehicle Type</th>
+                    <th>Vehicle Name</th>
+                    <th>Vehicle Brand</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                  </tr>
+                  
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of vehicle_list; let i = index;">
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{item.Vehicle_Type}}</td>
+                        <td>{{item.Vehicle_Name}}</td>
+                        <td>{{item.Vehicle_Brand}}</td>
+                        <td></td>
+                        <td><button (click)="editservice(item)" class="btn btn-success"><li class="fa fa-edit">Edit</li> </button>
+                            <button (click)="deleteservice(item._id)" class="btn btn-danger"><li class="fa fa-trash">Delete</li> </button></td>
+                     </tr>
+                    </ng-container>
+                </tbody>
+              </table>                  
+        <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav> -->
+            <!-- <table class="table table-bordered table-striped table-sm">
+                <tr>
+                  <th>S.No</th>                  
+                  <th>Vehicle Type</th>
+                  <th>Vehicle Image</th>                  
+                  <th>Vehicle Name</th>
+                  <th>Vehicle Brand</th>
+                  <th>Action</th>
+                </tr>
+                 <tbody>
+                     <tr>
+                         <td></td>
+                         <td> <select id="select1" name="select1" class="form-control"  name ="vehicle_type" >
+                            <option value="">Select Type</option>
+                            <option value="Male">Two Wheeler</option>
+                            <option value="Female">Four Wheeler</option>
+                          </select> </td>
+                         <td> <input type="file"  name ="fileupload" id="fileupload"  class="form-control">
+                         </td>
+                         <td> <input type="text"  name ="vechicle_type" id="text-vechicle_type"  class="form-control" placeholder="vechicle Name">
+                         </td>
+                         <td> <input type="text"  name ="vechicle_type" id="text-vechicle_type"  class="form-control" placeholder="vechicle Brand">
+                         </td>
+                         <td><button type="button" id="" class="btn btn-sm btn-primary">Add</button></td>
+                     </tr>
+                     <tr>
+                        <td>1</td>
+                        <td>Four Wheeler</td>
+                        <td><img src="assets/img/avatars/2.jpg"> </td>
+                        <td> BMW</td>
+                        <td> Model-1</td>
+                        <td><button type="button" id="" class="btn btn-sm btn-primary">Edit</button>
+                            <button type="button" id="" class="btn btn-sm btn-primary">Delete</button></td>
+                    </tr>
+                 </tbody>   
+
+
+                   
+                   
+            </table> -->
+
+          </div>
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+  </div>
+  

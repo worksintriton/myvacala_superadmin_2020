@@ -1,0 +1,101 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Vehicle Barnd</strong>
+          </div>
+          <div class="card-body">
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+              <div class="form-group row">
+              </div>
+              
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
+            <div class="col-md-6">
+              <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType" placeholder="Vehicle Type"
+              >
+                
+                <ng-container *ngFor="let list of vehicle_list;
+                ">
+                <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Name</label>
+                <div class="col-md-6">
+                  <input type="text" [(ngModel)]="VehicleName" name ="VehicleName" id="text-input" name="text-input" class="form-control" placeholder="Vehicle Name">
+                </div>
+              </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="text-input">Vehicle Barnd</label>
+                    <div class="col-md-6">
+                      <input type="text" [(ngModel)]="VehicleBarnd" name ="VehicleBarnd" id="text-input" name="text-input" class="form-control" placeholder="Vehicle Barnd">
+                    </div>
+                  </div>
+            
+                  <div class="row">                
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <button (click)="createVehicleBrand()" class="btn btn-sm btn-primary float-right mt-5" ><i class="fa fa-save"></i>Save</button>               
+                        </div>                  
+                    </div>  
+                     <div class="col-md-6">
+                        <div class="form-group">
+                              <button type="reset"  class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i> Reset</button>  
+                        </div>                  
+                    </div> 
+                </div>
+            </form>
+            <!-- <h4 class="card-title pt-4">Service List</h4>
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Vehicle Type</th>
+                    <th>Vehicle Name</th>
+                    <th>Vehicle Brand</th>
+                  </tr>
+                  
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of brand_list; let i = index;">
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{item.Masterservice_Name}}</td>
+                        <td>{{item.Desc}}</td>
+                        <td><button (click)="editservice(item)" class="btn btn-success"><li class="fa fa-edit">Edit</li> </button>
+                            <button (click)="deleteservice(item._id)" class="btn btn-danger"><li class="fa fa-trash">Delete</li> </button></td>
+                     </tr>
+                    </ng-container>
+                </tbody>
+              </table>                   -->
+        <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+          </div>
+        </div>
+      </div>
+    </div><!--/.row-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+        
+            </div>
+  </div>
+</div>
+  </div>
+
+  
+

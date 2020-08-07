@@ -1,0 +1,79 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Cart</strong>
+          </div>
+          <div class="card-body">
+              <h4 class="card-title pt-4">Cart List</h4>
+              <div style="overflow: scroll;">
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Item_Details </th>
+                    <th>Customer_id</th>
+                    <th>Arrival_Mode</th>
+                    <th>Date_And_Time</th>
+                    <th>Make_payment </th>
+                    <th>Item_Total </th>
+                    <th>Arrival_Mode</th>
+                    <th>Coupon_Code </th>
+                    <th>Coupon_percentage</th>
+                    <th>Coupon_Amount</th>
+                    <th>You_Pay</th>
+                    <th>Address_Details</th>
+                  </tr>
+                  
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of cartlist; let i = index;">
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{item.Customer_id}}</td>
+                        <td>{{item.Arrival_Mode}}</td>
+                        <td>{{item.Date_And_Time}}</td>
+                        <td>{{item.Make_payment}}</td>
+                        <td>{{item.Item_Total}}</td>
+                        <td>{{item.Arrival_Mode }}</td>
+                        <td>{{item.Coupon_Code }}</td>
+                        <td>{{item.Date_And_Time}}</td>
+                        <td>{{item.Coupon_percentage}}</td>
+                        <td>{{item.Coupon_Amount}}</td>
+                        <td>{{item.You_Pay}}</td>
+                        <td>{{item.Address_Details}}</td>
+                        <td>
+                            <button (click)="open_mainservice(item._id)" class="btn btn-sm btn-success"><li class="fa fa-edit">Open</li> </button></td>
+                     </tr>
+                    </ng-container>
+                </tbody>
+              </table>   
+            </div>               
+        <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+          </div>
+        </div>
+      </div>
+    </div><!--/.row-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+        
+            </div>
+  </div>
+</div>
+  </div>
+
+  
+

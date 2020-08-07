@@ -1,0 +1,423 @@
+<div class="animated fadeIn">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Add Employees</strong>
+        </div>
+        <div class="card-body">
+          <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <div class="form-group row">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">First Name</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="FName" name="FName" id="text-input" class="form-control"
+                      placeholder="Employee Name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Emp-Id</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="empId" name="empId" id="text-input" class="form-control"
+                      placeholder="Emp Id">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Phone Number</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="PhoneNumber" (keypress)=_keyPress($event)  name="PhoneNumber" id="text-input" class="form-control"
+                      placeholder="Phone Number">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Temporary address</label>
+                  <div class="col-md-6">
+                    <textarea type="text" [(ngModel)]="Temporaryaddress" name="Temporaryaddress" id="text-input"
+                      class="form-control" placeholder="Temporary address"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Employee PanCard</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="EmployeePanCard" name="EmployeePanCard" id="text-input"
+                      class="form-control" placeholder="Employee PanCard">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Employee AadharCard</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="EmployeeAadharCard" name="EmployeeAadharCard" id="text-input"
+                      class="form-control" placeholder="Employee AadharCard">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Nominee Name</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="NomineeName" name="NomineeName" id="text-input" class="form-control"
+                      placeholder="Nominee Name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Nominee PanCard</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="NomineePanCard" name="NomineePanCard" id="text-input"
+                      class="form-control" placeholder="Nominee PanCard">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Nominee AadharCard</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="NomineeAadharCard" name="NomineeAadharCard" id="text-input"
+                      class="form-control" placeholder="Nominee AadharCard">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Email-Id</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="EmailId" name="EmailId" id="text-input" class="form-control"
+                      placeholder="Email Id">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Last Name</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="LName" name="LName" id="text-input" class="form-control"
+                      placeholder="Employee Name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Designation</label>
+                  <div class="col-md-7">
+                    <input type="text" placeholder="Designation" class="form-control" [(ngModel)]="designation"
+                      name="designation">
+
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Alterative Number</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="AlterativeNumber" (keypress)=_keyPress($event)  name="AlterativeNumber" id="text-input"
+                      class="form-control" placeholder="Alterative Number">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Permanent address</label>
+                  <div class="col-md-6">
+                    <textarea type="text" [(ngModel)]="Permanentaddress" name="Permanentaddress" id="text-input"
+                      class="form-control" placeholder="Permanent address"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Employee PanCard</label>
+                  <div class="col-md-7">
+                    <input type="file" accept="application/pdf" (change)="fileupload1($event)" id="text-input" class="form-control"
+                      placeholder="Employee PanCard">
+                      <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Employee AadharCard</label>
+                  <div class="col-md-7">
+                    <input type="file" accept="application/pdf" (change)="fileupload2($event)" id="text-input" class="form-control"
+                      placeholder="Employee AadharCard">
+                      <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Nominee Ph Number</label>
+                  <div class="col-md-7">
+                    <input type="text" [(ngModel)]="MobileNumber" (keypress)=_keyPress($event)  name="MobileNumber" id="text-input"
+                      class="form-control" placeholder="Nominee Mobile Number">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Nominee PanCard</label>
+                  <div class="col-md-7">
+                    <input type="file" accept="application/pdf" (change)="fileupload3($event)" name="NomineePanCard" id="text-input"
+                      class="form-control" placeholder="Nominee PanCard">
+                       <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Nominee AadharCard</label>
+                  <div class="col-md-7">
+                    <input type="file" accept="application/pdf" (change)="fileupload4($event)" name="NomineeAadharCard" id="text-input"
+                      class="form-control" placeholder="Nominee AadharCard">
+                      <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Nominee Address</label>
+                  <div class="col-md-6">
+                    <textarea [(ngModel)]="NomineeAddress" class="form-control" name="NomineeAddress"
+                      placeholder="Nominee Address"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--/.row-->
+  </div>
+  <div class="row">
+    <div class="col-sm-3 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>Sector
+        </div>
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group row">
+                <div class="col-md-3 col-form-label">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="checkbox" id="inline-checkbox1" [(ngModel)]="Finance_se"
+                      name="Finance_se" value="Finance" (change)="onCheckboxChagen($event)">
+                    <label class="form-check-label" for="inline-checkbox1">Finance</label>
+                  </div>
+                </div>
+                <div class="col-md-3 col-form-label">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="checkbox" id="inline-checkbox2" [(ngModel)]="CCTeam_se"
+                      name="CCTeam_se" Value="CCTeam" (change)="onCheckboxChagen($event)">
+                    <label class="form-check-label" for="inline-checkbox2">CC Team</label>
+                  </div>
+                </div>
+                <div class="col-md-3 col-form-label">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="checkbox" id="inline-checkbox3" [(ngModel)]="AppFeatures_se"
+                      name="AppFeatures_se" value="AppFeatures" (change)="onCheckboxChagen($event)">
+                    <label class="form-check-label" for="inline-checkbox3">App Features</label>
+                  </div>
+                </div>
+                <div class="col-md-3 col-form-label">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="checkbox" id="inline-checkbox4" [(ngModel)]="Operations_se"
+                      name="Operations_se" value="Operations" (change)="onCheckboxChagen($event)">
+                    <label class="form-check-label" for="inline-checkbox4">Operations</label>
+                  </div>
+                </div>
+                <div class="col-md-3 col-form-label">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="checkbox" id="inline-checkbox2" [(ngModel)]="VendorList_se"
+                      name="VendorList_se" value="VendorList" (change)="onCheckboxChagen($event)">
+                    <label class="form-check-label" for="inline-checkbox2">Mechanic List</label>
+                  </div>
+                </div>
+                <div class="col-md-3 col-form-label">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="checkbox" id="inline-checkbox2"
+                      [(ngModel)]="VendorList_parking" name="VendorList_parking" value="VendorParking"
+                      (change)="onCheckboxChagen($event)">
+                    <label class="form-check-label" for="inline-checkbox2">Parking List</label>
+                  </div>
+                </div>
+                <div class="col-md-3 col-form-label">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="checkbox" id="inline-checkbox3"
+                      [(ngModel)]="VendorOnbordation_se" name="VendorOnbordation_se" value="VendorOnbordation"
+                      (change)="onCheckboxChagen($event)">
+                    <label class="form-check-label" for="inline-checkbox3">Mechanic Onbordation</label>
+                  </div>
+                </div>
+                <div class="col-md-3 col-form-label">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="checkbox" id="inline-checkbox4"
+                      [(ngModel)]="parkingOnboradation" name="parkingOnboradation" value="parkingOnboradation"
+                      (change)="onCheckboxChagen($event)">
+                    <label class="form-check-label" for="inline-checkbox4">Parking Onbordation</label>
+                  </div>
+                </div>
+                <div class="col-md-3 col-form-label">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="checkbox" id="inline-checkbox4" [(ngModel)]="AddEmployee_se"
+                      name="AddEmployee_se" value="AddEmployee" (change)="onCheckboxChagen($event)">
+                    <label class="form-check-label" for="inline-checkbox4">Add Employee</label>
+                  </div>
+                </div>
+                <div class="col-md-3 col-form-label">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="checkbox" id="inline-checkbox4"
+                      [(ngModel)]="ListofEmployees_se" name="ListofEmployees_se" value="ListofEmployees"
+                      (change)="onCheckboxChagen($event)">
+                    <label class="form-check-label" for="inline-checkbox4">List of Employees</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>Location
+        </div>
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group row">
+                <ng-container *ngFor="let loc of Location_list; let i=index">
+                  <div class="col-md-3 col-form-label">
+                    <div class="form-check form-check-inline mr-1">
+                      <input class="form-check-input" type="checkbox" id="{{loc._id}}" 
+                        value="{{loc._id}}" (change)="addlocation($event)">
+                      <label class="form-check-label" for="{{loc._id}}">{{loc.Display_Name}}</label>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/.row-->
+  <div class="row">
+    <div class="col-sm-3 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>Add Permissions
+        </div>
+        <div class="card-body">
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="text-input">Service Type</label>
+            <div class="col-md-2 col-form-label">
+              <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" type="checkbox" name="Mechanic" [checked]="isDisable" value="Mechanic"
+                  (change)="changepermission($event)">
+                <label class="form-check-label" for="Mechanic">Mechanic</label>
+              </div>
+            </div>
+            <div class="col-md-2 col-form-label">
+              <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" type="checkbox" name="Parking" [checked]="isParking" value="Parking"
+                  (change)="changeparkingpermission($event)">
+                <label class="form-check-label" for="Parking">Parking</label>
+              </div>
+            </div>
+          </div>
+          <table class="table table-bordered table-striped table-sm mt-4">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Page Name</th>
+                <th>Create</th>
+                <th>View/List</th>
+                <th>Edit</th>
+                <th>Get Excel</th>
+                <th>Share</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="isDisable">
+                <td>1</td>
+                <td>Mechanic Bookings</td>
+                <th><input type="checkbox" value="MechanicBooking_Create" (change)="addpermission($event)" id="val31">
+                </th>
+                <th><input type="checkbox" value="MechanicBooking_viewlist" (change)="addpermission($event)" id="val32">
+                </th>
+                <td><input type="checkbox" value="MechanicBooking_Edit" (change)="addpermission($event)" id="val33">
+                </td>
+                <td><input type="checkbox" value="MechanicBooking_Excel" (change)="addpermission($event)" id="val34">
+                </td>
+                <td><input type="checkbox" value="MechanicBooking_Share" (change)="addpermission($event)" id="val35">
+                </td>
+              </tr>
+              <tr *ngIf="isDisable">
+                <td>2</td>
+                <td>Mechanic Registartion Form</td>
+                <td><input type="checkbox" value="MechanicReg_Create" (change)="addpermission($event)" id="val36"></td>
+                <td><input type="checkbox" value="MechanicReg_ViewList" (change)="addpermission($event)" id="val137"></td>
+                <td><input type="checkbox" value="MechanicReg_Edit" (change)="addpermission($event)" id="val38"></td>
+                <td><input type="checkbox" value="MechanicReg_Excel" (change)="addpermission($event)" id="val39"></td>
+                <td><input type="checkbox" value="MechanicReg_Share" (change)="addpermission($event)" id="val40"></td>
+              </tr>
+              <tr *ngIf="isDisable">
+                <td>3</td>
+                <td>Mechanic List</td>
+                <td><input type="checkbox" value="MechanicList_Create" (change)="addpermission($event)" id="val41"></td>
+                <td><input type="checkbox" value="MechanicList_ViewList" (change)="addpermission($event)" id="val42"></td>
+                <td><input type="checkbox" value="MechanicList_Edit" (change)="addpermission($event)" id="val43"></td>
+                <td><input type="checkbox" value="MechanicList_Excel" (change)="addpermission($event)" id="val44"></td>
+                <td><input type="checkbox" value="MechanicList_Share" (change)="addpermission($event)" id="val45"></td>
+              </tr>
+
+              <tr *ngIf="isParking">
+                <td>4</td>
+                <td>Parking Bookings</td>
+                <th><input type="checkbox" value="ParkingBooking_Create" (change)="addpermission($event)" id="val46">
+                </th>
+                <td><input type="checkbox" value="ParkingBooking_ViewList" (change)="addpermission($event)" id="val47">
+                </td>
+                <td><input type="checkbox" value="ParkingBooking_Edit" (change)="addpermission($event)" id="val48"></td>
+                <td><input type="checkbox" value="ParkingBooking_Excel" (change)="addpermission($event)" id="val49">
+                </td>
+                <td><input type="checkbox" value="ParkingBooking_Share" (change)="addpermission($event)" id="val50">
+                </td>
+              </tr>
+              <tr *ngIf="isParking">
+                <td>5</td>
+                <td>Vendor Parking </td>
+                <td><input type="checkbox" value="VendorParking_Create" (change)="addpermission($event)" id="val51">
+                </td>
+                <td><input type="checkbox" value="VendorParking_ViewList" (change)="addpermission($event)" id="val52">
+                </td>
+                <td><input type="checkbox" value="VendorParking_Edit" (change)="addpermission($event)" id="val53"></td>
+                <td><input type="checkbox" value="VendorParking_Excel" (change)="addpermission($event)" id="val54"></td>
+                <td><input type="checkbox" value="VendorParking_Share" (change)="addpermission($event)" id="val55"></td>
+              </tr>
+
+
+              <tr *ngIf="isParking">
+                <td>6</td>
+                <td>Parking Vendor List</td>
+                <td><input type="checkbox" value="DriverReg_Create" (change)="addpermission($event)" id="val56"></td>
+                <th><input type="checkbox" value="DriverReg_ViewList" (change)="addpermission($event)" id="val57"></th>
+                <td><input type="checkbox" value="DriverReg_Edit" (change)="addpermission($event)" id="val58"></td>
+                <td><input type="checkbox" value="DriverReg_Excel" (change)="addpermission($event)" id="val59"></td>
+                <td><input type="checkbox" value="DriverReg_Share" (change)="addpermission($event)" id="val60"></td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <button (click)="submitt()" class="btn btn-sm btn-primary float-right mt-5"><i class="fa fa-dot-circle-o"></i>
+          Submit</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i> Reset</button>
+      </div>
+    </div>
+  </div>
+</div>

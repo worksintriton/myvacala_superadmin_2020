@@ -1,0 +1,358 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Add Vehicle Details </strong>
+        </div>
+        <div class="card-body">
+          <form class="form-horizontal">
+            <div class="form-group row">
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
+              <div class="col-md-6">
+                <select class="form-control" (change)="vechiclt_type_select($event)" [(ngModel)]="VehicleType"
+                  name="VehicleType">
+                  <option>Select Vehicle Type</option>
+                  <ng-container *ngFor="let list of vehicle_list;">
+                    <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="forcar == true">
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Manufacturer</label>
+                <div class="col-md-6">
+                  <select class="form-control" [(ngModel)]="VehicleBrand" name="VehicleBrand">
+                    <option>Select Vehicle Manufacturer</option>
+                    <ng-container *ngFor="let list of brand_list;
+                              ">
+                      <option value="{{list._id}}">{{list.Vehicle_Brand_Name}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Model</label>
+                <div class="col-md-6">
+                  <input type="text" [(ngModel)]="vehiclename" name="vehiclename" id="text-input" class="form-control"
+                    placeholder="Vehicle Model">
+
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Image</label>
+                <div class="col-md-6">
+                  <input type="file" style="display: none;" (change)="fileupload1($event)" id="myFile"><label
+                    style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                    for="myFile">Choose image</label> <img *ngIf="Pic != undefined" src="{{Pic}}"
+                    style="float: right;;width: 30px;height: 30px;">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Fuel Type</label>
+                <div class="col-md-6">
+                  <ng-container *ngFor="let item of fuellist; let i = index;">
+                    <div class="col-md-3 col-form-label">
+                      <div class="form-check form-check-inline mr-1">
+                        <input class="form-check-input" type="checkbox" id="{{item.Fuel_Type}}"
+                          name="{{item.Fuel_Type}}" [checked]="item.checked" value="{{item._id}}"
+                          (change)="onCheckboxChagen($event)">
+                        <label class="form-check-label" for="{{item.Fuel_Type}}">{{item.Fuel_Type}}</label>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <!-- <table class="table table-bordered table-striped table-sm">
+                  <thead>
+                    <tr>
+
+                      <th>S.No</th>
+                      <th>Fuel Type</th>
+                      <th>Action</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let item of fuellist; let i = index;">
+                      <tr>
+                       <td> <input type="checkbox" value={{item[i]}}  (change)="get_fuel_list($event)" ></td> 
+                        <td>{{i+1}}</td>
+                        <td>{{item.Fuel_Type}}</td>
+                        <td><button class="btn btn-sm btn-primary" (click)="get_fuel_list(item)">Add</button></td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table> -->
+
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Popular Vehicle</label>
+                <div class="col-md-6">
+                  <select class="form-control" [(ngModel)]="Popular_Vehicle" name="Popular_Vehicle">
+                    <option value=undefiend>Select</option>
+                    <option value=true>Yes</option>
+                    <option value=false>No</option>
+                  </select>
+                </div>
+              </div>
+              <!-- <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Popular Vehicle</label>
+              <div class="col-md-6">
+                <select class="form-control" [(ngModel)]="PopularVehicle"
+                  name="PopularVehicle">
+                  <option>Select Popular Vehicle</option>
+                  <ng-container *ngFor="let list of PopularvehicleList;
+                            ">
+                    <option value="{{list._id}}">{{list.Vehicle_Brand_Name}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div> -->
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Manufacturer Year</label>
+                <div class="col-md-3">
+                  <select class="form-control" [(ngModel)]="startyear" (ngModelChange)="fromyear()"
+                    name="ManufacturerYear">
+                    <option value=undefined>Select Manufacturer Year</option>
+                    <ng-container *ngFor="let list of ManufacturerYear;
+                            ">
+                      <option value="{{list}}">{{list}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <select class="form-control" [(ngModel)]="endyear" name="ManufacturerYearto">
+                    <option>Select Manufacturer Year</option>
+                    <ng-container *ngFor="let list of ManufacturerYearto;
+                            ">
+                      <option value="{{list}}">{{list}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Body Type</label>
+                <div class="col-md-6">
+
+                  <ng-container *ngFor="let list of vehiclemodellist;let i = index;">
+                    <div class="col-md-3 col-form-label">
+                      <div class="form-check form-check-inline mr-1">
+                        <input class="form-check-input" type="checkbox" id="{list.VehicleModel_Name}}"
+                          name="{{list.VehicleModel_Name}}" [checked]="list.checked" value="{{list._id}}"
+                          (change)="onCheckboxmodel($event)">
+                        <label class="form-check-label"
+                          for="{{list.VehicleModel_Name}}">{{list.VehicleModel_Name}}</label>
+                      </div>
+                    </div>
+                  </ng-container>
+
+                  <!-- <table class="table table-bordered table-striped table-sm">
+                  <thead>
+                    <tr>
+
+                      <th>S.No</th>
+                      <th>Vehicle Model</th>
+                      <th>Vehicle Image</th>
+                      <th>Action</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let item of vehiclemodellist; let i = index;">
+                      <tr>
+                       
+                        <td>{{i+1}}</td>
+                        <td>{{item.VehicleModel_Name}}</td>
+                        <td><img height="50" width="50" src={{item.VehicleModel_Image}} alt="Noimage"></td>
+                        <td><button class="btn btn-sm btn-primary" (click)="get_vehicle_model(item)">Add</button></td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table> -->
+                </div>
+              </div>
+              <!-- <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">CC Name</label>
+              <div class="col-md-6">
+                <input type="text" [(ngModel)]="ccname" name="ccname" id="text-input" class="form-control"
+                  placeholder="CC Name">
+              </div>
+            </div> -->
+            </div>
+            <div *ngIf="forbike == true">
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Manufacturer</label>
+                <div class="col-md-6">
+                  <select class="form-control" [(ngModel)]="VehicleBrand" name="VehicleBrand">
+                    <option value=undefined>Select</option>
+                    <ng-container *ngFor="let list of brand_list;
+                              ">
+                      <option value="{{list._id}}">{{list.Vehicle_Brand_Name}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Name</label>
+                <div class="col-md-6">
+                  <input type="text" [(ngModel)]="vehiclename" name="vehiclename" id="text-input" class="form-control"
+                    placeholder="Vehicle Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle Image</label>
+                <div class="col-md-6">
+                  <input type="file" style="display: none;" (change)="fileupload1($event)" id="myFile"><label
+                    style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                    for="myFile">Choose image</label> <img *ngIf="Pic != undefined" src="{{Pic}}"
+                    style="float: right;;width: 30px;height: 30px;">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Fuel Type</label>
+                <div class="col-md-6">
+                  <ng-container *ngFor="let item of fuellist; let i = index;">
+                    <div class="col-md-3 col-form-label">
+                      <div class="form-check form-check-inline mr-1">
+                        <input class="form-check-input" type="checkbox" id="{{item.Fuel_Type}}"
+                          name="{{item.Fuel_Type}}" [checked]="item.checked" value="{{item._id}}"
+                          (change)="onCheckboxChagen($event)">
+                        <label class="form-check-label" for="{{item.Fuel_Type}}">{{item.Fuel_Type}}</label>
+                      </div>
+                    </div>
+                  </ng-container>
+
+                </div>
+              </div>
+              <!-- <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Popular Vehicle</label>
+              <div class="col-md-6">
+                <select class="form-control" [(ngModel)]="PopularVehicle"
+                  name="PopularVehicle">
+                  <option>Select Popular Vehicle</option>
+                  <ng-container *ngFor="let list of PopularvehicleList;
+                            ">
+                    <option value="{{list._id}}">{{list.Vehicle_Brand_Name}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div> -->
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Manufacturer Year</label>
+                <div class="col-md-3">
+                  <select class="form-control" [(ngModel)]="startyear" (ngModelChange)="fromyear()"
+                    name="ManufacturerYear">
+                    <option value=undefined>Select Manufacturer Year</option>
+                    <ng-container *ngFor="let list of ManufacturerYear;
+                            ">
+                      <option value="{{list}}">{{list}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <select class="form-control" [(ngModel)]="endyear" name="ManufacturerYearto">
+                    <option value=undefined>Select Manufacturer Year</option>
+                    <ng-container *ngFor="let list of ManufacturerYearto;
+                            ">
+                      <option value="{{list}}">{{list}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Vehicle CC</label>
+                <div class="col-md-6">
+
+                  <ng-container *ngFor="let list of vehiclemodellist;let i = index;">
+                    <div class="col-md-3 col-form-label">
+                      <div class="form-check form-check-inline mr-1">
+                        <input class="form-check-input" type="checkbox" id="{list.VehicleModel_Name}}"
+                          name="{{list.VehicleModel_Name}}" [checked]="list.checked" value="{{list._id}}"
+                          (change)="onCheckboxmodel($event)">
+                        <label class="form-check-label"
+                          for="{{list.VehicleModel_Name}}">{{list.VehicleModel_Name}}</label>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Popular Vehicle</label>
+                <div class="col-md-6">
+                  <select class="form-control" [(ngModel)]="Popular_Vehicle" name="Popular_Vehicle">
+                    <option value=undefiend>Select</option>
+                    <option value=true>Yes</option>
+                    <option value=false>No</option>
+                  </select>
+                </div>
+              </div>
+
+
+
+              <!-- <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">CC Name</label>
+                <div class="col-md-6">
+                  <input type="text" [(ngModel)]="ccname" name="ccname" id="text-input" class="form-control"
+                    placeholder="CC Name">
+                </div>
+              </div> -->
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <button (click)="VehicleDetails_save()" class="btn btn-sm btn-primary float-right mt-5"><i
+                      class="fa fa-save"></i>Save</button>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i> Reset</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Vehicle List </strong>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+
+                <th>S.No</th>
+                <th>Vehicle Name</th>
+                <th>Vehicle Image</th>
+                <th>Action</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let item of vehicledetails_list; let i = index;">
+                <tr>
+                  <td> <input type="checkbox" value={{item.VehicleModel_Name}} (click)="get_vehicle_model()" ></td> 
+                  <td>{{i+1}}</td>
+                  <td>{{item.Vehicle_Name}}</td>
+                  <td><img height="50" width="50" src={{item.Vehicle_Image}} alt="Noimage"></td>
+                  <td><button class="btn btn-sm btn-primary" (click)="get_fuel_list(item)">View</button>
+                    <button class="btn btn-sm btn-primary" (click)="get_fuel_list(item)">Edit</button>
+                    <button class="btn btn-sm btn-primary" (click)="get_fuel_list(item)">Delete</button></td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

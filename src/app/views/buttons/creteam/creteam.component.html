@@ -1,0 +1,447 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+      </div>
+    
+        <div class="col-xs-offset-1 col-sm-6 col-md-3">
+            <a style="text-decoration: none;"  (click)="openmechanicbookings()">
+          <div class="card text-white bg-success">
+            <div class="card-body">
+              <div class="h1 text-muted text-right mb-4">
+                <i class="icon-notebook"></i>
+              </div>
+              <div class="h4 mb-0">3</div>
+            <small class="text-muted text-uppercase font-weight-bold">View Mechanic Bookings</small>
+              <div class="progress progress-white progress-xs mt-3">
+                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div><!--/.col-->
+    
+        <div  class="col-sm-6 col-md-3">
+            <a style="text-decoration: none;"  (click)="openparkingbookings()">
+          <div class="card text-white bg-success">
+            <div class="card-body">
+              <div class="h1 text-muted text-right mb-4">
+                <i class="icon-user-follow"></i>
+              </div>
+              <div class="h4 mb-0">3</div>
+            <small class="text-muted text-uppercase font-weight-bold">View Parking Bookings</small>
+              <div class="progress progress-white progress-xs mt-3">
+                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div><!--/.col-->
+      <div class="col-sm-6 col-md-3">
+      </div>
+    </div>
+      <div class="row mt-5">
+        <div class="col-md-12">
+         
+      </div><!--/.row-->
+    </div>
+    
+    
+      <!--/.row-->
+      <div *ngIf="isDisableforbooking">
+       
+          <div class="row mt-5">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Mechanic Booking List
+                </div>        
+                <div class="row">                
+                  <div class="col-md-6">
+                      <div class="form-group">
+                        <button  class="btn btn-sm btn-primary float-right mt-2" ><i class="fa fa-save"></i>Excel</button>               
+                      </div>                  
+                  </div>  
+              </div> 
+                 <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <input type="text"  name="BookingId" id="text-input" class="form-control"
+                        placeholder="Booking Id">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <input type="text"  name="WorkshopName" id="text-input" class="form-control"
+                        placeholder="Booking Status">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <input type="text"  name="CustomerPhoneNumber" id="text-input" class="form-control"
+                        placeholder="Customer PhoneNumber">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <input type="text"  name="Service" id="text-input" class="form-control"
+                        placeholder="Service">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <input type="text"  name="SubService" id="text-input" class="form-control"
+                        placeholder="Sub Service">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <input type="text"  name="SubService" id="text-input" class="form-control"
+                        placeholder="Pickup Location">
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-3">
+                      <div class="form-group">
+                        <input type="text"  name="PickupLocation" id="text-input" class="form-control"
+                        placeholder="Pickup Location">
+                        </div>
+                    </div>     -->
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <input type="text"  name="WorkshopId" id="text-input" class="form-control"
+                        placeholder="Workshop Id">
+                        </div>
+                    </div>
+                       
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <input type="text"  name="WorkshopName" id="text-input" class="form-control"
+                        placeholder="Workshop Name">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                       <button class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                   
+                    
+                  </div>
+                  <div clss="col-md-8">
+                    <div class="row">
+                      <label class="col-md-2 col-form-label" for="text-input">Booking Date</label>
+                      <div class="col-md-2">
+                        <input type="date" class="form-control datetimepicker-input" name="todate" data-target="#reservationdate_to" required/>
+                            </div>
+                 
+                    <label class="col-md-2 col-form-label" for="text-input">Pickup Date</label>
+                    <div class="col-md-2"> 
+                        <input type="date" class="form-control datetimepicker-input" name="todate" data-target="#reservationdate_to" required/>
+                       
+                    </div>
+                    </div>
+                  </div>
+                  <div style="overflow-x:auto;">
+                    <table style=" width:auto"  id="example" class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th> <input type="checkbox"  [(ngModel)]="select" name="bookingtablelist"  id="Parking" value="Parking" (change)="changepermission_parking($event)">   </th>
+                          <th>Booking Id</th>
+                          <th>CName</th>
+                          <th>CPhone</th>
+                          <th>Vehicle_No</th>
+                          <th>Vehicle_Type</th>
+                          <th>Services</th>
+                          <th>SubServices</th>
+                          <th>Order_value</th>
+                          <th>Pickup_Location</th>
+                          <th>Pickup_Date	</th>
+                          <th>Pickup_City</th>
+                          <th>Delivery_Date</th>
+                          <th>Booking_Date</th>
+                          <th>Final_Bill_Payed</th>
+                          <th>Workshop Id</th> 
+                          <th>Workshop_Location</th>
+                          <th>Workshop_Name</th>
+                          <th>Booking_Status</th>
+                          <th>Job_Card</th>
+                          <th>Vendor_Invoice</th>
+                          <th>Customer_Invoice</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let item of Booking_List; let i = index;">
+                          <tr>
+                              <td>{{i+1}}</td>
+                              <td><input type="checkbox"  name="{{item.select_status}}" [(ngModel)]="item.select_status" (change)="selectall($event)" ></td>
+                              <td><a (click)="open_new_page(item)" style="color: blue; text-decoration: underline;" >{{item.Booking_id}}</a></td>
+                              <td>{{item.Customer_Name}}</td>
+                              <td>{{item.Customer_Phone}}</td>
+                              <td>{{item.Vehicle_No}}</td>
+                              <td>{{item.Vehicle_Type}}</td>
+                              <th>{{item.Services}}</th>
+                              <th>{{item.Subserivces}}</th>
+                              <td>{{item.Order_Value}}</td>
+                              <th><a style="color: cadetblue; text-decoration: underline;" href="#">{{item.Pick_Up_Location}}</a></th>
+                              <td>{{item.Pickup_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                              <th>{{item.Customer_Address}}</th>
+                              <td>{{item.Delivery_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                              <td>{{item.Booking_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                              <td>{{item.Final_bill_payed}}</td>
+                              <td></td>
+                              <td><a style="color: cadetblue; text-decoration: underline;" href="#">{{item.Workshop_Location}}</a></td>
+                              <td>{{item.Workshop_Name}}</td>
+                              <td>{{item.Booking_Status}}</td>
+                              <td>{{item.Job_Card}}</td>
+                              <td>{{item.Vendor_Invoice}}</td>
+                              <td>{{item.Customer_Invoice}}</td>
+                          </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                    <!-- <table style=" width:auto"  id="example" class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th> <input type="checkbox"  [(ngModel)]="select" name="bookingtablelist"  id="Parking" value="Parking" (change)="changepermission_parking($event)">   </th>
+                          <th>Booking_Id</th>
+                          <th>CName</th>
+                          <th>CPhone</th>
+                          <th>Services</th>
+                          <th>SubServices</th>
+                          <th>Pickup_Location</th>
+                          <th>Pickup_Date	</th>
+                          <th>Pickup_City</th>
+                          <th>Delivery_Date</th>
+                          <th>Vehicle_No</th>
+                          <th>Vehicle_Type</th>
+                          <th>Booking_Date</th>
+                          <th>Final_Bill_Payed</th>
+                          <th>Job_Card</th>
+                          <th>Order_value</th>
+                          <th>Workshop Id</th> 
+                          <th>Workshop_Location</th>
+                          <th>Workshop_Name</th>
+                          <th>Booking_Status</th>
+                          <th>Vendor_Invoice</th>
+                          <th>Customer_Invoice</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let item of Booking_List; let i = index;">
+                          <tr>
+                              <td>{{i+1}}</td>
+                              <td><input type="checkbox"  name="{{item.select_status}}" [(ngModel)]="item.select_status" (change)="selectall($event)" ></td>
+                              <td><a (click)="open_new_page(item)" style="color: blue; text-decoration: underline;" >{{item.Booking_id}}</a></td>
+                              <td>{{item.Customer_Name}}</td>
+                              <td>{{item.Customer_Phone}}</td>
+                              <th>{{item.Services}}</th>
+                              <th>{{item.Subserivces}}</th>
+                              <th><a style="color: cadetblue; text-decoration: underline;" href="#">{{item.Pick_Up_Location}}</a></th>
+                              <td>{{item.Pickup_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                              <th>{{item.Customer_Address}}</th>
+                              <td>{{item.Delivery_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                              <td>{{item.Vehicle_No}}</td>
+                              <td>{{item.Vehicle_Type}}</td>
+                              <td>{{item.Booking_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                              <td>{{item.Final_bill_payed}}</td>
+                              <td>{{item.Job_Card}}</td>
+                              <td>{{item.Order_Value}}</td>
+                              <td></td>
+                              <td><a style="color: cadetblue; text-decoration: underline;" href="#">{{item.Workshop_Location}}</a></td>
+                              <td>{{item.Workshop_Name}}</td>
+                              <td>{{item.Booking_Status}}</td>
+                              <td>{{item.Vendor_Invoice}}</td>
+                              <td>{{item.Customer_Invoice}}</td>
+                          </tr>
+                        </ng-container>
+                      </tbody>
+                    </table> -->
+                </div>
+              </div>
+              </div>
+              </div>
+              </div>
+            </div>
+            <div *ngIf="isDisableforparking">
+              <div class="row mt-2">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <i class="fa fa-align-justify"></i>Parking  Booking List
+                    </div>        
+                    <div class="row">                
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <button  class="btn btn-sm btn-primary float-right mt-2" ><i class="fa fa-save"></i>Excel</button>               
+                          </div>                  
+                      </div>  
+                       <div class="col-md-6">
+                          <div class="form-group">
+                                <button type="reset"  class="btn btn-sm btn-primary mt-2"><i class="fa fa-share"></i> Share</button>  
+                          </div>                  
+                      </div> 
+                  </div> 
+                     <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">          
+                          <input type="text" [(ngModel)]="BookingId" name="BookingId" id="text-input" class="form-control"
+                          placeholder="Booking Id">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">          
+                          <input type="text" [(ngModel)]="CustomerNumber" name="CustomerNumber" id="text-input" class="form-control"
+                          placeholder="Customer Number">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                          <div class="form-group">          
+                          <input type="text" [(ngModel)]="VehicleNumber" name="VehicleNumber" id="text-input" class="form-control"
+                          placeholder="Vehicle Number">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="map" name="map" id="text-input" class="form-control"
+                            placeholder="Vehicle Type">
+                            </div>
+                        </div>      
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="ParkingAreaName" name="ParkingAreaName" id="text-input" class="form-control"
+                            placeholder="Parking Area Name">
+                            </div>
+                        </div>     
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="ParkingAreaLocation" name="ParkingAreaLocation" id="text-input" class="form-control"
+                            placeholder="Parking Area Location">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="CityofBooking" name="CityofBooking" id="text-input" class="form-control"
+                            placeholder="City of Booking">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">          
+                          <input type="text" [(ngModel)]="FloorName" name="FloorName" id="text-input" class="form-control"
+                          placeholder="Floor Name">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="SubFloorName" name="SubFloorName" id="text-input" class="form-control"
+                            placeholder="Sub Floor Name">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                           <button class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                      </div>
+                      <div clss="col-md-8">
+                        <div class="row">
+                          <label class="col-md-2 col-form-label" for="text-input">Booking Start Date</label>
+                          <div class="col-md-2">
+                            <input type="date" class="form-control datetimepicker-input" name="todate" data-target="#reservationdate_to" required/>
+                                </div>
+                     
+                        <label class="col-md-2 col-form-label" for="text-input">Booking End Date</label>
+                        <div class="col-md-2"> 
+                            <input type="date" class="form-control datetimepicker-input" name="todate" data-target="#reservationdate_to" required/>
+                           
+                        </div>
+                        </div>
+                      </div>
+                     
+                <div style="overflow-x:auto;">
+                    <table style=" width:auto" id="example" class="table table-bordered table-striped table-sm">
+                        <thead>
+                          <tr>
+                            <th><input type="checkbox"  [(ngModel)]="select" name="bookingtablelist"  id="Parking" value="Parking" (change)="changepermission_parking($event)">    </th>
+                            <th>S.No</th>
+                            <th>Vendor Id</th>
+                            <th>Booking Id</th>
+                            <th>CName</th>
+                            <th>CPhone</th>
+                            <th>Vehicle_Type</th>
+                            <th>Vehicle_No</th>
+                            <th>Vehicle_Model</th>
+                            <th>Parking_area_Name</th>
+                            <th>Location_of_ParkingArea</th>
+                            <th>City_of_Booking</th>
+                            <th>Floor_Name</th>
+                            <th>Sub_Name_Floor</th>
+                            <th>Slot_Number</th>
+                            <th>Booking_Date</th>
+                            <th>Booking Time</th>
+                            <th>Booking_Start_Date</th>
+                            <th>Booking_Start_Time</th>
+                            <th>Booking_End_Date</th>
+                            <th>Booked_End_Time</th>
+                            <th>Number_of_Hours_Booked</th>
+                            <th>CheckIn_Date_Time</th>
+                            <th>CkeckOut_Date_Time</th>
+                            <th>Actual_Time_of_Uasge_ParkingSpace</th>
+                            <th>Booking_Confirmation_Amount</th>
+                            <th>Final_Payable_Amount</th>
+                            <th>Rate_PerHour</th>
+                            <th>Customer_Invoice</th>
+                            <th>Vendor_Invoice</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                       <ng-container *ngFor="let item of parking_booking_list; let i = index;">
+                            <tr>
+                                <td><input type="checkbox"  name="{{item.select_status}}" [(ngModel)]="item.select_status" (change)="selectall($event)" ></td>
+                                <td>{{i+1}}</td>
+                                <td>JDSE879876FG</td>
+                                <td><a (click)="open_new_parking_page(item)" style="color: blue; text-decoration: underline;">{{item.Booking_Id}}</a></td>
+                                <td>{{item.Customer_Name}}</td>
+                                <td>{{item.Customer_Phone}}</td>
+                                <td>{{item.Vehicle_Type }}</td>
+                                <td>{{item.Vehicle_Number}}</td>
+                                <td>{{item.Vehicle_Model}}</td>
+                                <td><a style="color: cadetblue; text-decoration: underline;" href="#">{{item.Parking_Area_Name}}</a></td>
+                                <td>{{item.Parking_Area_Location}}</td>
+                                <th>{{item.City_Booking}}</th>
+                                <td>{{item.Floor_Name}}</td>
+                                <td>{{item.Sub_Floor_Name}}</td>
+                                <td>{{item.Slot_Number}}</td>
+                                <td>{{item.Booking_Date}}</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{item.Booking_In_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                                <td></td>
+                                <td>{{item.Booking_Out_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                                <td>{{item.Number_hours_booked}}</td>
+                                <td>{{item.Check_Out_Time}}</td>
+                                <td>{{item.Check_In_Time}}</td>
+                                <td>{{item.Charge_per_hour }}</td>
+                                <td>{{item.Usage_Hours}}</td>
+                                <td>{{item.Booking_Confirmation_Amount}}</td>
+                                <td>{{item.Final_Payable_Amount}}</td>
+                                <td>{{item.Vendor_Invoice}}</td>
+                                <td>{{item.Vendor_Invoice}}</td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+          
+    </div>
+    
+  
+  

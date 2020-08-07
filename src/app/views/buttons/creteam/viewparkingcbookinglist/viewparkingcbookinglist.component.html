@@ -1,0 +1,184 @@
+<div class="animated fadeIn">
+
+    <div class="row mt-2">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i>Parking Booking List
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <button class="btn btn-sm btn-primary float-right mt-2"><i
+                                    class="fa fa-save"></i>Excel</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <button type="reset" class="btn btn-sm btn-primary mt-2"><i class="fa fa-share"></i>
+                                Share</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">          
+                          <input type="text" [(ngModel)]="BookingId" name="BookingId" id="text-input" class="form-control"
+                          placeholder="Booking Id">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">          
+                          <input type="text" [(ngModel)]="CustomerNumber" name="CustomerNumber" id="text-input" class="form-control"
+                          placeholder="Customer Number">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                          <div class="form-group">          
+                          <input type="text" [(ngModel)]="VehicleNumber" name="VehicleNumber" id="text-input" class="form-control"
+                          placeholder="Vehicle Number">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="map" name="map" id="text-input" class="form-control"
+                            placeholder="Vehicle Type">
+                            </div>
+                        </div>      
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="ParkingAreaName" name="ParkingAreaName" id="text-input" class="form-control"
+                            placeholder="Parking Area Name">
+                            </div>
+                        </div>     
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="ParkingAreaLocation" name="ParkingAreaLocation" id="text-input" class="form-control"
+                            placeholder="Parking Area Location">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="CityofBooking" name="CityofBooking" id="text-input" class="form-control"
+                            placeholder="City of Booking">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">          
+                          <input type="text" [(ngModel)]="FloorName" name="FloorName" id="text-input" class="form-control"
+                          placeholder="Floor Name">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="SubFloorName" name="SubFloorName" id="text-input" class="form-control"
+                            placeholder="Sub Floor Name">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                           <button class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                      </div>
+                      <div clss="col-md-8">
+                        <div class="row">
+                          <label class="col-md-2 col-form-label" for="text-input">Booking Start Date</label>
+                          <div class="col-md-2">
+                            <input type="date" class="form-control datetimepicker-input" name="todate" data-target="#reservationdate_to" required/>
+                                </div>
+                     
+                        <label class="col-md-2 col-form-label" for="text-input">Booking End Date</label>
+                        <div class="col-md-2"> 
+                            <input type="date" class="form-control datetimepicker-input" name="todate" data-target="#reservationdate_to" required/>
+                           
+                        </div>
+                        </div>
+                      </div>
+
+                    <div style="overflow-x:auto;">
+                        <table style=" width:auto" id="example" class="table table-bordered table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" [(ngModel)]="select" name="bookingtablelist" id="Parking"
+                                            value="Parking" (change)="changepermission_parking($event)"> </th>
+                                    <th>S.No</th>
+                                    <th>Vendor Id</th>
+                                    <th>Booking Id</th>
+                                    <th>CName</th>
+                                    <th>CPhone</th>
+                                    <th>Vehicle_Type</th>
+                                    <th>Vehicle_No</th>
+                                    <th>Vehicle_Model</th>
+                                    <th>Parking_area_Name</th>
+                                    <th>Location_of_ParkingArea</th>
+                                    <th>City_of_Booking</th>
+                                    <th>Floor_Name</th>
+                                    <th>Sub_Name_Floor</th>
+                                    <th>Slot_Number</th>
+                                    <th>Booking_Date</th>
+                                    <th>Booking Time</th>
+                                    <th>Booking_Start_Date</th>
+                                    <th>Booking_Start_Time</th>
+                                    <th>Booking_End_Date</th>
+                                    <th>Booked_End_Time</th>
+                                    <th>Number_of_Hours_Booked</th>
+                                    <th>CheckIn_Date_Time</th>
+                                    <th>CkeckOut_Date_Time</th>
+                                    <th>Actual_Time_of_Uasge_ParkingSpace</th>
+                                    <th>Booking_Confirmation_Amount</th>
+                                    <th>Final_Payable_Amount</th>
+                                    <th>Rate_PerHour</th>
+                                    <th>Customer_Invoice</th>
+                                    <th>Vendor_Invoice</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let item of parking_booking_list; let i = index;">
+                                    <tr>
+                                        <td><input type="checkbox" name="{{item.select_status}}"
+                                                [(ngModel)]="item.select_status" (change)="selectall($event)"></td>
+                                        <td>{{i+1}}</td>
+                                        <td>JDSE879876FG</td>
+                                        <td><a (click)="open_new_parking_page(item)"
+                                                style="color: blue; text-decoration: underline;">{{item.Booking_Id}}</a>
+                                        </td>
+                                        <td>{{item.Customer_Name}}</td>
+                                        <td>{{item.Customer_Phone}}</td>
+                                        <td>{{item.Vehicle_Type }}</td>
+                                        <td>{{item.Vehicle_Number}}</td>
+                                        <td>{{item.Vehicle_Model}}</td>
+                                        <td><a style="color: cadetblue; text-decoration: underline;"
+                                                href="#">{{item.Parking_Area_Name}}</a></td>
+                                        <td>{{item.Parking_Area_Location}}</td>
+                                        <th>{{item.City_Booking}}</th>
+                                        <td>{{item.Floor_Name}}</td>
+                                        <td>{{item.Sub_Floor_Name}}</td>
+                                        <td>{{item.Slot_Number}}</td>
+                                        <td>{{item.Booking_Date}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{item.Booking_In_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                                        <td></td>
+                                        <td>{{item.Booking_Out_Date| date :'dd-MMM-yy h:mm:ss a'}}</td>
+                                        <td>{{item.Number_hours_booked}}</td>
+                                        <td>{{item.Check_Out_Time}}</td>
+                                        <td>{{item.Check_In_Time}}</td>
+                                        <td>{{item.Charge_per_hour }}</td>
+                                        <td>{{item.Usage_Hours}}</td>
+                                        <td>{{item.Booking_Confirmation_Amount}}</td>
+                                        <td>{{item.Final_Payable_Amount}}</td>
+                                        <td>{{item.Vendor_Invoice}}</td>
+                                        <td>{{item.Vendor_Invoice}}</td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

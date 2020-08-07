@@ -1,0 +1,138 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Location</strong>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Location Image</label>
+                            <div class="col-md-6">
+                                <input type="file" (change)="fileupload($event)" style="display: none;"
+                                    id="myFile"><label
+                                    style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                    for="myFile">Choose image</label>
+                                <img *ngIf="Pic != undefined" src="{{Pic}}"
+                                    style="float: right;;width: 30px;height: 30px;">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Location Name</label>
+                            <div class="col-md-6">
+                                <input type="text" [(ngModel)]="LocationName" name="LocationName" id="text-input"
+                                    class="form-control" placeholder="Location Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Display Name</label>
+                            <div class="col-md-6">
+                                <input type="text" [(ngModel)]="DisplayName" name="DisplayName" id="text-input"
+                                    class="form-control" placeholder="Display Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Latitude</label>
+                            <div class="col-md-6">
+                                <input type="text" [(ngModel)]="latitude" name="latitude" id="text-input"
+                                    class="form-control" placeholder="Latitude">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Longitude</label>
+                            <div class="col-md-6">
+                                <input type="text" [(ngModel)]="longitude" name="longitude" id="text-input"
+                                    class="form-control" placeholder="Longitude">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Pincode</label>
+                            <div class="col-md-6">
+                                <textarea [(ngModel)]="pincode" name="Pincode" id="text-input" class="form-control"
+                                    placeholder="Pincode" (keypress)=_keyPress($event)></textarea>
+                                <p style="color: #4dbd74;font-size: 10px;font-weight: 600;">If you want to add multiple
+                                    pincode please use comma seperator.(ex: 123456,123457) </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button *ngIf="edit != true" (click)="Location_save()"
+                                        class="btn btn-sm btn-primary float-right mt-5"><i
+                                            class="fa fa-save"></i>Save</button>
+                                    <button *ngIf="edit == true" (click)="editsave()"
+                                        class="btn btn-sm btn-primary float-right mt-5"><i
+                                            class="fa fa-save"></i>Update</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i>
+                                        Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <h4 class="card-title pt-4">Location List</h4>
+                    <table class="table table-striped table-bordered table-sm" [svData]="Location_list"
+                        #sv="svDataTable" [svRowsOnPage]="10" svSortBy="name" svSortOrder="asc">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Location_Name</th>
+                                <th>display_Name</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Pincode</th>
+                                <th>Image</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of sv.data; let i = index;">
+                                <td>{{i+1}}</td>
+                                <td>{{item.Location_Name}}</td>
+                                <td>{{item.Display_Name}}</td>
+                                <td>{{item.Lat}}</td>
+                                <td>{{item.Long}}</td>
+                                <td>
+                                    <ng-container *ngFor="let t of item.Pincodes; let i=index">
+                                        {{t}}
+                                        <ng-container *ngIf="(i+1) < item.Pincodes.length">,</ng-container>
+                                    </ng-container>
+                                </td>
+                                <td><img height="50" width="50" src={{item.Image}} alt="Noimage"></td>
+                                <td><button (click)="editservice(item)" class="btn btn-sm btn-success">
+                                        <li class="fa fa-edit">Edit</li>
+                                    </button>
+                                    <button (click)="VehicleModel_delete(item._id)" class="btn btn-sm btn-danger">
+                                        <li class="fa fa-trash">Delete</li>
+                                    </button></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8">
+                                    <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.row-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+            </div>
+        </div>
+    </div>
+</div>
