@@ -86,7 +86,7 @@ export class PopularSubServiceComponent implements OnInit {
       (response: any) => {
         console.log(response);
         this.List = response.Data;
-        this.masterservice_list = this.List;
+        this.masterservice_list = this.List.filter(x => x.Service_id.Popular == true);
         console.log(this.masterservice_list);
 
       }
@@ -463,7 +463,7 @@ export class PopularSubServiceComponent implements OnInit {
 
   filter() {
     if (this.mainservice_fil_data != undefined || this.Vehiclename_fil_data != undefined) {
-      this.masterservice_list = this.List;
+      this.masterservice_list = this.List.filter(x => x.Service_id.Popular == false);
       if (this.mainservice_fil_data != undefined) {
         this.masterservice_list = this.masterservice_list.filter((x) => x.Service_id._id == this.mainservice_fil_data)
         console.log(this.masterservice_list)
@@ -482,7 +482,7 @@ export class PopularSubServiceComponent implements OnInit {
   }
 
   refresh() {
-    this.masterservice_list = this.List;
+    this.masterservice_list = this.List.filter(x => x.Service_id.Popular == false);
   }
 
 
