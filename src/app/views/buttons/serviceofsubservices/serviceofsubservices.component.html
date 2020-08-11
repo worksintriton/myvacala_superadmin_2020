@@ -19,6 +19,17 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
+                            <div class="col-md-6">
+                                <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType">
+                                    <option value=undefined>Select Vehicle Type</option>
+                                    <ng-container *ngFor="let list of vehicle_list;">
+                                        <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                                    </ng-container>
+                                </select>
+                            </div>
+                        </div>
                         <!-- <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
               <div class="col-md-6">
@@ -105,17 +116,7 @@
                                 </table>
                             </div>
                         </div> -->
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
-                            <div class="col-md-6">
-                                <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType">
-                                    <option>Select Vehicle Type</option>
-                                    <ng-container *ngFor="let list of vehicle_list;">
-                                        <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
-                                    </ng-container>
-                                </select>
-                            </div>
-                        </div>
+                        
 
                         <!-- <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Popular Service</label>
@@ -186,7 +187,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i>
+                                    <button type="button" (click)="reset()" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i>
                                         Reset</button>
                                 </div>
                             </div>

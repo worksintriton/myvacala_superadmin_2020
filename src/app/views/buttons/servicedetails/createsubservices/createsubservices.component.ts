@@ -59,8 +59,8 @@ export class CreatesubservicesComponent implements OnInit {
   vehicle_type: any;
   VehicleType: any = undefined;
   main_list: any;
-  vihicle_list: any=[];
-  Count:any;
+  vihicle_list: any = [];
+  Count: any;
   constructor(
     private router: Router,
 
@@ -126,7 +126,7 @@ export class CreatesubservicesComponent implements OnInit {
         }
         // console.log(response.Data);
         // this.vehicle_list = response.Data;
-        
+
         console.log(this.vihicle_list);
       }
     );
@@ -137,7 +137,7 @@ export class CreatesubservicesComponent implements OnInit {
   editservice(data) {
     // this.VehicleType =
     // this.vechiclt_type_select();
-    this.vehicledetails_list.map((x) =>  x.status = "true");
+    this.vehicledetails_list.map((x) => x.status = "true");
     this.forcreate = false;
     this.sub_service_id = data._id;
     this.SubServiceName = data.sub_ser_Title;
@@ -149,7 +149,7 @@ export class CreatesubservicesComponent implements OnInit {
     this.Discount_price = data.Discount_Price;
     this.specification_new = data.sub_ser_Spec1;
     console.log(this.mainservice_id)
-
+    this.Count = data.Count_type;
     this.Vehicle_Name_id = [];
     for (let i = 0; i < data.Vehicle_Name_id.length; i++) {
       this.Vehicle_Name_id.push(data.Vehicle_Name_id[i]._id)
@@ -219,7 +219,7 @@ export class CreatesubservicesComponent implements OnInit {
           "Discount_Price": this.Discount_price,
           "Vehicle_Name_id": this.Vehicle_Name_id,
           "sub_ser_Spec1": this.specification_new,
-          "Count_type" : this.Count,
+          "Count_type": this.Count,
 
         }
         console.log(data);
@@ -263,7 +263,7 @@ export class CreatesubservicesComponent implements OnInit {
           "Discount_Price": this.Discount_price,
           "Vehicle_Name_id": this.Vehicle_Name_id,
           "sub_ser_Spec1": this.specification_new,
-          "Count_type" : this.Count,
+          "Count_type": this.Count,
         }
         console.log(data);
 
@@ -314,6 +314,7 @@ export class CreatesubservicesComponent implements OnInit {
       this.newInclude = this.Included;
       this.Included_new.push({ "title": this.newInclude });
       console.log(this.Included_new);
+      this.Included = undefined;
     }
     else {
       alert("Please fill the Included field")
@@ -346,6 +347,7 @@ export class CreatesubservicesComponent implements OnInit {
       this.newSubservice = this.subtitle;
       this.specification_new.push(this.newSubservice);
       console.log(this.specification_new);
+      this.subtitle = undefined;
     }
     else {
       alert("Please fill the specification field")
@@ -445,7 +447,7 @@ export class CreatesubservicesComponent implements OnInit {
     }
   }
   reset() {
-    this.vehicledetails_list.map((x) =>  x.status = "true");
+    this.vehicledetails_list.map((x) => x.status = "true");
     this.SubServiceName = undefined;
     this.mainservice_id = undefined;
     this.Pic = undefined;

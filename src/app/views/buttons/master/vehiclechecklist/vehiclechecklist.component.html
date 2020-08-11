@@ -14,7 +14,7 @@
               <div class="col-md-6">
                 <select class="form-control" (change)="vechiclt_type_select($event)" [(ngModel)]="VehicleType"
                   name="VehicleType">
-                  <option>Select Vehicle Type</option>
+                  <option value=undefined>Select Vehicle Type</option>
                   <ng-container *ngFor="let list of vehicle_list;">
                     <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
                   </ng-container>
@@ -26,7 +26,7 @@
                 <label class="col-md-3 col-form-label" for="text-input">Vehicle Manufacturer</label>
                 <div class="col-md-6">
                   <select class="form-control" [(ngModel)]="VehicleBrand" name="VehicleBrand">
-                    <option>Select Vehicle Manufacturer</option>
+                    <option value=undefined>Select Vehicle Manufacturer</option>
                     <ng-container *ngFor="let list of brand_list;
                               ">
                       <option value="{{list._id}}">{{list.Vehicle_Brand_Name}}</option>
@@ -55,7 +55,7 @@
                 <label class="col-md-3 col-form-label" for="text-input">Fuel Type</label>
                 <div class="col-md-6">
                   <ng-container *ngFor="let item of fuellist; let i = index;">
-                    <div class="col-md-3 col-form-label">
+                    <div class="col-form-label">
                       <div class="form-check form-check-inline mr-1">
                         <input class="form-check-input" type="checkbox" id="{{item.Fuel_Type}}"
                           name="{{item.Fuel_Type}}" [checked]="item.checked" value="{{item._id}}"

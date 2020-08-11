@@ -381,4 +381,7 @@ export class ApiService {
   qr_code_delete(data){
     return this.http.post(this.apiUrl + 'parkingvendor/qrdelete', data);
   }
+  booking_edit(data){
+    return this.http.post(this.apiUrl + 'booking/edit', data);
+  }
 }

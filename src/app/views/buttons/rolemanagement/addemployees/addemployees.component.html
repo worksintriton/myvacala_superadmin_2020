@@ -29,13 +29,14 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Phone Number</label>
                   <div class="col-md-7">
-                    <input type="text" [(ngModel)]="PhoneNumber" (keypress)=_keyPress($event)  name="PhoneNumber" id="text-input" class="form-control"
+                    <input type="text" [(ngModel)]="PhoneNumber" (keypress)=_keyPress($event) (ngModelChange)="phone1()" name="PhoneNumber" id="text-input" class="form-control"
                       placeholder="Phone Number">
+                      <span class="err" *ngIf="phone_err1">Enter Valid Phone Number.</span>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Temporary address</label>
-                  <div class="col-md-6">
+                  <div class="col-md-7">
                     <textarea type="text" [(ngModel)]="Temporaryaddress" name="Temporaryaddress" id="text-input"
                       class="form-control" placeholder="Temporary address"></textarea>
                   </div>
@@ -81,8 +82,16 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Email-Id</label>
                   <div class="col-md-7">
-                    <input type="text" [(ngModel)]="EmailId" name="EmailId" id="text-input" class="form-control"
+                    <input type="text" [(ngModel)]="EmailId" name="EmailId" (ngModelChange)="emailcheck()" id="text-input" class="form-control"
                       placeholder="Email Id">
+                      <span class="err" *ngIf="emailerror">Enter Valid Email Address.</span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Nominee Address</label>
+                  <div class="col-md-7">
+                    <textarea [(ngModel)]="NomineeAddress" class="form-control" name="NomineeAddress"
+                      placeholder="Nominee Address"></textarea>
                   </div>
                 </div>
               </div>
@@ -105,13 +114,14 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Alterative Number</label>
                   <div class="col-md-7">
-                    <input type="text" [(ngModel)]="AlterativeNumber" (keypress)=_keyPress($event)  name="AlterativeNumber" id="text-input"
+                    <input type="text" [(ngModel)]="AlterativeNumber" (keypress)=_keyPress($event)  (ngModelChange)="phone2()" name="AlterativeNumber" id="text-input"
                       class="form-control" placeholder="Alterative Number">
+                      <span class="err" *ngIf="phone_err2">Enter Valid Phone Number.</span>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Permanent address</label>
-                  <div class="col-md-6">
+                  <div class="col-md-7">
                     <textarea type="text" [(ngModel)]="Permanentaddress" name="Permanentaddress" id="text-input"
                       class="form-control" placeholder="Permanent address"></textarea>
                   </div>
@@ -134,10 +144,11 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="text-input">Nominee Ph Number</label>
+                  <label class="col-md-4 col-form-label" for="text-input">Nominee Phone Number</label>
                   <div class="col-md-7">
-                    <input type="text" [(ngModel)]="MobileNumber" (keypress)=_keyPress($event)  name="MobileNumber" id="text-input"
+                    <input type="text" [(ngModel)]="MobileNumber" (keypress)=_keyPress($event)  (ngModelChange)="phone3()" name="MobileNumber" id="text-input"
                       class="form-control" placeholder="Nominee Mobile Number">
+                      <span class="err" *ngIf="phone_err3">Enter Valid Phone Number.</span>
                   </div>
                 </div>
 
@@ -158,13 +169,7 @@
                       <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span>
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="text-input">Nominee Address</label>
-                  <div class="col-md-6">
-                    <textarea [(ngModel)]="NomineeAddress" class="form-control" name="NomineeAddress"
-                      placeholder="Nominee Address"></textarea>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </form>

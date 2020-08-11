@@ -29,8 +29,9 @@
                   <div class="form-group row">
                     <label class="col-md-4 col-form-label" for="text-input">Phone Number</label>
                     <div class="col-md-7">
-                      <input type="text" [(ngModel)]="PhoneNumber" (keypress)=_keyPress($event)  name="PhoneNumber" id="text-input" class="form-control"
+                      <input type="text" [(ngModel)]="PhoneNumber" (keypress)=_keyPress($event) (ngModelChange)="phone1()" name="PhoneNumber" id="text-input" class="form-control"
                         placeholder="Phone Number">
+                        <span class="err" *ngIf="phone_err1">Enter Valid Phone Number.</span>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -81,8 +82,26 @@
                   <div class="form-group row">
                     <label class="col-md-4 col-form-label" for="text-input">Email-Id</label>
                     <div class="col-md-7">
-                      <input type="text" [(ngModel)]="EmailId" name="EmailId" id="text-input" class="form-control"
+                      <input type="text" [(ngModel)]="EmailId" name="EmailId" (ngModelChange)="emailcheck()" id="text-input" class="form-control"
                         placeholder="Email Id">
+                        <span class="err" *ngIf="emailerror">Enter Valid Email Address.</span>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="text-input">Nominee Address</label>
+                    <div class="col-md-6">
+                      <textarea [(ngModel)]="NomineeAddress" class="form-control" name="NomineeAddress"
+                        placeholder="Nominee Address"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="text-input">Nominee AadharCard</label>
+                    <div class="col-md-7">
+                        <p class="err" *ngIf="pdfname4"><a href="{{NomineeAadharCard_file}}" target="blank"><i
+                            class="fa fa-file-text" aria-hidden="true"></i> {{NomineeAadharCard_file | slice:51}}</a></p>
+                      <input type="file" accept="application/pdf" (change)="fileupload4($event)" name="NomineeAadharCard" id="text-input"
+                        class="form-control" placeholder="Nominee AadharCard">
+                        <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span>
                     </div>
                   </div>
                 </div>
@@ -105,8 +124,9 @@
                   <div class="form-group row">
                     <label class="col-md-4 col-form-label" for="text-input">Alterative Number</label>
                     <div class="col-md-7">
-                      <input type="text" [(ngModel)]="AlterativeNumber" (keypress)=_keyPress($event)  name="AlterativeNumber" id="text-input"
+                      <input type="text" [(ngModel)]="AlterativeNumber" (keypress)=_keyPress($event)  (ngModelChange)="phone2()" name="AlterativeNumber" id="text-input"
                         class="form-control" placeholder="Alterative Number">
+                        <span class="err" *ngIf="phone_err2">Enter Valid Phone Number.</span>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -120,7 +140,7 @@
                     <label class="col-md-4 col-form-label" for="text-input">Employee PanCard</label>
                     <div class="col-md-7">
                         <p class="err" *ngIf="pdfname1"><a href="{{EmployeePanCard_file}}" target="blank"><i
-                            class="fa fa-file-text" aria-hidden="true"></i> {{pdfname1}}</a></p>
+                            class="fa fa-file-text" aria-hidden="true"></i>{{EmployeePanCard_file | slice:51}}</a></p>
                       <input type="file" accept="application/pdf" (change)="fileupload1($event)" id="text-input" class="form-control"
                         placeholder="Employee PanCard">
                        
@@ -132,17 +152,18 @@
                     <label class="col-md-4 col-form-label" for="text-input">Employee AadharCard</label>
                     <div class="col-md-7">
                         <p class="err" *ngIf="pdfname2"><a href="{{EmployeeAadharCard_file}}" target="blank"><i
-                            class="fa fa-file-text" aria-hidden="true"></i> {{pdfname2}}</a></p>
+                            class="fa fa-file-text" aria-hidden="true"></i> {{EmployeeAadharCard_file | slice:51}}</a></p>
                       <input type="file" accept="application/pdf" (change)="fileupload2($event)" id="text-input" class="form-control"
                         placeholder="Employee AadharCard">
                         <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-md-4 col-form-label" for="text-input">Nominee Ph Number</label>
+                    <label class="col-md-4 col-form-label" for="text-input">Nominee Phone Number</label>
                     <div class="col-md-7">
-                      <input type="text" [(ngModel)]="MobileNumber" (keypress)=_keyPress($event)  name="MobileNumber" id="text-input"
+                      <input type="text" [(ngModel)]="MobileNumber" (keypress)=_keyPress($event)  (ngModelChange)="phone3()" name="MobileNumber" id="text-input"
                         class="form-control" placeholder="Nominee Mobile Number">
+                        <span class="err" *ngIf="phone_err3">Enter Valid Phone Number.</span>
                     </div>
                   </div>
   
@@ -150,30 +171,15 @@
                     <label class="col-md-4 col-form-label" for="text-input">Nominee PanCard</label>
                     <div class="col-md-7">
                         <p class="err" *ngIf="pdfname3"><a href="{{NomineePanCard_file}}" target="blank"><i
-                            class="fa fa-file-text" aria-hidden="true"></i> {{pdfname3}}</a></p>
+                            class="fa fa-file-text" aria-hidden="true"></i> {{NomineePanCard_file | slice:51}}</a></p>
                       <input type="file" accept="application/pdf" (change)="fileupload3($event)" name="NomineePanCard" id="text-input"
                         class="form-control" placeholder="Nominee PanCard">
                          <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span>
                     </div>
                   </div>
   
-                  <div class="form-group row">
-                    <label class="col-md-4 col-form-label" for="text-input">Nominee AadharCard</label>
-                    <div class="col-md-7">
-                        <p class="err" *ngIf="pdfname4"><a href="{{NomineeAadharCard_file}}" target="blank"><i
-                            class="fa fa-file-text" aria-hidden="true"></i> {{pdfname4}}</a></p>
-                      <input type="file" accept="application/pdf" (change)="fileupload4($event)" name="NomineeAadharCard" id="text-input"
-                        class="form-control" placeholder="Nominee AadharCard">
-                        <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-md-4 col-form-label" for="text-input">Nominee Address</label>
-                    <div class="col-md-6">
-                      <textarea [(ngModel)]="NomineeAddress" class="form-control" name="NomineeAddress"
-                        placeholder="Nominee Address"></textarea>
-                    </div>
-                  </div>
+                  
+                 
                 </div>
               </div>
             </form>
@@ -288,7 +294,7 @@
                   <ng-container *ngFor="let loc of Location_list; let i=index">
                     <div class="col-md-3 col-form-label">
                       <div class="form-check form-check-inline mr-1">
-                        <input class="form-check-input" type="checkbox" id="{{loc._id}}" 
+                        <input class="form-check-input" type="checkbox" id="{{loc._id}}" [checked]="loc.status"
                           value="{{loc._id}}" (change)="addlocation($event)">
                         <label class="form-check-label" for="{{loc._id}}">{{loc.Display_Name}}</label>
                       </div>
@@ -357,7 +363,7 @@
                   <td>2</td>
                   <td>Mechanic Registartion Form</td>
                   <td><input type="checkbox" value="MechanicReg_Create" (load)="load($event)" (change)="addpermission($event)" id="val36" [checked]="MechReg_create"></td>
-                  <td><input type="checkbox" value="MechanicReg_ViewList" (change)="addpermission($event)" id="val137" [checked]="MechReg_view"></td>
+                  <td><input type="checkbox" value="MechanicReg_ViewList" (change)="addpermission($event)" id="val151" [checked]="MechReg_view"></td>
                   <td><input type="checkbox" value="MechanicReg_Edit" (change)="addpermission($event)" id="val38" [checked]="MechReg_edit"></td>
                   <td><input type="checkbox" value="MechanicReg_Excel" (change)="addpermission($event)" id="val39" [checked]="MechReg_excel"></td>
                   <td><input type="checkbox" value="MechanicReg_Share" (change)="addpermission($event)" id="val40" [checked]="MechReg_share"></td>
@@ -425,7 +431,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i> Reset</button>
+          <button type="reset" class="btn btn-sm btn-danger mt-5" (click)="back()"> Back</button>
         </div>
       </div>
     </div>

@@ -92,7 +92,7 @@
                   <td>{{i+1}}</td>
                   <td>{{item.Employee_Id}}</td>
                   <td>{{item.Role_Name}}</td>
-                  <th>{{item.Employee_Name}}</th>
+                  <td>{{item.Employee_Name}}</td>
                   <td>{{item.Email_Id}}</td>
                   <td>{{item.Primary_Contact}}</td>
                   <td>{{item.EmployeePanCard_no}}</td>
@@ -108,14 +108,14 @@
                     </ng-container>
                   </td>
                   <td>{{item.employee_status}}</td>
-                  <td><a (click)="Edit_Employee(item)" type="button" id="" class="btn btn-sm btn-primary">Edit</a></td>
-                  <td> <a (click)="suspend(item._id)" id="" class="btn btn-sm btn-primary">Suspend</a>
+                  <td><button (click)="Edit_Employee(item)" type="button" id="" class="btn btn-sm btn-primary">Edit</button></td>
+                  <td> <button (click)="suspend(item._id)" class="btn btn-sm btn-primary" [disabled] = "item.employee_status == 'Suspended'">Suspend</button>
                   </td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
-                  <td colspan="14">
+                  <td colspan="17">
                     <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
                   </td>
                 </tr>

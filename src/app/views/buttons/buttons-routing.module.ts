@@ -531,28 +531,28 @@ const routes: Routes = [
         path: 'addemployees',
         component: AddemployeesComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Add Employees'
         }
       },
       {
         path: 'edit_employees',
         component: EditemployeeComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Edit employees'
         }
       },
       {
         path: 'listemployees',
         component: ListemployeesComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'List Employees'
         }
       },
       {
         path: 'revokemployees',
         component: RevokeemployeeComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Suspended Employees'
         }
       },
       {
@@ -573,14 +573,14 @@ const routes: Routes = [
         path: 'Fuel_Type',
         component: FueltypeComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Fuel Type'
         }
       },
       {
         path: 'Vehicle_Brand',
         component: VehiclebrandComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Vehicle Brand'
         }
       },
       {
@@ -609,14 +609,14 @@ const routes: Routes = [
         path: 'booking_parking',
         component: ParkingbookingComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Booking Parking'
         }
       },
       {
         path: 'view_individual_booking',
         component: ViewindividualbookingComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Individual Booking'
         }
       },
       {
@@ -651,49 +651,49 @@ const routes: Routes = [
         path: 'Brand',
         component: BrandComponent,
         data: {
-          title: 'Master/Brand'
+          title: 'Brand'
         }
       },
       {
         path: 'BrandList',
         component: BrandListComponent,
         data: {
-          title: 'Master/BrandList'
+          title: 'BrandList'
         }
       },
       {
         path: 'VehicleList',
         component: VehicleListComponent,
         data: {
-          title: 'Master/Vehicle List'
+          title: 'Vehicle List'
         }
       },
       {
         path: 'VehicleModel',
         component: VehicleModelComponent,
         data: {
-          title: 'Master/Vehicle Model'
+          title: 'Vehicle Model'
         }
       },
       {
         path: 'VehicleName',
         component: VehiclechecklistComponent,
         data: {
-          title: 'Master/PopularVehicle'
+          title: 'PopularVehicle'
         }
       },
       {
         path: 'Enginecc',
         component: EngineccComponent,
         data: {
-          title: 'Master/Enginecc'
+          title: 'Enginecc'
         }
       },
       {
         path: 'PopularVehicle',
         component: PopularVehicleComponent,
         data: {
-          title: 'Master/PopularVehicle'
+          title: 'PopularVehicle'
         }
       },
     
@@ -701,14 +701,14 @@ const routes: Routes = [
         path: 'Locations',
         component: LocationComponent,
         data: {
-          title: 'Master/Location'
+          title: 'Location'
         }
       },
       {
         path: 'LocationsList',
         component: LocationListComponent,
         data: {
-          title: 'Master/LocationList'
+          title: 'LocationList'
         }
       },
       {

@@ -174,4 +174,8 @@ export class FueltypeComponent implements OnInit {
   getFromLocal(key): any {
     return this.storage.get(key);
   }
+  reset(){
+    this.fuelType = undefined;
+    this.colorCode=undefined;
+  }
 }

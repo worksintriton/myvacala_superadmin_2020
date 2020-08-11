@@ -8,7 +8,17 @@
         </div>
         <div class="card-body">
           <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
+              <div class="col-md-6">
+                <select class="form-control" [(ngModel)]="VehicleType1" (ngModelChange)="loaddata()" name="VehicleType">
+                  <option>Select Vehicle Type</option>
+                  <ng-container *ngFor="let list of vehicle_list;">
+                    <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Title</label>
               <div class="col-md-6">
@@ -20,6 +30,13 @@
               </div>
             </div>
             <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Sub title</label>
+              <div class="col-md-6">
+                <input type="text" [(ngModel)]="pop_img_subtitle" name="subtitlename" class="form-control"
+                  placeholder="Title">
+              </div>
+            </div>
+            <!-- <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Description</label>
               <div class="col-md-6">
                 <textarea name="Description" [(ngModel)]="pop_img_desc" id="text-input" rows="4" class="form-control"
@@ -28,7 +45,7 @@
               <div *ngIf="desError">
                 <div class="text-danger">{{desErrorMsg}}</div>
               </div>
-            </div>
+            </div> -->
 
             <!-- <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Image Upload</label>
@@ -97,7 +114,17 @@
         </div>
         <div class="card-body">
           <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
+              <div class="col-md-6">
+                <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType">
+                  <option>Select Vehicle Type</option>
+                  <ng-container *ngFor="let list of vehicle_list;">
+                    <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
             <!-- <div class="form-group row">
                           <label class="col-md-3 col-form-label" for="text-input">Master Service</label>
                           <div class="col-md-6">
@@ -127,7 +154,7 @@
               <label class="col-md-3 col-form-label" for="text-input">Popular Service Name</label>
               <div class="col-md-6">
                 <input type="text" [(ngModel)]="mainServiceName" name="mainServiceName" id="text-input"
-                  name="text-input" class="form-control" placeholder="Main Service Name">
+                  name="text-input" class="form-control" placeholder="Popular Service Name">
               </div>
               <div *ngIf="subserviceError">
                 <div class="text-danger">{{subserviceErrorMsg}}</div>
@@ -192,17 +219,7 @@
                               </table>
                           </div>
                       </div> -->
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
-              <div class="col-md-6">
-                <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType">
-                  <option>Select Vehicle Type</option>
-                  <ng-container *ngFor="let list of vehicle_list;">
-                    <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
+            
 
             <!-- <div class="form-group row">
                           <label class="col-md-3 col-form-label" for="text-input">Popular Service</label>

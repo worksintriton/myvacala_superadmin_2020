@@ -83,7 +83,7 @@ export class RevokeemployeeComponent implements OnInit {
   }
   filter() {
     if (this.loc != undefined || (this.empid != undefined && this.empid != '') || (this.emailid != undefined && this.emailid != '') || (this.phone != undefined && this.phone != '') || this.status != undefined) {
-      this.emp_list = this.List;
+       this.emp_list = this.List;
       if (this.loc != undefined) {
         this.emp_list = this.emp_list.filter((x) => x.Location.some((y)=> y._id == this.loc)) 
         console.log(this.emp_list)
@@ -101,7 +101,7 @@ export class RevokeemployeeComponent implements OnInit {
         console.log(this.emp_list)
       }
       if (this.status != undefined) {
-        this.emp_list = this.emp_list.filter((x) => x.Vehicle_Name_id.some((y) => y._id == this.status))
+        this.emp_list = this.emp_list.filter((x) => x.employee_status== this.status)
         console.log(this.emp_list)
       }
 

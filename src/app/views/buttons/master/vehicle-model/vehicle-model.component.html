@@ -36,7 +36,11 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Vehicle Body Image</label>
                             <div class="col-md-6">
-                                <input type="file" (change)="fileupload1($event)">
+                                <input type="file" style="display: none;" (change)="fileupload1($event)"
+                                id="myFil"><label
+                                style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                for="myFil">Choose image</label> <img *ngIf="Pic != undefined" src="{{Pic}}"
+                                style="float: right;;width: 30px;height: 30px;">
                             </div>
                             <div *ngIf="serviceError">
                                 <div class="text-danger">{{serviceErrorMsg}}</div>
@@ -53,7 +57,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i>
+                                    <button type="button" (click)="reset()" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i>
                                         Reset</button>
                                 </div>
                             </div>

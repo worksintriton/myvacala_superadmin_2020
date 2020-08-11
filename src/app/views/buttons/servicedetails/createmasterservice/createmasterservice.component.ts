@@ -301,5 +301,8 @@ export class CreatemasterserviceComponent implements OnInit {
     this.Description = undefined;
     this.Pic = undefined;
     this.selectedlocations = [];
+    this.Location_list.map((x)=>{
+        x.status = "true"
+    });
   }
 }

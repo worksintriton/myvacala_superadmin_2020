@@ -37,9 +37,9 @@ export class VehiclechecklistComponent implements OnInit {
   startyear: any;
   endyear: any;
   ccname: any = undefined;
-  VehicleType: any;
+  VehicleType: any = undefined;
   VehicleModel: any = [];
-  VehicleBrand: any;
+  VehicleBrand: any=undefined;
   Popular_Vehicle: boolean = false;
   valitation: boolean = false;
   singlevehicle_data: any = undefined;

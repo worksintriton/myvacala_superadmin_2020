@@ -313,6 +313,7 @@ export class PopularSubServiceComponent implements OnInit {
       this.newInclude = this.Included;
       this.Included_new.push({ "title": this.newInclude });
       console.log(this.Included_new);
+      this.Included = undefined;
     }
     else {
       alert("Please fill the Included field")
@@ -345,6 +346,7 @@ export class PopularSubServiceComponent implements OnInit {
       this.newSubservice = this.subtitle;
       this.specification_new.push(this.newSubservice);
       console.log(this.specification_new);
+      this.subtitle = undefined;
     }
     else {
       alert("Please fill the specification field")

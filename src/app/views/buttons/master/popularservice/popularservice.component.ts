@@ -14,7 +14,8 @@ export class PopularserviceComponent implements OnInit {
   masterservice_list: any;
   subservice_list: any;
   MasterServiceName: any = "5f1ac41b55abee4870516567";
-  VehicleType: any = undefined;
+  VehicleType: any = "5f0c0cfc2f857d66950cf25f";
+  VehicleType1: any = "5f0c0cfc2f857d66950cf25f";
   mainServiceName: any;
   Description: any;
 
@@ -40,9 +41,10 @@ export class PopularserviceComponent implements OnInit {
 
   popular_data: any = [];
   pop_img_title: any;
-  pop_img_desc: any;
+  pop_img_subtitle: any;
   imgList: any = [];
   id:any;
+  data:any;
   constructor(
     private router: Router,
 
@@ -60,8 +62,9 @@ export class PopularserviceComponent implements OnInit {
       this.popular_data = res.Data[0].mobileappdetails[0].popular_service_datas;
       this.id= res.Data[0]._id;
       this.pop_img_title = this.popular_data[0].popular_service_title;
-      this.pop_img_desc = this.popular_data[0].popular_service_subtile;
+      this.pop_img_subtitle = this.popular_data[0].popular_service_subtile;
       this.imgList = this.popular_data[0].popular_service_image_datas;
+      
     });
 
 
@@ -385,7 +388,7 @@ export class PopularserviceComponent implements OnInit {
     );
   }
   validation() {
-    if ((this.pop_img_title != undefined && this.pop_img_title != '') && (this.pop_img_desc != undefined && this.pop_img_desc != '') && this.imgList.length > 0) {
+    if ((this.pop_img_title != undefined && this.pop_img_title != '') && (this.pop_img_subtitle != undefined && this.pop_img_subtitle != '')) {
       this.valdate = true;
     }
     else {
@@ -394,7 +397,7 @@ export class PopularserviceComponent implements OnInit {
   }
   reset() {
     this.pop_img_title = undefined;
-    this.pop_img_desc = undefined;
+    this.pop_img_subtitle = undefined;
     this.imgList = [];
   }
 
@@ -448,31 +451,61 @@ export class PopularserviceComponent implements OnInit {
   popularedit() {
     this.validation();
     if (this.valdate == true) {
-
-      let data =
-      {
-        "_id": this.id,
-        "mobileappdetails": [
-          {
-            "Email": "mohammedimthi2395@gmail.com",
-            "phone_number": "9514497862",
-            "Android_share_link": "https://play.google.com/store",
-            "Ios_share_link": "https://play.google.com/store",
-            "popular_service_datas": [
-              {
-                "popular_service_title": this.pop_img_title,
-                "popular_service_subtile": this.pop_img_desc,
-                "popular_service_image_datas": this.imgList
-              }
-            ]
-          }
-        ]
-
-
+      if(this.VehicleType1=="5f0c0cfc2f857d66950cf25f"){
+        this.data =
+        {
+          "_id": this.id,
+          "mobileappdetails": [
+            {
+              "Email": "mohammedimthi2395@gmail.com",
+              "phone_number": "9514497862",
+              "Android_share_link": "https://play.google.com/store",
+              "Ios_share_link": "https://play.google.com/store",
+              "popular_service_datas":[
+                {
+                  "Vehicle_type": "Four Wheeler",
+                  "popular_service_title": this.pop_img_title,
+                  "popular_service_subtile": this.pop_img_subtitle,
+                  "popular_service_image_datas": this.imgList
+                },
+                this.popular_data[1]
+              ]
+            }
+          ]
+  
+  
+        }
       }
-      console.log(data);
+      else{
+        this.data =
+        {
+          "_id": this.id,
+          "mobileappdetails": [
+            {
+              "Email": "mohammedimthi2395@gmail.com",
+              "phone_number": "9514497862",
+              "Android_share_link": "https://play.google.com/store",
+              "Ios_share_link": "https://play.google.com/store",
+              "popular_service_datas":[
+                this.popular_data[0],
+                {
+                  "Vehicle_type": "Two Wheeler",
+                  "popular_service_title": this.pop_img_title,
+                  "popular_service_subtile": this.pop_img_subtitle,
+                  "popular_service_image_datas": this.imgList
+                },
+                
+              ]
+            }
+          ]
+  
+  
+        }
+      }
+     
+      console.log(this.data);
 
-      this._api.popular_service_edit(data).subscribe(
+      this._api.popular_service_edit(this.data).subscribe(
         (response: any) => {
           console.log(response);
           if (response.Code == 422) {
@@ -481,6 +514,7 @@ export class PopularserviceComponent implements OnInit {
             alert(response.Message);
             // this.router.navigate(['/superadmin/master/create_master_service'])
             this.ngOnInit();
+            this.VehicleType1 = "5f0c0cfc2f857d66950cf25f";
           }
         }
       );
@@ -490,6 +524,18 @@ export class PopularserviceComponent implements OnInit {
 
       alert("Please fill all the fields")
 
+    }
+  }
+  loaddata(){
+    if(this.VehicleType1=="5f0c0cfc2f857d66950cf25f"){
+      this.pop_img_title = this.popular_data[0].popular_service_title;
+      this.pop_img_subtitle = this.popular_data[0].popular_service_subtile;
+      this.imgList = this.popular_data[0].popular_service_image_datas;
+    }
+    else if(this.VehicleType1=="5f0c0d092f857d66950cf260"){
+      this.pop_img_title = this.popular_data[1].popular_service_title;
+      this.pop_img_subtitle = this.popular_data[1].popular_service_subtile;
+      this.imgList = this.popular_data[1].popular_service_image_datas;
     }
   }
 }

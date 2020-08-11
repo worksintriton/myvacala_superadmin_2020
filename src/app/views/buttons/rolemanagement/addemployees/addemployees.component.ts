@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../../api.service';
-
+import { ValidatorService } from '../../../../valitation.service'
 @Component({
   selector: 'app-addemployees',
   templateUrl: './addemployees.component.html',
@@ -70,11 +70,16 @@ export class AddemployeesComponent implements OnInit {
   selectedfile3: any;
   selectedfile4: any;
   Location_list: any = [];
-  validate:any;
+  validate: any;
+  emailerror: any;
+  phone_err1: any;
+  phone_err2:any;
+  phone_err3:any;
   constructor(
     private router: Router,
     private http: HttpClient,
     private _api: ApiService,
+    private _val: ValidatorService,
     @Inject(SESSION_STORAGE) private storage: StorageService) { }
 
   ngOnInit() {
@@ -268,9 +273,9 @@ export class AddemployeesComponent implements OnInit {
 
 
   submitt() {
-    
+
     this.validation();
-    if(this.validate == true){
+    if (this.validate == true) {
       let data = {
         "Employee_Name": this.FName,
         "Employee_LastName": this.LName,
@@ -297,7 +302,7 @@ export class AddemployeesComponent implements OnInit {
         "Permissions": this.selectedpermissions,
       }
       console.log(data)
-      this._api.add_emp(data).subscribe((res:any) => {
+      this._api.add_emp(data).subscribe((res: any) => {
         console.log(res)
         this.FName = undefined;
         this.LName = undefined;
@@ -327,40 +332,55 @@ export class AddemployeesComponent implements OnInit {
 
       })
     }
-   else{
-     alert("Fill all the fields")
-   }
+    else {
+      alert("Fill all the fields")
+    }
 
   }
 
   validation() {
     if ((this.FName != undefined && this.FName != '')
-     && (this.LName != undefined && this.LName != '')
-     && (this.empId != undefined && this.empId != '')
-     && (this.designation != undefined && this.designation != '')
-     && (this.PhoneNumber != undefined && this.PhoneNumber != '')
-     && (this.AlterativeNumber != undefined && this.AlterativeNumber != '')
-     && (this.Temporaryaddress != undefined && this.Temporaryaddress != '')
-     && (this.Permanentaddress != undefined && this.Permanentaddress != '')
-     && (this.EmployeePanCard != undefined && this.EmployeePanCard != '')
-     && (this.EmployeeAadharCard != undefined && this.EmployeeAadharCard != '')
-     && (this.NomineeName != undefined && this.NomineeName != '')
-     && (this.MobileNumber != undefined && this.MobileNumber != '')
-     && (this.NomineePanCard != undefined && this.NomineePanCard != '')
-     && (this.NomineeAadharCard != undefined && this.NomineeAadharCard != '')
-     && (this.EmailId != undefined && this.EmailId != '')
-     && (this.NomineeAddress != undefined && this.NomineeAddress != '')
-     && (this.selectedlocations.length > 0)
-     && (this.interests.length > 0)
-     && (this.selectedpermissions.length > 0)
-     && (this.EmployeePanCard_file != undefined)
-     && (this.EmployeeAadharCard_file != undefined)
-     && (this.NomineePanCard_file != undefined)
-     && (this.NomineeAadharCard_file != undefined)) {
+      && (this.LName != undefined && this.LName != '')
+      && (this.empId != undefined && this.empId != '')
+      && (this.designation != undefined && this.designation != '')
+      && (this.PhoneNumber != undefined && this.PhoneNumber != '')
+      && (this.AlterativeNumber != undefined && this.AlterativeNumber != '')
+      && (this.Temporaryaddress != undefined && this.Temporaryaddress != '')
+      && (this.Permanentaddress != undefined && this.Permanentaddress != '')
+      && (this.EmployeePanCard != undefined && this.EmployeePanCard != '')
+      && (this.EmployeeAadharCard != undefined && this.EmployeeAadharCard != '')
+      && (this.NomineeName != undefined && this.NomineeName != '')
+      && (this.MobileNumber != undefined && this.MobileNumber != '')
+      && (this.NomineePanCard != undefined && this.NomineePanCard != '')
+      && (this.NomineeAadharCard != undefined && this.NomineeAadharCard != '')
+      && (this.EmailId != undefined && this.EmailId != '')
+      && (this.NomineeAddress != undefined && this.NomineeAddress != '')
+      && (this.selectedlocations.length > 0)
+      && (this.interests.length > 0)
+      && (this.selectedpermissions.length > 0)
+      && (this.EmployeePanCard_file != undefined)
+      && (this.EmployeeAadharCard_file != undefined)
+      && (this.NomineePanCard_file != undefined)
+      && (this.NomineeAadharCard_file != undefined)
+      && this.emailerror == false && this.phone_err1 == false && this.phone_err2 == false && this.phone_err3 == false){
       this.validate = true;
     }
-    else{
+    else {
       this.validate = false;
     }
   }
+
+  emailcheck() {
+    this.emailerror = this._val.emailValidator(this.EmailId);
+  }
+  phone1() {
+    this.phone_err1 = this._val.mobileValidator(this.PhoneNumber)
+  }
+  phone2() {
+    this.phone_err2 = this._val.mobileValidator(this.AlterativeNumber)
+  }
+  phone3() {
+    this.phone_err3 = this._val.mobileValidator(this.MobileNumber)
+  }
+
 }

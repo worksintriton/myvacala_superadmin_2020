@@ -33,7 +33,7 @@ export class VehicleModelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.forcreate = this.getFromLocal('foredit');
+    
     this._api.vehicleModellist().subscribe(
       (response: any) => {
         console.log(response);
@@ -52,13 +52,11 @@ export class VehicleModelComponent implements OnInit {
   }
 
   editservice(data) {
-    let create = false;
-    this.saveInLocal('vehiclemodelDetails', data);
-    this.saveInLocal('foredit', create);
+    this.forcreate = false;
     console.log(data);
     this.VehicleModel = data.VehicleModel_Name;
     this.vehiclemodelId = data._id;
-    this.forcreate = false;
+    this.Pic= data.VehicleModel_Image;
     //console.log(this.fuelId);
     //this.router.navigateByUrl('/superadmin/master/create_master_service');
 
@@ -73,7 +71,6 @@ export class VehicleModelComponent implements OnInit {
           "VehicleModel_Name": this.VehicleModel,
           "VehicleModel_Image": this.Pic,
           "Vehicle_Type": this.VehicleType,
-
 
         }
         console.log(data);
@@ -92,7 +89,7 @@ export class VehicleModelComponent implements OnInit {
                 this.saveInLocal('VehicleDetails', response.data);
                 alert(response.Message);
                 this.ngOnInit();
-
+                this.reset();
               }
             }
           );
@@ -123,7 +120,8 @@ export class VehicleModelComponent implements OnInit {
               } else {
                 this.saveInLocal('VehicleDetails', response.data);
                 alert(response.Message);
-                this.saveInLocal("foredit", true);
+                this.reset();
+                this.ngOnInit();
 
               }
             }
@@ -182,11 +180,16 @@ export class VehicleModelComponent implements OnInit {
     return this.storage.get(key);
   }
   validation() {
-    if ((this.VehicleModel != undefined && this.VehicleModel != '') || (this.Pic != undefined)) {
+    if ((this.VehicleModel != undefined && this.VehicleModel != '') && (this.Pic != undefined)) {
       this.val = true;
     }
     else {
       this.val = false;
     }
+  }
+  reset(){
+    this.forcreate = true;
+    this.VehicleModel = undefined;
+    this.Pic = undefined;
   }
 }

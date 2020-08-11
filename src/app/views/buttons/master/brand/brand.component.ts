@@ -10,7 +10,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
   styleUrls: ['./brand.component.scss']
 })
 export class BrandComponent implements OnInit {
-  VehicleType: any = null;
+  VehicleType: any = undefined;
   VehicleBrand: any;
   VehicleName: any;
   vehicle_list: any
@@ -100,9 +100,7 @@ export class BrandComponent implements OnInit {
   }
 
   editservice(data) {
-    let create = false;
-    this.saveInLocal('subservices_Details', data);
-    this.saveInLocal('foredit', create);
+    this.forcreate = false;
     console.log(data);
     this.VehicleType = data.Subservice_Name;
     this.VehicleBrand = data.Desc;
@@ -163,7 +161,9 @@ export class BrandComponent implements OnInit {
               // this.saveInLocal("foredit", true);
               //this.router.navigate(['/superadmin/master/create_master_service']);
               this.ngOnInit();
-
+              this.VehicleType = undefined;
+              this.VehicleBrand = undefined;
+              this.forcreate = true
             }
           }
         );
@@ -195,6 +195,11 @@ export class BrandComponent implements OnInit {
 
   getFromLocal(key): any {
     return this.storage.get(key);
+  }
+  reset(){
+    this.VehicleType = undefined;
+    this.VehicleBrand = undefined;
+    this.forcreate = true;
   }
 }
 

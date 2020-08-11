@@ -53,13 +53,13 @@ export class EngineccComponent implements OnInit {
   }
 
   editservice(data) {
-    let create = false;
-    this.saveInLocal('vehiclemodelDetails', data);
-    this.saveInLocal('foredit', create);
-    console.log(data);
-    this.VehicleModel = data.VehicleModel_Name;
-    this.vehiclemodelId = data._id;
     this.forcreate = false;
+    console.log(data);
+    this.Vehiclecc = data.VehicleModel_Name;
+    this.vehiclemodelId = data._id;
+    this.Pic= data.VehicleModel_Image;
+
+
     //console.log(this.fuelId);
     //this.router.navigateByUrl('/superadmin/master/create_master_service');
 
@@ -91,8 +91,9 @@ export class EngineccComponent implements OnInit {
                 alert(response.Message);
               } else {
                 this.saveInLocal('VehicleDetails', response.data);
-                alert(response.Message);
+                this.reset();
                 this.ngOnInit();
+                alert(response.Message);
 
               }
             }
@@ -123,9 +124,9 @@ export class EngineccComponent implements OnInit {
                 alert(response.Message);
               } else {
                 this.saveInLocal('VehicleDetails', response.data);
+                this.reset();
+                this.ngOnInit();
                 alert(response.Message);
-                this.saveInLocal("foredit", true);
-
               }
             }
           );
@@ -183,11 +184,16 @@ export class EngineccComponent implements OnInit {
     return this.storage.get(key);
   }
   validation() {
-    if ((this.Vehiclecc != undefined && this.Vehiclecc != '') || (this.Pic != undefined)) {
+    if ((this.Vehiclecc != undefined && this.Vehiclecc != '') && (this.Pic != undefined)) {
       this.val = true;
     }
     else {
       this.val = false;
     }
+  }
+  reset() {
+    this.forcreate = true;
+    this.Vehiclecc = undefined;
+    this.Pic = undefined;
   }
 }

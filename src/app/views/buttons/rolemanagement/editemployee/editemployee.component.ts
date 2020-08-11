@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../../api.service';
+import { ValidatorService } from '../../../../valitation.service'
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-editemployee',
   templateUrl: './editemployee.component.html',
@@ -28,7 +30,7 @@ export class EditemployeeComponent implements OnInit {
   selectedlocations: any = [];
   selectedpermissions: any = [];
   isDisable = true;
-  isParking = true;
+  isParking = false;
   EmployeeList: any;
   servicetype: any;
   servicetype1: any;
@@ -46,7 +48,7 @@ export class EditemployeeComponent implements OnInit {
   Operations_se: boolean;
   AppFeatures_se: boolean;
   CCTeam_se: boolean;
-  parkingOnboradation_se:boolean;
+  parkingOnboradation_se: boolean;
   Sector_se: any = [];
   Mysoure_se: any;
   Hosur_se: any;
@@ -56,7 +58,7 @@ export class EditemployeeComponent implements OnInit {
   Trichy_se: any;
   Coimbatoure_se: any;
   Chennai_se: any;
-  VendorParking_se:boolean;
+  VendorParking_se: boolean;
   EmployeePanCard: any;
   EmployeeAadharCard: any;
   EmployeePanCard_file: any;
@@ -75,42 +77,47 @@ export class EditemployeeComponent implements OnInit {
   pdfname2: any;
   pdfname3: any;
   pdfname4: any;
-  mech_create:boolean;
-  mech_view:boolean;
-  mech_edit:boolean;
-  mech_excel:boolean;
-  mech_share:boolean;
-  MechReg_create:boolean;
-  MechReg_view:boolean;
-  MechReg_edit:boolean;
-  MechReg_excel:boolean;
-  MechReg_share:boolean;
-  MechList_create:boolean;
-  MechList_view:boolean;
-  MechList_edit:boolean;
-  MechList_excel:boolean;
-  MechList_share:boolean;
-  Parkbook_create:boolean;
-  Parkbook_view:boolean;
-  Parkbook_edit:boolean;
-  Parkbook_excel:boolean;
-  Parkbook_share:boolean;
-  VendPark_create:boolean;
-  VendPark_view:boolean;
-  VendPark_edit:boolean;
-  VendPark_excel:boolean;
-  VendPark_share:boolean;
-  Driver_create:boolean;
-  Driver_view:boolean;
-  Driver_edit:boolean;
-  Driver_excel:boolean;
-  Driver_share:boolean;
-  validate:any;
-
+  mech_create: boolean;
+  mech_view: boolean;
+  mech_edit: boolean;
+  mech_excel: boolean;
+  mech_share: boolean;
+  MechReg_create: boolean;
+  MechReg_view: boolean;
+  MechReg_edit: boolean;
+  MechReg_excel: boolean;
+  MechReg_share: boolean;
+  MechList_create: boolean;
+  MechList_view: boolean;
+  MechList_edit: boolean;
+  MechList_excel: boolean;
+  MechList_share: boolean;
+  Parkbook_create: boolean;
+  Parkbook_view: boolean;
+  Parkbook_edit: boolean;
+  Parkbook_excel: boolean;
+  Parkbook_share: boolean;
+  VendPark_create: boolean;
+  VendPark_view: boolean;
+  VendPark_edit: boolean;
+  VendPark_excel: boolean;
+  VendPark_share: boolean;
+  Driver_create: boolean;
+  Driver_view: boolean;
+  Driver_edit: boolean;
+  Driver_excel: boolean;
+  Driver_share: boolean;
+  validate: any;
+  emailerror: any;
+  phone_err1: any;
+  phone_err2:any;
+  phone_err3:any;
   constructor(
     private router: Router,
     private http: HttpClient,
     private _api: ApiService,
+    private _val: ValidatorService,
+    private loction :Location,
     @Inject(SESSION_STORAGE) private storage: StorageService) {
 
 
@@ -157,16 +164,7 @@ export class EditemployeeComponent implements OnInit {
 
 
     console.log(this.selectedpermissions)
-    this._api.LocationList().subscribe(
-      (response: any) => {
-        console.log("response")
-        console.log(response)
-        this.Location_list = [];
-        this.Location_list = response.Data;
-        console.log(this.Location_list);
 
-      }
-    );
 
 
     this.EmployeeList = this.getFromLocal('Employee_list');
@@ -182,7 +180,7 @@ export class EditemployeeComponent implements OnInit {
     this.Temporaryaddress = this.EmployeeList.Temporaryaddress;
     this.AlterativeNumber = this.EmployeeList.Alternate_Contact;
     this.interests = this.EmployeeList.Sector;
-    this.selectedlocations = this.EmployeeList.Location;
+
     this.selectedpermissions = this.EmployeeList.Permissions;
     this.NomineeName = this.EmployeeList.Nomaniee_Name;
     this.Permanentaddress = this.EmployeeList.Permanentaddress;
@@ -339,6 +337,25 @@ export class EditemployeeComponent implements OnInit {
     if (this.selectedpermissions[0].DriverReg_Share == true) {
       this.Driver_share = true;
     }
+
+    this._api.LocationList().subscribe(
+      (response: any) => {
+        console.log("response")
+        console.log(response)
+        this.Location_list = [];
+        this.Location_list = response.Data;
+        console.log(this.Location_list);
+        for (let i = 0; i < this.Location_list.length; i++) {
+          if (this.EmployeeList.Location.some((x) => x._id == this.Location_list[i]._id)) {
+            this.Location_list[i].status = true;
+            this.selectedlocations.push(this.Location_list[i]._id);
+          }
+          else{
+            this.Location_list[i].status = false;
+          }
+        }
+      }
+    );
   }
   onCheckboxChagen(event) {
     if (event.target.checked == true) {
@@ -423,11 +440,11 @@ export class EditemployeeComponent implements OnInit {
         this.EmployeePanCard_file = res.Data;
         console.log(this.EmployeePanCard_file);
       });
-      if (this.EmployeePanCard_file == undefined) {
-        this.pdfname1 = "Document Not uploaded";
-      } else {
-        this.pdfname1 = this.EmployeePanCard_file.slice(37);
-      }
+    if (this.EmployeePanCard_file == undefined) {
+      this.pdfname1 = "Document Not uploaded";
+    } else {
+      this.pdfname1 = this.EmployeePanCard_file.slice(37);
+    }
   }
   fileupload2(event) {
     this.selectedfile2 = event.target.files[0];
@@ -442,11 +459,11 @@ export class EditemployeeComponent implements OnInit {
         console.log(res);
         this.EmployeeAadharCard_file = res.Data;
       });
-      if (this.EmployeeAadharCard_file == undefined) {
-        this.pdfname2 = "Document Not uploaded";
-      } else {
-        this.pdfname2 = this.EmployeeAadharCard_file.slice(37);
-      }
+    if (this.EmployeeAadharCard_file == undefined) {
+      this.pdfname2 = "Document Not uploaded";
+    } else {
+      this.pdfname2 = this.EmployeeAadharCard_file.slice(37);
+    }
   }
   fileupload3(event) {
     this.selectedfile3 = event.target.files[0];
@@ -461,11 +478,11 @@ export class EditemployeeComponent implements OnInit {
         console.log(res);
         this.NomineePanCard_file = res.Data;
       });
-      if (this.NomineePanCard_file == undefined) {
-        this.pdfname3 = "Document Not uploaded";
-      } else {
-        this.pdfname3 = this.NomineePanCard_file.slice(37);
-      }
+    if (this.NomineePanCard_file == undefined) {
+      this.pdfname3 = "Document Not uploaded";
+    } else {
+      this.pdfname3 = this.NomineePanCard_file.slice(37);
+    }
   }
   fileupload4(event) {
     this.selectedfile4 = event.target.files[0];
@@ -479,12 +496,13 @@ export class EditemployeeComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
         this.NomineeAadharCard_file = res.Data;
+        
       });
-      if (this.NomineeAadharCard_file == undefined) {
-        this.pdfname4 = "Document Not uploaded";
-      } else {
-        this.pdfname4 = this.NomineeAadharCard_file.slice(37);
-      }
+    if (this.NomineeAadharCard_file == undefined) {
+      this.pdfname4 = "Document Not uploaded";
+    } else {
+      this.pdfname4 = this.NomineeAadharCard_file.slice(37);
+    }
   }
 
 
@@ -502,9 +520,9 @@ export class EditemployeeComponent implements OnInit {
 
 
     this.validation();
-    if(this.validate == true){
+    if (this.validate == true) {
       let data = {
-        "Employee_id":this.employeeId,
+        "Employee_id": this.employeeId,
         "Employee_Name": this.FName,
         "Employee_LastName": this.LName,
         "Employee_Id": this.empId,
@@ -530,50 +548,66 @@ export class EditemployeeComponent implements OnInit {
         "Permissions": this.selectedpermissions,
       }
       console.log(data)
-      this._api.emp_edit(data).subscribe((res:any) => {
+      this._api.emp_edit(data).subscribe((res: any) => {
         console.log(res)
         alert(res.Message);
         this.router.navigate(['superadmin/master/listemployees']);
       })
     }
-    else{
+    else {
       alert("Fill all the fields")
     }
- 
-   
+
+
 
   }
-  
+
 
 
   validation() {
     if ((this.FName != undefined && this.FName != '')
-     && (this.LName != undefined && this.LName != '')
-     && (this.empId != undefined && this.empId != '')
-     && (this.designation != undefined && this.designation != '')
-     && (this.PhoneNumber != undefined && this.PhoneNumber != '')
-     && (this.AlterativeNumber != undefined && this.AlterativeNumber != '')
-     && (this.Temporaryaddress != undefined && this.Temporaryaddress != '')
-     && (this.Permanentaddress != undefined && this.Permanentaddress != '')
-     && (this.EmployeePanCard != undefined && this.EmployeePanCard != '')
-     && (this.EmployeeAadharCard != undefined && this.EmployeeAadharCard != '')
-     && (this.NomineeName != undefined && this.NomineeName != '')
-     && (this.MobileNumber != undefined && this.MobileNumber != '')
-     && (this.NomineePanCard != undefined && this.NomineePanCard != '')
-     && (this.NomineeAadharCard != undefined && this.NomineeAadharCard != '')
-     && (this.EmailId != undefined && this.EmailId != '')
-     && (this.NomineeAddress != undefined && this.NomineeAddress != '')
-     && (this.selectedlocations.length > 0)
-     && (this.interests.length > 0)
-     && (this.selectedpermissions.length > 0)
-     && (this.EmployeePanCard_file != undefined)
-     && (this.EmployeeAadharCard_file != undefined)
-     && (this.NomineePanCard_file != undefined)
-     && (this.NomineeAadharCard_file != undefined)) {
+      && (this.LName != undefined && this.LName != '')
+      && (this.empId != undefined && this.empId != '')
+      && (this.designation != undefined && this.designation != '')
+      && (this.PhoneNumber != undefined && this.PhoneNumber != '')
+      && (this.AlterativeNumber != undefined && this.AlterativeNumber != '')
+      && (this.Temporaryaddress != undefined && this.Temporaryaddress != '')
+      && (this.Permanentaddress != undefined && this.Permanentaddress != '')
+      && (this.EmployeePanCard != undefined && this.EmployeePanCard != '')
+      && (this.EmployeeAadharCard != undefined && this.EmployeeAadharCard != '')
+      && (this.NomineeName != undefined && this.NomineeName != '')
+      && (this.MobileNumber != undefined && this.MobileNumber != '')
+      && (this.NomineePanCard != undefined && this.NomineePanCard != '')
+      && (this.NomineeAadharCard != undefined && this.NomineeAadharCard != '')
+      && (this.EmailId != undefined && this.EmailId != '')
+      && (this.NomineeAddress != undefined && this.NomineeAddress != '')
+      && (this.selectedlocations.length > 0)
+      && (this.interests.length > 0)
+      && (this.selectedpermissions.length > 0)
+      && (this.EmployeePanCard_file != undefined)
+      && (this.EmployeeAadharCard_file != undefined)
+      && (this.NomineePanCard_file != undefined)
+      && (this.NomineeAadharCard_file != undefined)
+      && this.emailerror == false && this.phone_err1 == false && this.phone_err2 == false && this.phone_err3 == false) {
       this.validate = true;
     }
-    else{
+    else {
       this.validate = false;
     }
+  }
+  emailcheck() {
+    this.emailerror = this._val.emailValidator(this.EmailId);
+  }
+  phone1() {
+    this.phone_err1 = this._val.mobileValidator(this.PhoneNumber)
+  }
+  phone2() {
+    this.phone_err2 = this._val.mobileValidator(this.AlterativeNumber)
+  }
+  phone3() {
+    this.phone_err3 = this._val.mobileValidator(this.MobileNumber)
+  }
+  back(){
+    this.loction.back();
   }
 }

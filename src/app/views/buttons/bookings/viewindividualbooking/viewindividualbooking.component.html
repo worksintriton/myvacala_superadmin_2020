@@ -8,14 +8,14 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Booking Id</label>
                             <div class="col-md-6">
-                            <input type="text" [(ngModel)]="BookingId" name="BookingId" id="text-input" 
+                            <input type="text" [(ngModel)]="BookingId" name="BookingId"  
                                 class="form-control" disabled placeholder="Booking Id">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Mobile No</label>
                             <div class="col-md-6">
-                            <input type="text" [(ngModel)]="mobile" name="mobile" id="text-input" 
+                            <input type="text" [(ngModel)]="mobile" name="mobile"  
                                 class="form-control" disabled placeholder="Mobile No">
                             </div>
                         </div>
@@ -23,75 +23,99 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Customer Name</label>
                             <div class="col-md-6">
-                            <input type="text" [(ngModel)]="cname" name="cname" id="text-input" 
+                            <input type="text" [(ngModel)]="cname" name="cname"  
                                 class="form-control" disabled placeholder="Customer Name">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Vehicle No</label>
                             <div class="col-md-6">
-                            <input type="text" [(ngModel)]="vehicle" name="vehicle" id="text-input" 
+                            <input type="text" [(ngModel)]="vehicle" name="vehicle"  
                                 class="form-control" disabled placeholder="vehicle No">
                             </div>
                         </div>                        
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
                             <div class="col-md-6">
-                            <input type="text" [(ngModel)]="vehicletype" name="vehicletype" id="text-input" 
+                            <input type="text" [(ngModel)]="vehicletype" name="vehicletype"  
                                 class="form-control" disabled placeholder="vehicle Type">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Order Value</label>
                             <div class="col-md-6">
-                            <input type="text"  name="OrderValue" value="500" id="text-input" 
+                            <input type="text"  name="OrderValue" value="500"  
                                 class="form-control" disabled placeholder="Order Value">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Final Payable Amount </label>
                             <div class="col-md-6">
-                            <input type="text"  name="FinalPayable" id="text-input" 
+                            <input type="text"  [(ngModel)]="FinalPayable" name="FinalPayable"  
                                 class="form-control" placeholder="Final Payable Amount">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Customer Invoice</label>
                             <div class="col-md-3">
-                                <input type="file" name="invoice" id="text-input" class="form-control">
+                                <input type="file" style="display: none;" (change)="fileupload($event)" id="myFile">
+                                <label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;" for="myFile">Choose file</label>
+                                 <span *ngIf="Pic != undefined">{{Pic | slice:37}}</span>
                             </div>
+                            <!-- <div class="col-md-3">
+                                <input type="file" [(ngModel)]="FinalPayable" name="invoice"  class="form-control">
+                            </div> -->
                             <div class="col=md-3">
-                                <button class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Edit</button>
+                                <button (click)="addimg()" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Add</button>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Customer Invoice Option</label>
                             <div class="col-md-3">
-                            <table class="table table-bordered table-striped table-sm">
-                                <thead>
-                                  <tr>
-                                    <th>S.No</th>
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No</th>
                                     <th>Documents</th>
-                                    <th>Download</th>
+                                    <th>View</th>
                                     <th>Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <td>1</td>
-                                    <td>Doc</td>
-                                    <th><button class="btn btn-sm btn-primary">Download</button></th>
-                                    <th> <button class="btn btn-sm btn-primary">Delete</button></th>
-                                </tbody>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let dynamic of Thmp_list; let i = index;">
+                                            <td>{{i+1}}</td>
+                                            <td>Document</td>
+                                            <td style="text-align: center;"><a href="{{dynamic.doc_link}}" target="_blank"
+                                                class="btn  btn-sm btn-danger">View</a></td>
+                                            <td style="text-align: center;"> <button (click)="deleteimg(dynamic,i)"
+                                                    class="btn  btn-sm btn-danger">Delete</button></td>
+                                        </tr>
+                                    </tbody>
                                 </table>
+                            
                                 </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="text-input">Job Card</label>
+                        <!-- <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input"></label>
                             <div class="col-md-3">
-                                <input type="file" name="jobcard" id="text-input" class="form-control">
+                                <input type="file" name="jobcard"  class="form-control">
                             </div>                            
                             <div class="col=md-3">
                                 <button class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Edit</button>
+                            </div>
+                        </div> -->
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Job Card</label>
+                            <div class="col-md-3">
+                                <input type="file" style="display: none;" (change)="fileupload1($event)" id="myFi">
+                                <label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;" for="myFi">Choose file</label>
+                                 <span *ngIf="Pic1 != undefined">{{Pic1 | slice:37}}</span>
+                            </div>
+                            <!-- <div class="col-md-3">
+                                <input type="file" [(ngModel)]="FinalPayable" name="invoice"  class="form-control">
+                            </div> -->
+                            <div class="col=md-3">
+                                <button (click)="addimg1()" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Add</button>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -99,26 +123,30 @@
                             <div class="col-md-3">
                                 <table class="table table-bordered table-striped table-sm">
                                     <thead>
-                                      <tr>
-                                        <th>S.No</th>
-                                        <th>Documents</th>
-                                        <th>Download</th>
-                                        <th>Delete</th>
+                                        <tr>
+                                            <th>S.No</th>
+                                    <th>Documents</th>
+                                    <th>View</th>
+                                    <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <td>1</td>
-                                        <td>Doc</td>
-                                        <th><button class="btn btn-sm btn-primary">Download</button></th>
-                                        <th> <button class="btn btn-sm btn-primary">Delete</button></th>
+                                        <tr *ngFor="let dynamic of Thmp_list1; let i = index;">
+                                            <td>{{i+1}}</td>
+                                            <td>Document</td>
+                                            <td style="text-align: center;"><a href="{{dynamic.doc_link}}" target="_blank"
+                                                class="btn  btn-sm btn-danger">View</a></td>
+                                            <td style="text-align: center;"> <button (click)="deleteimg1(dynamic,i)"
+                                                    class="btn  btn-sm btn-danger">Delete</button></td>
+                                        </tr>
                                     </tbody>
-                                    </table>
+                                </table>
                                 </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Workshop Id</label>
                             <div class="col-md-6">
-                                <input type="text" [(ngModel)]="MechanicId" name="MechanicId" id="text-input"
+                                <input type="text" [(ngModel)]="WorkshopId" name="MechanicId" 
                                      class="form-control" placeholder="Workshop Id">
                             </div>
                             <div class="col-md-3">
@@ -128,28 +156,27 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Workshop Name</label>
                             <div class="col-md-6">
-                                <input type="text" [(ngModel)]="WorkshopName" name="WorkshopName" id="text-input"
+                                <input type="text" [(ngModel)]="WorkshopName" name="WorkshopName" 
                                      class="form-control" placeholder="Workshop Name">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Workshop Location</label>
                             <div class="col-md-6">
-                                <input type="text" [(ngModel)]="WorkshopLocation" name="WorkshopLocation" id="text-input"
+                                <input type="text" [(ngModel)]="WorkshopLocation" name="WorkshopLocation" 
                                      class="form-control" placeholder="Workshop Location">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Booking Status</label>
                             <div class="col-md-6">
-                                <select class="form-control">
-                                    <option>Booking Confirmed</option>
-                                    <option>Contacted Customer</option>
-                                    <option>Vehicle Reached to Workshop</option>
-                                    <option>Estimate Approved</option>
-                                    <option>Working in Prcess</option>
-                                    <option>Payment Completed </option>   
-                                    <option>Vehicle Delivered</option>                                 
+                                <select class="form-control" [(ngModel)]="BookingStatus" name="booking">
+                                    <option value="Booking complete">Booking complete</option>
+                                    <option value="Booking Accepted">Booking Accepted</option>
+                                    <option value="Vehicle Picked up">Vehicle Picked up</option>
+                                    <option value="Service Started">Service Started</option>
+                                    <option value="Service Completed">Service Completed</option>
+                                    <option value="Vehicle Delivered">Vehicle Delivered </option>                                 
                                 </select>
                             </div>
                         </div>
@@ -158,12 +185,12 @@
                    <div class="row">                
                     <div class="col-md-6">
                         <div class="form-group">
-                          <button (click)="subservicecreation()" class="btn btn-sm btn-primary float-right mt-5" ><i class="fa fa-save"></i>Save</button>               
+                          <button (click)="edit()" class="btn btn-sm btn-primary float-right mt-5" ><i class="fa fa-save"></i>Save</button>               
                         </div>                  
                     </div>                  
                     <div class="col-md-6">
                         <div class="form-group">
-                          <button (click)="back_to_page()" class="btn btn-sm btn-success mt-5" ><i class="fa fa-save"></i>Back</button>               
+                          <button (click)="back_to_page()" class="btn btn-sm btn-warning mt-5" >Back</button>               
                         </div>                  
                     </div>  
                 </div>   
