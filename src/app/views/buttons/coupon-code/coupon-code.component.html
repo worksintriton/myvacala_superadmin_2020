@@ -194,8 +194,9 @@
                                     <th>Expiry Date</th>
                                     <th>Value Type</th>
                                     <th>Amount</th>
-                                    <th>Count</th>
                                     <th>Value</th>
+                                    <th>Count</th>
+                                    
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -208,12 +209,13 @@
                                     <td>{{item.Coupon_Code}}</td>
                                     <td>{{item.Description}}</td>
                                     <td>{{item.Coupon_For}}</td>
-                                    <td>{{item.Expiry_Date | date :'shortDate'}}</td>
+                                    <td>{{item.Start_Date | date :'shortDate'}}</td>
                                     <td>{{item.Expiry_Date | date :'shortDate'}}</td>
                                     <td>{{item.Value_Type}}</td>
                                     <td>{{item.Amount}}</td>
-                                    <td>{{item.Count}}</td>
                                     <td>{{item.Value}}</td>
+                                    <td>{{item.Count}}</td>
+                                    
                                     <td>
                                         <button *ngIf="item.Coupon_status == 'Enable'" (click)="disable(item._id)" style=" width: 70px;" class="btn btn-sm btn-primary">Disable</button>
                                         <button *ngIf="item.Coupon_status == 'Disable'" (click)="enalble(item._id)" style=" width: 70px;"

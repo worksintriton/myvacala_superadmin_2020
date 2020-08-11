@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject,  ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../../../../api.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
@@ -19,6 +19,9 @@ export class BannerComponent implements OnInit {
   valdate: boolean = false;
   id: any;
   create: boolean = true;
+  width: any;
+  height: any;
+  @ViewChild('imgType', { static: false }) imgType: ElementRef;
   constructor(
     private router: Router,
 
@@ -105,20 +108,7 @@ export class BannerComponent implements OnInit {
 
 
   }
-  fileupload(event) {
-    this.selectedimgae = event.target.files[0];
-    this.addfiles1();
-  }
-
-  addfiles1() {
-    const fd = new FormData();
-    fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
-      .subscribe((res: any) => {
-        console.log(res);
-        this.Pic = res.Data;
-      });
-  }
+  
   saveInLocal(key, val): void {
     this.storage.set(key, val);
   }
@@ -203,5 +193,45 @@ export class BannerComponent implements OnInit {
         }
       );
     }
+  }
+
+
+  fileupload(event) {
+    console.log("this.width")
+    this.selectedimgae = event.target.files[0];
+    let fr = new FileReader();
+    fr.onload = () => { // when file has loaded
+      var img = new Image();
+      img.onload = () => {
+        this.width = img.width;
+        this.height = img.height;
+        console.log(this.width, this.height);
+        if(this.width == 650 && this.height == 200){
+          this.addfiles1();
+        }
+        else{
+          Swal.fire(
+            'Sorry',
+            'Image Size Should be 650*200',
+            'error'
+          )
+      
+        }
+      };
+
+      img.src = fr.result as string; // The data URL 
+    };
+
+    fr.readAsDataURL(this.selectedimgae);
+    this.imgType.nativeElement.value = ""; // clear the value after upload
+  }
+  addfiles1() {
+    const fd = new FormData();
+    fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
+    this.http.post('http://3.101.31.129:3000/upload', fd)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.Pic = res.Data;
+      });
   }
 }

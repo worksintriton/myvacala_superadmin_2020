@@ -44,6 +44,12 @@ export class ViewindividualbookingComponent implements OnInit {
     this.vehicle = this.vehicle_list.Vehicle_No;
     this.vehicletype = this.vehicle_list.Vehicle_Type;
     console.log(this.vehicle_list);
+    this.Thmp_list = this.vehicle_list.Customer_Invoice;
+    this.FinalPayable = this.vehicle_list.Final_bill_payed
+    this.Thmp_list1 = this.vehicle_list.Job_Card;
+    this.WorkshopLocation = this.vehicle_list.Workshop_Location;
+    this.WorkshopName = this.vehicle_list.Workshop_Name
+    this.BookingStatus = this.vehicle_list.Booking_Status;
   }
   back_to_page() {
 

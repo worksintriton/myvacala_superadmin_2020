@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject ,  ViewChild, AfterViewInit, ElementRef} from '@angular/core';
 import { ApiService } from '../../../../api.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
@@ -23,6 +23,9 @@ export class LocationComponent implements OnInit {
   pin: any = [];
   edit: boolean = false;
   id: any;
+  width: any;
+  height: any;
+  @ViewChild('imgType', { static: false }) imgType: ElementRef;
   constructor(
     private router: Router,
 
@@ -89,21 +92,6 @@ export class LocationComponent implements OnInit {
       alert('Fill all the inputs')
      }
     }
-
-  }
-  fileupload(event) {
-    this.selectedimgae = event.target.files[0];
-    this.addfiles1();
-  }
-
-  addfiles1() {
-    const fd = new FormData();
-    fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
-      .subscribe((res: any) => {
-        console.log(res);
-        this.Pic = res.Data;
-      });
 
   }
   saveInLocal(key, val): void {
@@ -211,5 +199,44 @@ export class LocationComponent implements OnInit {
        }
       }
   
+  }
+
+  fileupload(event) {
+    console.log("this.width")
+    this.selectedimgae = event.target.files[0];
+    let fr = new FileReader();
+    fr.onload = () => { // when file has loaded
+      var img = new Image();
+      img.onload = () => {
+        this.width = img.width;
+        this.height = img.height;
+        console.log(this.width, this.height);
+        if(this.width == 100 && this.height == 100){
+          this.addfiles1();
+        }
+        else{
+          Swal.fire(
+            'Sorry',
+            'Image Size Should be 100*100',
+            'error'
+          )
+      
+        }
+      };
+
+      img.src = fr.result as string; // The data URL 
+    };
+
+    fr.readAsDataURL(this.selectedimgae);
+    this.imgType.nativeElement.value = ""; // clear the value after upload
+  }
+  addfiles1() {
+    const fd = new FormData();
+    fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
+    this.http.post('http://3.101.31.129:3000/upload', fd)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.Pic = res.Data;
+      });
   }
 }

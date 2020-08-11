@@ -108,11 +108,11 @@ export const navItems: NavData[] = [
         url: '/superadmin/master/create_mechanic',
         icon: 'icon-plus'
       },
-      {
-        name: 'QRCodeGeneration',
-        url: '/superadmin/master/create_driver',
-        icon: 'icon-plus'          
-      },
+      // {
+      //   name: 'QRCodeGeneration',
+      //   url: '/superadmin/master/create_driver',
+      //   icon: 'icon-plus'          
+      // },
       {
         name: 'Vendor Parking',
         url: '/buttons',

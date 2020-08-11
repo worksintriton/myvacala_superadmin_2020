@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="text-input">Sub Service Name</label>
+                                <label class="col-md-3 col-form-label" for="text-input">Popular Sub Service Name</label>
                                 <div class="col-md-6">
                                     <input type="text" [(ngModel)]="SubServiceName" name="SubServiceName"
                                         id="text-input" class="form-control" placeholder="Sub-Service Name">
@@ -123,31 +123,35 @@
                                 <div class="col-md-6">
                                     <select class="form-control" [(ngModel)]="Count" name="count">
                                         <option value=undefined>Select</option>
-                                        <option value= true>Single</option>
-                                        <option value= false>Multiple</option>
+                                        <option value=true>Single</option>
+                                        <option value=false>Multiple</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="text-input">Image Upload</label>
                                 <div class="col-md-6">
-                                    <input type="file" style="display: none;" (change)="fileupload($event)"
-                                        id="myFil"><label
+                                    <input type="file" style="display: none;" #imgType (change)="fileupload($event)"
+                                        id="imgfile" accept=".png, .jpg, .jpeg"><label class="img-label"
                                         style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
-                                        for="myFil">Choose image</label> <img *ngIf="Pic != undefined" src="{{Pic}}"
+                                        for="imgfile">Choose
+                                        image</label> <img *ngIf="Pic != undefined" src="{{Pic}}"
                                         style="float: right;;width: 30px;height: 30px;">
-                                    <span style="color:red">Image Size 50*50</span>
+
+                                    <span class="img-size">Image Size Should be 100*100</span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="text-input">Thump Line Image</label>
                                 <div class="col-md-5">
-                                    <input type="file" style="display: none;" (change)="fileupload1($event)"
-                                        id="myFile"><label
+                                    <input type="file" style="display: none;" #imgType1 (change)="fileupload1($event)"
+                                        id="imgFile" accept=".png, .jpg, .jpeg"><label class="img-label"
                                         style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
-                                        for="myFile">Choose image</label> <img *ngIf="Pic1 != undefined" src="{{Pic1}}"
+                                        for="imgFile">Choose
+                                        image</label> <img *ngIf="Pic1 != undefined" src="{{Pic1}}"
                                         style="float: right;;width: 30px;height: 30px;">
-                                    <span style="color:red">Image Size 50*50</span>
+
+                                    <span class="img-size">Image Size Should be 100*100</span>
                                 </div>
                                 <div class="col-md-1">
                                     <div class="">
@@ -273,7 +277,7 @@
                                 </div>
                             </div>
                         </ng-container>
-                        <h4 class="card-title pt-4">Sub Service List</h4>
+                        <h4 class="card-title pt-4">Popular Sub Service List</h4>
                         <div class="box-filter">
                             <div class="filter-row">
                                 <div class="filter-row-item">

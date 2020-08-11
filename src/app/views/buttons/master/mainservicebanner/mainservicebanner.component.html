@@ -44,9 +44,13 @@
                   <div class="form-group row">
                     <label class="col-md-3 col-form-label" for="text-input">Image Upload</label>
                     <div class="col-md-6">
-                      <input type="file" style="display: none;" (change)="fileupload($event)" id="myFile"><label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;" for="myFile">Choose image</label> <img *ngIf="Pic != undefined"
-                      src="{{Pic}}" style="float: right;;width: 30px;height: 30px;"><br>
-                      <span style="color:red">Image Size 1060*650</span>
+                      <input type="file" style="display: none;" #imgType (change)="fileupload($event)" id="imgfile"
+                        accept=".png, .jpg, .jpeg"><label class="img-label"
+                        style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;" for="imgfile">Choose
+                        image</label> <img *ngIf="Pic != undefined" src="{{Pic}}"
+                        style="float: right;;width: 30px;height: 30px;">
+      
+                      <span class="img-size">Image Size Should be 650*200</span>
                     </div>
                   </div>
                  

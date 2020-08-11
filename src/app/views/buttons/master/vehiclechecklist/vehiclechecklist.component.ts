@@ -1,10 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { ApiService } from '../../../../api.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-vehiclechecklist',
   templateUrl: './vehiclechecklist.component.html',
@@ -46,6 +46,9 @@ export class VehiclechecklistComponent implements OnInit {
   view: boolean = false;
   fule_list: any = [];
   body_typ:any=[];
+  width: any;
+  height: any;
+  @ViewChild('imgType', { static: false }) imgType: ElementRef;
   constructor(
     private router: Router,
 
@@ -192,20 +195,6 @@ export class VehiclechecklistComponent implements OnInit {
   //   this.selectedimgae = event.target.files[0];
   //   this.addfiles1();
   // }
-
-  addfiles1() {
-    const fd = new FormData();
-    fd.append('sampleFile', this.selectedimgae1, this.selectedimgae1.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
-      .subscribe((res: any) => {
-        console.log(res);
-        this.Pic = res.Data;
-      });
-  }
-  fileupload1(event) {
-    this.selectedimgae1 = event.target.files[0];
-    this.addfiles1();
-  }
 
   addfiles() {
     const fd = new FormData();
@@ -414,5 +403,43 @@ export class VehiclechecklistComponent implements OnInit {
       console.log(".VehicleModel")
       console.log(this.vehiclemodellist)
     }
+  }
+  fileupload(event) {
+    console.log("this.width")
+    this.selectedimgae = event.target.files[0];
+    let fr = new FileReader();
+    fr.onload = () => { // when file has loaded
+      var img = new Image();
+      img.onload = () => {
+        this.width = img.width;
+        this.height = img.height;
+        console.log(this.width, this.height);
+        if(this.width == 100 && this.height == 100){
+          this.addfiles1();
+        }
+        else{
+          Swal.fire(
+            'Sorry',
+            'Image Size Should be 100*100',
+            'error'
+          )
+      
+        }
+      };
+
+      img.src = fr.result as string; // The data URL 
+    };
+
+    fr.readAsDataURL(this.selectedimgae);
+    this.imgType.nativeElement.value = ""; // clear the value after upload
+  }
+  addfiles1() {
+    const fd = new FormData();
+    fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
+    this.http.post('http://3.101.31.129:3000/upload', fd)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.Pic = res.Data;
+      });
   }
 }

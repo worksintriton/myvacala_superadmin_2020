@@ -146,6 +146,7 @@ export class CouponCodeComponent implements OnInit {
         "Mainservice_id": this.mainservice_id,
         "Amount": this.amount,
       }
+      console.log(data);
       this._api.coupon_codde_create(data).subscribe((response: any) => {
         console.log(response);
         if (response.Code == 422) {

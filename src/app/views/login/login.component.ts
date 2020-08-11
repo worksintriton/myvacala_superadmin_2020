@@ -103,8 +103,8 @@ if (this.validation) {
       password: this.password
   };
 
-  if ((this.email === 'myvacala@gmail.com') && (this.password === 'qwerty')) {
-    this.router.navigate(['Home', 'dashboard']);
+  if ((this.email == 'myvacala@gmail.com') && (this.password == '123456')) {
+    this.router.navigateByUrl('/superadmin/dashboard');
   } else {
     alert('Invalid Login');
   }
@@ -172,31 +172,31 @@ if (this.validation) {
 }
 }
 
-logintest(){
- console.log(this.email_id,this.passwords)
-console.log(this.Pic);
+// logintest(){
+//  console.log(this.email_id,this.passwords)
+// console.log(this.Pic);
 
- let data = 
- {
-  "Email": this.email_id,
-  "Type": 0,
-  "Password": this.passwords
-}
-console.log(data);
-this._api.loginprocess(data).subscribe(
-  (response: any) => {
-    console.log(response);
-    if(response.Code == 500){
-      alert(response.Message);
-    }else{
-       this.saveInLocal('login_details',response.data);
-       alert(response.Message);
-       this.router.navigate(['Home', 'dashboard']);
-    }
-  }
-);
+//  let data = 
+//  {
+//   "Email": this.email_id,
+//   "Type": 0,
+//   "Password": this.passwords
+// }
+// console.log(data);
+// this._api.loginprocess(data).subscribe(
+//   (response: any) => {
+//     console.log(response);
+//     if(response.Code == 500){
+//       alert(response.Message);
+//     }else{
+//        this.saveInLocal('login_details',response.data);
+//        alert(response.Message);
+//        this.router.navigate(['Home', 'dashboard']);
+//     }
+//   }
+// );
 
-}
+// }
 
 
 

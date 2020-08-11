@@ -369,7 +369,7 @@ module.exports = "<div class=\"app flex-row align-items-center\">\r\n  <div clas
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"\">\r\n  <div class=\"\">\r\n\r\n      <div class=\"login_box\">\r\n          <div class=\"login_box_inner\">\r\n\r\n              <div class=\"container_login_form\">\r\n                  <!-- <div class=\"logo\">\r\n          <img\r\n            src=\"../../../assets/img/brand/logo2.png\"\r\n            alt=\"\">\r\n        </div> -->\r\n                  <div class=\"login_form\">\r\n                      <div _ngcontent-c5=\"\" class=\"col-md-12 grid-margin\">\r\n                          <div _ngcontent-c5=\"\" class=\"card\">\r\n                              \r\n                              <div _ngcontent-c5=\"\" class=\"card-body text-center\">\r\n                                  <div class=\"logo\">\r\n                                      <img src=\"../../../assets/img/brand/logo-png.png\" alt=\"\">\r\n                                  </div>\r\n\r\n                                  <!-- <h4 _ngcontent-c5=\"\" class=\"card-title\">Login</h4> -->\r\n                                   <div >\r\n                                        <div class=\"text-danger\"></div>\r\n                                       </div>\r\n\r\n                                       <div  *ngIf = \"loginError\" class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">\r\n                                            {{loginErrorMsg}}\r\n                                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\r\n                                            <span aria-hidden=\"true\">&times;</span>\r\n                                          </button>\r\n                                        </div>\r\n                                  <form  class=\"my-form forms-sample ng-untouched ng-pristine ng-valid\">\r\n                                      <div class=\"form-group\">\r\n                                          <label  >Email Address</label>\r\n                                          <input  \r\n                                              [(ngModel)]=\"email_id\"\r\n                                              class=\"form-control\"\r\n                                              placeholder=\"Email Address\"\r\n                                              type=\"email\"  \r\n                                              name=\"email_id\"                                             \r\n                                              (ngModelChange)=\"emailChange($event)\" \r\n                                              [ngModelOptions]=\"{standalone: true}\"\r\n                                              >\r\n                                              <div *ngIf=\"emailError\">\r\n                                                  <div class=\"text-danger\">{{emailErrorMsg}}</div>\r\n                                              </div>\r\n                                          \r\n                                      </div>\r\n                                      <div class=\"form-group\">\r\n                                          <label  >Password</label>\r\n                                          <input  \r\n                                              class=\"form-control\"\r\n                                              placeholder=\"Password\"\r\n                                              type=\"password\" \r\n                                              [(ngModel)]=\"passwords\"   \r\n                                              name=\"passwords\"                            \r\n                                              (ngModelChange)=\"passwordChange($event)\" \r\n                                              [ngModelOptions]=\"{standalone: true}\"\r\n                                              >\r\n                                              <div *ngIf=\"passwordError\">\r\n                                                  <div class=\"text-danger\">{{passwordErrorMsg}}</div>\r\n                                              </div>\r\n                                          \r\n                                      </div>\r\n                                      <!-- <div class=\"form-group row\">\r\n                                        <label class=\"col-md-3 col-form-label\" for=\"file-input\">Doctor Photo</label>\r\n                                        <div class=\"col-md-9\">\r\n                                         <input type=\"file\" (change)=\"fileupload1($event)\">\r\n                                        </div>\r\n                                      </div> -->\r\n                          \r\n                                      \r\n                                    \r\n                                      <button class=\"btn btn-success  mr-2\" (click)=\"logintest()\">Logins</button>\r\n                                  </form>\r\n\r\n                              </div>\r\n                          </div>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n\r\n          </div>\r\n      </div>\r\n\r\n  </div>\r\n</div>\r\n<div class=\"alert-msgs\" *ngIf=\"alertcon\">\r\n  <div class=\"alert-msg\">\r\n      <div class=\"alert-msg-con\">\r\n\r\n          <div class=\"alert-img\" *ngIf=\"success\">\r\n              <img src=\"assets/img/alert/success.png\" width=\"45px\" alt=\"\">\r\n          </div>\r\n          <div class=\"alert-img\" *ngIf=\"warning\">\r\n              <img src=\"assets/img/alert/waring.png\" width=\"45px\" alt=\"\">\r\n          </div>\r\n          <h4>\r\n              {{alertmsg}}\r\n          </h4>\r\n          <p>{{alertcont}}</p>\r\n\r\n          <button class=\"alert-btn {{button}}\" type=\"button\" (click)=\"hidealert()\"> ok </button>\r\n      </div>\r\n  </div>\r\n</div>\r\n<script>\r\n  // Automatically trigger the loading animation on click\r\nLadda.bind('button[type=submit]');\r\n\r\n// Same as the above but automatically stops after two seconds\r\nLadda.bind('button[type=submit]', { timeout: 2000 } );\r\n\r\n</script>\r\n"
+module.exports = "<div class=\"\">\r\n  <div class=\"\">\r\n\r\n      <div class=\"login_box\">\r\n          <div class=\"login_box_inner\">\r\n\r\n              <div class=\"container_login_form\">\r\n                  <!-- <div class=\"logo\">\r\n          <img\r\n            src=\"../../../assets/img/brand/logo2.png\"\r\n            alt=\"\">\r\n        </div> -->\r\n                  <div class=\"login_form\">\r\n                      <div _ngcontent-c5=\"\" class=\"col-md-12 grid-margin\">\r\n                          <div _ngcontent-c5=\"\" class=\"card\">\r\n                              \r\n                              <div _ngcontent-c5=\"\" class=\"card-body text-center\">\r\n                                  <div class=\"logo\">\r\n                                      <img src=\"../../../assets/img/brand/logo-png.png\" alt=\"\">\r\n                                  </div>\r\n\r\n                                  <!-- <h4 _ngcontent-c5=\"\" class=\"card-title\">Login</h4> -->\r\n                                   <div >\r\n                                        <div class=\"text-danger\"></div>\r\n                                       </div>\r\n\r\n                                       <div  *ngIf = \"loginError\" class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">\r\n                                            {{loginErrorMsg}}\r\n                                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\r\n                                            <span aria-hidden=\"true\">&times;</span>\r\n                                          </button>\r\n                                        </div>\r\n                                  <form  class=\"my-form forms-sample ng-untouched ng-pristine ng-valid\">\r\n                                      <div class=\"form-group\">\r\n                                          <label  >Email Address</label>\r\n                                          <input  \r\n                                              [(ngModel)]=\"email_id\"\r\n                                              class=\"form-control\"\r\n                                              placeholder=\"Email Address\"\r\n                                              type=\"email\"  \r\n                                              name=\"email_id\"                                             \r\n                                              (ngModelChange)=\"emailChange($event)\" \r\n                                              [ngModelOptions]=\"{standalone: true}\"\r\n                                              >\r\n                                              <div *ngIf=\"emailError\">\r\n                                                  <div class=\"text-danger\">{{emailErrorMsg}}</div>\r\n                                              </div>\r\n                                          \r\n                                      </div>\r\n                                      <div class=\"form-group\">\r\n                                          <label  >Password</label>\r\n                                          <input  \r\n                                              class=\"form-control\"\r\n                                              placeholder=\"Password\"\r\n                                              type=\"password\" \r\n                                              [(ngModel)]=\"passwords\"   \r\n                                              name=\"passwords\"                            \r\n                                              (ngModelChange)=\"passwordChange($event)\" \r\n                                              [ngModelOptions]=\"{standalone: true}\"\r\n                                              >\r\n                                              <div *ngIf=\"passwordError\">\r\n                                                  <div class=\"text-danger\">{{passwordErrorMsg}}</div>\r\n                                              </div>\r\n                                          \r\n                                      </div>\r\n                                      <!-- <div class=\"form-group row\">\r\n                                        <label class=\"col-md-3 col-form-label\" for=\"file-input\">Doctor Photo</label>\r\n                                        <div class=\"col-md-9\">\r\n                                         <input type=\"file\" (change)=\"fileupload1($event)\">\r\n                                        </div>\r\n                                      </div> -->\r\n                          \r\n                                      \r\n                                    \r\n                                      <button class=\"btn btn-success  mr-2\" (click)=\"logintest1()\">Logins</button>\r\n                                  </form>\r\n\r\n                              </div>\r\n                          </div>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n\r\n          </div>\r\n      </div>\r\n\r\n  </div>\r\n</div>\r\n<div class=\"alert-msgs\" *ngIf=\"alertcon\">\r\n  <div class=\"alert-msg\">\r\n      <div class=\"alert-msg-con\">\r\n\r\n          <div class=\"alert-img\" *ngIf=\"success\">\r\n              <img src=\"assets/img/alert/success.png\" width=\"45px\" alt=\"\">\r\n          </div>\r\n          <div class=\"alert-img\" *ngIf=\"warning\">\r\n              <img src=\"assets/img/alert/waring.png\" width=\"45px\" alt=\"\">\r\n          </div>\r\n          <h4>\r\n              {{alertmsg}}\r\n          </h4>\r\n          <p>{{alertcont}}</p>\r\n\r\n          <button class=\"alert-btn {{button}}\" type=\"button\" (click)=\"hidealert()\"> ok </button>\r\n      </div>\r\n  </div>\r\n</div>\r\n<script>\r\n  // Automatically trigger the loading animation on click\r\nLadda.bind('button[type=submit]');\r\n\r\n// Same as the above but automatically stops after two seconds\r\nLadda.bind('button[type=submit]', { timeout: 2000 } );\r\n\r\n</script>\r\n"
 
 /***/ }),
 
@@ -482,11 +482,11 @@ var navItems = [
                 url: '/superadmin/master/create_mechanic',
                 icon: 'icon-plus'
             },
-            {
-                name: 'QRCodeGeneration',
-                url: '/superadmin/master/create_driver',
-                icon: 'icon-plus'
-            },
+            // {
+            //   name: 'QRCodeGeneration',
+            //   url: '/superadmin/master/create_driver',
+            //   icon: 'icon-plus'          
+            // },
             {
                 name: 'Vendor Parking',
                 url: '/buttons',
@@ -2239,8 +2239,8 @@ var LoginComponent = /** @class */ (function () {
                 userId: this.email,
                 password: this.password
             };
-            if ((this.email === 'myvacala@gmail.com') && (this.password === 'qwerty')) {
-                this.router.navigate(['Home', 'dashboard']);
+            if ((this.email == 'myvacala@gmail.com') && (this.password == '123456')) {
+                this.router.navigateByUrl('/superadmin/dashboard');
             }
             else {
                 alert('Invalid Login');
@@ -2301,28 +2301,29 @@ var LoginComponent = /** @class */ (function () {
             //   });
         }
     };
-    LoginComponent.prototype.logintest = function () {
-        var _this = this;
-        console.log(this.email_id, this.passwords);
-        console.log(this.Pic);
-        var data = {
-            "Email": this.email_id,
-            "Type": 0,
-            "Password": this.passwords
-        };
-        console.log(data);
-        this._api.loginprocess(data).subscribe(function (response) {
-            console.log(response);
-            if (response.Code == 500) {
-                alert(response.Message);
-            }
-            else {
-                _this.saveInLocal('login_details', response.data);
-                alert(response.Message);
-                _this.router.navigate(['Home', 'dashboard']);
-            }
-        });
-    };
+    // logintest(){
+    //  console.log(this.email_id,this.passwords)
+    // console.log(this.Pic);
+    //  let data = 
+    //  {
+    //   "Email": this.email_id,
+    //   "Type": 0,
+    //   "Password": this.passwords
+    // }
+    // console.log(data);
+    // this._api.loginprocess(data).subscribe(
+    //   (response: any) => {
+    //     console.log(response);
+    //     if(response.Code == 500){
+    //       alert(response.Message);
+    //     }else{
+    //        this.saveInLocal('login_details',response.data);
+    //        alert(response.Message);
+    //        this.router.navigate(['Home', 'dashboard']);
+    //     }
+    //   }
+    // );
+    // }
     LoginComponent.prototype.fileupload1 = function (event) {
         this.selectedAudio1 = event.target.files[0];
     };
