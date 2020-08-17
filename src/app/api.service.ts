@@ -387,6 +387,9 @@ export class ApiService {
   Parking_owner_create(data){
     return this.http.post(this.apiUrl + 'parking/owner/create', data);
   }
+  Parking_owner_create_edit(data){
+    return this.http.post(this.apiUrl + 'parking/owner/edit', data);
+  }
   Parking_owner_edit(data){
     return this.http.post(this.apiUrl + 'parking/parkingareadetails/edit', data);
   }

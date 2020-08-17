@@ -236,6 +236,9 @@ export class ParkingEditComponent implements OnInit {
   { Timings: [], Title: "Saturday" },
   { Timings: [], Title: "Sunday" },]
   both_slot_per_day: any = [];
+  bike: boolean;
+  car: boolean;
+  Both: boolean;
   constructor(
     private router: Router,
 
@@ -275,6 +278,59 @@ export class ParkingEditComponent implements OnInit {
     // this.include_bike1.length = this.Single_List.parking_owner_id.parking_details_slots_count_Bike;
     // this.include_bike2.length = this.Single_List.parking_owner_id.parking_details_slots_count_Car;
 
+
+    // Slot timing--------
+    this.parking_details_bike_price_day = this.Single_List.parking_details_bike_price_day;
+    this.parking_details_car_price_day = this.Single_List.parking_details_car_price_day;
+    this.Included_new = this.Single_List.parking_details_bike_price_day[0].Timings
+    this.Included_new1 = this.Single_List.parking_details_bike_price_day[1].Timings
+    this.Included_new2 = this.Single_List.parking_details_bike_price_day[2].Timings
+    this.Included_new3 = this.Single_List.parking_details_bike_price_day[3].Timings
+    this.Included_new4 = this.Single_List.parking_details_bike_price_day[4].Timings
+    this.Included_new5 = this.Single_List.parking_details_bike_price_day[5].Timings
+    this.Included_new6 = this.Single_List.parking_details_bike_price_day[6].Timings
+    this.parking_details_bike_price_spe_day = this.Single_List.parking_details_bike_price_spe_day;
+    this.Included_newe = this.Single_List.parking_details_car_price_day[0].Timings
+    this.Included_newe1 = this.Single_List.parking_details_car_price_day[1].Timings
+    this.Included_newe2 = this.Single_List.parking_details_car_price_day[2].Timings
+    this.Included_newe3 = this.Single_List.parking_details_car_price_day[3].Timings
+    this.Included_newe4 = this.Single_List.parking_details_car_price_day[4].Timings
+    this.Included_newe5 = this.Single_List.parking_details_car_price_day[5].Timings
+    this.Included_newe6 = this.Single_List.parking_details_car_price_day[6].Timings
+    this.parking_details_car_price_spe_day = this.Single_List.parking_details_car_price_spe_day;
+
+
+    if (this.Single_List.parking_details_price_bike_type == true) {
+      this.fortwowheeler = true;
+    }
+    if (this.Single_List.parking_details_price_car_type == true) {
+      this.forwfourwheeler = true;
+    }
+    if (this.Single_List.parking_details_price_both_type == true) {
+      this.forboth = true;
+      console.log("this.forboth")
+      console.log(this.forboth)
+    }
+
+
+
+
+    this.bike = this.Single_List.parking_details_price_bike_type;
+    this.car = this.Single_List.parking_details_price_car_type;
+    this.Both = this.Single_List.parking_details_price_both_type;
+    if (this.Single_List.parking_details_price_both_type == true) {
+
+      this.Included_newee = this.Single_List.parking_details_bike_price_day[0].Timings
+      this.Included_newee1 = this.Single_List.parking_details_bike_price_day[1].Timings
+      this.Included_newee2 = this.Single_List.parking_details_bike_price_day[2].Timings
+      this.Included_newee3 = this.Single_List.parking_details_bike_price_day[3].Timings
+      this.Included_newee4 = this.Single_List.parking_details_bike_price_day[4].Timings
+      this.Included_newee5 = this.Single_List.parking_details_bike_price_day[5].Timings
+      this.Included_newee6 = this.Single_List.parking_details_bike_price_day[6].Timings
+      this.both_slot_per_day = this.Single_List.parking_details_bike_price_spe_day;
+    }
+
+
     this.VehicleType = " ";
     this.AreaName = " ";
     this.SubAreaName = "";
@@ -282,9 +338,6 @@ export class ParkingEditComponent implements OnInit {
     this.SlotNumber = "";
     this.timefor = "";
 
-    this.forboth = false;
-    this.fortwowheeler = false;
-    this.forwfourwheeler = false;
 
     this._api.vehiclelist().subscribe(
       (response: any) => {
@@ -297,7 +350,7 @@ export class ParkingEditComponent implements OnInit {
   parkingCreation() {
     this.step2 = true;
     let data = {
-      "_id": this.parking_Details._id,
+      "_id": this.Single_List._id,
       "parking_details_name": this.Parkingname,
       "parking_details_address": this.Parkingaddress,
       "parking_details_gstaddress": this.gstaddress,
@@ -322,7 +375,7 @@ export class ParkingEditComponent implements OnInit {
   parkingslotCreation() {
     if (this.forboth == true) {
       let data = {
-        "_id": this.parking_Details._id,
+        "_id": this.Single_List._id,
         "parking_details_bike_price_day": this.both_slot_week,
         "parking_details_car_price_day": this.both_slot_week,
         "parking_details_car_price_spe_day": this.both_slot_per_day,
@@ -340,7 +393,7 @@ export class ParkingEditComponent implements OnInit {
     }
     else {
       let data = {
-        "_id": this.parking_Details._id,
+        "_id": this.Single_List._id,
         "parking_details_bike_price_day": this.parking_details_bike_price_day,
         "parking_details_car_price_day": this.parking_details_car_price_day,
         "parking_details_car_price_spe_day": this.parking_details_car_price_spe_day,
@@ -722,23 +775,29 @@ export class ParkingEditComponent implements OnInit {
     if (event.target.checked == true) {
       if (event.target.value == "Mechanic") {
         this.fortwowheeler = true;
+        this.bike = true;
       }
       if (event.target.value == "Parking") {
         this.forwfourwheeler = true;
+        this.car = true;
       }
       if (event.target.value == "both") {
         this.forboth = true;
+        this.Both = true;
       }
     }
     else if (event.target.checked == false) {
       if (event.target.value == "Mechanic") {
         this.fortwowheeler = false;
+        this.bike = false;
       }
       if (event.target.value == "Parking") {
         this.forwfourwheeler = false;
+        this.car = false;
       }
       if (event.target.value == "both") {
         this.forboth = false;
+        this.Both = false;
       }
     }
 
@@ -833,6 +892,7 @@ export class ParkingEditComponent implements OnInit {
     this.validation();
     if (this.validate == true) {
       let data = {
+        "_id": this.Single_List.parking_owner_id._id,
         "owner_name": this.Ownername,
         "owner_email": this.owner_email,
         "owner_pri_contact": this.ownerprimarycontact,
@@ -844,7 +904,7 @@ export class ParkingEditComponent implements OnInit {
         "owner_res_address": this.resaddress
       }
       console.log(data)
-      this._api.Parking_owner_create(data).subscribe((res: any) => {
+      this._api.Parking_owner_create_edit(data).subscribe((res: any) => {
         console.log(res)
         alert(res.Message);
         this.parking_Details = res.parking_Details;
