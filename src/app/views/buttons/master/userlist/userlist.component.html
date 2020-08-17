@@ -68,6 +68,11 @@
             </form> -->
           <h4 class="card-title pt-4">User List</h4>
           <div style="overflow-x:auto;">
+            <div class="search-hero">
+              <input class="form-control" type="text" name="search2"
+                  style="font-family: FontAwesome;" [(ngModel)]="searchQR" autocomplete="off"
+                  placeholder="&#xf002; Search...">
+          </div>
             <table class="table table-striped table-bordered table-sm" [svData]="user_list" #sv="svDataTable"
               [svRowsOnPage]="10" svSortBy="name" svSortOrder="asc">
               <thead>
@@ -76,28 +81,32 @@
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone</th>
-                  <th>DOB</th>
-                  <th>Gender</th>
-                  <th>Vehicle_Type_Status</th>
-                  <th>Current_Location_Status</th>
-                  <th>User_Status</th>
+                  <th>Vehicle Type Status</th>
+                  <th>Current Location Status</th>
+                  <th>User Status</th>
                   <th>UpdatedAt</th>
                   <th>createdAt</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of sv.data; let i = index;">
+                <tr *ngFor="let item of sv.data  | filter:searchQR ; let i = index;">
                   <td>{{i+1}}</td>
                   <td>{{item.Name}}</td>
                   <td>{{item.Email}}</td>
                   <td>{{item.Phone}}</td>
-                  <td>{{item.DOB}}</td>
-                  <td>{{item.Gender}}</td>
                   <td>{{item.Vehicle_Type_Status}}</td>
                   <td>{{item.Current_Location_Status}}</td>
                   <td>{{item.User_Status}}</td>
-                  <td>{{item.updatedAt}}</td>
-                  <td>{{item.createdAt}}</td>
+                  <td>{{item.updatedAt | date:'short'}}</td>
+                  <td>{{item.createdAt | date:'short'}}</td>
+                  <td>
+                    <button *ngIf="item.User_Status == true" (click)="disable(item)" style=" width: 70px;" class="btn btn-sm btn-primary">Disable</button>
+                    <button *ngIf="item.User_Status == false" (click)="disable(item)" style=" width: 70px;"
+                        class="btn btn-sm btn-success">Enable</button>
+                        <button (click)="delete(item._id)" style="margin-top: 5px; width: 70px;"
+                        class="btn btn-sm btn-danger">Delete</button>
+                </td>
                 </tr>
               </tbody>
               <tfoot>

@@ -115,6 +115,7 @@ import { EditemployeeComponent } from './rolemanagement/editemployee/editemploye
 import { EngineccComponent } from './master/enginecc/enginecc.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { PopularSubServiceComponent } from './master/popular-sub-service/popular-sub-service.component';
+import { ParkingEditComponent } from './parking/parking-edit/parking-edit.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -223,7 +224,8 @@ import { PopularSubServiceComponent } from './master/popular-sub-service/popular
     CouponCodeComponent,
     EditemployeeComponent,
     EngineccComponent,
-    PopularSubServiceComponent
+    PopularSubServiceComponent,
+    ParkingEditComponent
   ]
 })
 export class ButtonsModule { }

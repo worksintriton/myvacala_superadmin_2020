@@ -12,36 +12,37 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Owner name</label>
                   <div class="col-md-6">
-                    <input type="text" [(ngModel)]="Ownername" name="Ownername" id="text-input" rows="4"
+                    <input type="text" [(ngModel)]="Ownername" name="Ownername"  rows="4"
                       class="form-control" placeholder="Owner name">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Owner primary contact</label>
                   <div class="col-md-6">
-                    <input type="text" [(ngModel)]="ownerprimarycontact" name="ownerprimarycontact" id="text-input"
-                      class="form-control" placeholder="Owner Primary Contact">
+                      <input type="text" [(ngModel)]="ownerprimarycontact" (keypress)=_keyPress($event) (ngModelChange)="phone1()" name="ownerprimarycontact"  class="form-control"
+                      placeholder="Owner Primary Contact">
+                      <span class="err" *ngIf="phone_err1">Enter Valid Phone Number.</span>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Pan card Number </label>
                   <div class="col-md-6">
-                    <input type="text" [(ngModel)]="Secondcontact" name="Secondcontact" id="text-input"
-                      class="form-control" placeholder="Secondary contact">
+                    <input type="text" [(ngModel)]="pancardno" name="pancardno" 
+                      class="form-control" placeholder="Pan Card No">
                   </div>
                 </div>
                  
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input"> Aadhar card Number </label>
                   <div class="col-md-6">
-                    <input type="text" [(ngModel)]="Secondcontact" name="Secondcontact" id="text-input"
-                      class="form-control" placeholder="Pan card Number">
+                    <input type="text" [(ngModel)]="adharno" name="adharno" 
+                      class="form-control" placeholder="Aadhar card Number">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input"> Residence Address </label>
                   <div class="col-md-6">
-                    <textarea [(ngModel)]="resaddress" name="resaddress" id="text-input"
+                    <textarea [(ngModel)]="resaddress" name="resaddress" 
                       class="form-control" placeholder="Residence Address"></textarea>
                   </div>
                 </div>
@@ -51,38 +52,49 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Owner Email Id</label>
                   <div class="col-md-6">
-                    <input type="text" [(ngModel)]="owner_email" name="owner_email" id="text-input" class="form-control"
+                      <input type="text" [(ngModel)]="owner_email" name="owner_email" (ngModelChange)="emailcheck()"  class="form-control"
                       placeholder="Owner Email Id">
+                      <span class="err" *ngIf="emailerror">Enter Valid Email Address.</span>
                   </div>
                 </div>
+                
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Secondary Contact</label>
                   <div class="col-md-6">
-                    <input type="text" [(ngModel)]="Secondcontact" name="Secondcontact" id="text-input"
-                      class="form-control" placeholder="Secondary contact">
+                      <input type="text" [(ngModel)]="Secondcontact" (keypress)=_keyPress($event) (ngModelChange)="phone2()" name="Secondcontact"  class="form-control"
+                      placeholder="Secondary contact">
+                      <span class="err" *ngIf="phone_err2">Enter Valid Phone Number.</span>
                   </div>
                 </div>
                   <div class="form-group row">
                     <label class="col-md-4 col-form-label" for="text-input">Pan card </label>
                     <div class="col-md-6">
-                      <input type="file" [(ngModel)]="Secondcontact" name="Secondcontact" id="text-input"
-                        class="form-control" placeholder="Secondary contact">
+                        <input type="file" accept="application/pdf" (change)="fileupload1($event)"  class="form-control"
+                        placeholder="PanCard">
+                        <!-- <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span> -->
                     </div>
                   </div>  
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Aadhar card </label>
                   <div class="col-md-6">
-                    <input type="file" [(ngModel)]="Secondcontact" name="Secondcontact" id="text-input"
-                      class="form-control" placeholder="Secondary contact">
+                      <input type="file" accept="application/pdf" (change)="fileupload2($event)"  class="form-control"
+                        placeholder="Aadhar Card">
+                        <!-- <span style="font-size: 10px;color: #f31d1d;">Please Upload a single PDF with front and back side of the document</span> -->
                   </div>
                 </div>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <button (click)="createowner()" class="btn btn-primary" [disabled]="step1">Next</button>
+                  </div>
+                </div>
+               
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="step1">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
@@ -92,21 +104,21 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Parking Name</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="Parkingname" name="Parkingname" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="Parkingname" name="Parkingname"  class="form-control"
                   placeholder="Parking Name">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Parking Address</label>
               <div class="col-md-6">
-                <textarea [(ngModel)]="Parkingaddress" name="Parkingaddress" id="text-input" class="form-control"
+                <textarea [(ngModel)]="Parkingaddress" name="Parkingaddress"  class="form-control"
                   placeholder="Parking Address"></textarea>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">GST Address</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="gstaddress" name="gstaddress" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="gstaddress" name="gstaddress"  class="form-control"
                   placeholder="GST Address">
               </div>
             </div>
@@ -114,15 +126,15 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">GST Doc </label>
               <div class="col-md-6">
-                <input type="file" [(ngModel)]="Secondcontact" name="Secondcontact" id="text-input"
-                  class="form-control" placeholder="Pan card Number">
+                <input type="file" accept="application/pdf" (change)="fileupload3($event)"  class="form-control"
+                        placeholder="PanCard">
               </div>
             </div>
             
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">GST Number</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="Secondcontact" name="Secondcontact" id="text-input"
+                <input type="text" [(ngModel)]="gstnumber" name="gstnumber" 
                   class="form-control" placeholder="GST Number">
               </div>
             </div>
@@ -131,21 +143,21 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Map Link</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="map" name="map" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="map" name="map"  class="form-control"
                   placeholder="Map Link">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Latitude</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="lat" name="lat" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="lat" name="lat"  class="form-control"
                   placeholder="Latitude">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Longitude</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="lang" name="lang" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="lang" name="lang"  class="form-control"
                   placeholder="Longitude">
               </div>
             </div>
@@ -153,7 +165,7 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">POC Email Id</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="poc_email" name="poc_email" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="poc_email" name="poc_email"  class="form-control"
                   placeholder="POC Email Id">
               </div>
             </div>
@@ -161,7 +173,7 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Bike Slots</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="bikeslots" name="bikeslots" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="bikeslots" name="bikeslots"  class="form-control"
                   placeholder="Bike Slots">
               </div>
               <div class="col-md-3">
@@ -181,22 +193,22 @@
                       <th>Area </th>
                       <th>Floor</th>
                       <th>Slot</th>
-                      <th>Action</th>
+                      <!-- <th>Action</th> -->
                     </tr>
                   </thead>
                   <tbody>
 
-                    <tr *ngFor="let dynamic5 of include_bike1; let i = index;">
+                    <tr *ngFor="let dynamic of include_bike1; let i = index;">
                       <td>{{i+1}}</td>
-                      <td><input type="checkbox" name="" [(ngModel)]="name" > </td>
-                      <td> <input type="text" [(ngModel)]="area" name="area" id="text-input" class="form-control"
+                      <td><input type="checkbox" name="name" [(ngModel)]="name" > </td>
+                      <td> <input type="text" [(ngModel)]="dynamic.area" name="area"  class="form-control"
                           placeholder="Area"></td>
-                      <td> <input type="text" [(ngModel)]="floor" name="flooe" id="text-input" class="form-control"
+                      <td> <input type="text" [(ngModel)]="dynamic.floor" name="flooe"  class="form-control"
                           placeholder="Floor"></td>
-                      <td><input type="text" [(ngModel)]="slot" name="slot" id="text-input" class="form-control"
+                      <td><input type="text" [(ngModel)]="dynamic.slot" name="slot"  class="form-control"
                           placeholder="Slot Number"></td>
                       
-                        <td> <button (click)="addcar(i)" class="btn btn-sm btn-primary">Save</button></td>
+                        <!-- <td> <button (click)="addcar(i)" class="btn btn-sm btn-primary">Save</button></td> -->
                     </tr>
                   </tbody>
                 </table>
@@ -205,7 +217,7 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Car Slots</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="carslots" name="carslots" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="carslots" name="carslots"  class="form-control"
                   placeholder="Car Slots">
               </div>
               <div class="col-md-3">
@@ -225,46 +237,45 @@
                       <th>Area </th>
                       <th>Floor</th>
                       <th>Slot</th>
-                      <th>Action</th>
+                      <!-- <th>Action</th> -->
                     </tr>
                   </thead>
                   <tbody>
 
-                    <tr *ngFor="let dynamic5 of include_bike2; let i = index;">
+                    <tr *ngFor="let dyna of include_bike2; let i = index;">
                       <td>{{i+1}}</td>
-                      <td><input type="checkbox" name="" [(ngModel)]="name" > </td>
-                      <td> <input type="text" [(ngModel)]="area" name="area"  class="form-control"
+                      <td><input type="checkbox" name="name" [(ngModel)]="name" > </td>
+                      <td> <input type="text" [(ngModel)]="dyna.area" name="area1"  class="form-control"
                           placeholder="Area"></td>
-                      <td> <input type="text" [(ngModel)]="floor" name="flooe"  class="form-control"
+                      <td> <input type="text" [(ngModel)]="dyna.floor" name="flooe1"  class="form-control"
                           placeholder="Floor"></td>
-                      <td><input type="text" [(ngModel)]="slot" name="slot"  class="form-control"
+                      <td><input type="text" [(ngModel)]="dyna.slot" name="slot3"  class="form-control"
                           placeholder="Slot Number"></td>
-                      <td> <button (click)="addcar(i)" class="btn btn-sm btn-primary">Save</button></td>
+                      <!-- <td> <button (click)="addcar(i)" class="btn btn-sm btn-primary">Save</button></td> -->
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <button (click)="parkingCreation()" class="btn btn-sm btn-primary float-right mt-5"><i
-                      class="fa fa-save"></i>Save</button>
+                  <button (click)="parkingCreation()" class="btn btn-sm btn-primary float-right mt-5" [disabled]="step2"><i
+                      class="fa fa-save"></i>Next</button>
                 </div>
               </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="form-group">
                   <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i> Reset</button>
                 </div>
-              </div>
+              </div> -->
             </div>
+            <!-- <div    -->
           </div>
         </div>
       </div>
     </div>
-    <!--/.row-->
-    <div class="row">
+    <div class="row" *ngIf="step2">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
@@ -272,21 +283,28 @@
           </div>
           <div class="card-body">
             <div class="form-group row">
-              <div class="col-md-3 col-form-label">
+              <div class="col-md-3 col-form-label" *ngIf="!forboth">
                 <div class="form-check form-check-inline mr-1">
                   <img src="../../../../assets/img/avatars/bike2.png">
-                  <input class="form-check-input" type="checkbox" name="Mechanic" [(ngModel)]="Mechanic" value="Mechanic" (change)="changepermission($event)">
-                  <label class="form-check-label" for="Mechanic">Two Wheeler</label>
+                  <input class="form-check-input" id="Mech" type="checkbox" name="Parking1" [(ngModel)]="Mechanic" value="Mechanic" (change)="changepermission($event)">
+                  <label class="form-check-label" for="Mech">Two Wheeler</label>
                 </div>
             </div>
-            <div class="col-md-3 col-form-label">
+            <div class="col-md-3 col-form-label" *ngIf="!forboth">
               <img src="../../../../assets/img/avatars/carimage1.png">
                 <div class="form-check form-check-inline mr-1">
-                  <input class="form-check-input" type="checkbox" name="Parking" [(ngModel)]="Parking" value="Parking" (change)="changeparkingpermission($event)">
-                  <label class="form-check-label" for="Parking">Four Wheeler</label>
+                  <input class="form-check-input" id="Park" type="checkbox" name="Parking2" [(ngModel)]="Parking" value="Parking" (change)="changepermission($event)">
+                  <label class="form-check-label" for="Park">Four Wheeler</label>
                 </div>
             </div>
-        
+            <div class="col-md-3 col-form-label"  *ngIf="!fortwowheeler && !forwfourwheeler ">
+              <img src="../../../../assets/img/avatars/004.png" style="width: 39px;
+              ">
+                <div class="form-check form-check-inline mr-1">
+                  <input  class="form-check-input" id="bot" type="checkbox" name="Parking3" [(ngModel)]="Both" value="both" (change)="changepermission($event)">
+                  <label class="form-check-label" for="bot">Both</label>
+                </div>
+            </div>
             
               <!-- <div class="col-md-6">
                 <select class="form-control" (change)='onOptionsSelected(mySelect.value)' [(ngModel)]="VehicleType"
@@ -310,20 +328,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Monday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime1" name="SlotWeekDaytime1" id="SlotWeekDaytime1"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" min="08:00" max="20:00" [(ngModel)]="SlotWeekDaytime1" name="SlotWeekDaytime1" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime2" name="SlotWeekDaytime2" id="SlotWeekDaytime2"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime2" name="SlotWeekDaytime2" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
                     <input type="number" [(ngModel)]="amount" class="form-control" placeholder="Amount" name="amount">
                   </div>
                   <div class="col-md-2">
-                    <button (click)="addweekdays()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="BikeAddmonday()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -343,11 +361,11 @@
     
                         <tr *ngFor="let dynamic of Included_new; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic.time1}}</td>
-                          <td>{{dynamic.time2}}</td>
-                          <td>{{dynamic.amount}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deleteaddweekdays()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic.Start_time}}</td>
+                          <td>{{dynamic.End_time}}</td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="Bikeremovemonday(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -357,20 +375,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Tuesday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime3" name="SlotWeekDaytime3" id="SlotWeekDaytime3"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime3" name="SlotWeekDaytime3" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime4" name="SlotWeekDaytime4" id="SlotWeekDaytime4"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime4" name="SlotWeekDaytime4" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
                     <input type="number" [(ngModel)]="amount1" class="form-control" placeholder="Amount" name="amount1">
                   </div>
                   <div class="col-md-2">
-                    <button (click)="addtuesday()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="BikeAddtuesday()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -388,13 +406,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic1 of Included_new1; let i = index;">
+                        <tr *ngFor="let dynamic of Included_new1; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic1.time1}}</td>
-                          <td>{{dynamic1.time2}}</td>
-                          <td>{{dynamic1.amount1}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletetuesday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic.Start_time}}</td>
+                          <td>{{dynamic.End_time}}</td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="Bikeremovetuesday(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -404,13 +422,13 @@
                   <label class="col-md-3 col-form-label" for="text-input">Wednesday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime5" name="SlotWeekDaytime5" id="SlotWeekDaytime5"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime5" name="SlotWeekDaytime5" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime6" name="SlotWeekDaytime6" id="SlotWeekDaytime6"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime6" name="SlotWeekDaytime6" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -435,13 +453,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic2 of Included_new2; let i = index;">
+                        <tr *ngFor="let dynamic of Included_new2; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic2.time1}}</td>
-                          <td>{{dynamic2.time2}}</td>
-                          <td>{{dynamic2.amount1}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletewedsday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic.Start_time}}</td>
+                          <td>{{dynamic.End_time}}</td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="deletewedsday(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -451,13 +469,13 @@
                   <label class="col-md-3 col-form-label" for="text-input">Thursday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime7" name="SlotWeekDaytime7" id="SlotWeekDaytime7"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime7" name="SlotWeekDaytime7" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime8" name="SlotWeekDaytime8" id="SlotWeekDaytime8"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime8" name="SlotWeekDaytime8" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -482,13 +500,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic3 of Included_new3; let i = index;">
+                        <tr *ngFor="let dynamic of Included_new3; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic3.time1}}</td>
-                          <td>{{dynamic3.time2}}</td>
-                          <td>{{dynamic3.amount3}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletethursday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic.Start_time}}</td>
+                          <td>{{dynamic.End_time}}</td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="deletethursday(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -499,13 +517,13 @@
                   <label class="col-md-3 col-form-label" for="text-input">Friday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime9" name="SlotWeekDaytime9" id="SlotWeekDaytime9"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime9" name="SlotWeekDaytime9" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime10" name="SlotWeekDaytime10" id="SlotWeekDaytime10"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime10" name="SlotWeekDaytime10" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -530,13 +548,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic4 of Included_new4; let i = index;">
+                        <tr *ngFor="let dynamic of Included_new4; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic4.time1}}</td>
-                          <td>{{dynamic4.time2}}</td>
-                          <td>{{dynamic4.amount4}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletefriday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic.Start_time}}</td>
+                          <td>{{dynamic.End_time}}</td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="deletefriday(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -547,13 +565,13 @@
                   <label class="col-md-3 col-form-label" for="text-input">Saturday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime11" name="SlotWeekDaytime12" id="SlotWeekDaytime12"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime11" name="SlotWeekDaytime12" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime12" name="SlotWeekDaytime12" id="SlotWeekDaytime12"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime12" name="SlotWeekDaytime12" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -578,13 +596,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic5 of Included_new5; let i = index;">
+                        <tr *ngFor="let dynamic of Included_new5; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic5.time1}}</td>
-                          <td>{{dynamic5.time2}}</td>
-                          <td>{{dynamic5.amount5}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletefriday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic.Start_time}}</td>
+                          <td>{{dynamic.End_time}}</td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="deletefriday(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -595,20 +613,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Sunday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime14" name="SlotWeekDaytime14" id="SlotWeekDaytime14"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime13" name="SlotWeekDaytime14" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime15" name="SlotWeekDaytime15" id="SlotWeekDaytime1"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime14" name="SlotWeekDaytime15" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
                     <input type="number" [(ngModel)]="amount6" class="form-control" placeholder="Amount" name="amount6">
                   </div>
                   <div class="col-md-2">
-                    <button (click)="addtsunday()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="addsunday()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -626,13 +644,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic6 of Included_new6; let i = index;">
+                        <tr *ngFor="let dynamic of Included_new6; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic6.time1}}</td>
-                          <td>{{dynamic6.time2}}</td>
-                          <td>{{dynamic6.amount6}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletesunday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic.Start_time}}</td>
+                          <td>{{dynamic.End_time}}</td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="deletesunday(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -642,20 +660,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Add Date</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Date</label>
-                    <input type="date" [(ngModel)]="slotdate1" name="slotdate1" id="SlotWeekDaytime8" class="form-control"
-                      placeholder="Slot Week Day time">
+                    <input type="date" [(ngModel)]="bikeslotdate1" name="bikeslotdate1" class="form-control"
+                     >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime15" name="SlotWeekDaytime15" id="SlotWeekDaytime15"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime16" name="SlotWeekDaytime16" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime16" name="SlotWeekDaytime16" id="SlotWeekDaytime16"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime17" name="SlotWeekDaytime17" 
+                      class="form-control">
                   </div>
-                  <div class="col-md-1">
+                  <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
                     <input type="number" [(ngModel)]="amount7" class="form-control" placeholder="Amount" name="amount7">
                   </div>
@@ -678,13 +696,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let dynamic7 of Included_new7; let i = index;">
+                        <tr *ngFor="let dynamic of parking_details_bike_price_spe_day; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic7.date1}}</td>
-                          <td>{{dynamic7.time1}}</td>
-                          <td>{{dynamic7.time2}}</td>
-                          <td>{{dynamic7.amount}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
+                          <td>{{dynamic.dates}}</td>
+                          <td>{{dynamic.Start_time}}</td>
+                          <td>{{dynamic.End_time}}</td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
                             <button (click)="deleteaddweekdays2(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
@@ -705,20 +723,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Monday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime1" name="SlotWeekDaytime1" id="SlotWeekDaytime1"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime18" name="SlotWeekDaytime18" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime2" name="SlotWeekDaytime2" id="SlotWeekDaytime2"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime19" name="SlotWeekDaytime19" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
-                    <input type="number" [(ngModel)]="amount" class="form-control" placeholder="Amount" name="amount">
+                    <input type="number" [(ngModel)]="amount8" class="form-control" placeholder="Amount" name="amount">
                   </div>
                   <div class="col-md-2">
-                    <button (click)="addweekdays()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="carAddmonday()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -736,13 +754,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic of Included_new; let i = index;">
+                        <tr *ngFor="let dynamic of Included_newe; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic.time1}}</td>
-                          <td>{{dynamic.time2}}</td>
-                          <td>{{dynamic.amount}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deleteaddweekdays()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic.Start_time}}</td>
+                          <td>{{dynamic.End_time}}</td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="carremovemonday(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -752,20 +770,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Tuesday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime3" name="SlotWeekDaytime3" id="SlotWeekDaytime3"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime20" name="SlotWeekDaytime20" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime4" name="SlotWeekDaytime4" id="SlotWeekDaytime4"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime21" name="SlotWeekDaytime21" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
-                    <input type="number" [(ngModel)]="amount1" class="form-control" placeholder="Amount" name="amount1">
+                    <input type="number" [(ngModel)]="amount9" class="form-control" placeholder="Amount" name="amount1">
                   </div>
                   <div class="col-md-2">
-                    <button (click)="addtuesday()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="carAddtuesday()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -783,13 +801,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic1 of Included_new1; let i = index;">
+                        <tr *ngFor="let dynamic1 of Included_newe1; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic1.time1}}</td>
-                          <td>{{dynamic1.time2}}</td>
-                          <td>{{dynamic1.amount1}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletetuesday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic1.Start_time}}</td>
+                          <td>{{dynamic1.End_time}}</td>
+                          <td>{{dynamic1.Price}}</td>
+                          <td>
+                            <button (click)="carremovetuesday(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -799,20 +817,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Wednesday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime5" name="SlotWeekDaytime5" id="SlotWeekDaytime5"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime22" name="SlotWeekDaytime22" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime6" name="SlotWeekDaytime6" id="SlotWeekDaytime6"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime23" name="SlotWeekDaytime23" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
-                    <input type="number" [(ngModel)]="amount2" class="form-control" placeholder="Amount" name="amount2">
+                    <input type="number" [(ngModel)]="amount10" class="form-control" placeholder="Amount" name="amount2">
                   </div>
                   <div class="col-md-2">
-                    <button (click)="addwedday()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="addweddayc()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -830,13 +848,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic2 of Included_new2; let i = index;">
+                        <tr *ngFor="let dynamic2 of Included_newe2; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic2.time1}}</td>
-                          <td>{{dynamic2.time2}}</td>
-                          <td>{{dynamic2.amount1}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletewedsday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic2.Start_time}}</td>
+                          <td>{{dynamic2.End_time}}</td>
+                          <td>{{dynamic2.Price}}</td>
+                          <td>
+                            <button (click)="deletewedsdayc(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -846,20 +864,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Thursday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime7" name="SlotWeekDaytime7" id="SlotWeekDaytime7"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime24" name="SlotWeekDaytime24" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime8" name="SlotWeekDaytime8" id="SlotWeekDaytime8"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime25" name="SlotWeekDaytime25" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
-                    <input type="number" [(ngModel)]="amount3" class="form-control" placeholder="Amount" name="amount3">
+                    <input type="number" [(ngModel)]="amount11" class="form-control" placeholder="Amount" name="amount">
                   </div>
                   <div class="col-md-2">
-                    <button (click)="addthursday()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="addthursdayc()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -877,13 +895,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic3 of Included_new3; let i = index;">
+                        <tr *ngFor="let dynamic3 of Included_newe3; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic3.time1}}</td>
-                          <td>{{dynamic3.time2}}</td>
-                          <td>{{dynamic3.amount3}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletethursday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic3.Start_time}}</td>
+                          <td>{{dynamic3.End_time}}</td>
+                          <td>{{dynamic3.Price}}</td>
+                          <td>
+                            <button (click)="deletethursdayc(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -894,20 +912,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Friday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime9" name="SlotWeekDaytime9" id="SlotWeekDaytime9"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime26" name="SlotWeekDaytime26" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime10" name="SlotWeekDaytime10" id="SlotWeekDaytime10"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime27" name="SlotWeekDaytime27" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
-                    <input type="number" [(ngModel)]="amount4" class="form-control" placeholder="Amount" name="amount4">
+                    <input type="number" [(ngModel)]="amount12" class="form-control" placeholder="Amount" name="amount4">
                   </div>
                   <div class="col-md-2">
-                    <button (click)="addfriday()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="addfridayc()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -925,13 +943,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic4 of Included_new4; let i = index;">
+                        <tr *ngFor="let dynamic4 of Included_newe4; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic4.time1}}</td>
-                          <td>{{dynamic4.time2}}</td>
-                          <td>{{dynamic4.amount4}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletefriday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic4.Start_time}}</td>
+                          <td>{{dynamic4.End_time}}</td>
+                          <td>{{dynamic4.Price}}</td>
+                          <td>
+                            <button (click)="deletefridayc(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -942,20 +960,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Saturday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime11" name="SlotWeekDaytime12" id="SlotWeekDaytime12"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime28" name="SlotWeekDaytime28" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime12" name="SlotWeekDaytime12" id="SlotWeekDaytime12"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime29" name="SlotWeekDaytime29" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
-                    <input type="number" [(ngModel)]="amount5" class="form-control" placeholder="Amount" name="amount5">
+                    <input type="number" [(ngModel)]="amount13" class="form-control" placeholder="Amount" name="amount">
                   </div>
                   <div class="col-md-2">
-                    <button (click)="addsaturday()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="addsaturdayc()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -973,13 +991,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic5 of Included_new5; let i = index;">
+                        <tr *ngFor="let dynamic5 of Included_newe5; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic5.time1}}</td>
-                          <td>{{dynamic5.time2}}</td>
-                          <td>{{dynamic5.amount5}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletefriday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic5.Start_time}}</td>
+                          <td>{{dynamic5.End_time}}</td>
+                          <td>{{dynamic5.Price}}</td>
+                          <td>
+                            <button (click)="deletesaturdayc(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -990,20 +1008,20 @@
                   <label class="col-md-3 col-form-label" for="text-input">Sunday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime14" name="SlotWeekDaytime14" id="SlotWeekDaytime14"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime30" name="SlotWeekDaytime30" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime15" name="SlotWeekDaytime15" id="SlotWeekDaytime1"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime31" name="SlotWeekDaytime31" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
-                    <input type="number" [(ngModel)]="amount6" class="form-control" placeholder="Amount" name="amount6">
+                    <input type="number" [(ngModel)]="amount14" class="form-control" placeholder="Amount" name="amount6">
                   </div>
                   <div class="col-md-2">
-                    <button (click)="addtsunday()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="addsundayc()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -1021,13 +1039,13 @@
                       </thead>
                       <tbody>
     
-                        <tr *ngFor="let dynamic6 of Included_new6; let i = index;">
+                        <tr *ngFor="let dynamic6 of Included_newe6; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic6.time1}}</td>
-                          <td>{{dynamic6.time2}}</td>
-                          <td>{{dynamic6.amount6}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deletesunday()" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic6.Start_time}}</td>
+                          <td>{{dynamic6.End_time}}</td>
+                          <td>{{dynamic6.Price}}</td>
+                          <td>
+                            <button (click)="deletesundayc(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1037,25 +1055,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Add Date</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Date</label>
-                    <input type="date" [(ngModel)]="slotdate1" name="slotdate1" id="SlotWeekDaytime8" class="form-control"
-                      placeholder="Slot Week Day time">
+                    <input type="date" [(ngModel)]="slotdatee1" name="slotdatee1"  class="form-control"
+                      >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime15" name="SlotWeekDaytime15" id="SlotWeekDaytime15"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime32" name="SlotWeekDaytime15" 
+                      class="form-control" >
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime16" name="SlotWeekDaytime16" id="SlotWeekDaytime16"
-                      class="form-control" placeholder="Slot Week Day time">
+                    <input type="time" [(ngModel)]="SlotWeekDaytime33" name="SlotWeekDaytime16" 
+                      class="form-control" >
                   </div>
-                  <div class="col-md-1">
+                  <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
-                    <input type="number" [(ngModel)]="amount7" class="form-control" placeholder="Amount" name="amount7">
+                    <input type="number" [(ngModel)]="amount15" class="form-control" placeholder="Amount" name="amount7">
                   </div>
                   <div class="col-md-1">
-                    <button (click)="addweekdays2()" class="btn btn-sm btn-primary">Add</button>
+                    <button (click)="addweekdaysc2()" class="btn btn-sm btn-primary">Add</button>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -1073,14 +1091,14 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let dynamic7 of Included_new7; let i = index;">
+                        <tr *ngFor="let dynamic7 of parking_details_car_price_spe_day; let i = index;">
                           <td>{{i+1}}</td>
-                          <td>{{dynamic7.date1}}</td>
-                          <td>{{dynamic7.time1}}</td>
-                          <td>{{dynamic7.time2}}</td>
-                          <td>{{dynamic7.amount}}</td>
-                          <td><button class="btn btn-sm btn-primary">Edit</button>
-                            <button (click)="deleteaddweekdays2(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                          <td>{{dynamic7.dates}}</td>
+                          <td>{{dynamic7.Start_time}}</td>
+                          <td>{{dynamic7.End_time}}</td>
+                          <td>{{dynamic7.Price}}</td>
+                          <td>
+                            <button (click)="deleteaddweekdaysc2(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1090,410 +1108,419 @@
             </div>
            
           </div>
+          
           <div *ngIf="forboth">
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input">Monday</label>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">From Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime1" name="SlotWeekDaytime1" id="SlotWeekDaytime1"
-                  class="form-control" placeholder="Slot Week Day time">
+            <div class="card">
+              <div class="card-header">
+                <h4>Two Wheeler & Four Wheeler</h4>
               </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">To Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime2" name="SlotWeekDaytime2" id="SlotWeekDaytime2"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">Amount</label>
-                <input type="number" [(ngModel)]="amount" class="form-control" placeholder="Amount" name="amount">
-              </div>
-              <div class="col-md-2">
-                <button (click)="addweekdays()" class="btn btn-sm btn-primary">Add</button>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input"></label>
-              <div class="col-md-6 mt-3">
-                <table class="table table-bordered table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>S.No</th>
-                      <th>From Time </th>
-                      <th>To Time</th>
-                      <th>Amount</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                    <tr *ngFor="let dynamic of Included_new; let i = index;">
-                      <td>{{i+1}}</td>
-                      <td>{{dynamic.time1}}</td>
-                      <td>{{dynamic.time2}}</td>
-                      <td>{{dynamic.amount}}</td>
-                      <td><button class="btn btn-sm btn-primary">Edit</button>
-                        <button (click)="deleteaddweekdays()" class="btn btn-sm btn-primary">Delete</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input">Tuesday</label>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">From Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime3" name="SlotWeekDaytime3" id="SlotWeekDaytime3"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">To Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime4" name="SlotWeekDaytime4" id="SlotWeekDaytime4"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">Amount</label>
-                <input type="number" [(ngModel)]="amount1" class="form-control" placeholder="Amount" name="amount1">
-              </div>
-              <div class="col-md-2">
-                <button (click)="addtuesday()" class="btn btn-sm btn-primary">Add</button>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input"></label>
-              <div class="col-md-6 mt-3">
-                <table class="table table-bordered table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>S.No</th>
-                      <th>From Time </th>
-                      <th>To Time</th>
-                      <th>Amount</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                    <tr *ngFor="let dynamic1 of Included_new1; let i = index;">
-                      <td>{{i+1}}</td>
-                      <td>{{dynamic1.time1}}</td>
-                      <td>{{dynamic1.time2}}</td>
-                      <td>{{dynamic1.amount1}}</td>
-                      <td><button class="btn btn-sm btn-primary">Edit</button>
-                        <button (click)="deletetuesday()" class="btn btn-sm btn-primary">Delete</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input">Wednesday</label>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">From Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime5" name="SlotWeekDaytime5" id="SlotWeekDaytime5"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">To Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime6" name="SlotWeekDaytime6" id="SlotWeekDaytime6"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">Amount</label>
-                <input type="number" [(ngModel)]="amount2" class="form-control" placeholder="Amount" name="amount2">
-              </div>
-              <div class="col-md-2">
-                <button (click)="addwedday()" class="btn btn-sm btn-primary">Add</button>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input"></label>
-              <div class="col-md-6 mt-3">
-                <table class="table table-bordered table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>S.No</th>
-                      <th>From Time </th>
-                      <th>To Time</th>
-                      <th>Amount</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                    <tr *ngFor="let dynamic2 of Included_new2; let i = index;">
-                      <td>{{i+1}}</td>
-                      <td>{{dynamic2.time1}}</td>
-                      <td>{{dynamic2.time2}}</td>
-                      <td>{{dynamic2.amount1}}</td>
-                      <td><button class="btn btn-sm btn-primary">Edit</button>
-                        <button (click)="deletewedsday()" class="btn btn-sm btn-primary">Delete</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input">Thursday</label>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">From Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime7" name="SlotWeekDaytime7" id="SlotWeekDaytime7"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">To Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime8" name="SlotWeekDaytime8" id="SlotWeekDaytime8"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">Amount</label>
-                <input type="number" [(ngModel)]="amount3" class="form-control" placeholder="Amount" name="amount3">
-              </div>
-              <div class="col-md-2">
-                <button (click)="addthursday()" class="btn btn-sm btn-primary">Add</button>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input"></label>
-              <div class="col-md-6 mt-3">
-                <table class="table table-bordered table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>S.No</th>
-                      <th>From Time </th>
-                      <th>To Time</th>
-                      <th>Amount</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                    <tr *ngFor="let dynamic3 of Included_new3; let i = index;">
-                      <td>{{i+1}}</td>
-                      <td>{{dynamic3.time1}}</td>
-                      <td>{{dynamic3.time2}}</td>
-                      <td>{{dynamic3.amount3}}</td>
-                      <td><button class="btn btn-sm btn-primary">Edit</button>
-                        <button (click)="deletethursday()" class="btn btn-sm btn-primary">Delete</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input">Friday</label>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">From Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime9" name="SlotWeekDaytime9" id="SlotWeekDaytime9"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">To Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime10" name="SlotWeekDaytime10" id="SlotWeekDaytime10"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">Amount</label>
-                <input type="number" [(ngModel)]="amount4" class="form-control" placeholder="Amount" name="amount4">
-              </div>
-              <div class="col-md-2">
-                <button (click)="addfriday()" class="btn btn-sm btn-primary">Add</button>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input"></label>
-              <div class="col-md-6 mt-3">
-                <table class="table table-bordered table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>S.No</th>
-                      <th>From Time </th>
-                      <th>To Time</th>
-                      <th>Amount</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                    <tr *ngFor="let dynamic4 of Included_new4; let i = index;">
-                      <td>{{i+1}}</td>
-                      <td>{{dynamic4.time1}}</td>
-                      <td>{{dynamic4.time2}}</td>
-                      <td>{{dynamic4.amount4}}</td>
-                      <td><button class="btn btn-sm btn-primary">Edit</button>
-                        <button (click)="deletefriday()" class="btn btn-sm btn-primary">Delete</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input">Saturday</label>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">From Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime11" name="SlotWeekDaytime12" id="SlotWeekDaytime12"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">To Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime12" name="SlotWeekDaytime12" id="SlotWeekDaytime12"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">Amount</label>
-                <input type="number" [(ngModel)]="amount5" class="form-control" placeholder="Amount" name="amount5">
-              </div>
-              <div class="col-md-2">
-                <button (click)="addsaturday()" class="btn btn-sm btn-primary">Add</button>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input"></label>
-              <div class="col-md-6 mt-3">
-                <table class="table table-bordered table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>S.No</th>
-                      <th>From Time </th>
-                      <th>To Time</th>
-                      <th>Amount</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                    <tr *ngFor="let dynamic5 of Included_new5; let i = index;">
-                      <td>{{i+1}}</td>
-                      <td>{{dynamic5.time1}}</td>
-                      <td>{{dynamic5.time2}}</td>
-                      <td>{{dynamic5.amount5}}</td>
-                      <td><button class="btn btn-sm btn-primary">Edit</button>
-                        <button (click)="deletefriday()" class="btn btn-sm btn-primary">Delete</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input">Sunday</label>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">From Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime14" name="SlotWeekDaytime14" id="SlotWeekDaytime14"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">To Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime15" name="SlotWeekDaytime15" id="SlotWeekDaytime1"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">Amount</label>
-                <input type="number" [(ngModel)]="amount6" class="form-control" placeholder="Amount" name="amount6">
-              </div>
-              <div class="col-md-2">
-                <button (click)="addtsunday()" class="btn btn-sm btn-primary">Add</button>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input"></label>
-              <div class="col-md-6 mt-3">
-                <table class="table table-bordered table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>S.No</th>
-                      <th>From Time </th>
-                      <th>To Time</th>
-                      <th>Amount</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                    <tr *ngFor="let dynamic6 of Included_new6; let i = index;">
-                      <td>{{i+1}}</td>
-                      <td>{{dynamic6.time1}}</td>
-                      <td>{{dynamic6.time2}}</td>
-                      <td>{{dynamic6.amount6}}</td>
-                      <td><button class="btn btn-sm btn-primary">Edit</button>
-                        <button (click)="deletesunday()" class="btn btn-sm btn-primary">Delete</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input">Add Date</label>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">Date</label>
-                <input type="date" [(ngModel)]="slotdate1" name="slotdate1" id="SlotWeekDaytime8" class="form-control"
-                  placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">From Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime15" name="SlotWeekDaytime15" id="SlotWeekDaytime15"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-2">
-                <label class="col-form-label" for="text-input">To Time</label>
-                <input type="time" [(ngModel)]="SlotWeekDaytime16" name="SlotWeekDaytime16" id="SlotWeekDaytime16"
-                  class="form-control" placeholder="Slot Week Day time">
-              </div>
-              <div class="col-md-1">
-                <label class="col-form-label" for="text-input">Amount</label>
-                <input type="number" [(ngModel)]="amount7" class="form-control" placeholder="Amount" name="amount7">
-              </div>
-              <div class="col-md-1">
-                <button (click)="addweekdays2()" class="btn btn-sm btn-primary">Add</button>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="text-input"></label>
-              <div class="col-md-6 mt-3">
-                <table class="table table-bordered table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>S.No</th>
-                      <th>Date</th>
-                      <th>From Time </th>
-                      <th>To Time</th>
-                      <th>Amount</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let dynamic7 of Included_new7; let i = index;">
-                      <td>{{i+1}}</td>
-                      <td>{{dynamic7.date1}}</td>
-                      <td>{{dynamic7.time1}}</td>
-                      <td>{{dynamic7.time2}}</td>
-                      <td>{{dynamic7.amount}}</td>
-                      <td><button class="btn btn-sm btn-primary">Edit</button>
-                        <button (click)="deleteaddweekdays2(i)" class="btn btn-sm btn-primary">Delete</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <div class="card-body">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Monday</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime35" name="SlotWeekDaytime35" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime36" name="SlotWeekDaytime36" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="amount17" class="form-control" placeholder="Amount" name="amount17">
+                  </div>
+                  <div class="col-md-2">
+                    <button (click)="carAddmondayboth()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        <tr *ngFor="let dynamic of Included_newee; let i = index;">
+                          <td>{{i+1}}</td>
+                          <td>{{dynamic.Start_time}}</td>
+                          <td>{{dynamic.End_time}}</td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="carremovemondayboth(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Tuesday</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime37" name="SlotWeekDaytime37" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime38" name="SlotWeekDaytime38" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="amount18" class="form-control" placeholder="Amount" name="amount1">
+                  </div>
+                  <div class="col-md-2">
+                    <button (click)="carAddtuesdayboth()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        <tr *ngFor="let dynamic1 of Included_newee1; let i = index;">
+                          <td>{{i+1}}</td>
+                          <td>{{dynamic1.Start_time}}</td>
+                          <td>{{dynamic1.End_time}}</td>
+                          <td>{{dynamic1.Price}}</td>
+                          <td>
+                            <button (click)="carremovetuesdayboth(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Wednesday</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime39" name="SlotWeekDaytime39" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime40" name="SlotWeekDaytime40" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="amount19" class="form-control" placeholder="Amount" name="amount19">
+                  </div>
+                  <div class="col-md-2">
+                    <button (click)="addweddaycboth()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        <tr *ngFor="let dynamic2 of Included_newee2; let i = index;">
+                          <td>{{i+1}}</td>
+                          <td>{{dynamic2.Start_time}}</td>
+                          <td>{{dynamic2.End_time}}</td>
+                          <td>{{dynamic2.Price}}</td>
+                          <td>
+                            <button (click)="deletewedsdaycboth(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Thursday</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime41" name="SlotWeekDaytime41" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime42" name="SlotWeekDaytime42" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="amount20" class="form-control" placeholder="Amount" name="amount">
+                  </div>
+                  <div class="col-md-2">
+                    <button (click)="addthursdaycboth()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        <tr *ngFor="let dynamic3 of Included_newee3; let i = index;">
+                          <td>{{i+1}}</td>
+                          <td>{{dynamic3.Start_time}}</td>
+                          <td>{{dynamic3.End_time}}</td>
+                          <td>{{dynamic3.Price}}</td>
+                          <td>
+                            <button (click)="deletethursdaycboth(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+    
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Friday</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime43" name="SlotWeekDaytime43" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime44" name="SlotWeekDaytime44" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="amount21" class="form-control" placeholder="Amount" name="amount4">
+                  </div>
+                  <div class="col-md-2">
+                    <button (click)="addfridaycboth()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        <tr *ngFor="let dynamic4 of Included_newee4; let i = index;">
+                          <td>{{i+1}}</td>
+                          <td>{{dynamic4.Start_time}}</td>
+                          <td>{{dynamic4.End_time}}</td>
+                          <td>{{dynamic4.Price}}</td>
+                          <td>
+                            <button (click)="deletefridaycboth(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+    
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Saturday</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime45" name="SlotWeekDaytime45" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime46" name="SlotWeekDaytime46" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="amount22" class="form-control" placeholder="Amount" name="amount22">
+                  </div>
+                  <div class="col-md-2">
+                    <button (click)="addsaturdaycboth()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        <tr *ngFor="let dynamic5 of Included_newee5; let i = index;">
+                          <td>{{i+1}}</td>
+                          <td>{{dynamic5.Start_time}}</td>
+                          <td>{{dynamic5.End_time}}</td>
+                          <td>{{dynamic5.Price}}</td>
+                          <td>
+                            <button (click)="deletesaturdaycboth(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+    
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Sunday</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime47" name="SlotWeekDaytime47" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime48" name="SlotWeekDaytime48" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="amount23" class="form-control" placeholder="Amount" name="amount23">
+                  </div>
+                  <div class="col-md-2">
+                    <button (click)="addsundaycboth()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        <tr *ngFor="let dynamic6 of Included_newee6; let i = index;">
+                          <td>{{i+1}}</td>
+                          <td>{{dynamic6.Start_time}}</td>
+                          <td>{{dynamic6.End_time}}</td>
+                          <td>{{dynamic6.Price}}</td>
+                          <td>
+                            <button (click)="deletesundaycboth(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Add Date</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Date</label>
+                    <input type="date" [(ngModel)]="slotdateee1" name="slotdateee1"  class="form-control"
+                      >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime49" name="SlotWeekDaytime49" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <input type="time" [(ngModel)]="SlotWeekDaytime50" name="SlotWeekDaytime50" 
+                      class="form-control" >
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="amount24" class="form-control" placeholder="Amount" name="amount24">
+                  </div>
+                  <div class="col-md-1">
+                    <button (click)="addweekdaysc2both()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>Date</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let dynamic7 of this.both_slot_per_day; let i = index;">
+                          <td>{{i+1}}</td>
+                          <td>{{dynamic7.dates}}</td>
+                          <td>{{dynamic7.Start_time}}</td>
+                          <td>{{dynamic7.End_time}}</td>
+                          <td>{{dynamic7.Price}}</td>
+                          <td>
+                            <button (click)="deleteaddweekdaysc2both(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div>
             </div>
           </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <button (click)="parkingCreation()" class="btn btn-sm btn-primary float-right mt-5"><i
+                  <button (click)="parkingslotCreation()" class="btn btn-sm btn-primary float-right mt-5"><i
                       class="fa fa-save"></i>Save</button>
                 </div>
               </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="form-group">
                   <button type="reset" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i> Reset</button>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!--/.row-->
     <!-- <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -1505,21 +1532,21 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Area Name</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="AreaName" name="AreaName" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="AreaName" name="AreaName"  class="form-control"
                   placeholder="Area Name">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Sub Area Name</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="SubAreaName" name="SubAreaName" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="SubAreaName" name="SubAreaName"  class="form-control"
                   placeholder="Sub Area Name">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">Slot Number</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="SlotNumber" name="SlotNumber" id="text-input" class="form-control"
+                <input type="text" [(ngModel)]="SlotNumber" name="SlotNumber"  class="form-control"
                   placeholder="Slot Number">
               </div>
             </div>
@@ -1538,53 +1565,53 @@
                   <tr>
                    
                     <td>Monday</td>
-                    <td><input type="time" [(ngModel)]="SlotWeekDaytime1" name="SlotWeekDaytime1" id="SlotWeekDaytime1" class="form-control"
-                      placeholder="Slot Week Day time" ></td>
-                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime2" name="SlotWeekDaytime2" id="SlotWeekDaytime2" class="form-control"
-                      placeholder="Slot Week Day time"></td>
+                    <td><input type="time" [(ngModel)]="SlotWeekDaytime1" name="SlotWeekDaytime1"  class="form-control"
+                       ></td>
+                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime2" name="SlotWeekDaytime2"  class="form-control"
+                      ></td>
                   </tr>
                   <tr>
                     <td>Tuesday</td>
-                    <td><input type="time" [(ngModel)]="SlotWeekDaytime3" name="SlotWeekDaytime3" id="SlotWeekDaytime3" class="form-control"
-                      placeholder="Slot Week Day time"></td>
-                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime4" name="SlotWeekDaytime4" id="SlotWeekDaytime4" class="form-control"
-                      placeholder="Slot Week Day time"></td>
+                    <td><input type="time" [(ngModel)]="SlotWeekDaytime3" name="SlotWeekDaytime3"  class="form-control"
+                      ></td>
+                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime4" name="SlotWeekDaytime4"  class="form-control"
+                      ></td>
                   </tr>
                   <tr>
                     <td>Wednesday</td>
-                    <td><input type="time" [(ngModel)]="SlotWeekDaytime5" name="SlotWeekDaytime5" id="SlotWeekDaytime5" class="form-control"
-                      placeholder="Slot Week Day time"></td>
-                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime6" name="SlotWeekDaytime6" id="SlotWeekDaytime6" class="form-control"
-                      placeholder="Slot Week Day time"></td>
+                    <td><input type="time" [(ngModel)]="SlotWeekDaytime5" name="SlotWeekDaytime5"  class="form-control"
+                      ></td>
+                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime6" name="SlotWeekDaytime6"  class="form-control"
+                      ></td>
                   </tr>
                   <tr>
                    
                     <td>Thursday</td>
-                    <td><input type="time" [(ngModel)]="SlotWeekDaytime7" name="SlotWeekDaytime7" id="SlotWeekDaytime7" class="form-control"
-                      placeholder="Slot Week Day time"></td>
-                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime8" name="SlotWeekDaytime8" id="SlotWeekDaytime8" class="form-control"
-                      placeholder="Slot Week Day time"></td>
+                    <td><input type="time" [(ngModel)]="SlotWeekDaytime7" name="SlotWeekDaytime7"  class="form-control"
+                      ></td>
+                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime8" name="SlotWeekDaytime8"  class="form-control"
+                      ></td>
                   </tr>
                   <tr>
                     <td>Friday</td>
-                    <td><input type="time" [(ngModel)]="SlotWeekDaytime9" name="SlotWeekDaytime9" id="SlotWeekDaytime9" class="form-control"
-                      placeholder="Slot Week Day time"></td>
-                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime10" name="SlotWeekDaytime10" id="SlotWeekDaytime10" class="form-control"
-                      placeholder="Slot Week Day time"></td>
+                    <td><input type="time" [(ngModel)]="SlotWeekDaytime9" name="SlotWeekDaytime9"  class="form-control"
+                      ></td>
+                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime10" name="SlotWeekDaytime10"  class="form-control"
+                      ></td>
                   </tr>
                   <tr>
                     <td>Saturday</td>
                     <td><input type="time" [(ngModel)]="SlotWeekDaytime11" name="SlotWeekDaytime11" id="SlotWeekDaytime11" class="form-control"
-                      placeholder="Slot Week Day time"></td>
-                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime12" name="SlotWeekDaytime12" id="SlotWeekDaytime12" class="form-control"
-                      placeholder="Slot Week Day time"></td>
+                      ></td>
+                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime12" name="SlotWeekDaytime12"  class="form-control"
+                      ></td>
                   </tr>
                   <tr>
                     <td>Sunday</td>
                     <td><input type="time" [(ngModel)]="SlotWeekDaytime13" name="SlotWeekDaytime13" id="SlotWeekDaytime13" class="form-control"
-                      placeholder="Slot Week Day time"></td>
-                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime14" name="SlotWeekDaytime14" id="SlotWeekDaytime14" class="form-control"
-                      placeholder="Slot Week Day time"></td>
+                      ></td>
+                    <td> <input type="time" [(ngModel)]="SlotWeekDaytime14" name="SlotWeekDaytime14"  class="form-control"
+                      ></td>
                   </tr>
                 </tbody>                     
               </table>
@@ -1593,14 +1620,14 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label" for="text-input">Rent per Time</label>
             <div class="col-md-6">
-              <input type="number" [(ngModel)]="RentperTime" name="RentperTime" id="text-input" class="form-control"
+              <input type="number" [(ngModel)]="RentperTime" name="RentperTime"  class="form-control"
                 placeholder="Rent per Time">
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-3 col-form-label" for="text-input">Time</label>
             <div class="col-md-6">
-              <input type="number" [(ngModel)]="timefor" name="timefor" id="text-input" class="form-control"
+              <input type="number" [(ngModel)]="timefor" name="timefor"  class="form-control"
                 placeholder="Time">
             </div>
           </div>

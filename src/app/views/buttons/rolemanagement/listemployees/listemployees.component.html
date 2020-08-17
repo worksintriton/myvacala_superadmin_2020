@@ -62,8 +62,13 @@
         <div class="card-header">
           <i class="fa fa-align-justify"></i> Employee List
         </div>
+
         <div class="card-body">
           <div style="overflow-x: scroll;">
+            <div class="search-hero">
+              <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+                [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
+            </div>
             <table class="table table-striped table-bordered table-sm" [svData]="emp_list" #sv="svDataTable"
               [svRowsOnPage]="5" svSortBy="name" svSortOrder="asc">
               <thead>
@@ -88,7 +93,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of sv.data; let i = index;">
+                <tr *ngFor="let item of sv.data | filter:searchQR; let i = index;">
                   <td>{{i+1}}</td>
                   <td>{{item.Employee_Id}}</td>
                   <td>{{item.Role_Name}}</td>
@@ -108,8 +113,10 @@
                     </ng-container>
                   </td>
                   <td>{{item.employee_status}}</td>
-                  <td><button (click)="Edit_Employee(item)" type="button" id="" class="btn btn-sm btn-primary">Edit</button></td>
-                  <td> <button (click)="suspend(item._id)" class="btn btn-sm btn-primary" [disabled] = "item.employee_status == 'Suspended'">Suspend</button>
+                  <td><button (click)="Edit_Employee(item)" type="button" id=""
+                      class="btn btn-sm btn-primary">Edit</button></td>
+                  <td> <button (click)="suspend(item._id)" class="btn btn-sm btn-primary"
+                      [disabled]="item.employee_status == 'Suspended'">Suspend</button>
                   </td>
                 </tr>
               </tbody>

@@ -206,13 +206,13 @@ export class BannerComponent implements OnInit {
         this.width = img.width;
         this.height = img.height;
         console.log(this.width, this.height);
-        if(this.width == 650 && this.height == 200){
+        if(this.width == 650 && this.height == 300){
           this.addfiles1();
         }
         else{
           Swal.fire(
             'Sorry',
-            'Image Size Should be 650*200',
+            'Image Size Should be 650*300',
             'error'
           )
       

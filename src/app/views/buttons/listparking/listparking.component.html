@@ -1,70 +1,94 @@
 <div class="animated fadeIn">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <strong>Parking</strong>
-          </div>
-          <div class="card-body">
-            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                <h4 class="card-title pt-4">Parking List</h4>
-                <div style="overflow: scroll;">
-                <table class="table table-bordered table-striped table-sm">
-                    <thead>
-                      <tr>
-                        <th>S.No</th>
-                        <th>Parking name</th>
-                        <th>Owner_name</th>
-                        <th>Owner_primary_contact</th>
-                        <th>Secoundary_Contact</th>
-                        <th>POC_Contact</th>
-                        <th>Parking_Area_Document</th>
-                        <th>Parking_area_GST_No</th>
-                        <th>GST_Address</th>
-                        <th>Map_Link</th>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
-                        <th>Owner_Email_Id</th>
-                        <th>POC_Email_Id</th>
-                        <th>Bike_Slots</th>
-                        <th>Car_Slots</th>
-                        <th>Slot Number</th>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Parking</strong>
+        </div>
+        <div class="card-body">
+          <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <h4 class="card-title pt-4">Parking List</h4>
+            <div class="search-hero">
+              <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+                [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
+            </div>
+            <div style="overflow: scroll;">
 
-                      </tr>
-                      
-                    </thead>
-                    <tbody>
-                        <ng-container>
-                        <tr>
-                            <td>1</td>
-                            <td>Bike parking</td>
-                            <td>Jayalakshmi</td>
-                            <td>9988776655</td>
-                            <td>8767898789</td>
-                            <td>8765432345</td>
-                            <td>Doc</td>
-                            <td>2345rtfg</td>
-                            <td>Chennai</td>
-                            <td></td>
-                            <td>123.11.11</td>
-                            <td>45.34.35.44</td>
-                            <td>jaya@gmail.com</td>
-                            <td>vb@gmail.com</td>
-                            <td>2</td>
-                            <td>4</td>
-                            <td>56</td>
-                            
-                         </tr>
-                        </ng-container>
-                    </tbody>
-                  </table>      
-                </div>     
-            </form>
-             
-          </div>
+
+              <table class="table table-striped table-bordered table-sm" [svData]="List" #sv="svDataTable"
+                [svRowsOnPage]="10" svSortBy="name" svSortOrder="asc">
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Parking name</th>
+                    <th>Owner name</th>
+                    <th>Owner primary contact</th>
+                    <th>Secoundary Contact</th>
+                    <th>Parking Area Document</th>
+                    <th>Parking area GST No</th>
+                    <th>GST Address</th>
+                    <th>Map Link</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Owner Email Id</th>
+                    <th>POC Email Id</th>
+                    <th>Bike Slots</th>
+                    <th>Car Slots</th>
+                    <th>Action</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let item of sv.data | filter:searchQR ; let i = index;">
+
+                    <tr>
+                      <td>{{i+1}}</td>
+                      <td>{{item.parking_details_name}}</td>
+                      <td>{{item.parking_owner_id.owner_name}}</td>
+                      <td>{{item.parking_owner_id.owner_pri_contact}}</td>
+                      <td>{{item.parking_owner_id.owner_sec_contact}}</td>
+                      <td style="text-align: center;">
+                        <a [href]="item.parking_details_gstdoc" target="blank" class="btn btn-danger">
+                          <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                      <td>{{item.parking_details_gstno}}</td>
+
+                      <td>{{(item.parking_details_gstaddress | slice:0:20) + '..'}}</td>
+                      <td style="text-align: center;">
+                        <a [href]="item.parking_details_maplink" target="blank" class="btn btn-success">
+                          <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                      <td>{{item.parking_details_lat}}</td>
+                      <td>{{item.parking_details_long}}4</td>
+                      <td>{{item.parking_owner_id.owner_email}}</td>
+                      <td>{{item.parking_details_pocemail}}</td>
+                      <td>{{item.parking_details_slots_count_Bike}}</td>
+                      <td>{{item.parking_details_slots_count_Car}}</td>
+                      <td><button (click)="edit(item)" class="btn btn-success" style="width: 40px;margin: 2px;">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </button>
+                        <button (click)="delete(item._id)" class="btn btn-danger" style="width: 40px;margin: 2px;">
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button></td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="16">
+                      <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </form>
+
         </div>
       </div>
-    </div><!--/.row-->
+    </div>
   </div>
-  
-
+  <!--/.row-->
+</div>

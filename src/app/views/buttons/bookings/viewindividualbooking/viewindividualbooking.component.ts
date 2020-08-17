@@ -139,7 +139,9 @@ export class ViewindividualbookingComponent implements OnInit {
     }
   }
   edit() {
-    if ((this.FinalPayable != undefined && this.FinalPayable != '') && (this.WorkshopId != undefined && this.WorkshopId != '') && this.Thmp_list.length > 0 && this.Thmp_list1.length > 0 && (this.WorkshopName != undefined && this.WorkshopName != '') && (this.WorkshopLocation != undefined && this.WorkshopLocation != '') && this.BookingStatus != undefined) {
+    if ((this.FinalPayable != undefined && this.FinalPayable != '') && this.Thmp_list.length > 0 && this.Thmp_list1.length > 0 && (this.WorkshopName != undefined && this.WorkshopName != '') && (this.WorkshopLocation != undefined && this.WorkshopLocation != '') && this.BookingStatus != undefined) {
+     
+      // (this.WorkshopId != undefined && this.WorkshopId != '') 
       let data = {
         "Booking_id": this.vehicle_list.Booking_id,
         // "Status_history_text": [{ "title": "Teseing", "date": "23-20-2034 Thus morning 10:20 am" }],

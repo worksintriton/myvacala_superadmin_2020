@@ -140,7 +140,7 @@ export class CreatesubservicesComponent implements OnInit {
 
   }
   editservice(data) {
-    // this.VehicleType =
+    this.VehicleType = data.Vehicle_Name_id[0].Vehicle_Type;
     // this.vechiclt_type_select();
     this.vehicledetails_list.map((x) => x.status = "true");
     this.forcreate = false;

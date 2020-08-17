@@ -11,14 +11,8 @@ import * as frLocale from 'date-fns/locale/fr';
   styleUrls: ['./coupon-code.component.scss']
 })
 export class CouponCodeComponent implements OnInit {
-  options: DatepickerOptions = {
-    minYear: 1970,
-    maxYear: 2030,
-    displayFormat: 'MMM DD YYYY',
-    barTitleFormat: 'MMMM YYYY',
-    dayNamesFormat: 'dd',
-  };
-  Expiry_Date: Date = new Date();
+
+  Expiry_Date: Date = undefined;
   Value_Type: any = undefined;
   Count: any;
   Value: any;
@@ -30,7 +24,7 @@ export class CouponCodeComponent implements OnInit {
   user_status: any = [];
   coupon_list: any = [];
   searchText: any;
-  Start_Date: Date = new Date();
+  Start_Date: Date = undefined;
   MasterServiceName: any = "5f1ac41b55abee4870516567";
   VehicleType: any = undefined;
   mainservice_list: any;
@@ -41,7 +35,22 @@ export class CouponCodeComponent implements OnInit {
   amount: any;
   Coupon_Code: any;
   searchCoupon: any;
-  searchQR:any;
+  searchQR: any;
+  options: DatepickerOptions = {
+    minYear: 1970,
+    maxYear: 2030,
+    displayFormat: 'MMM DD YYYY',
+    barTitleFormat: 'MMMM YYYY',
+    dayNamesFormat: 'dd',
+    minDate: new Date(),
+  };
+  options1: DatepickerOptions = {
+    minYear: 1970,
+    maxYear: 2030,
+    displayFormat: 'MMM DD YYYY',
+    barTitleFormat: 'MMMM YYYY',
+    dayNamesFormat: 'dd',
+  };
   constructor(
     private router: Router,
 
@@ -173,7 +182,7 @@ export class CouponCodeComponent implements OnInit {
     this.Value = undefined;
     this.Count = undefined;
     this.user_arr = [];
-    this.Expiry_Date = new Date();
+    this.Expiry_Date = undefined;
     this.Description = undefined;
     this.VehicleType = undefined;
     this.Start_Date = new Date();
@@ -233,7 +242,7 @@ export class CouponCodeComponent implements OnInit {
 
     );
   }
-  delete(id){
+  delete(id) {
     let data = {
       "_id": id,
     }
@@ -250,5 +259,10 @@ export class CouponCodeComponent implements OnInit {
       }
 
     });
+  }
+  date() {
+    console.log(this.Start_Date)
+    this.Expiry_Date = this.Start_Date;
+    this.options1.minDate = this.Start_Date;
   }
 }

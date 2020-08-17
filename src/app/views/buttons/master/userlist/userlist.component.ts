@@ -11,7 +11,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 })
 export class UserlistComponent implements OnInit {
 
-  user_list:any;
+  user_list: any;
   constructor(
     private router: Router,
 
@@ -28,7 +28,7 @@ export class UserlistComponent implements OnInit {
         this.user_list = response.Data;
         console.log(this.user_list);
       }
-    ); 
+    );
   }
   saveInLocal(key, val): void {
     this.storage.set(key, val);
@@ -37,5 +37,34 @@ export class UserlistComponent implements OnInit {
   getFromLocal(key): any {
     return this.storage.get(key);
   }
+
+  delete(i) {
+    let id = {
+      "user_id": i
+    }
+    console.log(id)
+    this._api.user_delete(id).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.ngOnInit();
+        alert(response.Message);
+      }
+    );
+  }
+  disable(i){
+    let id = {
+      "Customer_id": i._id,
+      "User_Status": !i.User_Status
+    }
+    console.log(id)
+    this._api.user_edit(id).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.ngOnInit();
+        alert(response.Message);
+      }
+    );
+  }
+
 }
 

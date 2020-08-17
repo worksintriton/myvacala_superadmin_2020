@@ -140,7 +140,7 @@ export class ApiService {
     return this.http.get(this.apiUrl + 'masterservices/getlist');
   }
   Masterservice_edit(data) {
-    return this.http.put(this.apiUrl + 'masterservices/edit', data);
+    return this.http.post(this.apiUrl + 'masterservices/edit', data);
   }
   deleteservice_list(data) {
     return this.http.post(this.apiUrl + 'masterservices/delete', data);
@@ -383,5 +383,23 @@ export class ApiService {
   }
   booking_edit(data){
     return this.http.post(this.apiUrl + 'booking/edit', data);
+  }
+  Parking_owner_create(data){
+    return this.http.post(this.apiUrl + 'parking/owner/create', data);
+  }
+  Parking_owner_edit(data){
+    return this.http.post(this.apiUrl + 'parking/parkingareadetails/edit', data);
+  }
+  list_parking(){
+    return this.http.get(this.apiUrl + 'parking/parkingareadetails/getlist');
+  }
+  list_parking_delete(data){
+    return this.http.post(this.apiUrl + 'parking/parkingareadetails/delete', data);
+  }
+  user_delete(data){
+    return this.http.post(this.apiUrl + 'customer/delete', data);
+  }
+  user_edit(data){
+    return this.http.post(this.apiUrl + 'customer/edit', data);
   }
 }

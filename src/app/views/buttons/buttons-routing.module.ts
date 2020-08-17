@@ -98,6 +98,7 @@ import { CouponCodeComponent } from './coupon-code/coupon-code.component';
 import { EditemployeeComponent } from './rolemanagement/editemployee/editemployee.component';
 import { EngineccComponent } from './master/enginecc/enginecc.component';
 import { PopularSubServiceComponent } from './master/popular-sub-service/popular-sub-service.component';
+import { ParkingEditComponent } from './parking/parking-edit/parking-edit.component';
 const routes: Routes = [
   {
     path: '',
@@ -594,14 +595,21 @@ const routes: Routes = [
         path: 'parking',
         component: ParkingComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Parking'
         }
       },
       {
         path: 'list_parking',
         component: ListparkingComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Parking List'
+        }
+      },
+      {
+        path: 'edit_parking',
+        component: ParkingEditComponent,
+        data: {
+          title: 'Edit Parking'
         }
       },
 

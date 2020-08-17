@@ -103,7 +103,7 @@ export class CreatemasterserviceComponent implements OnInit {
     this.Description = data.Desc;
     this.service_id = data._id;
     this.Pic = data.Service_Image;
-    this.selectedlocations =data.Serviceavailable_Location;
+    this.selectedlocations = data.Serviceavailable_Location;
     let loc = data.Serviceavailable_Location;
     for(let i=0; i<loc.length; i++){
       this.Location_list.map((x)=>{
@@ -126,9 +126,9 @@ export class CreatemasterserviceComponent implements OnInit {
   get_location_name(item, i) {
     this.Location_list[i].status = "false";
     console.log(item);
-    let data = {
-      "Serviceavailable_Location": item.Display_Name
-    }
+    // let data = {
+    //   "Serviceavailable_Location": item.Display_Name
+    // }
     this.selectedlocations.push(item.Display_Name);
     console.log(this.selectedlocations);
 
@@ -177,6 +177,7 @@ export class CreatemasterserviceComponent implements OnInit {
               if (response.Code == 401) {
                 alert(response.Message);
               } else {
+                this.reset() ;
                 this.saveInLocal('service_list', response.data);
                 alert(response.Message);
                 this.ngOnInit();
@@ -192,8 +193,9 @@ export class CreatemasterserviceComponent implements OnInit {
 
           "Service_id": this.service_id,
           "Masterservice_Name": this.ServiceName,
+          "Serviceavailable_Location": this.selectedlocations,
           "Service_Image": this.Pic,
-          "Desc": this.Description
+          "Desc": this.Description,
 
         }
         console.log(data);
@@ -212,6 +214,8 @@ export class CreatemasterserviceComponent implements OnInit {
               if (response.Code == 401) {
                 alert(response.Message);
               } else {
+                this.reset() ;
+                this.ngOnInit();
                 this.saveInLocal('service_list', response.data);
                 alert(response.Message);
                 this.saveInLocal("PickupBoy_Details", "");
@@ -305,13 +309,13 @@ export class CreatemasterserviceComponent implements OnInit {
         this.width = img.width;
         this.height = img.height;
         console.log(this.width, this.height);
-        if(this.width == 650 && this.height == 200){
+        if(this.width == 100 && this.height == 100){
           this.addfiles1();
         }
         else{
           Swal.fire(
             'Sorry',
-            'Image Size Should be 650*200',
+            'Image Size Should be 100*100',
             'error'
           )
       
@@ -333,4 +337,5 @@ export class CreatemasterserviceComponent implements OnInit {
         this.Pic = res.Data;
       });
   }
+ 
 }

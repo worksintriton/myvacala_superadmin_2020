@@ -112,14 +112,14 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Start Date</label>
                             <div class="col-md-6">
-                                <ng-datepicker [(ngModel)]="Start_Date" name="date" [options]="options">
+                                <ng-datepicker [(ngModel)]="Start_Date" name="date" (ngModelChange)="date()" [options]="options">
                                 </ng-datepicker>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Expiry Date</label>
-                            <div class="col-md-6">
-                                <ng-datepicker [(ngModel)]="Expiry_Date" name="date" [options]="options">
+                            <div class="col-md-6" >
+                                <ng-datepicker [(ngModel)]="Expiry_Date" name="date" [options]="options1" [headless]="Start_Date == undefined">
                                 </ng-datepicker>
                             </div>
                         </div>
