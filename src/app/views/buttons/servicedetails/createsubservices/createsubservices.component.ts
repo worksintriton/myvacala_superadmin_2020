@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject,ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { ApiService } from '../../../../api.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -28,7 +28,7 @@ export class CreatesubservicesComponent implements OnInit {
   desErrorMsg: any;
 
   service_list: any;
-  forcreate: any;
+  forcreate: any = true;
   service_id: any;
   subservice_list: any;
   masterservice_list: any;
@@ -112,6 +112,7 @@ export class CreatesubservicesComponent implements OnInit {
         console.log("response.Data");
         console.log(response.Data);
         this.vehicledetails_list = [];
+        this.vihicle_list = [];
         this.vehicle_list = response.Data;
         for (let a = 0; a < response.Data.length; a++) {
           let data = {
@@ -129,6 +130,10 @@ export class CreatesubservicesComponent implements OnInit {
           this.vehicledetails_list.push(data);
           this.vihicle_list.push(data);
         }
+        if (this.VehicleType != undefined) {
+          this.vehicledetails_list = this.vehicledetails_list.filter(x => x.Vehicle_Type == this.VehicleType);
+        }
+        console.log(this.vehicledetails_list);
         // console.log(response.Data);
         // this.vehicle_list = response.Data;
 
@@ -142,7 +147,7 @@ export class CreatesubservicesComponent implements OnInit {
   editservice(data) {
     this.VehicleType = data.Vehicle_Name_id[0].Vehicle_Type;
     // this.vechiclt_type_select();
-    this.vehicledetails_list.map((x) => x.status = "true");
+    // this.vehicledetails_list.map((x) => x.status = "true");
     this.forcreate = false;
     this.sub_service_id = data._id;
     this.SubServiceName = data.sub_ser_Title;
@@ -179,8 +184,8 @@ export class CreatesubservicesComponent implements OnInit {
     // this.router.navigateByUrl('/superadmin/master/create_master_service');
 
   }
- 
- 
+
+
   subservicecreation() {
     this.validation();
     if (this.validate == true) {
@@ -220,7 +225,8 @@ export class CreatesubservicesComponent implements OnInit {
               this.ngOnInit();
               this.reset();
               alert(response.Message);
-
+              console.log("this.vehicledetails_list")
+              console.log(this.vehicledetails_list)
               // this.router.navigate(['/superadmin/master/create_master_service'])
 
             }
@@ -256,6 +262,8 @@ export class CreatesubservicesComponent implements OnInit {
               this.ngOnInit();
               this.reset();
               alert(response.Message);
+              console.log("this.edit")
+              console.log(this.vehicledetails_list)
               this.forcreate = true;
               //this.router.navigate(['/superadmin/master/create_master_service']);
 
@@ -426,7 +434,9 @@ export class CreatesubservicesComponent implements OnInit {
     }
   }
   reset() {
+    console.log("reset")
     this.vehicledetails_list.map((x) => x.status = "true");
+    console.log(this.vehicledetails_list)
     this.SubServiceName = undefined;
     this.mainservice_id = undefined;
     this.Pic = undefined;
@@ -472,9 +482,11 @@ export class CreatesubservicesComponent implements OnInit {
     this.mainservice_list = this.main_list;
     this.vehicledetails_list = this.vihicle_list;
     if (this.VehicleType != undefined) {
-      this.mainservice_list = this.mainservice_list.filter(x => (x.Vehicle_Type_id._id == this.VehicleType && x.Popular == false));
+      this.mainservice_list = this.mainservice_list.filter(x => ((x.Vehicle_Type_id._id == this.VehicleType) && (x.Popular == false)));
       this.vehicledetails_list = this.vehicledetails_list.filter(x => x.Vehicle_Type == this.VehicleType);
       console.log(this.mainservice_list)
+      console.log(this.vihicle_list)
+      console.log(this.vehicledetails_list)
     }
 
     // console.log("type")
@@ -533,16 +545,16 @@ export class CreatesubservicesComponent implements OnInit {
         this.width = img.width;
         this.height = img.height;
         console.log(this.width, this.height);
-        if(this.width == 100 && this.height == 100){
+        if (this.width == 100 && this.height == 100) {
           this.addfiles1();
         }
-        else{
+        else {
           Swal.fire(
             'Sorry',
             'Image Size Should be 100*100',
             'error'
           )
-      
+
         }
       };
 
@@ -572,16 +584,16 @@ export class CreatesubservicesComponent implements OnInit {
         this.width = img.width;
         this.height = img.height;
         console.log(this.width, this.height);
-        if(this.width == 100 && this.height == 100){
+        if (this.width == 100 && this.height == 100) {
           this.addfiles();
         }
-        else{
+        else {
           Swal.fire(
             'Sorry',
             'Image Size Should be 100*100',
             'error'
           )
-      
+
         }
       };
 
