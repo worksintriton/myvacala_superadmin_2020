@@ -190,7 +190,7 @@
                     <tr>
                       <th>S.No</th>
                       <th>Select</th>
-                      <th>Area </th>
+                      <th>Block </th>
                       <th>Floor</th>
                       <th>Slot</th>
                       <!-- <th>Action</th> -->
@@ -201,8 +201,8 @@
                     <tr *ngFor="let dynamic of include_bike1; let i = index;">
                       <td>{{i+1}}</td>
                       <td><input type="checkbox" name="name" [(ngModel)]="name" > </td>
-                      <td> <input type="text" [(ngModel)]="dynamic.area" name="area"  class="form-control"
-                          placeholder="Area"></td>
+                      <td> <input type="text" [(ngModel)]="dynamic.area" name="Block"  class="form-control"
+                          placeholder="Block"></td>
                       <td> <input type="text" [(ngModel)]="dynamic.floor" name="flooe"  class="form-control"
                           placeholder="Floor"></td>
                       <td><input type="text" [(ngModel)]="dynamic.slot" name="slot"  class="form-control"
@@ -234,7 +234,7 @@
                     <tr>
                       <th>S.No</th>
                       <th>Select</th>
-                      <th>Area </th>
+                      <th>Block </th>
                       <th>Floor</th>
                       <th>Slot</th>
                       <!-- <th>Action</th> -->
@@ -245,8 +245,8 @@
                     <tr *ngFor="let dyna of include_bike2; let i = index;">
                       <td>{{i+1}}</td>
                       <td><input type="checkbox" name="name" [(ngModel)]="name" > </td>
-                      <td> <input type="text" [(ngModel)]="dyna.area" name="area1"  class="form-control"
-                          placeholder="Area"></td>
+                      <td> <input type="text" [(ngModel)]="dyna.area" name="Block1"  class="form-control"
+                          placeholder="Block"></td>
                       <td> <input type="text" [(ngModel)]="dyna.floor" name="flooe1"  class="form-control"
                           placeholder="Floor"></td>
                       <td><input type="text" [(ngModel)]="dyna.slot" name="slot3"  class="form-control"

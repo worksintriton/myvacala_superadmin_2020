@@ -1076,6 +1076,9 @@ var ApiService = /** @class */ (function () {
     ApiService.prototype.Parking_owner_create = function (data) {
         return this.http.post(this.apiUrl + 'parking/owner/create', data);
     };
+    ApiService.prototype.Parking_owner_checking_Get_Id = function (data) {
+        return this.http.post(this.apiUrl + 'parking/owner/getlist_id', data);
+    };
     ApiService.prototype.Parking_owner_create_edit = function (data) {
         return this.http.post(this.apiUrl + 'parking/owner/edit', data);
     };

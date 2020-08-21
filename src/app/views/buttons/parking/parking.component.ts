@@ -930,41 +930,53 @@ export class ParkingComponent implements OnInit {
   createowner() {
     this.validation();
     if (this.validate == true) {
-      let data = {
-        "owner_name": this.Ownername,
-        "owner_email": this.owner_email,
-        "owner_pri_contact": this.ownerprimarycontact,
-        "owner_sec_contact": this.Secondcontact,
-        "owner_pan_no": this.pancardno,
-        "owner_pan_file": this.pancard,
-        "owner_aadhar_no": this.adharno,
-        "owner_aadhar_file": this.adarcard,
-        "owner_res_address": this.resaddress
+      let pnone = {
+        "owner_pri_contact": this.ownerprimarycontact
       }
-      console.log(data)
-      this._api.Parking_owner_create(data).subscribe((res: any) => {
+      this._api.Parking_owner_checking_Get_Id(pnone).subscribe((res: any) => {
         console.log(res)
-        alert(res.Message);
-        this.parking_Details = res.parking_Details;
-        this.step1 = true;
-        this.Parkingname = this.parking_Details.parking_details_name;
-        this.Parkingaddress = this.parking_Details.parking_details_address;
-        this.gstaddress = this.parking_Details.parking_details_gstaddress;
-        this.gstdoc = this.parking_Details.parking_details_gstdoc;
-        this.gstnumber = this.parking_Details.parking_details_gstno;
-        this.map = this.parking_Details.parking_details_maplink;
-        this.lang = this.parking_Details.parking_details_long;
-        this.lat = this.parking_Details.parking_details_lat;
-        this.poc_email = this.parking_Details.parking_details_pocemail;
-        this.include_bike1 = this.parking_Details.parking_details_slots_Bike_details;
-        this.include_bike2 = this.parking_Details.parking_details_slots_Car_details;
-        // this.bike_slot_count = this.parking_Details.parking_details_slots_count_Bike;
-        // this.car_slot_count = this.parking_Details.parking_details_slots_count_Car;
-        this.parking_details_bike_price_day = this.parking_Details.parking_details_bike_price_day;
-        this.parking_details_car_price_day = this.parking_Details.parking_details_car_price_day;
-        this.parking_details_car_price_spe_day = this.parking_Details.parking_details_car_price_spe_day;
-        this.parking_details_bike_price_spe_day = this.parking_Details.parking_details_bike_price_spe_day;
+        if (res.Code == 400) {
+          alert("phone number already exists")
+        }
+        else if (res.Code == 200) {
+          let data = {
+            "owner_name": this.Ownername,
+            "owner_email": this.owner_email,
+            "owner_pri_contact": this.ownerprimarycontact,
+            "owner_sec_contact": this.Secondcontact,
+            "owner_pan_no": this.pancardno,
+            "owner_pan_file": this.pancard,
+            "owner_aadhar_no": this.adharno,
+            "owner_aadhar_file": this.adarcard,
+            "owner_res_address": this.resaddress
+          }
+          console.log(data)
+          this._api.Parking_owner_create(data).subscribe((res: any) => {
+            console.log(res)
+            alert(res.Message);
+            this.parking_Details = res.parking_Details;
+            this.step1 = true;
+            this.Parkingname = this.parking_Details.parking_details_name;
+            this.Parkingaddress = this.parking_Details.parking_details_address;
+            this.gstaddress = this.parking_Details.parking_details_gstaddress;
+            this.gstdoc = this.parking_Details.parking_details_gstdoc;
+            this.gstnumber = this.parking_Details.parking_details_gstno;
+            this.map = this.parking_Details.parking_details_maplink;
+            this.lang = this.parking_Details.parking_details_long;
+            this.lat = this.parking_Details.parking_details_lat;
+            this.poc_email = this.parking_Details.parking_details_pocemail;
+            this.include_bike1 = this.parking_Details.parking_details_slots_Bike_details;
+            this.include_bike2 = this.parking_Details.parking_details_slots_Car_details;
+            // this.bike_slot_count = this.parking_Details.parking_details_slots_count_Bike;
+            // this.car_slot_count = this.parking_Details.parking_details_slots_count_Car;
+            this.parking_details_bike_price_day = this.parking_Details.parking_details_bike_price_day;
+            this.parking_details_car_price_day = this.parking_Details.parking_details_car_price_day;
+            this.parking_details_car_price_spe_day = this.parking_Details.parking_details_car_price_spe_day;
+            this.parking_details_bike_price_spe_day = this.parking_Details.parking_details_bike_price_spe_day;
+          })
+        }
       })
+      
     }
     else {
       alert("Please fill the all fields")
