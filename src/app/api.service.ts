@@ -370,16 +370,16 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'mobileappdetails/edit', data);
   }
   qr_code_create(data){
-    return this.http.post(this.apiUrl + 'parkingvendor/qrcode', data);
+    return this.http.post(this.apiUrl + 'parking/parkingareadetails/qrcode', data);
   }
   qr_code_get() {
-    return this.http.get(this.apiUrl + 'parkingvendor/qrgetlist');
+    return this.http.get(this.apiUrl + 'parking/parkingareadetails/qrgetlist');
   }
   qr_code_edit(data){
-    return this.http.post(this.apiUrl + 'parkingvendor/qredit', data);
+    return this.http.post(this.apiUrl + 'parking/parkingareadetails/qredit', data);
   }
   qr_code_delete(data){
-    return this.http.post(this.apiUrl + 'parkingvendor/qrdelete', data);
+    return this.http.post(this.apiUrl + 'parking/parkingareadetails/qrdelete', data);
   }
   booking_edit(data){
     return this.http.post(this.apiUrl + 'booking/edit', data);
@@ -397,7 +397,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'parking/parkingareadetails/edit', data);
   }
   list_parking(){
-    return this.http.get(this.apiUrl + 'parking/parkingareadetails/getlist');
+    return this.http.get(this.apiUrl + 'parking/parkingareadetails/Vendor_getlist');
   }
   list_parking_delete(data){
     return this.http.post(this.apiUrl + 'parking/parkingareadetails/delete', data);

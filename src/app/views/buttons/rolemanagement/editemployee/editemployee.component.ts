@@ -108,10 +108,10 @@ export class EditemployeeComponent implements OnInit {
   Driver_excel: boolean;
   Driver_share: boolean;
   validate: any;
-  emailerror: any;
-  phone_err1: any;
-  phone_err2:any;
-  phone_err3:any;
+  emailerror: boolean = false;
+  phone_err1: boolean = false;
+  phone_err2:boolean = false;
+  phone_err3:boolean = false;
   constructor(
     private router: Router,
     private http: HttpClient,

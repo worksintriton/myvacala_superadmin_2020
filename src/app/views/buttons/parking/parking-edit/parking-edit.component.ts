@@ -275,6 +275,8 @@ export class ParkingEditComponent implements OnInit {
     this.poc_email = this.Single_List.parking_details_pocemail;
     this.include_bike1 = this.Single_List.parking_details_slots_Bike_details;
     this.include_bike2 = this.Single_List.parking_details_slots_Car_details;
+    console.log(this.include_bike1)
+    console.log(this.include_bike2)
     // this.include_bike1.length = this.Single_List.parking_owner_id.parking_details_slots_count_Bike;
     // this.include_bike2.length = this.Single_List.parking_owner_id.parking_details_slots_count_Car;
 

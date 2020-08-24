@@ -1,5 +1,4 @@
 <div class="animated fadeIn">
-  <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -196,13 +195,13 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input"></label>
               <div class="col-md-6 mt-3">
-                <button (click)="deletebike()" class="btn btn-sm btn-primary mb-2">Delete Marked</button>
+                <!-- <button (click)="deletebike()" class="btn btn-sm btn-primary mb-2">Delete Marked</button> -->
                 <table class="table table-bordered table-striped table-sm">
                   <thead>
                     <tr>
                       <th>S.No</th>
-                      <th>Select</th>
-                      <th>Area </th>
+                      <!-- <th>Select</th> -->
+                      <th>Block </th>
                       <th>Floor</th>
                       <th>Slot</th>
                       <!-- <th>Action</th> -->
@@ -212,12 +211,12 @@
 
                     <tr *ngFor="let dynamic of include_bike1; let i = index;">
                       <td>{{i+1}}</td>
-                      <td><input type="checkbox" name="name" [(ngModel)]="name"> </td>
-                      <td> <input type="text" [(ngModel)]="dynamic.area" name="area" class="form-control"
+                      <!-- <td><input type="checkbox" name="name" [(ngModel)]="name"> </td> -->
+                      <td> <input type="text" [(ngModel)]="dynamic.area" name="dynamic.area" class="form-control"
                           placeholder="Area"></td>
-                      <td> <input type="text" [(ngModel)]="dynamic.floor" name="flooe" class="form-control"
+                      <td> <input type="text" [(ngModel)]="dynamic.floor" name="dynamic.floor" class="form-control"
                           placeholder="Floor"></td>
-                      <td><input type="text" [(ngModel)]="dynamic.slot" name="slot" class="form-control"
+                      <td><input type="text" [(ngModel)]="dynamic.slot" name="dynamic.slot" class="form-control"
                           placeholder="Slot Number"></td>
 
                       <!-- <td> <button (click)="addcar(i)" class="btn btn-sm btn-primary">Save</button></td> -->
@@ -239,13 +238,13 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input"></label>
               <div class="col-md-6 mt-3">
-                <button (click)="deletebike()" class="btn btn-sm btn-primary mb-2">Delete Marked</button>
+                <!-- <button (click)="deletebike()" class="btn btn-sm btn-primary mb-2">Delete Marked</button> -->
                 <table class="table table-bordered table-striped table-sm">
                   <thead>
                     <tr>
                       <th>S.No</th>
-                      <th>Select</th>
-                      <th>Area </th>
+                      <!-- <th>Select</th> -->
+                      <th>Block </th>
                       <th>Floor</th>
                       <th>Slot</th>
                       <!-- <th>Action</th> -->
@@ -255,12 +254,12 @@
 
                     <tr *ngFor="let dyna of include_bike2; let i = index;">
                       <td>{{i+1}}</td>
-                      <td><input type="checkbox" name="name" [(ngModel)]="name"> </td>
-                      <td> <input type="text" [(ngModel)]="dyna.area" name="area1" class="form-control"
+                      <!-- <td><input type="checkbox" name="name" [(ngModel)]="name"> </td> -->
+                      <td> <input type="text" [(ngModel)]="dyna.area" name="dyna.area" class="form-control"
                           placeholder="Area"></td>
-                      <td> <input type="text" [(ngModel)]="dyna.floor" name="flooe1" class="form-control"
+                      <td> <input type="text" [(ngModel)]="dyna.floor" name="dyna.floor" class="form-control"
                           placeholder="Floor"></td>
-                      <td><input type="text" [(ngModel)]="dyna.slot" name="slot3" class="form-control"
+                      <td><input type="text" [(ngModel)]="dyna.slot" name="dyna.slot" class="form-control"
                           placeholder="Slot Number"></td>
                       <!-- <td> <button (click)="addcar(i)" class="btn btn-sm btn-primary">Save</button></td> -->
                     </tr>
@@ -1501,7 +1500,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <button (click)="parkingslotCreation()" class="btn btn-sm btn-primary float-right mt-5"><i
-                      class="fa fa-save"></i>Save</button>
+                      class="fa fa-save"></i> Save</button>
                 </div>
               </div>
               <!-- <div class="col-md-6">
@@ -1650,5 +1649,5 @@
           </div>
           </div>  -->
 
-  </form>
 </div>
+

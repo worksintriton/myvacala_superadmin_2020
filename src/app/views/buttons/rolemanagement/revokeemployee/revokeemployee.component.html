@@ -16,7 +16,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <input type="text" name="PhoneNumber" id="text-input" class="form-control" [(ngModel)]="phone"
-          placeholder="PhoneNumber">
+          placeholder="Phone Number">
       </div>
     </div>
 
@@ -112,7 +112,7 @@
                   </td>
                   <td>{{item.employee_status}}</td>
                   <!-- <td><a (click)="Edit_Employee(item)" type="button" id="" class="btn btn-sm btn-primary">Edit</a></td> -->
-                  <td> <a (click)="revoke(item._id)" id="" class="btn btn-sm btn-primary">Revoke</a>
+                  <td> <a (click)="revoke(item._id)" style="color:#fff" class="btn btn-sm btn-primary">Revoke</a>
                   </td>
                 </tr>
               </tbody>

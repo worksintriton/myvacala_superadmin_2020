@@ -10,7 +10,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
   styleUrls: ['./popular-vehicle.component.scss']
 })
 export class PopularVehicleComponent implements OnInit {
-  List: any=[];
+  List: any = [];
   vehicledetails_list: any;
   vehicle_list: any;
   vehicle_brand_list: any;
@@ -31,7 +31,7 @@ export class PopularVehicleComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService) { }
 
   ngOnInit() {
-    this.List=[];
+    this.List = [];
     this._api.vehiclenamedetails_list().subscribe(
       (response: any) => {
         console.log(response.Data);
@@ -46,7 +46,7 @@ export class PopularVehicleComponent implements OnInit {
         }
 
         // this.List = response.Data;
-        
+
       }
     );
 
@@ -147,6 +147,11 @@ export class PopularVehicleComponent implements OnInit {
   }
 
   refresh() {
+    this.VehicleType = undefined;
+    this.VehicleBrand = undefined;
+    this.VehicleModel = undefined;
+    this.fuletype = undefined;
+    this.vehiclebody = undefined;
     this.vehicledetails_list = this.List;
   }
 
@@ -165,7 +170,7 @@ export class PopularVehicleComponent implements OnInit {
         if (response.Code == 401) {
           alert(response.Message);
         } else {
-          alert(response.Message);
+          alert("Vehicle status updated to Unpopular");
           // this.forcreate = true;
           //this.router.navigate(['/superadmin/master/create_master_service']);
           this.ngOnInit();

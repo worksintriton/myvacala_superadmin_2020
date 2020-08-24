@@ -103,7 +103,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'master'
+      title: 'Master'
     },
     children: [
       {

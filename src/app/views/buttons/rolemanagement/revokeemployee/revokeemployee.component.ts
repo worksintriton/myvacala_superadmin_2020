@@ -63,7 +63,7 @@ export class RevokeemployeeComponent implements OnInit {
     this._api.emp_edit(data).subscribe(
       (response: any) => {
         console.log(response);
-        alert(response.Message);
+        alert("Employee revoked Successfully");
         this.ngOnInit();
       }
     );
@@ -83,9 +83,9 @@ export class RevokeemployeeComponent implements OnInit {
   }
   filter() {
     if (this.loc != undefined || (this.empid != undefined && this.empid != '') || (this.emailid != undefined && this.emailid != '') || (this.phone != undefined && this.phone != '') || this.status != undefined) {
-       this.emp_list = this.List;
+      this.emp_list = this.List;
       if (this.loc != undefined) {
-        this.emp_list = this.emp_list.filter((x) => x.Location.some((y)=> y._id == this.loc)) 
+        this.emp_list = this.emp_list.filter((x) => x.Location.some((y) => y._id == this.loc))
         console.log(this.emp_list)
       }
       if (this.empid != undefined && this.empid != '') {
@@ -101,7 +101,7 @@ export class RevokeemployeeComponent implements OnInit {
         console.log(this.emp_list)
       }
       if (this.status != undefined) {
-        this.emp_list = this.emp_list.filter((x) => x.employee_status== this.status)
+        this.emp_list = this.emp_list.filter((x) => x.employee_status == this.status)
         console.log(this.emp_list)
       }
 
@@ -113,6 +113,18 @@ export class RevokeemployeeComponent implements OnInit {
   }
 
   refresh() {
-    this.emp_list = this.List;
+    this.loc = undefined;
+    this.empid = undefined;
+    this.emailid = undefined;
+    this.phone = undefined;
+    this.status = undefined;
+
+    this.emp_list = [];
+    console.log(this.emp_list);
+    for (let i = 0; i < this.List.length; i++) {
+      if (this.List[i].employee_status == "Suspended") {
+        this.emp_list.push(this.List[i])
+      }
+    }
   }
 }

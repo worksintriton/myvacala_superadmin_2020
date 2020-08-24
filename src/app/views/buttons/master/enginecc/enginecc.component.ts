@@ -34,7 +34,7 @@ export class EngineccComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.forcreate = this.getFromLocal('foredit');
+    this.forcreate = true;
     this._api.vehicleModellist().subscribe(
       (response: any) => {
         console.log(response);
@@ -93,7 +93,7 @@ export class EngineccComponent implements OnInit {
                 this.saveInLocal('VehicleDetails', response.data);
                 this.reset();
                 this.ngOnInit();
-                alert(response.Message);
+                alert("Engine CC Created Successfully");
 
               }
             }
@@ -126,7 +126,7 @@ export class EngineccComponent implements OnInit {
                 this.saveInLocal('VehicleDetails', response.data);
                 this.reset();
                 this.ngOnInit();
-                alert(response.Message);
+                alert("Engine CC Updated Successfully");
               }
             }
           );
@@ -166,7 +166,7 @@ export class EngineccComponent implements OnInit {
       (response: any) => {
         console.log(response);
         if (response.Code == 200) {
-          alert(response.Message);
+          alert("Engine CC Deleted Successfully");
           this.ngOnInit();
         }
         else {

@@ -156,7 +156,7 @@ export class VehicleListComponent implements OnInit {
         if (response.Code == 401) {
           alert(response.Message);
         } else {
-          alert(response.Message);
+          alert("Vehicle popular status updated");
           // this.forcreate = true;
           //this.router.navigate(['/superadmin/master/create_master_service']);
           this.ngOnInit();

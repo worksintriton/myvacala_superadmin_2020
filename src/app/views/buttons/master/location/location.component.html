@@ -64,10 +64,10 @@
                                 <div class="form-group">
                                     <button *ngIf="edit != true" (click)="Location_save()"
                                         class="btn btn-sm btn-primary float-right mt-5"><i
-                                            class="fa fa-save"></i>Save</button>
+                                            class="fa fa-save"></i> Save</button>
                                     <button *ngIf="edit == true" (click)="editsave()"
                                         class="btn btn-sm btn-primary float-right mt-5"><i
-                                            class="fa fa-save"></i>Update</button>
+                                            class="fa fa-save"></i> Update</button>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -95,7 +95,7 @@
                                 <th>Longitude</th>
                                 <th>Pincode</th>
                                 <th>Image</th>
-                                <th>Action</th>
+                                <th style="width: 80px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -113,10 +113,10 @@
                                 </td>
                                 <td><img height="50" width="50" src={{item.Image}} alt="Noimage"></td>
                                 <td><button (click)="editservice(item)" class="btn btn-sm btn-success">
-                                        <li class="fa fa-edit">Edit</li>
+                                        <li class="fa fa-edit"></li>
                                     </button>
                                     <button (click)="VehicleModel_delete(item._id)" class="btn btn-sm btn-danger">
-                                        <li class="fa fa-trash">Delete</li>
+                                        <li class="fa fa-trash"></li>
                                     </button></td>
                             </tr>
                         </tbody>

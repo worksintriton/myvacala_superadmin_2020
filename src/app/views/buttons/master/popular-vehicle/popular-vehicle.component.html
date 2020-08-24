@@ -97,7 +97,7 @@
                                   <th>Year of Manufacture </th>
                                   <th>Vehicle Body Type</th>
                                   <th>Vehicle Image</th>
-                                  <th>Action</th>
+                                  <th style="width:156px">Action</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -121,13 +121,13 @@
                                   </td>
                                   <td><img height="50" width="50" src={{item.Vehicle_Image}} alt="Noimage"></td>
                                   <td><button class="btn btn-sm btn-primary"
-                                          (click)="edit_list_data(item)">Edit</button>
+                                          (click)="edit_list_data(item)"><li class="fa fa-edit"></li></button>
                                       <!-- <button class="btn btn-sm btn-primary" (click)="get_fuel_list(item)">Edit</button> -->
-                                      <button class="btn btn-sm btn-primary"
-                                          (click)="get_fuel_list(item)">Delete</button>
+                                      <button class="btn btn-sm btn-danger"
+                                          (click)="get_fuel_list(item)"><li class="fa fa-trash"></li></button>
                                           <button (click)="popular(item)" class="btn btn-sm" style="margin-top: 5px;"
-                                          [ngClass]="{'btn-danger' : item.Popular_Vehicle == true, 'btn-success': item.Popular_Vehicle == false}">
-                                          <ng-container *ngIf="item.Popular_Vehicle == false">Make popular</ng-container>
+                                          [ngClass]="{'btn-warning' : item.Popular_Vehicle == true, 'btn-success': item.Popular_Vehicle == false}">
+                                          <ng-container *ngIf="item.Popular_Vehicle == false">Popular</ng-container>
                                           <ng-container *ngIf="item.Popular_Vehicle == true">Unpopular</ng-container>
                                       </button></td>
                               </tr>

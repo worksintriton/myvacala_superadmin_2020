@@ -36,7 +36,7 @@ export class VehicleModelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+    this.forcreate = true;
     this._api.vehicleModellist().subscribe(
       (response: any) => {
         console.log(response);
@@ -90,7 +90,7 @@ export class VehicleModelComponent implements OnInit {
                 alert(response.Message);
               } else {
                 this.saveInLocal('VehicleDetails', response.data);
-                alert(response.Message);
+                alert("Vehicle Body Type Created Successfully");
                 this.ngOnInit();
                 this.reset();
               }
@@ -122,7 +122,7 @@ export class VehicleModelComponent implements OnInit {
                 alert(response.Message);
               } else {
                 this.saveInLocal('VehicleDetails', response.data);
-                alert(response.Message);
+                alert("Vehicle Body Type Updated Successfully");
                 this.reset();
                 this.ngOnInit();
 
@@ -152,7 +152,7 @@ export class VehicleModelComponent implements OnInit {
       (response: any) => {
         console.log(response);
         if (response.Code == 200) {
-          alert(response.Message);
+          alert("Vehicle Body Type Deleted Successfully");
           this.ngOnInit();
         }
         else {

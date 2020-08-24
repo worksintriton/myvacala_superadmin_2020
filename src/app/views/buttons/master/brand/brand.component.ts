@@ -129,7 +129,7 @@ export class BrandComponent implements OnInit {
             if (response.Code == 422) {
               alert(response.Message);
             } else {
-              alert(response.Message);
+              alert("Vehicle Manufacturer Created Successfully");
               // this.router.navigate(['/superadmin/master/create_master_service'])
               this.ngOnInit();
               this.VehicleType = undefined;
@@ -157,7 +157,7 @@ export class BrandComponent implements OnInit {
             if (response.Code == 401) {
               alert(response.Message);
             } else {
-              alert(response.Message);
+              alert("Vehicle Manufacturer Updated Successfully");
               // this.saveInLocal("foredit", true);
               //this.router.navigate(['/superadmin/master/create_master_service']);
               this.ngOnInit();

@@ -141,6 +141,7 @@ export class VehiclechecklistComponent implements OnInit {
       console.log("Car")
       this.forcar = true;
       this.forbike = false;
+      console.log(this.forcar)
       this.vehiclemodellist = this.body_typ;
       this.vehiclemodellist=this.vehiclemodellist.filter(x=> x.Vehicle_Type == "Four Wheeler")
       console.log(this.vehiclemodellist)
@@ -261,7 +262,7 @@ export class VehiclechecklistComponent implements OnInit {
       }
     }
     if (this.forbike == true) {
-      if (this.VehicleBrand != undefined && (this.vehiclename != undefined && this.vehiclename != '') && this.selectedfueltype.length > 0 && this.Popular_Vehicle != undefined && this.startyear != undefined && this.endyear != undefined && (this.VehicleType != undefined) && this.VehicleModel.length > 0 && this.Pic != undefined && (this.ccname != undefined && this.ccname != '')) {
+      if (this.VehicleBrand != undefined && (this.vehiclename != undefined && this.vehiclename != '') && this.selectedfueltype.length > 0 && this.Popular_Vehicle != undefined && this.startyear != undefined && this.endyear != undefined && (this.VehicleType != undefined) && this.VehicleModel.length > 0 && this.Pic != undefined) {
         this.valitation = true;
         console.log(this.valitation)
       }

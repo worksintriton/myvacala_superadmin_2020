@@ -43,7 +43,7 @@ export class FueltypeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.forcreate = this.getFromLocal('foredit');
+    this.forcreate = true;
     this._api.getfuellist().subscribe(
       (response: any) => {
         console.log(response);
@@ -93,7 +93,7 @@ export class FueltypeComponent implements OnInit {
                 alert(response.Message);
               } else {
                 this.saveInLocal('fuelList', response.data);
-                alert(response.Message);
+                alert("Fuel Type Created Successfully");
                 this.ngOnInit();
                 this.fuelType = undefined;
                 this.colorCode = undefined;
@@ -124,7 +124,7 @@ export class FueltypeComponent implements OnInit {
             (response: any) => {
               console.log(response);
               if (response.Code == 401) {
-                alert(response.Message);
+                alert("Fuel Type Updated Successfully");
               } else {
                 this.saveInLocal('FuelDetails', response.data);
                 alert(response.Message);
@@ -175,6 +175,7 @@ export class FueltypeComponent implements OnInit {
     return this.storage.get(key);
   }
   reset(){
+    this.forcreate = true;
     this.fuelType = undefined;
     this.colorCode=undefined;
   }

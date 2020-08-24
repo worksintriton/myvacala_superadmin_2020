@@ -13,7 +13,7 @@
                             <label class="col-md-3 col-form-label" for="text-input">Fuel Type</label>
                             <div class="col-md-6">
                                 <input type="text" [(ngModel)]="fuelType" name="fuelType" id="text-input"
-                                    class="form-control" placeholder="FuelType">
+                                    class="form-control" placeholder="Fuel Type">
                             </div>
                             <div *ngIf="FuelError">
                                 <div class="text-danger">{{FuelErrorMsg}}</div>
@@ -75,7 +75,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <button (click)="fuelType_Save()" class="btn btn-sm btn-primary float-right mt-5"><i
-                                            class="fa fa-save"></i>Save</button>
+                                            class="fa fa-save"></i> <ng-container *ngIf="forcreate == true">Save</ng-container><ng-container *ngIf="forcreate != true">Update</ng-container></button>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -112,10 +112,10 @@
                                     {{item.Background_Color}}</td>
                                 <td>{{item.Background_Color_name}}</td>
                                 <td><button (click)="editservice(item)" class="btn btn-success">
-                                        <li class="fa fa-edit">Edit</li>
+                                        <li class="fa fa-edit"> Edit</li>
                                     </button>
                                     <button (click)="FuelType_delete(item._id)" class="btn btn-danger">
-                                        <li class="fa fa-trash">Delete</li>
+                                        <li class="fa fa-trash"></li>
                                     </button></td>
                             </tr>
                         </tbody>

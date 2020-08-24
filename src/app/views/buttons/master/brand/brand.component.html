@@ -41,7 +41,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <button (click)="vehicle_save()" class="btn btn-sm btn-primary float-right mt-5"><i
-                                            class="fa fa-save"></i>Save</button>
+                                            class="fa fa-save"></i> <ng-container *ngIf="forcreate == true">Save</ng-container><ng-container *ngIf="forcreate != true">Update</ng-container></button>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -106,10 +106,10 @@
                                 <td>{{item.Vehicle_Brand_Name}}</td>
                                 <!-- <td><img height="50" width="50" src={{item.Vehicle_Brand_Image}} alt="No image"></td> -->
                                 <td><button (click)="editvehicle_brand(item)" class="btn btn-sm btn-success">
-                                        <li class="fa fa-edit">Edit</li>
+                                        <li class="fa fa-edit"></li>
                                     </button>
                                     <button (click)="deletebrand(item._id)" class="btn btn-sm btn-danger">
-                                        <li class="fa fa-trash">Delete</li>
+                                        <li class="fa fa-trash"></li>
                                     </button></td>
                                 <!-- <td><button (click)="openBrand(item._id)" class="btn btn-success"><li class="fa fa-edit">Open</li> </button></td> -->
                             </tr>
