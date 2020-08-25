@@ -47,7 +47,7 @@ export class FueltypeComponent implements OnInit {
     this._api.getfuellist().subscribe(
       (response: any) => {
         console.log(response);
-        this.fuelList = response.Data;
+        this.fuelList = response.Data.reverse();
 
       }
     );

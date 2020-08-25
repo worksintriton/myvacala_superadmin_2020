@@ -64,7 +64,7 @@ export class CouponCodeComponent implements OnInit {
 
     this._api.coupon_list().subscribe((res: any) => {
       console.log(res)
-      this.coupon_list = res.Data;
+      this.coupon_list = res.Data.reverse();
     })
 
     this._api.user_list().subscribe(

@@ -82,7 +82,7 @@ export class CreatesubservicesComponent implements OnInit {
     this._api.getmainservicelist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.main_list = response.Data;
+        this.main_list = response.Data.reverse();
         this.mainservice_list = this.main_list
         console.log("this.mainservice_list");
         console.log(this.mainservice_list);

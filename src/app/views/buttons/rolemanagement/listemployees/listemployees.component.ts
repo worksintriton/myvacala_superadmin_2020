@@ -30,7 +30,7 @@ export class ListemployeesComponent implements OnInit {
     this._api.emp_list().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.List = response.Data;
+        this.List = response.Data.reverse();;
         this.emp_list = this.List;
         console.log(this.emp_list);
       }

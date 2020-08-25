@@ -1059,16 +1059,16 @@ var ApiService = /** @class */ (function () {
         return this.http.post(this.apiUrl + 'mobileappdetails/edit', data);
     };
     ApiService.prototype.qr_code_create = function (data) {
-        return this.http.post(this.apiUrl + 'parkingvendor/qrcode', data);
+        return this.http.post(this.apiUrl + 'parking/parkingareadetails/qrcode', data);
     };
     ApiService.prototype.qr_code_get = function () {
-        return this.http.get(this.apiUrl + 'parkingvendor/qrgetlist');
+        return this.http.get(this.apiUrl + 'parking/parkingareadetails/qrgetlist');
     };
     ApiService.prototype.qr_code_edit = function (data) {
-        return this.http.post(this.apiUrl + 'parkingvendor/qredit', data);
+        return this.http.post(this.apiUrl + 'parking/parkingareadetails/qredit', data);
     };
     ApiService.prototype.qr_code_delete = function (data) {
-        return this.http.post(this.apiUrl + 'parkingvendor/qrdelete', data);
+        return this.http.post(this.apiUrl + 'parking/parkingareadetails/qrdelete', data);
     };
     ApiService.prototype.booking_edit = function (data) {
         return this.http.post(this.apiUrl + 'booking/edit', data);
@@ -1086,7 +1086,7 @@ var ApiService = /** @class */ (function () {
         return this.http.post(this.apiUrl + 'parking/parkingareadetails/edit', data);
     };
     ApiService.prototype.list_parking = function () {
-        return this.http.get(this.apiUrl + 'parking/parkingareadetails/getlist');
+        return this.http.get(this.apiUrl + 'parking/parkingareadetails/Vendor_getlist');
     };
     ApiService.prototype.list_parking_delete = function (data) {
         return this.http.post(this.apiUrl + 'parking/parkingareadetails/delete', data);

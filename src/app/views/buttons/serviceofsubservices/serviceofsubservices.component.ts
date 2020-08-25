@@ -53,7 +53,7 @@ export class ServiceofsubservicesComponent implements OnInit {
     this._api.getservicelist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.masterservice_list = response.Data;
+        this.masterservice_list = response.Data.reverse();;
         console.log(this.masterservice_list);
       }
     );

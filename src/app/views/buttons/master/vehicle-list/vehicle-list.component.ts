@@ -37,7 +37,7 @@ export class VehicleListComponent implements OnInit {
         console.log(response.Data);
 
         console.log("vehicledetails_list");
-        this.List = response.Data;
+        this.List = response.Data.reverse();
         this.vehicledetails_list = this.List;
       }
     );

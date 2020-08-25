@@ -40,7 +40,7 @@ export class VehicleModelComponent implements OnInit {
     this._api.vehicleModellist().subscribe(
       (response: any) => {
         console.log(response);
-        this.vehiclemodelList = response.Data;
+        this.vehiclemodelList = response.Data.reverse();
         this.vehiclemodelList = this.vehiclemodelList.filter(x => x.Vehicle_Type == "Four Wheeler")
         console.log(this.vehiclemodelList)
       }
@@ -48,7 +48,7 @@ export class VehicleModelComponent implements OnInit {
     this._api.vehiclelist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.vehicle_list = response.Data;
+        this.vehicle_list = response.Data.reverse();
         console.log(this.vehicle_list);
       }
     );

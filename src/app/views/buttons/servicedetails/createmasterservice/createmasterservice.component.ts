@@ -50,7 +50,7 @@ export class CreatemasterserviceComponent implements OnInit {
     this._api.getservicelist().subscribe(
       (response: any) => {
         console.log(response);
-        this.List = response.Data;
+        this.List = response.Data.reverse();
         this.service_list = this.List;
         console.log(this.service_list);
       }

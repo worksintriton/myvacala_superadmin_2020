@@ -26,7 +26,7 @@ export class BrandListComponent implements OnInit {
     this._api.vehiclelist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.vehicletypelist = response.Data;
+        this.vehicletypelist = response.Data.reverse();
         console.log(this.vehicletypelist);
       }
     ); 

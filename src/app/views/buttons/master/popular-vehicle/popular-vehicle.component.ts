@@ -37,7 +37,7 @@ export class PopularVehicleComponent implements OnInit {
         console.log(response.Data);
 
         console.log("vehicledetails_list");
-        let array = response.Data;
+        let array = response.Data.reverse();
         for (let i = 0; i < array.length; i++) {
           if (array[i].Popular_Vehicle == true) {
             this.List.push(array[i]);

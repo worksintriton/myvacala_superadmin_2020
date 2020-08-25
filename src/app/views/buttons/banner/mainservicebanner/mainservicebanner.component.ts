@@ -31,7 +31,7 @@ export class MainservicebannerComponent implements OnInit {
     this._api.bannerlist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.banner_list = response.Data;
+        this.banner_list = response.Data.reverse();
         console.log(this.banner_list);
       }
     ); 

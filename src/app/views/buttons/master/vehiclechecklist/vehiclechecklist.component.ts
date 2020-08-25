@@ -64,7 +64,7 @@ export class VehiclechecklistComponent implements OnInit {
     this._api.getfuellist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.fuellist = response.Data;
+        this.fuellist = response.Data.reverse();
         console.log("this.fuellist");
         console.log(this.fuellist);
       }

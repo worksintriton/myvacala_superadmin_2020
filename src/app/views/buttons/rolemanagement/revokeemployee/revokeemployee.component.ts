@@ -30,7 +30,7 @@ export class RevokeemployeeComponent implements OnInit {
     this._api.emp_list().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.List = response.Data;
+        this.List = response.Data.reverse();
         this.emp_list = [];
         console.log(this.emp_list);
         for (let i = 0; i < this.List.length; i++) {

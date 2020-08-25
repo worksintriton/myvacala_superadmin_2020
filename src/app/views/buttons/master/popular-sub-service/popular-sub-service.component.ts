@@ -82,7 +82,7 @@ export class PopularSubServiceComponent implements OnInit {
     this._api.getmainservicelist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.main_list = response.Data;
+        this.main_list = response.Data.reverse();
         this.mainservice_list = this.main_list
         console.log("this.mainservice_list");
         console.log(this.mainservice_list);
@@ -91,7 +91,7 @@ export class PopularSubServiceComponent implements OnInit {
     this._api.getsubservicelist().subscribe(
       (response: any) => {
         console.log(response);
-        this.List = response.Data;
+        this.List = response.Data.reverse();
         this.masterservice_list = this.List.filter(x => x.Service_id.Popular == true);
         console.log(this.masterservice_list);
 

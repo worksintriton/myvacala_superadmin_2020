@@ -24,7 +24,7 @@ export class UserlocationlistComponent implements OnInit {
     this._api.user_location_list().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.locationuserlist = response.Data;
+        this.locationuserlist = response.Data.reverse();
         console.log(this.locationuserlist);
       }
     ); 

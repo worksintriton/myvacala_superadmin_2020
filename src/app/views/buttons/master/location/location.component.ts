@@ -38,7 +38,7 @@ export class LocationComponent implements OnInit {
     this._api.LocationList().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.Location_list = response.Data;
+        this.Location_list = response.Data.reverse();
         console.log(this.Location_list);
       }
     );

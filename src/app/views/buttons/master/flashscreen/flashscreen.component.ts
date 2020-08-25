@@ -31,7 +31,7 @@ export class FlashscreenComponent implements OnInit {
     this._api.flash_list().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.flash_list = response.Data;
+        this.flash_list = response.Data.reverse();
         console.log(this.flash_list);
       }
     );

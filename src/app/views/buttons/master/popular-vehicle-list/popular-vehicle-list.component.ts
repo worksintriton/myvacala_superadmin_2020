@@ -64,14 +64,14 @@ export class PopularVehicleListComponent implements OnInit {
     this._api.getmainservicelist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.mainservice_list = response.Data;
+        this.mainservice_list = response.Data.reverse();
         console.log(this.mainservice_list);
       }
     );
     this._api.getsubservicelist().subscribe(
       (response: any) => {
         console.log(response);
-        this.masterservice_list = response.Data;
+        this.masterservice_list = response.Data.reverse();
         console.log(this.masterservice_list);
 
       }

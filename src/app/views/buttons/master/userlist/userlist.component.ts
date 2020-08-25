@@ -25,7 +25,7 @@ export class UserlistComponent implements OnInit {
     this._api.user_list().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.user_list = response.Data;
+        this.user_list = response.Data.reverse();
         console.log(this.user_list);
       }
     );

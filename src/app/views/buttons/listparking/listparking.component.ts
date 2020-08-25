@@ -24,7 +24,7 @@ export class ListparkingComponent implements OnInit {
     this._api.list_parking().subscribe(
       (response: any) => {
         console.log(response);
-        this.List = response.Data;
+        this.List = response.Data.reverse();
       }
     );
   }
