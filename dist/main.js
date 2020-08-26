@@ -1097,6 +1097,9 @@ var ApiService = /** @class */ (function () {
     ApiService.prototype.user_edit = function (data) {
         return this.http.post(this.apiUrl + 'customer/edit', data);
     };
+    ApiService.prototype.Create_machanic = function (data) {
+        return this.http.post(this.apiUrl + 'mechanic/create', data);
+    };
     ApiService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
     ]; };
@@ -2409,6 +2412,8 @@ var environment = {
     production: false,
     apiUrl: 'http://3.101.31.129:3000/',
     imageURL: 'http://3.101.31.129:3000/'
+    // apiUrl: 'http://myvacala.com:3000',
+    // imageURL: 'http://myvacala.com:3000'
     // apiUrl: 'http://localhost:91/'
     // 34.211.194.144:3000
 };

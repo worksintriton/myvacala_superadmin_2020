@@ -408,4 +408,7 @@ export class ApiService {
   user_edit(data){
     return this.http.post(this.apiUrl + 'customer/edit', data);
   }
+  Create_machanic(data){
+    return this.http.post(this.apiUrl + 'mechanic/create', data);
+  }
 }

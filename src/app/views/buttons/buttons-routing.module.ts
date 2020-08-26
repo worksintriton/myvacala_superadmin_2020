@@ -308,7 +308,7 @@ const routes: Routes = [
         path: 'create_mechanic',
         component: CreatemachanicformComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Create Mechanic'
         }
       },
       {
@@ -329,7 +329,7 @@ const routes: Routes = [
         path: 'list_mechanic',
         component: ListmachanicformComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Mechanic list '
         }
       },
       ///Serive Process///

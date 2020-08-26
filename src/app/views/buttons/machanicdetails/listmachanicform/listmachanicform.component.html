@@ -7,51 +7,69 @@
             <i class="fa fa-align-justify"></i> Mechanic List
           </div>
           <div class="card-body">
+            <div class="search-hero">
+              <input class="form-control" type="text" name="search2"
+                  style="font-family: FontAwesome;" [(ngModel)]="searchQR" autocomplete="off"
+                  placeholder="&#xf002; Search...">
+          </div>
             <div style="overflow: scroll;">
-            <table class="table table-bordered table-striped table-sm">
+             <table class="table table-striped table-bordered table-sm" [svData]="mechanic_list" #sv="svDataTable"
+              [svRowsOnPage]="10" svSortBy="name" svSortOrder="asc">
               <thead>
-                <tr>
-                  <th>S.No</th>
-                  <th>Owner_First Name</th>
-                  <th>Owner_Last Name</th>
-                  <th>Owner_Contact</th>
-                  <th>Owner_Address</th>
-                  <th>Owner_Pancard</th>
-                  <th>Owner_Aadharcard</th>
-                  <th>Workshop_Name</th>
-                  <th>Workshop_Address</th>
-                  <th>Latitude</th>
-                  <th>Longtude</th>
-                  <th>Workshop_GST</th>
-                  <th>Workshop_Pan</th>
-                  <th>Workshop_Reg_No</th>
-                  <th>Workshop_Service_advisor_No</th>
-                  <th>Workshop_Service_advisor_Name</th>
-                  <th>Workshop_Service_Type</th>
-                </tr>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Owner Name</th>
+                    <th>Owner Contact</th>
+                    <th>Owner Address</th>
+                    <th>Owner Pancard</th>
+                    <th>Owner Aadharcard</th>
+                    <th>Workshop Name</th>
+                    <th>Workshop Address</th>
+                    <th>Latitude</th>
+                    <th>Longtude</th>
+                    <th>Workshop GST</th>
+                    <th>Workshop Pancard</th>
+                    <th>Workshop Reg No</th>
+                    <th>Workshop Service Type</th>
+                    <th>Bike advisor Name</th>
+                    <th>Bike advisor No</th>
+                    <th>Car advisor Name</th>
+                    <th>Car advisor No</th>
+                    
+                  </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td>1</td>
-                      <td>Muthukumar C</td>
-                      <td>Vimal</td>
-                      <td>9988776655</td>
-                      <td>No 7, 7th Street</td>
-                      <td>123-134-129A</td>
-                      <td>axsde1234</td>
-                      <td>All Tools</td>
-                      <td>Chennai</td>
-                      <td>123.11.345</td>
-                      <td>1567.23.56</td>
-                      <td>1234rtfg</td>
-                      <td>1234dfcv</td>
-                      <td>adad454546</td>
-                      <td>9988776655</td>
-                      <td>Kamal</td>
-                      <td>Mechanic</td>
+                  <tr *ngFor="let item of sv.data | filter:searchQR ; let i = index;">
+                      <td>{{i+1}}</td>
+                      <td>{{item.First_Name +' '+item.Last_Name}}</td>
+                      <td>{{item.Primary_Contact}}</td>
+                      <td>{{item.Owner_Permanent_Address}}</td>
+                      <td><a href="{{item.Owner_Pan_Card_Document}}" target="_blank">{{item.Owner_Pan_Card_Number}}</a></td>
+                      <td><a href="{{item.Owner_Adhaar_Card_Document}}" target="_blank">{{item.Owner_Adhaar_Card_Number}}</a></td>
+                      <td>{{item.Work_Shop_Name}}</td>
+                      <td>{{item.Work_Shop_Address}}</td>
+                      <td><a href="{{item.Map_Link}}" target="_blank">{{item.loc_lat}}</a></td>
+                      <td><a href="{{item.Map_Link}}" target="_blank">{{item.loc_long}}</a></td>
+                      <td><a href="{{item.Workshop_GST_Certificate}}" target="_blank">{{item.Workshop_GST_Number}}</a></td>
+                      <td><a href="{{item.Workshop_Pan_Card_Document}}" target="_blank">{{item.Work_Shop_Pan_Card_Number}}</a></td>
+                      <td><a href="{{item.Workshop_Registration_Certificate}}" target="_blank">{{item.Workshop_Registration_Number}}</a></td>
+                      <td>{{item.Workshop_service_Type}}</td>
+                      <td>{{item.Workshop_Bike_Service_Advisor_Name}}</td>
+                      <td>{{item.Workshop_Bike_Service_Advisor_Contact}}</td>
+                      <td>{{item.Workshop_Car_Service_Advisor_Name}}</td>
+                      <td>{{item.Workshop_Car_Service_Advisor_Contact}}</td>
+
                   </tr>
               </tbody>
-            </table>
+              <tfoot>
+                  <tr>
+                      <td colspan="18">
+                          <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+                      </td>
+                  </tr>
+              </tfoot>
+          </table>
+            
           </div>
         </div>
         </div>

@@ -11,6 +11,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 })
 export class ListmachanicformComponent implements OnInit {
   mechanic_list:any;
+  searchQR:any;
   constructor( private router: Router,   
 
     private http: HttpClient,
