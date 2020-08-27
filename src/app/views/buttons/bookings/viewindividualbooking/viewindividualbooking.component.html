@@ -1,72 +1,74 @@
 <div class="animated fadeIn">
-    
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">                        
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Booking Id</label>
                             <div class="col-md-6">
-                            <input type="text" [(ngModel)]="BookingId" name="BookingId"  
-                                class="form-control" disabled placeholder="Booking Id">
+                                <input type="text" [(ngModel)]="BookingId" name="BookingId" class="form-control"
+                                    disabled placeholder="Booking Id">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Mobile No</label>
                             <div class="col-md-6">
-                            <input type="text" [(ngModel)]="mobile" name="mobile"  
-                                class="form-control" disabled placeholder="Mobile No">
+                                <input type="text" [(ngModel)]="mobile" name="mobile" class="form-control" disabled
+                                    placeholder="Mobile No">
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Customer Name</label>
                             <div class="col-md-6">
-                            <input type="text" [(ngModel)]="cname" name="cname"  
-                                class="form-control" disabled placeholder="Customer Name">
+                                <input type="text" [(ngModel)]="cname" name="cname" class="form-control" disabled
+                                    placeholder="Customer Name">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Vehicle No</label>
                             <div class="col-md-6">
-                            <input type="text" [(ngModel)]="vehicle" name="vehicle"  
-                                class="form-control" disabled placeholder="vehicle No">
+                                <input type="text" [(ngModel)]="vehicle" name="vehicle" class="form-control" disabled
+                                    placeholder="vehicle No">
                             </div>
-                        </div>                        
+                        </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
                             <div class="col-md-6">
-                            <input type="text" [(ngModel)]="vehicletype" name="vehicletype"  
-                                class="form-control" disabled placeholder="vehicle Type">
+                                <input type="text" [(ngModel)]="vehicletype" name="vehicletype" class="form-control"
+                                    disabled placeholder="vehicle Type">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Order Value</label>
                             <div class="col-md-6">
-                            <input type="text"  name="OrderValue" value="500"  
-                                class="form-control" disabled placeholder="Order Value">
+                                <input type="text" name="OrderValue" value="500" class="form-control" disabled
+                                    placeholder="Order Value">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Final Payable Amount </label>
                             <div class="col-md-6">
-                            <input type="text"  [(ngModel)]="FinalPayable" name="FinalPayable"  
-                                class="form-control" placeholder="Final Payable Amount">
+                                <input type="text" [(ngModel)]="FinalPayable" name="FinalPayable" class="form-control"
+                                    placeholder="Final Payable Amount">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Customer Invoice</label>
                             <div class="col-md-3">
                                 <input type="file" style="display: none;" (change)="fileupload($event)" id="myFile">
-                                <label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;" for="myFile">Choose file</label>
-                                 <span *ngIf="Pic != undefined">{{Pic | slice:37}}</span>
+                                <label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                    for="myFile">Choose file</label>
+                                <span *ngIf="Pic != undefined">{{Pic | slice:37}}</span>
                             </div>
                             <!-- <div class="col-md-3">
                                 <input type="file" [(ngModel)]="FinalPayable" name="invoice"  class="form-control">
                             </div> -->
                             <div class="col=md-3">
-                                <button (click)="addimg()" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Add</button>
+                                <button (click)="addimg()" class="btn btn-sm btn-primary"><i
+                                        class="fa fa-edit"></i>Add</button>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -76,24 +78,24 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                    <th>Documents</th>
-                                    <th>View</th>
-                                    <th>Delete</th>
+                                            <th>Documents</th>
+                                            <th>View</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let dynamic of Thmp_list; let i = index;">
                                             <td>{{i+1}}</td>
                                             <td>Document</td>
-                                            <td style="text-align: center;"><a href="{{dynamic.doc_link}}" target="_blank"
-                                                class="btn  btn-sm btn-danger">View</a></td>
+                                            <td style="text-align: center;"><a href="{{dynamic.doc_link}}"
+                                                    target="_blank" class="btn  btn-sm btn-danger">View</a></td>
                                             <td style="text-align: center;"> <button (click)="deleteimg(dynamic,i)"
                                                     class="btn  btn-sm btn-danger">Delete</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            
-                                </div>
+
+                            </div>
                         </div>
                         <!-- <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input"></label>
@@ -108,14 +110,16 @@
                             <label class="col-md-3 col-form-label" for="text-input">Job Card</label>
                             <div class="col-md-3">
                                 <input type="file" style="display: none;" (change)="fileupload1($event)" id="myFi">
-                                <label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;" for="myFi">Choose file</label>
-                                 <span *ngIf="Pic1 != undefined">{{Pic1 | slice:37}}</span>
+                                <label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                    for="myFi">Choose file</label>
+                                <span *ngIf="Pic1 != undefined">{{Pic1 | slice:37}}</span>
                             </div>
                             <!-- <div class="col-md-3">
                                 <input type="file" [(ngModel)]="FinalPayable" name="invoice"  class="form-control">
                             </div> -->
                             <div class="col=md-3">
-                                <button (click)="addimg1()" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Add</button>
+                                <button (click)="addimg1()" class="btn btn-sm btn-primary"><i
+                                        class="fa fa-edit"></i>Add</button>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -125,46 +129,54 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                    <th>Documents</th>
-                                    <th>View</th>
-                                    <th>Delete</th>
+                                            <th>Documents</th>
+                                            <th>View</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let dynamic of Thmp_list1; let i = index;">
                                             <td>{{i+1}}</td>
                                             <td>Document</td>
-                                            <td style="text-align: center;"><a href="{{dynamic.doc_link}}" target="_blank"
-                                                class="btn  btn-sm btn-danger">View</a></td>
+                                            <td style="text-align: center;"><a href="{{dynamic.doc_link}}"
+                                                    target="_blank" class="btn  btn-sm btn-danger">View</a></td>
                                             <td style="text-align: center;"> <button (click)="deleteimg1(dynamic,i)"
                                                     class="btn  btn-sm btn-danger">Delete</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                </div>
+                            </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Workshop Id</label>
                             <div class="col-md-6">
+                                <ngx-select-dropdown [config]="config" [options]="id_list"
+                                [(ngModel)]="WorkshopId" [ngModelOptions]="{standalone: true}" (ngModelChange)="get_mech()"></ngx-select-dropdown>
+
+                                
+
+
+
+                                <!-- 
                                 <input type="text" [(ngModel)]="WorkshopId" name="MechanicId" 
-                                     class="form-control" placeholder="Workshop Id">
+                                     class="form-control" placeholder="Workshop Id"> -->
                             </div>
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                <button><li class="fa fa-search"></li></button>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Workshop Name</label>
                             <div class="col-md-6">
-                                <input type="text" [(ngModel)]="WorkshopName" name="WorkshopName" 
-                                     class="form-control" placeholder="Workshop Name">
+                                <input type="text" [(ngModel)]="WorkshopName" name="WorkshopName" class="form-control"
+                                    disabled placeholder="Workshop Name">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Workshop Location</label>
                             <div class="col-md-6">
-                                <input type="text" [(ngModel)]="WorkshopLocation" name="WorkshopLocation" 
-                                     class="form-control" placeholder="Workshop Location">
+                                <input type="text" [(ngModel)]="WorkshopLocation" name="WorkshopLocation"
+                                    class="form-control" disabled placeholder="Workshop Location">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -176,24 +188,25 @@
                                     <option value="Vehicle Picked up">Vehicle Picked up</option>
                                     <option value="Service Started">Service Started</option>
                                     <option value="Service Completed">Service Completed</option>
-                                    <option value="Vehicle Delivered">Vehicle Delivered </option>                                 
+                                    <option value="Vehicle Delivered">Vehicle Delivered </option>
                                 </select>
                             </div>
                         </div>
-                        
-                        
-                   <div class="row">                
-                    <div class="col-md-6">
-                        <div class="form-group">
-                          <button (click)="edit()" class="btn btn-sm btn-primary float-right mt-5" ><i class="fa fa-save"></i> Save</button>               
-                        </div>                  
-                    </div>                  
-                    <div class="col-md-6">
-                        <div class="form-group">
-                          <button (click)="back_to_page()" class="btn btn-sm btn-warning mt-5" >Back</button>               
-                        </div>                  
-                    </div>  
-                </div>   
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button (click)="edit()" class="btn btn-sm btn-primary float-right mt-5"><i
+                                            class="fa fa-save"></i> Save</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button (click)="back_to_page()" class="btn btn-sm btn-warning mt-5">Back</button>
+                                </div>
+                            </div>
+                        </div>
                     </form>
 
                 </div>

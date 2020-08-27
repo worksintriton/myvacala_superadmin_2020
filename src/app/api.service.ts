@@ -411,4 +411,7 @@ export class ApiService {
   Create_machanic(data){
     return this.http.post(this.apiUrl + 'mechanic/create', data);
   }
+  mechanic_byid(data){
+    return this.http.post(this.apiUrl + 'mechanic/getlist_by_id', data)
+  }
 }

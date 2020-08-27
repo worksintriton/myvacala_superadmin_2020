@@ -16,7 +16,7 @@ export class ViewindividualbookingComponent implements OnInit {
   cname: any;
   vehicletype: any;
   vehicle_list: any;
-  WorkshopId: any;
+  WorkshopId: any =undefined;
   FinalPayable: any;
   selectedimgae: any;
   Pic: any;
@@ -27,6 +27,22 @@ export class ViewindividualbookingComponent implements OnInit {
   WorkshopName: any;
   WorkshopLocation: any;
   BookingStatus: any;
+  mechanic_list: any = [];
+  id_list: any = [];
+
+  config = {
+    displayKey: "description", //if objects array passed which key to be displayed defaults to description
+    search: true, //true/false for the search functionlity defaults to false,
+    height: '250px', //height of the list so that if there are more no of items it can show a scroll defaults to auto. With auto height scroll will never appear
+    placeholder: 'Select', // text to be displayed when no item is selected defaults to Select,
+    customComparator: () => { },// a custom function using which user wants to sort the items. default is undefined and Array.sort() will be used in that case,
+    limitTo: 0, // number thats limits the no of options displayed in the UI (if zero, options will not be limited)
+    moreText: 'more', // text to be displayed whenmore than one items are selected like Option 1 + 5 more
+    noResultsFound: 'No results found!', // text to be displayed when no items are found while searching
+    searchPlaceholder: 'Search',// label thats displayed in search input,
+    searchOnKey: 'name',// key on which search should be performed this will be selective search. if undefined this will be extensive search on all keys
+  }
+
   constructor(
     private router: Router,
 
@@ -50,6 +66,17 @@ export class ViewindividualbookingComponent implements OnInit {
     this.WorkshopLocation = this.vehicle_list.Workshop_Location;
     this.WorkshopName = this.vehicle_list.Workshop_Name
     this.BookingStatus = this.vehicle_list.Booking_Status;
+    this._api.mechanicList().subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.mechanic_list = response.Data;
+        console.log(this.mechanic_list);
+        this.id_list = [];
+        for (let i = 0; i < this.mechanic_list.length; i++) {
+          this.id_list.push(this.mechanic_list[i].Mechanic_id)
+        }
+      }
+    );
   }
   back_to_page() {
 
@@ -140,7 +167,7 @@ export class ViewindividualbookingComponent implements OnInit {
   }
   edit() {
     if ((this.FinalPayable != undefined && this.FinalPayable != '') && this.Thmp_list.length > 0 && this.Thmp_list1.length > 0 && (this.WorkshopName != undefined && this.WorkshopName != '') && (this.WorkshopLocation != undefined && this.WorkshopLocation != '') && this.BookingStatus != undefined) {
-     
+
       // (this.WorkshopId != undefined && this.WorkshopId != '') 
       let data = {
         "Booking_id": this.vehicle_list.Booking_id,
@@ -162,8 +189,8 @@ export class ViewindividualbookingComponent implements OnInit {
             alert(response.Message);
           } else {
             alert(response.Message);
-            // this.router.navigate(['/superadmin/master/create_master_service'])
-            this.ngOnInit();
+            this.router.navigate(['/superadmin/master/View_MechanicBookingList'])
+            // this.ngOnInit();
           }
         }
       );
@@ -171,5 +198,27 @@ export class ViewindividualbookingComponent implements OnInit {
     else {
       alert("Please fill all the fields")
     }
+  }
+  get_mech() {
+    console.log(this.WorkshopId);
+    if(this.WorkshopId !=undefined){
+      let id = {
+        "Mechanic_id": this.WorkshopId
+      }
+      this._api.mechanic_byid(id).subscribe(
+        (response: any) => {
+          console.log(response);
+          if (response.Code == 200) {
+            this.WorkshopLocation = response.Data[0].Work_Shop_Address;
+            this.WorkshopName = response.Data[0].Work_Shop_Name;
+          }
+          else {
+            alert(response.Message)
+          }
+  
+        }
+      );
+    }
+  
   }
 }

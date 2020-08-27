@@ -275,7 +275,8 @@
         </div>
       </div>
     </div>
-    <div class="row" *ngIf="step2">
+    <div class="row" >
+      <!-- *ngIf="step2" -->
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
@@ -318,6 +319,7 @@
               </div> -->
             </div>
           <div *ngIf="fortwowheeler">
+            <!--  -->
             <div class="card">
               <div class="card-header">
                 <h4>Two Wheeler</h4>
@@ -328,13 +330,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Monday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" min="08:00" max="20:00" [(ngModel)]="SlotWeekDaytime1" name="SlotWeekDaytime1" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime1" class="form-control" [ngModelOptions]="{standalone: true}" (change)="biketime1()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime1">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" min="08:00" max="20:00" [(ngModel)]="SlotWeekDaytime1" name="SlotWeekDaytime1" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime2" name="SlotWeekDaytime2" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime2" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime2">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime2" name="SlotWeekDaytime2" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -375,13 +389,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Tuesday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime3" name="SlotWeekDaytime3" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime3" class="form-control" [ngModelOptions]="{standalone: true}" (change)="biketime2()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime3">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime3" name="SlotWeekDaytime3" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime4" name="SlotWeekDaytime4" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime4" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime4">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime4" name="SlotWeekDaytime4" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -422,13 +448,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Wednesday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime5" name="SlotWeekDaytime5" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime5" class="form-control" [ngModelOptions]="{standalone: true}" (change)="biketime3()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime5">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime5" name="SlotWeekDaytime5" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime6" name="SlotWeekDaytime6" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime6" class="form-control" [ngModelOptions]="{standalone: true}">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime6">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime6" name="SlotWeekDaytime6" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -469,13 +507,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Thursday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime7" name="SlotWeekDaytime7" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime7" class="form-control" [ngModelOptions]="{standalone: true}" (change)="biketime4()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime7">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime7" name="SlotWeekDaytime7" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime8" name="SlotWeekDaytime8" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime8" class="form-control" [ngModelOptions]="{standalone: true}">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime8">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime8" name="SlotWeekDaytime8" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -517,13 +567,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Friday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime9" name="SlotWeekDaytime9" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime9" class="form-control" [ngModelOptions]="{standalone: true}" (change)="biketime5()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime9">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime9" name="SlotWeekDaytime9" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime10" name="SlotWeekDaytime10" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime10" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime10">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime10" name="SlotWeekDaytime10" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -565,13 +627,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Saturday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime11" name="SlotWeekDaytime12" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime11" class="form-control" [ngModelOptions]="{standalone: true}" (change)="biketime6()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime11">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime11" name="SlotWeekDaytime12" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime12" name="SlotWeekDaytime12" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime12" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime12">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime12" name="SlotWeekDaytime12" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -602,7 +676,7 @@
                           <td>{{dynamic.End_time}}</td>
                           <td>{{dynamic.Price}}</td>
                           <td>
-                            <button (click)="deletefriday(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                            <button (click)="deletesaturday(i)" class="btn btn-sm btn-primary">Delete</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -613,13 +687,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Sunday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime13" name="SlotWeekDaytime14" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime13" class="form-control" [ngModelOptions]="{standalone: true}" (change)="biketime7()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime13">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime13" name="SlotWeekDaytime14" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime14" name="SlotWeekDaytime15" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime14" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime14">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime14" name="SlotWeekDaytime15" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -665,13 +751,25 @@
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime16" name="SlotWeekDaytime16" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime16" class="form-control" [ngModelOptions]="{standalone: true}" (change)="biketime8()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime16">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime16" name="SlotWeekDaytime16" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime17" name="SlotWeekDaytime17" 
-                      class="form-control">
+                    <select [(ngModel)]="SlotWeekDaytime17" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bikeSlotWeekDaytime17">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime17" name="SlotWeekDaytime17" 
+                      class="form-control"> -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -713,7 +811,8 @@
             </div>
           </div>
 
-          <div *ngIf="forwfourwheeler">
+          <div *ngIf="forwfourwheeler" >
+            <!-- -->
             <div class="card">
               <div class="card-header">
                 <h4>Four Wheeler</h4>
@@ -723,13 +822,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Monday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime18" name="SlotWeekDaytime18" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime18" class="form-control" [ngModelOptions]="{standalone: true}" (change)="cartime1()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime18">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime18" name="SlotWeekDaytime18" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime19" name="SlotWeekDaytime19" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime19" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime19">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime19" name="SlotWeekDaytime19" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -770,13 +881,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Tuesday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime20" name="SlotWeekDaytime20" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime20" class="form-control" [ngModelOptions]="{standalone: true}" (change)="cartime2()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime20">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime20" name="SlotWeekDaytime20" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime21" name="SlotWeekDaytime21" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime21" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime21">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime21" name="SlotWeekDaytime21" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -817,13 +940,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Wednesday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime22" name="SlotWeekDaytime22" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime22" class="form-control" [ngModelOptions]="{standalone: true}" (change)="cartime3()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime22">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime22" name="SlotWeekDaytime22" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime23" name="SlotWeekDaytime23" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime23" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime23">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime23" name="SlotWeekDaytime23" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -864,13 +999,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Thursday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime24" name="SlotWeekDaytime24" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime24" class="form-control" [ngModelOptions]="{standalone: true}" (change)="cartime4()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime24">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime24" name="SlotWeekDaytime24" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime25" name="SlotWeekDaytime25" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime25" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime25">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime25" name="SlotWeekDaytime25" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -912,13 +1059,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Friday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime26" name="SlotWeekDaytime26" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime26" class="form-control" [ngModelOptions]="{standalone: true}" (change)="cartime5()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime26">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime26" name="SlotWeekDaytime26" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime27" name="SlotWeekDaytime27" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime27" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime27">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime27" name="SlotWeekDaytime27" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -960,13 +1119,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Saturday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime28" name="SlotWeekDaytime28" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime28" class="form-control" [ngModelOptions]="{standalone: true}" (change)="cartime6()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime28">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime28" name="SlotWeekDaytime28" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime29" name="SlotWeekDaytime29" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime29" class="form-control" [ngModelOptions]="{standalone: true}">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime29">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime29" name="SlotWeekDaytime29" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1008,13 +1179,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Sunday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime30" name="SlotWeekDaytime30" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime30" class="form-control" [ngModelOptions]="{standalone: true}" (change)="cartime7()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime30">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime30" name="SlotWeekDaytime30" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime31" name="SlotWeekDaytime31" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime31" class="form-control" [ngModelOptions]="{standalone: true}">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime31">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime31" name="SlotWeekDaytime31" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1060,13 +1243,25 @@
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime32" name="SlotWeekDaytime15" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime32" class="form-control" [ngModelOptions]="{standalone: true}" (change)="cartime8()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime32">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime32" name="SlotWeekDaytime15" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime33" name="SlotWeekDaytime16" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime33" class="form-control" [ngModelOptions]="{standalone: true}">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of carSlotWeekDaytime33">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime33" name="SlotWeekDaytime16" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1110,6 +1305,7 @@
           </div>
           
           <div *ngIf="forboth">
+            <!--  -->
             <div class="card">
               <div class="card-header">
                 <h4>Two Wheeler & Four Wheeler</h4>
@@ -1119,13 +1315,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Monday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime35" name="SlotWeekDaytime35" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime35" class="form-control" [ngModelOptions]="{standalone: true}" (change)="bothtime1()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime35">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime35" name="SlotWeekDaytime35" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime36" name="SlotWeekDaytime36" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime36" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime36">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime36" name="SlotWeekDaytime36" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1166,13 +1374,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Tuesday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime37" name="SlotWeekDaytime37" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime37" class="form-control" [ngModelOptions]="{standalone: true}" (change)="bothtime2()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime37">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime37" name="SlotWeekDaytime37" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime38" name="SlotWeekDaytime38" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime38" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime38">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime38" name="SlotWeekDaytime38" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1213,13 +1433,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Wednesday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime39" name="SlotWeekDaytime39" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime39" class="form-control" [ngModelOptions]="{standalone: true}" (change)="bothtime3()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime39">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime39" name="SlotWeekDaytime39" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime40" name="SlotWeekDaytime40" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime40" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime40">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime40" name="SlotWeekDaytime40" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1260,13 +1492,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Thursday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime41" name="SlotWeekDaytime41" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime41" class="form-control" [ngModelOptions]="{standalone: true}" (change)="bothtime4()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime41">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime41" name="SlotWeekDaytime41" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime42" name="SlotWeekDaytime42" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime42" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime42">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime42" name="SlotWeekDaytime42" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1308,13 +1552,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Friday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime43" name="SlotWeekDaytime43" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime43" class="form-control" [ngModelOptions]="{standalone: true}" (change)="bothtime5()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime43">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime43" name="SlotWeekDaytime43" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime44" name="SlotWeekDaytime44" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime44" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime44">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime44" name="SlotWeekDaytime44" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1356,13 +1612,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Saturday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime45" name="SlotWeekDaytime45" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime45" class="form-control" [ngModelOptions]="{standalone: true}" (change)="bothtime6()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime45">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime45" name="SlotWeekDaytime45" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime46" name="SlotWeekDaytime46" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime46" class="form-control" [ngModelOptions]="{standalone: true}">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime46">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime46" name="SlotWeekDaytime46" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1404,13 +1672,25 @@
                   <label class="col-md-3 col-form-label" for="text-input">Sunday</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime47" name="SlotWeekDaytime47" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime47" class="form-control" [ngModelOptions]="{standalone: true}" (change)="bothtime7()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime47">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime47" name="SlotWeekDaytime47" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime48" name="SlotWeekDaytime48" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime48" class="form-control" [ngModelOptions]="{standalone: true}">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime48">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime48" name="SlotWeekDaytime48" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1456,13 +1736,25 @@
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">From Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime49" name="SlotWeekDaytime49" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime49" class="form-control" [ngModelOptions]="{standalone: true}" (change)="bothtime8()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime49">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime49" name="SlotWeekDaytime49" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
-                    <input type="time" [(ngModel)]="SlotWeekDaytime50" name="SlotWeekDaytime50" 
-                      class="form-control" >
+                    <select [(ngModel)]="SlotWeekDaytime50" class="form-control" [ngModelOptions]="{standalone: true}">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of bothSlotWeekDaytime50">
+                        <option value="{{opt}}">{{opt}}</option>
+                      </ng-container>
+                    </select>
+                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime50" name="SlotWeekDaytime50" 
+                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>

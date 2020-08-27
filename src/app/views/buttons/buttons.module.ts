@@ -116,6 +116,9 @@ import { EngineccComponent } from './master/enginecc/enginecc.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { PopularSubServiceComponent } from './master/popular-sub-service/popular-sub-service.component';
 import { ParkingEditComponent } from './parking/parking-edit/parking-edit.component';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { SelectDropDownModule } from 'ngx-select-dropdown'
+
 @NgModule({
   imports: [
     CommonModule,
@@ -126,7 +129,9 @@ import { ParkingEditComponent } from './parking/parking-edit/parking-edit.compon
     Daterangepicker,
     NgDatepickerModule,
     DataTableModule,
-    Ng2SearchPipeModule 
+    Ng2SearchPipeModule,
+    AutocompleteLibModule,
+    SelectDropDownModule
   ],
   declarations: [
     PatientListComponent,
@@ -225,7 +230,8 @@ import { ParkingEditComponent } from './parking/parking-edit/parking-edit.compon
     EditemployeeComponent,
     EngineccComponent,
     PopularSubServiceComponent,
-    ParkingEditComponent
+    ParkingEditComponent,
+    
   ]
 })
 export class ButtonsModule { }
