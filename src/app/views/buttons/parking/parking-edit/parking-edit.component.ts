@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../../api.service';
-import { ValidatorService } from '../../../../valitation.service'
+import { ValidatorService } from '../../../../valitation.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-parking-edit',
   templateUrl: './parking-edit.component.html',
@@ -228,17 +229,73 @@ export class ParkingEditComponent implements OnInit {
   Included_newee6: any = [];
   slotdateee1: any;
   newIncludeee7: any = [];
-  both_slot_week: any = [{ Timings: [], Title: "Monday" },
+  both_slot_week: any = [
   { Timings: [], Title: "Tuesday" },
   { Timings: [], Title: "Wednesday" },
   { Timings: [], Title: "Thursday" },
   { Timings: [], Title: "Friday" },
   { Timings: [], Title: "Saturday" },
-  { Timings: [], Title: "Sunday" },]
+  { Timings: [], Title: "Sunday" },
+  { Timings: [], Title: "Monday" },]
   both_slot_per_day: any = [];
   bike: boolean;
   car: boolean;
   Both: boolean;
+
+  
+  bikeSlotWeekDaytime1: any = [];
+  bikeSlotWeekDaytime2: any = [];
+  bikeSlotWeekDaytime3: any = [];
+  bikeSlotWeekDaytime4: any = [];
+  bikeSlotWeekDaytime5: any = [];
+  bikeSlotWeekDaytime6: any = [];
+  bikeSlotWeekDaytime7: any = [];
+  bikeSlotWeekDaytime8: any = [];
+  bikeSlotWeekDaytime9: any = [];
+  bikeSlotWeekDaytime10: any = [];
+  bikeSlotWeekDaytime11: any = [];
+  bikeSlotWeekDaytime12: any = [];
+  bikeSlotWeekDaytime13: any = [];
+  bikeSlotWeekDaytime14: any = [];
+  bikeSlotWeekDaytime15: any = [];
+  bikeSlotWeekDaytime16: any = [];
+  bikeSlotWeekDaytime17: any = [];
+
+  carSlotWeekDaytime18: any = [];
+  carSlotWeekDaytime19: any = [];
+  carSlotWeekDaytime20: any = [];
+  carSlotWeekDaytime21: any = [];
+  carSlotWeekDaytime22: any = [];
+  carSlotWeekDaytime23: any = [];
+  carSlotWeekDaytime24: any = [];
+  carSlotWeekDaytime25: any = [];
+  carSlotWeekDaytime26: any = [];
+  carSlotWeekDaytime27: any = [];
+  carSlotWeekDaytime28: any = [];
+  carSlotWeekDaytime29: any = [];
+  carSlotWeekDaytime30: any = [];
+  carSlotWeekDaytime31: any = [];
+  carSlotWeekDaytime32: any = [];
+  carSlotWeekDaytime33: any = [];
+
+
+
+  bothSlotWeekDaytime35: any = [];
+  bothSlotWeekDaytime36: any = [];
+  bothSlotWeekDaytime37: any = [];
+  bothSlotWeekDaytime38: any = [];
+  bothSlotWeekDaytime39: any = [];
+  bothSlotWeekDaytime40: any = [];
+  bothSlotWeekDaytime41: any = [];
+  bothSlotWeekDaytime42: any = [];
+  bothSlotWeekDaytime43: any = [];
+  bothSlotWeekDaytime44: any = [];
+  bothSlotWeekDaytime45: any = [];
+  bothSlotWeekDaytime46: any = [];
+  bothSlotWeekDaytime47: any = [];
+  bothSlotWeekDaytime48: any = [];
+  bothSlotWeekDaytime49: any = [];
+  bothSlotWeekDaytime50: any = [];
   constructor(
     private router: Router,
 
@@ -249,6 +306,7 @@ export class ParkingEditComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService) { }
 
   ngOnInit() {
+    this.time();
     this.Single_List = this.getFromLocal('parking_detail')
     console.log(this.Single_List);
     // Owner----
@@ -391,6 +449,7 @@ export class ParkingEditComponent implements OnInit {
       this._api.Parking_owner_edit(data).subscribe((res: any) => {
         console.log(res)
         alert(res.Message);
+        this.router.navigateByUrl('/superadmin/master/list_parking');
       });
     }
     else {
@@ -409,6 +468,7 @@ export class ParkingEditComponent implements OnInit {
       this._api.Parking_owner_edit(data).subscribe((res: any) => {
         console.log(res)
         alert(res.Message);
+        this.router.navigateByUrl('/superadmin/master/list_parking');
       });
     }
   }
@@ -419,107 +479,528 @@ export class ParkingEditComponent implements OnInit {
     this.newInclude = { "Start_time": this.SlotWeekDaytime1, "End_time": this.SlotWeekDaytime2, "Price": this.amount };
     this.Included_new.push(this.newInclude);
     console.log(this.Included_new);
-    this.SlotWeekDaytime1 = "00:00";
-    this.SlotWeekDaytime2 = "00:00";
+    this.bike_time1();
+    this.SlotWeekDaytime1 = undefined;
+    this.SlotWeekDaytime2 = undefined;
     this.amount = "";
-    this.parking_details_bike_price_day[0].Timings = this.Included_new;
+    this.parking_details_bike_price_day[1].Timings = this.Included_new;
   }
   Bikeremovemonday(i) {
-    this.Included_new.splice(i, 1);
-    this.parking_details_bike_price_day[0].Timings = this.Included_new;
+    console.log(this.Included_new.length);
+    if (i < this.Included_new.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_new.splice(i, (this.Included_new.length - i));
+          this.parking_details_bike_price_day[1].Timings = this.Included_new;
+
+          this.bikeSlotWeekDaytime1 = [];
+          if (this.Included_new.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bikeSlotWeekDaytime1.push(i);
+            }
+          }
+          else {
+            console.log(+this.Included_new[this.Included_new.length - 1].End_time + 1)
+            for (let i = (+this.Included_new[this.Included_new.length - 1].End_time + 1); i <= 24; i++) {
+              this.bikeSlotWeekDaytime1.push(i);
+            }
+          }
+
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_new.splice(i, 1);
+      this.parking_details_bike_price_day[1].Timings = this.Included_new;
+      this.bikeSlotWeekDaytime1 = [];
+      if (this.Included_new.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bikeSlotWeekDaytime1.push(i);
+        }
+      }
+      else {
+        console.log(+this.Included_new[this.Included_new.length - 1].End_time + 1)
+        for (let i = (+this.Included_new[this.Included_new.length - 1].End_time + 1); i <= 24; i++) {
+          this.bikeSlotWeekDaytime1.push(i);
+        }
+      }
+    }
+
   }
   BikeAddtuesday() {
     this.newInclude1 = { "Start_time": this.SlotWeekDaytime3, "End_time": this.SlotWeekDaytime4, "Price": this.amount1 };
     this.Included_new1.push(this.newInclude1);
     console.log(this.Included_new1);
-    this.SlotWeekDaytime3 = "00:00";
-    this.SlotWeekDaytime4 = "00:00";
+    this.bike_time2();
+    this.SlotWeekDaytime3 = undefined;
+    this.SlotWeekDaytime4 = undefined;
     this.amount1 = "";
-    this.parking_details_bike_price_day[1].Timings = this.Included_new1;
+    this.parking_details_bike_price_day[2].Timings = this.Included_new1;
 
   }
   Bikeremovetuesday(i) {
-    this.Included_new1.splice(i, 1);
-    this.parking_details_bike_price_day[1].Timings = this.Included_new1;
+    if (i < this.Included_new1.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_new1.splice(i, (this.Included_new1.length - i));
+          this.parking_details_bike_price_day[2].Timings = this.Included_new1;
+          this.bikeSlotWeekDaytime3 = [];
+          if (this.Included_new1.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bikeSlotWeekDaytime3.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_new1[this.Included_new1.length - 1].End_time + 1); i <= 24; i++) {
+              this.bikeSlotWeekDaytime3.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_new1.splice(i, 1);
+      this.parking_details_bike_price_day[2].Timings = this.Included_new1;
+      this.bikeSlotWeekDaytime3 = [];
+      if (this.Included_new1.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bikeSlotWeekDaytime3.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_new1[this.Included_new1.length - 1].End_time + 1); i <= 24; i++) {
+          this.bikeSlotWeekDaytime3.push(i);
+        }
+      }
+    }
+
   }
   addwedday() {
     this.newInclude2 = { "Start_time": this.SlotWeekDaytime5, "End_time": this.SlotWeekDaytime6, "Price": this.amount2 };
     this.Included_new2.push(this.newInclude2);
     console.log(this.Included_new2);
-    this.SlotWeekDaytime5 = "00:00";
-    this.SlotWeekDaytime6 = "00:00";
+    this.bike_time3();
+    this.SlotWeekDaytime5 = undefined;
+    this.SlotWeekDaytime6 = undefined;
     this.amount2 = "";
-    this.parking_details_bike_price_day[2].Timings = this.Included_new2;
+    this.parking_details_bike_price_day[3].Timings = this.Included_new2;
   }
   deletewedsday(i) {
-    this.Included_new2.splice(i, 1);
-    this.parking_details_bike_price_day[2].Timings = this.Included_new2;
+    if (i < this.Included_new2.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_new2.splice(i, (this.Included_new2.length - i));
+          this.parking_details_bike_price_day[3].Timings = this.Included_new2;
+          this.bikeSlotWeekDaytime5 = [];
+          if (this.Included_new2.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bikeSlotWeekDaytime5.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_new2[this.Included_new2.length - 1].End_time + 1); i <= 24; i++) {
+              this.bikeSlotWeekDaytime5.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_new2.splice(i, 1);
+      this.parking_details_bike_price_day[3].Timings = this.Included_new2;
+      this.bikeSlotWeekDaytime5 = [];
+      if (this.Included_new2.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bikeSlotWeekDaytime5.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_new2[this.Included_new2.length - 1].End_time + 1); i <= 24; i++) {
+          this.bikeSlotWeekDaytime5.push(i);
+        }
+      }
+    }
+
   }
   addthursday() {
     this.newInclude3 = { "Start_time": this.SlotWeekDaytime7, "End_time": this.SlotWeekDaytime8, "Price": this.amount3 };
     this.Included_new3.push(this.newInclude3);
     console.log(this.Included_new3);
-    this.SlotWeekDaytime7 = "00:00";
-    this.SlotWeekDaytime8 = "00:00";
+    this.bike_time4();
+    this.SlotWeekDaytime7 = undefined;
+    this.SlotWeekDaytime8 = undefined;
     this.amount3 = "";
-    this.parking_details_bike_price_day[3].Timings = this.Included_new3;
+    this.parking_details_bike_price_day[4].Timings = this.Included_new3;
   }
   deletethursday(i) {
-    this.Included_new3.splice(i, 1);
-    this.parking_details_bike_price_day[3].Timings = this.Included_new3;
+    if (i < this.Included_new3.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_new3.splice(i, (this.Included_new3.length - i));
+          this.parking_details_bike_price_day[4].Timings = this.Included_new3;
+          this.bikeSlotWeekDaytime7 = [];
+          if (this.Included_new3.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bikeSlotWeekDaytime7.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_new3[this.Included_new3.length - 1].End_time + 1); i <= 24; i++) {
+              this.bikeSlotWeekDaytime7.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_new3.splice(i, 1);
+      this.parking_details_bike_price_day[4].Timings = this.Included_new3;
+      this.bikeSlotWeekDaytime7 = [];
+      if (this.Included_new3.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bikeSlotWeekDaytime7.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_new3[this.Included_new3.length - 1].End_time + 1); i <= 24; i++) {
+          this.bikeSlotWeekDaytime7.push(i);
+        }
+      }
+    }
+
   }
   addfriday() {
     this.newInclude4 = { "Start_time": this.SlotWeekDaytime9, "End_time": this.SlotWeekDaytime10, "Price": this.amount4 };
     this.Included_new4.push(this.newInclude4);
     console.log(this.Included_new4);
-    this.SlotWeekDaytime9 = "00:00";
-    this.SlotWeekDaytime10 = "00:00";
+    this.bike_time5();
+    this.SlotWeekDaytime9 = undefined;
+    this.SlotWeekDaytime10 = undefined;
     this.amount4 = "";
-    this.parking_details_bike_price_day[4].Timings = this.Included_new4;
+    this.parking_details_bike_price_day[5].Timings = this.Included_new4;
 
   }
   deletefriday(i) {
-    this.Included_new4.splice(i, 1);
-    this.parking_details_bike_price_day[4].Timings = this.Included_new4;
+    if (i < this.Included_new4.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_new4.splice(i, (this.Included_new4.length - i));
+          this.parking_details_bike_price_day[5].Timings = this.Included_new4;
+          this.bikeSlotWeekDaytime9 = [];
+          if (this.Included_new4.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bikeSlotWeekDaytime9.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_new4[this.Included_new4.length - 1].End_time + 1); i <= 24; i++) {
+              this.bikeSlotWeekDaytime9.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_new4.splice(i, 1);
+      this.parking_details_bike_price_day[5].Timings = this.Included_new4;
+      this.bikeSlotWeekDaytime9 = [];
+      if (this.Included_new4.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bikeSlotWeekDaytime9.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_new4[this.Included_new4.length - 1].End_time + 1); i <= 24; i++) {
+          this.bikeSlotWeekDaytime9.push(i);
+        }
+      }
+    }
+
   }
   addsaturday() {
     this.newInclude5 = { "Start_time": this.SlotWeekDaytime11, "End_time": this.SlotWeekDaytime12, "Price": this.amount5 };
     this.Included_new5.push(this.newInclude5);
     console.log(this.Included_new5);
-    this.SlotWeekDaytime11 = "00:00";
-    this.SlotWeekDaytime12 = "00:00";
+    this.bike_time6();
+    this.SlotWeekDaytime11 = undefined;
+    this.SlotWeekDaytime12 = undefined;
     this.amount5 = "";
-    this.parking_details_bike_price_day[5].Timings = this.Included_new5;
+    this.parking_details_bike_price_day[6].Timings = this.Included_new5;
   }
   deletesaturday(i) {
-    this.Included_new5.splice(i, 1);
-    this.parking_details_bike_price_day[5].Timings = this.Included_new5;
+    if (i < this.Included_new5.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_new5.splice(i, (this.Included_new5.length - i));
+          this.parking_details_bike_price_day[6].Timings = this.Included_new5;
+          this.bikeSlotWeekDaytime11 = [];
+          if (this.Included_new5.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bikeSlotWeekDaytime11.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_new5[this.Included_new5.length - 1].End_time + 1); i <= 24; i++) {
+              this.bikeSlotWeekDaytime11.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_new5.splice(i, 1);
+      this.parking_details_bike_price_day[6].Timings = this.Included_new5;
+      this.bikeSlotWeekDaytime11 = [];
+      if (this.Included_new5.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bikeSlotWeekDaytime11.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_new5[this.Included_new5.length - 1].End_time + 1); i <= 24; i++) {
+          this.bikeSlotWeekDaytime11.push(i);
+        }
+      }
+    }
+
   }
   addsunday() {
     this.newInclude6 = { "Start_time": this.SlotWeekDaytime13, "End_time": this.SlotWeekDaytime14, "Price": this.amount6 };
     this.Included_new6.push(this.newInclude6);
     console.log(this.Included_new6);
-    this.SlotWeekDaytime13 = "00:00";
-    this.SlotWeekDaytime14 = "00:00";
+    this.bike_time7();
+    this.SlotWeekDaytime13 = undefined;
+    this.SlotWeekDaytime14 = undefined;
     this.amount6 = "";
-    this.parking_details_bike_price_day[6].Timings = this.Included_new6;
+    this.parking_details_bike_price_day[0].Timings = this.Included_new6;
   }
   deletesunday(i) {
-    this.Included_new6.splice(i, 1);
-    this.parking_details_bike_price_day[6].Timings = this.Included_new6;
+    if (i < this.Included_new6.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_new6.splice(i, (this.Included_new6.length - i));
+          this.parking_details_bike_price_day[0].Timings = this.Included_new6;
+          this.bikeSlotWeekDaytime13 = [];
+          if (this.Included_new6.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bikeSlotWeekDaytime13.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_new6[this.Included_new6.length - 1].End_time + 1); i <= 24; i++) {
+              this.bikeSlotWeekDaytime13.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_new6.splice(i, 1);
+      this.parking_details_bike_price_day[0].Timings = this.Included_new6;
+      this.bikeSlotWeekDaytime13 = [];
+      if (this.Included_new6.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bikeSlotWeekDaytime13.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_new6[this.Included_new6.length - 1].End_time + 1); i <= 24; i++) {
+          this.bikeSlotWeekDaytime13.push(i);
+        }
+      }
+    }
+
   }
 
   addweekdays2() {
     this.newInclude7 = { "dates": this.bikeslotdate1, "Start_time": this.SlotWeekDaytime16, "End_time": this.SlotWeekDaytime17, "Price": this.amount7 };
     this.parking_details_bike_price_spe_day.push(this.newInclude7);
     console.log(this.parking_details_bike_price_spe_day);
-    this.SlotWeekDaytime16 = "00:00";
-    this.SlotWeekDaytime17 = "00:00";
+    this.bike_time8();
+    this.SlotWeekDaytime16 = undefined;
+    this.SlotWeekDaytime17 = undefined;
     this.amount7 = "";
 
   }
   deleteaddweekdays2(i) {
-    this.parking_details_bike_price_spe_day.splice(i, 1);
+
+    if (i < this.parking_details_bike_price_spe_day.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.parking_details_bike_price_spe_day.splice(i, (this.parking_details_bike_price_spe_day.length - i));
+          this.bikeSlotWeekDaytime16 = [];
+          if (this.parking_details_bike_price_spe_day.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bikeSlotWeekDaytime16.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.parking_details_bike_price_spe_day[this.parking_details_bike_price_spe_day.length - 1].End_time + 1); i <= 24; i++) {
+              this.bikeSlotWeekDaytime16.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.parking_details_bike_price_spe_day.splice(i, 1);
+      this.bikeSlotWeekDaytime16 = [];
+      if (this.parking_details_bike_price_spe_day.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bikeSlotWeekDaytime16.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.parking_details_bike_price_spe_day[this.parking_details_bike_price_spe_day.length - 1].End_time + 1); i <= 24; i++) {
+          this.bikeSlotWeekDaytime16.push(i);
+        }
+      }
+    }
+
   }
 
 
@@ -531,107 +1012,529 @@ export class ParkingEditComponent implements OnInit {
     this.newIncludee = { "Start_time": this.SlotWeekDaytime18, "End_time": this.SlotWeekDaytime19, "Price": this.amount8 };
     this.Included_newe.push(this.newIncludee);
     console.log(this.Included_newe);
-    this.SlotWeekDaytime18 = "00:00";
-    this.SlotWeekDaytime19 = "00:00";
+    this.car_time1();
+    this.SlotWeekDaytime18 = undefined;
+    this.SlotWeekDaytime19 = undefined;
     this.amount8 = "";
-    this.parking_details_car_price_day[0].Timings = this.Included_newe;
+    this.parking_details_car_price_day[1].Timings = this.Included_newe;
   }
   carremovemonday(i) {
-    this.Included_newe.splice(i, 1);
-    this.parking_details_car_price_day[0].Timings = this.Included_newe;
+    if (i < this.Included_newe.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newe.splice(i, (this.Included_newe.length - i));
+          this.parking_details_car_price_day[1].Timings = this.Included_newe;
+          this.carSlotWeekDaytime18 = [];
+          if (this.Included_newe.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.carSlotWeekDaytime18.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newe[this.Included_newe.length - 1].End_time + 1); i <= 24; i++) {
+              this.carSlotWeekDaytime18.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newe.splice(i, 1);
+      this.parking_details_car_price_day[1].Timings = this.Included_newe;
+      this.carSlotWeekDaytime18 = [];
+      if (this.Included_newe.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.carSlotWeekDaytime18.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newe[this.Included_newe.length - 1].End_time + 1); i <= 24; i++) {
+          this.carSlotWeekDaytime18.push(i);
+        }
+      }
+    }
+
   }
   carAddtuesday() {
     this.newIncludee1 = { "Start_time": this.SlotWeekDaytime20, "End_time": this.SlotWeekDaytime21, "Price": this.amount9 };
     this.Included_newe1.push(this.newIncludee1);
     console.log(this.Included_newe1);
-    this.SlotWeekDaytime20 = "00:00";
-    this.SlotWeekDaytime21 = "00:00";
+    this.car_time2();
+    this.SlotWeekDaytime20 = undefined;
+    this.SlotWeekDaytime21 = undefined;
     this.amount9 = "";
-    this.parking_details_car_price_day[1].Timings = this.Included_newe1;
+    this.parking_details_car_price_day[2].Timings = this.Included_newe1;
 
   }
   carremovetuesday(i) {
-    this.Included_newe1.splice(i, 1);
-    this.parking_details_car_price_day[1].Timings = this.Included_newe1;
+
+    if (i < this.Included_newe1.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newe1.splice(i, (this.Included_newe1.length - i));
+          this.parking_details_car_price_day[2].Timings = this.Included_newe1;
+          this.carSlotWeekDaytime20 = [];
+          if (this.Included_newe1.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.carSlotWeekDaytime20.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newe1[this.Included_newe1.length - 1].End_time + 1); i <= 24; i++) {
+              this.carSlotWeekDaytime20.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newe1.splice(i, 1);
+      this.parking_details_car_price_day[2].Timings = this.Included_newe1;
+      this.carSlotWeekDaytime20 = [];
+      if (this.Included_newe1.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.carSlotWeekDaytime20.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newe1[this.Included_newe1.length - 1].End_time + 1); i <= 24; i++) {
+          this.carSlotWeekDaytime20.push(i);
+        }
+      }
+    }
+
   }
   addweddayc() {
     this.newIncludee2 = { "Start_time": this.SlotWeekDaytime22, "End_time": this.SlotWeekDaytime23, "Price": this.amount10 };
     this.Included_newe2.push(this.newIncludee2);
     console.log(this.Included_newe2);
-    this.SlotWeekDaytime22 = "00:00";
-    this.SlotWeekDaytime23 = "00:00";
+    this.car_time3();
+    this.SlotWeekDaytime22 = undefined;
+    this.SlotWeekDaytime23 = undefined;
     this.amount10 = "";
-    this.parking_details_car_price_day[2].Timings = this.Included_newe2;
+    this.parking_details_car_price_day[3].Timings = this.Included_newe2;
   }
   deletewedsdayc(i) {
-    this.Included_newe2.splice(i, 1);
-    this.parking_details_car_price_day[2].Timings = this.Included_newe2;
+
+
+    if (i < this.Included_newe2.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newe2.splice(i, (this.Included_newe2.length - i));
+          this.parking_details_car_price_day[3].Timings = this.Included_newe2;
+          this.carSlotWeekDaytime22 = [];
+          if (this.Included_newe2.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.carSlotWeekDaytime22.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newe2[this.Included_newe2.length - 1].End_time + 1); i <= 24; i++) {
+              this.carSlotWeekDaytime22.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newe2.splice(i, 1);
+      this.parking_details_car_price_day[3].Timings = this.Included_newe2;
+      this.carSlotWeekDaytime22 = [];
+      if (this.Included_newe2.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.carSlotWeekDaytime22.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newe2[this.Included_newe2.length - 1].End_time + 1); i <= 24; i++) {
+          this.carSlotWeekDaytime22.push(i);
+        }
+      }
+    }
+
   }
   addthursdayc() {
     this.newIncludee3 = { "Start_time": this.SlotWeekDaytime24, "End_time": this.SlotWeekDaytime25, "Price": this.amount11 };
     this.Included_newe3.push(this.newIncludee3);
     console.log(this.Included_newe3);
-    this.SlotWeekDaytime24 = "00:00";
-    this.SlotWeekDaytime25 = "00:00";
+    this.car_time4();
+    this.SlotWeekDaytime24 = undefined;
+    this.SlotWeekDaytime25 = undefined;
     this.amount11 = "";
-    this.parking_details_car_price_day[3].Timings = this.Included_newe3;
+    this.parking_details_car_price_day[4].Timings = this.Included_newe3;
   }
   deletethursdayc(i) {
-    this.Included_newe3.splice(i, 1);
-    this.parking_details_car_price_day[3].Timings = this.Included_newe3;
+
+    if (i < this.Included_newe3.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newe3.splice(i, (this.Included_newe3.length - i));
+          this.parking_details_car_price_day[4].Timings = this.Included_newe3;
+          this.carSlotWeekDaytime24 = [];
+          if (this.Included_newe3.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.carSlotWeekDaytime24.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newe3[this.Included_newe3.length - 1].End_time + 1); i <= 24; i++) {
+              this.carSlotWeekDaytime24.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newe3.splice(i, 1);
+      this.parking_details_car_price_day[4].Timings = this.Included_newe3;
+      this.carSlotWeekDaytime24 = [];
+      if (this.Included_newe3.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.carSlotWeekDaytime24.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newe3[this.Included_newe3.length - 1].End_time + 1); i <= 24; i++) {
+          this.carSlotWeekDaytime24.push(i);
+        }
+      }
+    }
+
   }
   addfridayc() {
     this.newIncludee4 = { "Start_time": this.SlotWeekDaytime26, "End_time": this.SlotWeekDaytime27, "Price": this.amount12 };
     this.Included_newe4.push(this.newIncludee4);
     console.log(this.Included_newe4);
-    this.SlotWeekDaytime26 = "00:00";
-    this.SlotWeekDaytime27 = "00:00";
+    this.car_time5();
+    this.SlotWeekDaytime26 = undefined;
+    this.SlotWeekDaytime27 = undefined;
     this.amount12 = "";
-    this.parking_details_car_price_day[4].Timings = this.Included_newe4;
+    this.parking_details_car_price_day[5].Timings = this.Included_newe4;
 
   }
   deletefridayc(i) {
-    this.Included_newe4.splice(i, 1);
-    this.parking_details_car_price_day[4].Timings = this.Included_newe4;
+
+    if (i < this.Included_newe4.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newe4.splice(i, (this.Included_newe4.length - i));
+          this.parking_details_car_price_day[5].Timings = this.Included_newe4;
+          this.carSlotWeekDaytime26 = [];
+          if (this.Included_newe4.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.carSlotWeekDaytime26.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newe4[this.Included_newe4.length - 1].End_time + 1); i <= 24; i++) {
+              this.carSlotWeekDaytime26.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newe4.splice(i, 1);
+      this.parking_details_car_price_day[5].Timings = this.Included_newe4;
+      this.carSlotWeekDaytime26 = [];
+      if (this.Included_newe4.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.carSlotWeekDaytime26.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newe4[this.Included_newe4.length - 1].End_time + 1); i <= 24; i++) {
+          this.carSlotWeekDaytime26.push(i);
+        }
+      }
+    }
+
   }
   addsaturdayc() {
     this.newIncludee5 = { "Start_time": this.SlotWeekDaytime28, "End_time": this.SlotWeekDaytime29, "Price": this.amount13 };
     this.Included_newe5.push(this.newIncludee5);
     console.log(this.Included_new5);
-    this.SlotWeekDaytime28 = "00:00";
-    this.SlotWeekDaytime29 = "00:00";
+    this.car_time6();
+    this.SlotWeekDaytime28 = undefined;
+    this.SlotWeekDaytime29 = undefined;
     this.amount13 = "";
-    this.parking_details_car_price_day[5].Timings = this.Included_newe5;
+    this.parking_details_car_price_day[6].Timings = this.Included_newe5;
   }
   deletesaturdayc(i) {
-    this.Included_newe5.splice(i, 1);
-    this.parking_details_car_price_day[5].Timings = this.Included_newe5;
+
+    if (i < this.Included_newe5.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newe5.splice(i, (this.Included_newe5.length - i));
+          this.parking_details_car_price_day[6].Timings = this.Included_newe5;
+          this.carSlotWeekDaytime28 = [];
+          if (this.Included_newe5.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.carSlotWeekDaytime28.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newe5[this.Included_newe5.length - 1].End_time + 1); i <= 24; i++) {
+              this.carSlotWeekDaytime28.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newe5.splice(i, 1);
+      this.parking_details_car_price_day[6].Timings = this.Included_newe5;
+      this.carSlotWeekDaytime28 = [];
+      if (this.Included_newe5.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.carSlotWeekDaytime28.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newe5[this.Included_newe5.length - 1].End_time + 1); i <= 24; i++) {
+          this.carSlotWeekDaytime28.push(i);
+        }
+      }
+    }
+
   }
   addsundayc() {
     this.newIncludee6 = { "Start_time": this.SlotWeekDaytime30, "End_time": this.SlotWeekDaytime31, "Price": this.amount14 };
     this.Included_newe6.push(this.newIncludee6);
     console.log(this.Included_new6);
-    this.SlotWeekDaytime30 = "00:00";
-    this.SlotWeekDaytime31 = "00:00";
+    this.car_time7();
+    this.SlotWeekDaytime30 = undefined;
+    this.SlotWeekDaytime31 = undefined;
     this.amount14 = "";
-    this.parking_details_car_price_day[6].Timings = this.Included_newe6;
+    this.parking_details_car_price_day[0].Timings = this.Included_newe6;
   }
   deletesundayc(i) {
-    this.Included_newe6.splice(i, 1);
-    this.parking_details_car_price_day[6].Timings = this.Included_newe6;
+
+    if (i < this.Included_newe6.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newe6.splice(i, (this.Included_newe6.length - i));
+          this.parking_details_car_price_day[0].Timings = this.Included_newe6;
+          this.carSlotWeekDaytime30 = [];
+          if (this.Included_newe6.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.carSlotWeekDaytime30.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newe6[this.Included_newe6.length - 1].End_time + 1); i <= 24; i++) {
+              this.carSlotWeekDaytime30.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newe6.splice(i, 1);
+      this.parking_details_car_price_day[0].Timings = this.Included_newe6;
+      this.carSlotWeekDaytime30 = [];
+      if (this.Included_newe6.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.carSlotWeekDaytime30.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newe6[this.Included_newe6.length - 1].End_time + 1); i <= 24; i++) {
+          this.carSlotWeekDaytime30.push(i);
+        }
+      }
+    }
+
   }
 
   addweekdaysc2() {
     this.newIncludee7 = { "dates": this.slotdatee1, "Start_time": this.SlotWeekDaytime32, "End_time": this.SlotWeekDaytime33, "Price": this.amount15 };
     this.parking_details_car_price_spe_day.push(this.newIncludee7);
     console.log(this.parking_details_car_price_spe_day);
-    this.SlotWeekDaytime32 = "00:00";
-    this.SlotWeekDaytime33 = "00:00";
+    this.car_time8();
+    this.SlotWeekDaytime32 = undefined;
+    this.SlotWeekDaytime33 = undefined;
     this.amount15 = "";
 
   }
   deleteaddweekdaysc2(i) {
-    this.parking_details_car_price_spe_day.splice(i, 1);
+    if (i < this.parking_details_car_price_spe_day.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.parking_details_car_price_spe_day.splice(i, (this.parking_details_car_price_spe_day.length - i));
+          this.carSlotWeekDaytime32 = [];
+          if (this.parking_details_car_price_spe_day.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.carSlotWeekDaytime32.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.parking_details_car_price_spe_day[this.parking_details_car_price_spe_day.length - 1].End_time + 1); i <= 24; i++) {
+              this.carSlotWeekDaytime32.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.parking_details_car_price_spe_day.splice(i, 1);
+      this.carSlotWeekDaytime32 = [];
+      if (this.parking_details_car_price_spe_day.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.carSlotWeekDaytime32.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.parking_details_car_price_spe_day[this.parking_details_car_price_spe_day.length - 1].End_time + 1); i <= 24; i++) {
+          this.carSlotWeekDaytime32.push(i);
+        }
+      }
+    }
+
   }
 
   // Car----
@@ -642,110 +1545,523 @@ export class ParkingEditComponent implements OnInit {
     this.newIncludeee = { "Start_time": this.SlotWeekDaytime35, "End_time": this.SlotWeekDaytime36, "Price": this.amount17 };
     this.Included_newee.push(this.newIncludeee);
     console.log(this.Included_newee);
-    this.SlotWeekDaytime35 = "00:00";
-    this.SlotWeekDaytime36 = "00:00";
+    this.both_time1();
+    this.SlotWeekDaytime35 = undefined;
+    this.SlotWeekDaytime36 = undefined;
     this.amount17 = "";
-    this.both_slot_week[0].Timings = this.Included_newee;
+    this.both_slot_week[1].Timings = this.Included_newee;
   }
   carremovemondayboth(i) {
-    this.Included_newee.splice(i, 1);
-    this.both_slot_week[0].Timings = this.Included_newee;
+
+    if (i < this.Included_newee.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newee.splice(i, (this.Included_newee.length - i));
+          this.both_slot_week[1].Timings = this.Included_newee;
+          this.bothSlotWeekDaytime35 = [];
+          if (this.Included_newee.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bothSlotWeekDaytime35.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newee[this.Included_newee.length - 1].End_time + 1); i <= 24; i++) {
+              this.bothSlotWeekDaytime35.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newee.splice(i, 1);
+      this.both_slot_week[1].Timings = this.Included_newee;
+      this.bothSlotWeekDaytime35 = [];
+      if (this.Included_newee.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bothSlotWeekDaytime35.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newee[this.Included_newee.length - 1].End_time + 1); i <= 24; i++) {
+          this.bothSlotWeekDaytime35.push(i);
+        }
+      }
+    }
+
   }
   carAddtuesdayboth() {
     this.newIncludeee1 = { "Start_time": this.SlotWeekDaytime37, "End_time": this.SlotWeekDaytime38, "Price": this.amount18 };
     this.Included_newee1.push(this.newIncludeee1);
     console.log(this.Included_newee1);
-    this.SlotWeekDaytime37 = "00:00";
-    this.SlotWeekDaytime38 = "00:00";
+    this.both_time2();
+    this.SlotWeekDaytime37 = undefined;
+    this.SlotWeekDaytime38 = undefined;
     this.amount18 = "";
-    this.both_slot_week[1].Timings = this.Included_newee1;
+    this.both_slot_week[2].Timings = this.Included_newee1;
 
   }
   carremovetuesdayboth(i) {
-    this.Included_newee1.splice(i, 1);
-    this.both_slot_week[1].Timings = this.Included_newee1;
+
+    if (i < this.Included_newee1.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newee1.splice(i, (this.Included_newee1.length - i));
+          this.both_slot_week[2].Timings = this.Included_newee1;
+          this.bothSlotWeekDaytime37 = [];
+          if (this.Included_newee1.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bothSlotWeekDaytime37.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newee1[this.Included_newee1.length - 1].End_time + 1); i <= 24; i++) {
+              this.bothSlotWeekDaytime37.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newee1.splice(i, 1);
+      this.both_slot_week[2].Timings = this.Included_newee1;
+      this.bothSlotWeekDaytime37 = [];
+      if (this.Included_newee1.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bothSlotWeekDaytime37.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newee1[this.Included_newee1.length - 1].End_time + 1); i <= 24; i++) {
+          this.bothSlotWeekDaytime37.push(i);
+        }
+      }
+    }
+
   }
   addweddaycboth() {
     this.newIncludeee2 = { "Start_time": this.SlotWeekDaytime39, "End_time": this.SlotWeekDaytime40, "Price": this.amount19 };
     this.Included_newee2.push(this.newIncludeee2);
     console.log(this.Included_newee2);
-    this.SlotWeekDaytime39 = "00:00";
-    this.SlotWeekDaytime40 = "00:00";
+    this.both_time3();
+    this.SlotWeekDaytime39 = undefined;
+    this.SlotWeekDaytime40 = undefined;
     this.amount19 = "";
-    this.both_slot_week[2].Timings = this.Included_newee2;
+    this.both_slot_week[3].Timings = this.Included_newee2;
   }
   deletewedsdaycboth(i) {
-    this.Included_newee2.splice(i, 1);
-    this.both_slot_week[2].Timings = this.Included_newee2;
+
+    if (i < this.Included_newee2.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newee2.splice(i, (this.Included_newee2.length - i));
+          this.both_slot_week[3].Timings = this.Included_newee2;
+          this.bothSlotWeekDaytime39 = [];
+          if (this.Included_newee2.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bothSlotWeekDaytime39.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newee2[this.Included_newee2.length - 1].End_time + 1); i <= 24; i++) {
+              this.bothSlotWeekDaytime39.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newee2.splice(i, 1);
+      this.both_slot_week[3].Timings = this.Included_newee2;
+      this.bothSlotWeekDaytime39 = [];
+      if (this.Included_newee2.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bothSlotWeekDaytime39.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newee2[this.Included_newee2.length - 1].End_time + 1); i <= 24; i++) {
+          this.bothSlotWeekDaytime39.push(i);
+        }
+      }
+    }
+
   }
   addthursdaycboth() {
     this.newIncludeee3 = { "Start_time": this.SlotWeekDaytime41, "End_time": this.SlotWeekDaytime42, "Price": this.amount20 };
     this.Included_newee3.push(this.newIncludeee3);
     console.log(this.Included_newee3);
-    this.SlotWeekDaytime41 = "00:00";
-    this.SlotWeekDaytime42 = "00:00";
+    this.both_time4();
+    this.SlotWeekDaytime41 = undefined;
+    this.SlotWeekDaytime42 = undefined;
     this.amount20 = "";
-    this.both_slot_week[3].Timings = this.Included_newee3;
+    this.both_slot_week[4].Timings = this.Included_newee3;
   }
   deletethursdaycboth(i) {
-    this.Included_newee3.splice(i, 1);
-    this.both_slot_week[3].Timings = this.Included_newee3;
+    if (i < this.Included_newee3.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newee3.splice(i, (this.Included_newee3.length - i));
+          this.both_slot_week[4].Timings = this.Included_newee3;
+          this.bothSlotWeekDaytime41 = [];
+          if (this.Included_newee3.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bothSlotWeekDaytime41.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newee3[this.Included_newee3.length - 1].End_time + 1); i <= 24; i++) {
+              this.bothSlotWeekDaytime41.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newee3.splice(i, 1);
+      this.both_slot_week[4].Timings = this.Included_newee3;
+      this.bothSlotWeekDaytime41 = [];
+      if (this.Included_newee3.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bothSlotWeekDaytime41.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newee3[this.Included_newee3.length - 1].End_time + 1); i <= 24; i++) {
+          this.bothSlotWeekDaytime41.push(i);
+        }
+      }
+    }
+
   }
   addfridaycboth() {
     this.newIncludeee4 = { "Start_time": this.SlotWeekDaytime43, "End_time": this.SlotWeekDaytime44, "Price": this.amount21 };
     this.Included_newee4.push(this.newIncludeee4);
     console.log(this.Included_newee4);
-    this.SlotWeekDaytime43 = "00:00";
-    this.SlotWeekDaytime44 = "00:00";
+    this.both_time5();
+    this.SlotWeekDaytime43 = undefined;
+    this.SlotWeekDaytime44 = undefined;
     this.amount21 = "";
-    this.both_slot_week[4].Timings = this.Included_newee4;
+    this.both_slot_week[5].Timings = this.Included_newee4;
 
   }
   deletefridaycboth(i) {
-    this.Included_newee4.splice(i, 1);
-    this.both_slot_week[4].Timings = this.Included_newee4;
+    if (i < this.Included_newee4.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newee4.splice(i, (this.Included_newee4.length - i));
+          this.both_slot_week[5].Timings = this.Included_newee4;
+          this.bothSlotWeekDaytime43 = [];
+          if (this.Included_newee4.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bothSlotWeekDaytime43.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newee4[this.Included_newee4.length - 1].End_time + 1); i <= 24; i++) {
+              this.bothSlotWeekDaytime43.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newee4.splice(i, 1);
+      this.both_slot_week[5].Timings = this.Included_newee4;
+      this.bothSlotWeekDaytime43 = [];
+      if (this.Included_newee4.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bothSlotWeekDaytime43.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newee4[this.Included_newee4.length - 1].End_time + 1); i <= 24; i++) {
+          this.bothSlotWeekDaytime43.push(i);
+        }
+      }
+    }
+
   }
   addsaturdaycboth() {
     this.newIncludeee5 = { "Start_time": this.SlotWeekDaytime45, "End_time": this.SlotWeekDaytime46, "Price": this.amount22 };
     this.Included_newee5.push(this.newIncludeee5);
     console.log(this.Included_newee5);
-    this.SlotWeekDaytime45 = "00:00";
-    this.SlotWeekDaytime46 = "00:00";
+    this.both_time6();
+    this.SlotWeekDaytime45 = undefined;
+    this.SlotWeekDaytime46 = undefined;
     this.amount22 = "";
-    this.both_slot_week[5].Timings = this.Included_newee5;
+    this.both_slot_week[6].Timings = this.Included_newee5;
   }
   deletesaturdaycboth(i) {
-    this.Included_newee5.splice(i, 1);
-    this.both_slot_week[5].Timings = this.Included_newee5;
+
+    if (i < this.Included_newee5.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newee5.splice(i, (this.Included_newee5.length - i));
+          this.both_slot_week[6].Timings = this.Included_newee5;
+          this.bothSlotWeekDaytime45 = [];
+          if (this.Included_newee5.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bothSlotWeekDaytime45.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.Included_newee5[this.Included_newee5.length - 1].End_time + 1); i <= 24; i++) {
+              this.bothSlotWeekDaytime45.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newee5.splice(i, 1);
+      this.both_slot_week[6].Timings = this.Included_newee5;
+      this.bothSlotWeekDaytime45 = [];
+      if (this.Included_newee5.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bothSlotWeekDaytime45.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newee5[this.Included_newee5.length - 1].End_time + 1); i <= 24; i++) {
+          this.bothSlotWeekDaytime45.push(i);
+        }
+      }
+    }
+
   }
   addsundaycboth() {
     this.newIncludee6 = { "Start_time": this.SlotWeekDaytime47, "End_time": this.SlotWeekDaytime48, "Price": this.amount23 };
     this.Included_newee6.push(this.newIncludee6);
     console.log(this.Included_newee6);
-    this.SlotWeekDaytime47 = "00:00";
-    this.SlotWeekDaytime48 = "00:00";
+    this.both_time7();
+    this.SlotWeekDaytime47 = undefined;
+    this.SlotWeekDaytime48 = undefined;
     this.amount23 = "";
-    this.both_slot_week[6].Timings = this.Included_newee6;
+    this.both_slot_week[0].Timings = this.Included_newee6;
   }
   deletesundaycboth(i) {
-    this.Included_newee6.splice(i, 1);
-    this.both_slot_week[6].Timings = this.Included_newee6;
+
+    if (i < this.Included_newee6.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.Included_newee6.splice(i, (this.Included_newee6.length - i));
+          this.both_slot_week[0].Timings = this.Included_newee6;
+          this.bothSlotWeekDaytime47 = [];
+          for (let i = (+this.Included_newee6[this.Included_newee6.length - 1].End_time + 1); i <= 24; i++) {
+            this.bothSlotWeekDaytime47.push(i);
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.Included_newee6.splice(i, 1);
+      this.both_slot_week[0].Timings = this.Included_newee6;
+      this.bothSlotWeekDaytime47 = [];
+      if (this.Included_newee6.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bothSlotWeekDaytime47.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.Included_newee6[this.Included_newee6.length - 1].End_time + 1); i <= 24; i++) {
+          this.bothSlotWeekDaytime47.push(i);
+        }
+      }
+    }
+
   }
 
   addweekdaysc2both() {
     this.newIncludeee7 = { "dates": this.slotdateee1, "Start_time": this.SlotWeekDaytime49, "End_time": this.SlotWeekDaytime50, "Price": this.amount24 };
     this.both_slot_per_day.push(this.newIncludeee7);
     console.log(this.both_slot_per_day);
-    this.SlotWeekDaytime49 = "00:00";
-    this.SlotWeekDaytime50 = "00:00";
+    this.both_time8();
+    this.SlotWeekDaytime49 = undefined;
+    this.SlotWeekDaytime50 = undefined;
     this.amount24 = "";
 
   }
   deleteaddweekdaysc2both(i) {
-    this.both_slot_per_day.splice(i, 1);
+
+    if (i < this.both_slot_per_day.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.both_slot_per_day.splice(i, (this.both_slot_per_day.length - i));
+          this.bothSlotWeekDaytime49 = [];
+          if (this.both_slot_per_day.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.bothSlotWeekDaytime49.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.both_slot_per_day[this.both_slot_per_day.length - 1].End_time + 1); i <= 24; i++) {
+              this.bothSlotWeekDaytime49.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.both_slot_per_day.splice(i, 1);
+      this.bothSlotWeekDaytime49 = [];
+      if (this.both_slot_per_day.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.bothSlotWeekDaytime49.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.both_slot_per_day[this.both_slot_per_day.length - 1].End_time + 1); i <= 24; i++) {
+          this.bothSlotWeekDaytime49.push(i);
+        }
+      }
+    }
+
   }
   // Both-----
-
 
   onOptionsSelected(value: string) {
     console.log("the selected value is " + value);
@@ -937,5 +2253,425 @@ export class ParkingEditComponent implements OnInit {
 
   }
 
+
+
+  time() {
+    for (let i = 1; i <= 24; i++) {
+      this.bikeSlotWeekDaytime1.push(i);
+      this.bikeSlotWeekDaytime3.push(i);
+      this.bikeSlotWeekDaytime5.push(i);
+      this.bikeSlotWeekDaytime7.push(i);
+      this.bikeSlotWeekDaytime9.push(i);
+      this.bikeSlotWeekDaytime11.push(i);
+      this.bikeSlotWeekDaytime13.push(i);
+      this.bikeSlotWeekDaytime16.push(i);
+      this.carSlotWeekDaytime18.push(i);
+      this.carSlotWeekDaytime20.push(i);
+      this.carSlotWeekDaytime22.push(i);
+      this.carSlotWeekDaytime24.push(i);
+      this.carSlotWeekDaytime26.push(i);
+      this.carSlotWeekDaytime28.push(i);
+      this.carSlotWeekDaytime30.push(i);
+      this.carSlotWeekDaytime32.push(i);
+      this.bothSlotWeekDaytime35.push(i);
+      this.bothSlotWeekDaytime37.push(i);
+      this.bothSlotWeekDaytime39.push(i);
+      this.bothSlotWeekDaytime41.push(i);
+      this.bothSlotWeekDaytime43.push(i);
+      this.bothSlotWeekDaytime45.push(i);
+      this.bothSlotWeekDaytime47.push(i);
+      this.bothSlotWeekDaytime49.push(i);
+    }
+  }
+  biketime1() {
+    console.log(this.SlotWeekDaytime1)
+    this.bikeSlotWeekDaytime2 = this.bikeSlotWeekDaytime1.filter((x) => x > this.SlotWeekDaytime1)
+    console.log(this.bikeSlotWeekDaytime2)
+    if (this.SlotWeekDaytime1 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bikeSlotWeekDaytime2.push(i);
+      }
+    }
+  }
+  bike_time1() {
+    this.bikeSlotWeekDaytime1 = []
+    for (let i = (+this.SlotWeekDaytime2 + 1); i <= 24; i++) {
+      this.bikeSlotWeekDaytime1.push(i);
+    }
+  }
+  biketime2() {
+    console.log(this.SlotWeekDaytime3)
+    this.bikeSlotWeekDaytime4 = this.bikeSlotWeekDaytime3.filter((x) => x > this.SlotWeekDaytime3)
+    console.log(this.bikeSlotWeekDaytime4)
+    if (this.SlotWeekDaytime3 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bikeSlotWeekDaytime4.push(i);
+      }
+    }
+  }
+  bike_time2() {
+    this.bikeSlotWeekDaytime3 = []
+    for (let i = (+this.SlotWeekDaytime4 + 1); i <= 24; i++) {
+      this.bikeSlotWeekDaytime3.push(i);
+    }
+  }
+  biketime3() {
+    console.log(this.SlotWeekDaytime5)
+    this.bikeSlotWeekDaytime6 = this.bikeSlotWeekDaytime5.filter((x) => x > this.SlotWeekDaytime5)
+    console.log(this.bikeSlotWeekDaytime6)
+    if (this.SlotWeekDaytime5 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bikeSlotWeekDaytime6.push(i);
+      }
+    }
+  }
+  bike_time3() {
+    this.bikeSlotWeekDaytime5 = []
+    for (let i = (+this.SlotWeekDaytime6 + 1); i <= 24; i++) {
+      this.bikeSlotWeekDaytime5.push(i);
+    }
+  }
+  biketime4() {
+    console.log(this.SlotWeekDaytime7)
+    this.bikeSlotWeekDaytime8 = this.bikeSlotWeekDaytime7.filter((x) => x > this.SlotWeekDaytime7)
+    console.log(this.bikeSlotWeekDaytime8)
+    if (this.SlotWeekDaytime7 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bikeSlotWeekDaytime8.push(i);
+      }
+    }
+  }
+  bike_time4() {
+    this.bikeSlotWeekDaytime7 = []
+    for (let i = (+this.SlotWeekDaytime8 + 1); i <= 24; i++) {
+      this.bikeSlotWeekDaytime7.push(i);
+    }
+  }
+  biketime5() {
+    console.log(this.SlotWeekDaytime9)
+    this.bikeSlotWeekDaytime10 = this.bikeSlotWeekDaytime9.filter((x) => x > this.SlotWeekDaytime9)
+    console.log(this.bikeSlotWeekDaytime10)
+    if (this.SlotWeekDaytime9 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bikeSlotWeekDaytime10.push(i);
+      }
+    }
+  }
+  bike_time5() {
+    this.bikeSlotWeekDaytime9 = []
+    for (let i = (+this.SlotWeekDaytime10 + 1); i <= 24; i++) {
+      this.bikeSlotWeekDaytime9.push(i);
+    }
+  }
+  biketime6() {
+    console.log(this.SlotWeekDaytime11)
+    this.bikeSlotWeekDaytime12 = this.bikeSlotWeekDaytime11.filter((x) => x > this.SlotWeekDaytime11)
+    console.log(this.bikeSlotWeekDaytime12)
+    if (this.SlotWeekDaytime11 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bikeSlotWeekDaytime12.push(i);
+      }
+    }
+  }
+  bike_time6() {
+    this.bikeSlotWeekDaytime11 = []
+    for (let i = (+this.SlotWeekDaytime12 + 1); i <= 24; i++) {
+      this.bikeSlotWeekDaytime11.push(i);
+    }
+  }
+  biketime7() {
+    console.log(this.SlotWeekDaytime13)
+    this.bikeSlotWeekDaytime14 = this.bikeSlotWeekDaytime13.filter((x) => x > this.SlotWeekDaytime13)
+    console.log(this.bikeSlotWeekDaytime14)
+    if (this.SlotWeekDaytime13 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bikeSlotWeekDaytime14.push(i);
+      }
+    }
+  }
+  bike_time7() {
+    this.bikeSlotWeekDaytime13 = []
+    for (let i = (+this.SlotWeekDaytime14 + 1); i <= 24; i++) {
+      this.bikeSlotWeekDaytime13.push(i);
+    }
+  }
+  biketime8() {
+    console.log(this.SlotWeekDaytime16)
+    this.bikeSlotWeekDaytime17 = this.bikeSlotWeekDaytime16.filter((x) => x > this.SlotWeekDaytime16)
+    console.log(this.bikeSlotWeekDaytime17)
+    if (this.SlotWeekDaytime16 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bikeSlotWeekDaytime17.push(i);
+      }
+    }
+  }
+  bike_time8() {
+    this.bikeSlotWeekDaytime16 = []
+    for (let i = (+this.SlotWeekDaytime17 + 1); i <= 24; i++) {
+      this.bikeSlotWeekDaytime16.push(i);
+    }
+  }
+
+
+
+  cartime1() {
+    console.log(this.SlotWeekDaytime18)
+    this.carSlotWeekDaytime19 = this.carSlotWeekDaytime18.filter((x) => x > this.SlotWeekDaytime18)
+    console.log(this.carSlotWeekDaytime19)
+    if (this.SlotWeekDaytime18 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.carSlotWeekDaytime19.push(i);
+      }
+    }
+  }
+  car_time1() {
+    this.carSlotWeekDaytime18 = []
+    for (let i = (+this.SlotWeekDaytime19 + 1); i <= 24; i++) {
+      this.carSlotWeekDaytime18.push(i);
+    }
+  }
+  cartime2() {
+    console.log(this.SlotWeekDaytime20)
+    this.carSlotWeekDaytime21 = this.carSlotWeekDaytime20.filter((x) => x > this.SlotWeekDaytime20)
+    console.log(this.carSlotWeekDaytime21)
+    if (this.SlotWeekDaytime20 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.carSlotWeekDaytime21.push(i);
+      }
+    }
+  }
+  car_time2() {
+    this.carSlotWeekDaytime20 = []
+    for (let i = (+this.SlotWeekDaytime21 + 1); i <= 24; i++) {
+      this.carSlotWeekDaytime20.push(i);
+    }
+  }
+  cartime3() {
+    console.log(this.SlotWeekDaytime22)
+    this.carSlotWeekDaytime23 = this.carSlotWeekDaytime22.filter((x) => x > this.SlotWeekDaytime22)
+    console.log(this.carSlotWeekDaytime23)
+    if (this.SlotWeekDaytime22 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.carSlotWeekDaytime23.push(i);
+      }
+    }
+  }
+  car_time3() {
+    this.carSlotWeekDaytime22 = []
+    for (let i = (+this.SlotWeekDaytime23 + 1); i <= 24; i++) {
+      this.carSlotWeekDaytime22.push(i);
+    }
+  }
+  cartime4() {
+    console.log(this.SlotWeekDaytime24)
+    this.carSlotWeekDaytime25 = this.carSlotWeekDaytime24.filter((x) => x > this.SlotWeekDaytime24)
+    console.log(this.carSlotWeekDaytime25)
+    if (this.SlotWeekDaytime24 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.carSlotWeekDaytime25.push(i);
+      }
+    }
+  }
+  car_time4() {
+    this.carSlotWeekDaytime24 = []
+    for (let i = (+this.SlotWeekDaytime25 + 1); i <= 24; i++) {
+      this.carSlotWeekDaytime24.push(i);
+    }
+  }
+  cartime5() {
+    console.log(this.SlotWeekDaytime26)
+    this.carSlotWeekDaytime27 = this.carSlotWeekDaytime26.filter((x) => x > this.SlotWeekDaytime26)
+    console.log(this.carSlotWeekDaytime27)
+    if (this.SlotWeekDaytime26 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.carSlotWeekDaytime27.push(i);
+      }
+    }
+  }
+  car_time5() {
+    this.carSlotWeekDaytime26 = []
+    for (let i = (+this.SlotWeekDaytime27 + 1); i <= 24; i++) {
+      this.carSlotWeekDaytime26.push(i);
+    }
+  }
+  cartime6() {
+    console.log(this.SlotWeekDaytime28)
+    this.carSlotWeekDaytime29 = this.carSlotWeekDaytime28.filter((x) => x > this.SlotWeekDaytime28)
+    console.log(this.carSlotWeekDaytime29)
+    if (this.SlotWeekDaytime28 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.carSlotWeekDaytime29.push(i);
+      }
+    }
+  }
+  car_time6() {
+    this.carSlotWeekDaytime28 = []
+    for (let i = (+this.SlotWeekDaytime29 + 1); i <= 24; i++) {
+      this.carSlotWeekDaytime28.push(i);
+    }
+  }
+  cartime7() {
+    console.log(this.SlotWeekDaytime30)
+    this.carSlotWeekDaytime31 = this.carSlotWeekDaytime30.filter((x) => x > this.SlotWeekDaytime30)
+    console.log(this.carSlotWeekDaytime31)
+    if (this.SlotWeekDaytime30 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.carSlotWeekDaytime31.push(i);
+      }
+    }
+  }
+  car_time7() {
+    this.carSlotWeekDaytime30 = []
+    for (let i = (+this.SlotWeekDaytime31 + 1); i <= 24; i++) {
+      this.carSlotWeekDaytime30.push(i);
+    }
+  }
+  cartime8() {
+    console.log(this.SlotWeekDaytime32)
+    this.carSlotWeekDaytime33 = this.carSlotWeekDaytime32.filter((x) => x > this.SlotWeekDaytime32)
+    console.log(this.carSlotWeekDaytime33)
+    if (this.SlotWeekDaytime32 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.carSlotWeekDaytime33.push(i);
+      }
+    }
+  }
+  car_time8() {
+    this.carSlotWeekDaytime32 = []
+    for (let i = (+this.SlotWeekDaytime33 + 1); i <= 24; i++) {
+      this.carSlotWeekDaytime32.push(i);
+    }
+  }
+
+
+
+  bothtime1() {
+    console.log(this.SlotWeekDaytime35)
+    this.bothSlotWeekDaytime36 = this.bothSlotWeekDaytime35.filter((x) => x > this.SlotWeekDaytime35)
+    console.log(this.bothSlotWeekDaytime36)
+    if (this.SlotWeekDaytime35 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bothSlotWeekDaytime36.push(i);
+      }
+    }
+  }
+  both_time1() {
+    this.bothSlotWeekDaytime35 = []
+    for (let i = (+this.SlotWeekDaytime36 + 1); i <= 24; i++) {
+      this.bothSlotWeekDaytime35.push(i);
+    }
+  }
+  bothtime2() {
+    console.log(this.SlotWeekDaytime37)
+    this.bothSlotWeekDaytime38 = this.bothSlotWeekDaytime37.filter((x) => x > this.SlotWeekDaytime37)
+    console.log(this.bothSlotWeekDaytime38)
+    if (this.SlotWeekDaytime37 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bothSlotWeekDaytime38.push(i);
+      }
+    }
+  }
+  both_time2() {
+    this.bothSlotWeekDaytime37 = []
+    for (let i = (+this.SlotWeekDaytime38 + 1); i <= 24; i++) {
+      this.bothSlotWeekDaytime37.push(i);
+    }
+  }
+  bothtime3() {
+    console.log(this.SlotWeekDaytime39)
+    this.bothSlotWeekDaytime40 = this.bothSlotWeekDaytime39.filter((x) => x > this.SlotWeekDaytime39)
+    console.log(this.bothSlotWeekDaytime40)
+    if (this.SlotWeekDaytime39 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bothSlotWeekDaytime40.push(i);
+      }
+    }
+  }
+  both_time3() {
+    this.bothSlotWeekDaytime39 = []
+    for (let i = (+this.SlotWeekDaytime40 + 1); i <= 24; i++) {
+      this.bothSlotWeekDaytime39.push(i);
+    }
+  }
+  bothtime4() {
+    console.log(this.SlotWeekDaytime41)
+    this.bothSlotWeekDaytime42 = this.bothSlotWeekDaytime41.filter((x) => x > this.SlotWeekDaytime41)
+    console.log(this.bothSlotWeekDaytime42)
+    if (this.SlotWeekDaytime41 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bothSlotWeekDaytime42.push(i);
+      }
+    }
+  }
+  both_time4() {
+    this.bothSlotWeekDaytime41 = []
+    for (let i = (+this.SlotWeekDaytime42 + 1); i <= 24; i++) {
+      this.bothSlotWeekDaytime41.push(i);
+    }
+  }
+  bothtime5() {
+    console.log(this.SlotWeekDaytime43)
+    this.bothSlotWeekDaytime44 = this.bothSlotWeekDaytime43.filter((x) => x > this.SlotWeekDaytime43)
+    console.log(this.bothSlotWeekDaytime44)
+    if (this.SlotWeekDaytime43 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bothSlotWeekDaytime44.push(i);
+      }
+    }
+  }
+  both_time5() {
+    this.bothSlotWeekDaytime43 = []
+    for (let i = (+this.SlotWeekDaytime44 + 1); i <= 24; i++) {
+      this.bothSlotWeekDaytime43.push(i);
+    }
+  }
+  bothtime6() {
+    console.log(this.SlotWeekDaytime45)
+    this.bothSlotWeekDaytime46 = this.bothSlotWeekDaytime45.filter((x) => x > this.SlotWeekDaytime45)
+    console.log(this.bothSlotWeekDaytime46)
+    if (this.SlotWeekDaytime45 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bothSlotWeekDaytime46.push(i);
+      }
+    }
+  }
+  both_time6() {
+    this.bothSlotWeekDaytime45 = []
+    for (let i = (+this.SlotWeekDaytime46 + 1); i <= 24; i++) {
+      this.bothSlotWeekDaytime45.push(i);
+    }
+  }
+  bothtime7() {
+    console.log(this.SlotWeekDaytime47)
+    this.bothSlotWeekDaytime48 = this.bothSlotWeekDaytime47.filter((x) => x > this.SlotWeekDaytime47)
+    console.log(this.bothSlotWeekDaytime48)
+    if (this.SlotWeekDaytime47 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bothSlotWeekDaytime48.push(i);
+      }
+    }
+  }
+  both_time7() {
+    this.bothSlotWeekDaytime47 = []
+    for (let i = (+this.SlotWeekDaytime48 + 1); i <= 24; i++) {
+      this.bothSlotWeekDaytime47.push(i);
+    }
+  }
+  bothtime8() {
+    console.log(this.SlotWeekDaytime49)
+    this.bothSlotWeekDaytime50 = this.bothSlotWeekDaytime49.filter((x) => x > this.SlotWeekDaytime49)
+    console.log(this.bothSlotWeekDaytime50)
+    if (this.SlotWeekDaytime49 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.bothSlotWeekDaytime50.push(i);
+      }
+    }
+  }
+  both_time8() {
+    this.bothSlotWeekDaytime49 = []
+    for (let i = (+this.SlotWeekDaytime50 + 1); i <= 24; i++) {
+      this.bothSlotWeekDaytime49.push(i);
+    }
+  }
 }
 
