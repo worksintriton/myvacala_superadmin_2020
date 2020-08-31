@@ -588,7 +588,7 @@ const routes: Routes = [
         path: 'cre_team',
         component: CreteamComponent,
         data: {
-          title: 'Brand buttons'
+          title: 'Operations'
         }
       },
       {
@@ -779,7 +779,7 @@ const routes: Routes = [
         path: 'View_MechanicBookingList',
         component: ViewmechanicbookinglistComponent,
         data: {
-          title: 'Payments/View Parking Bookings'
+          title: 'Operations / View Mechanic Bookings'
         }
       },
       {
