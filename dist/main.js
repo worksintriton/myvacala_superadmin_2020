@@ -443,35 +443,35 @@ var navItems = [
             },
         ]
     },
-    {
-        name: 'Customers',
-        url: '/buttons',
-        icon: 'icon-user',
-        children: [
-            {
-                name: 'Customer List',
-                url: '/superadmin/master/customer',
-                icon: 'icon-list'
-            },
-        ]
-    },
-    {
-        name: 'Bookings',
-        url: '/dashboard',
-        icon: 'icon-notebook',
-        children: [
-            {
-                name: 'Mechanic Bookings',
-                url: '/superadmin/master/view_bookings',
-                icon: 'icon-list'
-            },
-            {
-                name: 'Parking Bookings',
-                url: '/superadmin/master/booking_parking',
-                icon: 'icon-list',
-            },
-        ]
-    },
+    // {
+    //   name: 'Customers',
+    //   url: '/buttons',
+    //   icon: 'icon-user',
+    //   children: [
+    //     {
+    //       name: 'Customer List',
+    //       url: '/superadmin/master/customer',
+    //       icon: 'icon-list'
+    //     },
+    //   ]
+    // },
+    // {
+    //   name: 'Bookings',
+    //   url: '/dashboard',
+    //   icon: 'icon-notebook',
+    //   children: [
+    //     {
+    //       name: 'Mechanic Bookings',
+    //       url: '/superadmin/master/view_bookings',
+    //       icon: 'icon-list'
+    //     },
+    //     {
+    //       name: 'Parking Bookings',
+    //       url: '/superadmin/master/booking_parking',
+    //       icon: 'icon-list',
+    //     },
+    //   ]
+    // },
     {
         name: 'Vendor Onboarding',
         url: '/buttons',
@@ -528,11 +528,11 @@ var navItems = [
             },
         ],
     },
-    {
-        name: 'Statatics',
-        url: '/superadmin/master/charts',
-        icon: 'fa fa-line-chart'
-    },
+    // {
+    //   name: 'Statatics',
+    //   url: '/superadmin/master/charts',
+    //   icon: 'fa fa-line-chart'
+    // },
     {
         name: 'App features ',
         url: '/superadmin/master/payments',
@@ -646,6 +646,28 @@ var navItems = [
                         icon: 'nav-icon icon-cursor'
                     },
                     {
+                        name: 'Banner',
+                        url: '/buttons',
+                        icon: 'fa fa-support',
+                        children: [
+                            {
+                                name: 'Master Service Banner',
+                                url: '/superadmin/master/MasterServiceBanner',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Main Service Banner',
+                                url: '/superadmin/master/Main_SErvice_banner',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Splash Screen',
+                                url: '/superadmin/master/FlashScreen',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                        ]
+                    },
+                    {
                         name: 'Notification',
                         url: '/superadmin/master/notification',
                         icon: 'nav-icon icon-cursor'
@@ -664,55 +686,33 @@ var navItems = [
             },
         ]
     },
-    {
-        name: 'Finance',
-        url: '/superadmin/master/payments',
-        icon: 'fa fa-money'
-    },
-    {
-        name: 'Banner',
-        url: '/buttons',
-        icon: 'fa fa-support',
-        children: [
-            {
-                name: 'Master Service Banner',
-                url: '/superadmin/master/MasterServiceBanner',
-                icon: 'nav-icon icon-cursor'
-            },
-            {
-                name: 'Main Service Banner',
-                url: '/superadmin/master/Main_SErvice_banner',
-                icon: 'nav-icon icon-cursor'
-            },
-            {
-                name: 'Splash Screen',
-                url: '/superadmin/master/FlashScreen',
-                icon: 'nav-icon icon-cursor'
-            },
-        ]
-    },
     // {
     //   name: 'Finance',
     //   url: '/superadmin/master/payments',
     //   icon: 'fa fa-money'
     // },
-    {
-        name: 'Customer care',
-        url: '/buttons',
-        icon: 'fa fa-support',
-        children: [
-            {
-                name: 'Team_1',
-                url: '/superadmin/master/team1',
-                icon: 'nav-icon icon-cursor'
-            },
-            {
-                name: 'Call Details',
-                url: '/superadmin/master/team2',
-                icon: 'nav-icon icon-cursor'
-            },
-        ]
-    },
+    // {
+    //   name: 'Finance',
+    //   url: '/superadmin/master/payments',
+    //   icon: 'fa fa-money'
+    // },
+    // {
+    //   name: 'Customer care',
+    //   url: '/buttons',
+    //   icon: 'fa fa-support',
+    //   children: [
+    //     {
+    //       name: 'Team_1',
+    //       url: '/superadmin/master/team1',
+    //       icon: 'nav-icon icon-cursor'
+    //     },
+    //     {
+    //       name: 'Call Details',
+    //       url: '/superadmin/master/team2',
+    //       icon: 'nav-icon icon-cursor'
+    //     },
+    //   ]
+    // },
     {
         name: 'Operations',
         url: '/superadmin/master/cre_team',
@@ -1103,6 +1103,15 @@ var ApiService = /** @class */ (function () {
     ApiService.prototype.mechanic_byid = function (data) {
         return this.http.post(this.apiUrl + 'mechanic/getlist_by_id', data);
     };
+    ApiService.prototype.mechanic_delete = function (data) {
+        return this.http.post(this.apiUrl + 'mechanic/delete', data);
+    };
+    ApiService.prototype.mechanic_edit = function (data) {
+        return this.http.post(this.apiUrl + 'mechanic/edit', data);
+    };
+    ApiService.prototype.emp_login = function (data) {
+        return this.http.post(this.apiUrl + 'employee/admin_login', data);
+    };
     ApiService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
     ]; };
@@ -1425,13 +1434,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_nav */ "./src/app/_nav.ts");
+/* harmony import */ var ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-webstorage-service */ "./node_modules/ngx-webstorage-service/fesm5/ngx-webstorage-service.js");
+
 
 
 
 
 var DefaultLayoutComponent = /** @class */ (function () {
-    function DefaultLayoutComponent(_document) {
+    function DefaultLayoutComponent(_document, storage) {
         var _this = this;
+        this.storage = storage;
         this.navItems = _nav__WEBPACK_IMPORTED_MODULE_3__["navItems"];
         this.sidebarMinimized = true;
         this.changes = new MutationObserver(function (mutations) {
@@ -1446,8 +1458,15 @@ var DefaultLayoutComponent = /** @class */ (function () {
     DefaultLayoutComponent.prototype.ngOnDestroy = function () {
         this.changes.disconnect();
     };
+    DefaultLayoutComponent.prototype.saveInLocal = function (key, val) {
+        this.storage.set(key, val);
+    };
+    DefaultLayoutComponent.prototype.getFromLocal = function (key) {
+        return this.storage.get(key);
+    };
     DefaultLayoutComponent.ctorParameters = function () { return [
-        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["DOCUMENT"],] }] }
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["DOCUMENT"],] }] },
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_4__["SESSION_STORAGE"],] }] }
     ]; };
     DefaultLayoutComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1456,7 +1475,8 @@ var DefaultLayoutComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./default-layout.css */ "./src/app/containers/default-layout/default-layout.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_2__["DOCUMENT"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_4__["SESSION_STORAGE"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object, Object])
     ], DefaultLayoutComponent);
     return DefaultLayoutComponent;
 }());
@@ -2262,98 +2282,34 @@ var LoginComponent = /** @class */ (function () {
         }
     };
     LoginComponent.prototype.logintest1 = function () {
+        var _this = this;
         // this.router.navigate(['admin', 'dashboard']);
         this.validator();
         if (this.validation) {
+            // let loginObj = {
+            //   userId: this.email,
+            //   password: this.password
+            // };
+            // if ((this.email == 'myvacala@gmail.com') && (this.password == '123456')) {
+            //   this.router.navigateByUrl('/superadmin/dashboard');
+            // } else {
+            //   alert('Invalid Login');
+            // }
             var loginObj = {
-                userId: this.email,
-                password: this.password
+                "Email_Id": this.email,
+                "password": this.password
             };
-            if ((this.email == 'myvacala@gmail.com') && (this.password == '123456')) {
-                this.router.navigateByUrl('/superadmin/dashboard');
-            }
-            else {
-                alert('Invalid Login');
-            }
-            //console.log(loginObj);
-            // this.Api.
-            //   Login<any>(loginObj)
-            //   .subscribe((res: any) => {
-            //     //console.log(res);
-            //     if (res.code === 402) {
-            //       this.loginError =  true;
-            //       this.loginErrorMsg = 'Email or Password Wrong!..';
-            //       setTimeout(() => {
-            //         this.loginError =  false;
-            //       }, 5000);
-            //     } else if (res.code === 404) {
-            //       this.loginError =  true;
-            //       this.loginErrorMsg = 'Sorry! Account Not Found!.';
-            //     }
-            //     this.Api.setLoginDetail(res.data[0]);
-            //     this.loginDetails = res;
-            //     this.userData = res.data[0];
-            //    //console.log(this.userData);
-            //     this.Api.setUserId(res.data[0].user_id);
-            //     sessionStorage.user = res.data[0].email;
-            //     sessionStorage.userID = res.data[0].user_id;
-            //     sessionStorage.role = res.data[0].roll_name;
-            //     sessionStorage.modules = this.userData.modules.map(el => el.module_id);
-            //     // //console.log(sessionStorage.user);
-            //     if (!this.userData.isdeleted && !this.userData.isdisabled) {
-            //       const module_ids = this.userData.modules.map(el => el.module_id).sort();
-            //       if (module_ids.includes(8)) {
-            //         this.router.navigate(['admin', 'dashboard']);
-            //       } else if (module_ids.includes(1)) {
-            //         this.router.navigate(['admin', 'list']);
-            //       } else if (module_ids.includes(2)) {
-            //         this.router.navigate(['admin', 'listaudio']);
-            //       } else if (module_ids.includes(4)) {
-            //         this.router.navigate(['admin', 'listemployee']);
-            //       } else if (module_ids.includes(5)) {
-            //         this.router.navigate(['admin', 'trending']);
-            //       } else if (module_ids.includes(6) && this.userData.roll_name === 'Advertisement') {
-            //         this.router.navigate(['admin', 'UserAdDashboard']);
-            //       } else if (module_ids.includes(6)) {
-            //         this.router.navigate(['admin', 'AdminDashboard']);
-            //       } else if (module_ids.includes(7)) {
-            //         this.router.navigate(['admin', 'VCorners']);
-            //       }
-            //     } else if (this.userData.isdisabled) {
-            //       this.loginError = true;
-            //       this.loginErrorMsg = 'Sorry! This User Blocked!.';
-            //     } 
-            //   },
-            //     err => () => {
-            //       //console.log(err);
-            //     },
-            //     () => {
-            //   });
+            this._api.emp_login(loginObj).subscribe(function (res) {
+                console.log(res);
+                if (res.Code == 200) {
+                    _this.router.navigateByUrl('/superadmin/dashboard');
+                }
+                else {
+                    alert('Invalid Login');
+                }
+            });
         }
     };
-    // logintest(){
-    //  console.log(this.email_id,this.passwords)
-    // console.log(this.Pic);
-    //  let data = 
-    //  {
-    //   "Email": this.email_id,
-    //   "Type": 0,
-    //   "Password": this.passwords
-    // }
-    // console.log(data);
-    // this._api.loginprocess(data).subscribe(
-    //   (response: any) => {
-    //     console.log(response);
-    //     if(response.Code == 500){
-    //       alert(response.Message);
-    //     }else{
-    //        this.saveInLocal('login_details',response.data);
-    //        alert(response.Message);
-    //        this.router.navigate(['Home', 'dashboard']);
-    //     }
-    //   }
-    // );
-    // }
     LoginComponent.prototype.fileupload1 = function (event) {
         this.selectedAudio1 = event.target.files[0];
     };
@@ -2413,10 +2369,10 @@ __webpack_require__.r(__webpack_exports__);
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    apiUrl: 'http://3.101.31.129:3000/',
-    imageURL: 'http://3.101.31.129:3000/'
-    // apiUrl: 'http://myvacala.com:3000',
-    // imageURL: 'http://myvacala.com:3000'
+    // apiUrl: 'http://3.101.31.129:3000/',
+    // imageURL: 'http://3.101.31.129:3000/'
+    apiUrl: 'http://15.207.51.203:3000/',
+    imageURL: 'http://15.207.51.203:3000/'
     // apiUrl: 'http://localhost:91/'
     // 34.211.194.144:3000
 };

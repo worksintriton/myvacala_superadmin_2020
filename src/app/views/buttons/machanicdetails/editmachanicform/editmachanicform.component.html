@@ -1,1 +1,321 @@
-<p>editmachanicform works!</p>
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-horizontal">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Mechanic Owner Details</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">First Name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" [(ngModel)]="First_name" name="FName" class="form-control"
+                                            placeholder="Name of the Mechanic">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Primary Contact</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="PrimaryConatct" [(ngModel)]="Primary_Contact"
+                                            (keypress)=_keyPress($event) (ngModelChange)="phone1()" class="form-control"
+                                            placeholder="Primary Contact">
+                                        <span class="err" *ngIf="phone_err1">Enter Valid Phone Number.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Owner Residence
+                                        Address</label>
+                                    <div class="col-md-8">
+                                        <textarea name="ResidenceAddress" [(ngModel)]="Owner_Residence_Address" rows="4"
+                                            class="form-control" placeholder="Residence Address"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Owner Pan Card</label>
+                                    <div class="col-md-6">
+                                        <input type="file" style="display: none;" #imgType
+                                            (change)="fileupload1($event)" id="imgfile" accept="application/pdf"><label
+                                            class="img-label"
+                                            style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                            for="imgfile">Choose
+                                            file</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a target="_blank" [href]="Owner_Pan_Card"><i class="fa fa-file"
+                                                aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Owner Aadhar Card</label>
+                                    <div class="col-md-6">
+                                        <input type="file" style="display: none;" #imgTyp (change)="fileupload2($event)"
+                                            id="imgfil" accept="application/pdf"><label class="img-label"
+                                            style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                            for="imgfil">Choose
+                                            file</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a target="_blank" [href]="Owner_Aadhar_Card"><i class="fa fa-file"
+                                                aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Last Name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="LName" [(ngModel)]="Last_Name" class="form-control"
+                                            placeholder="Name of the Mechanic">
+                                        <!-- <span class="help-block">This is a help text</span> -->
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Secondary Contact</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="SecondaryConatct" [(ngModel)]="Secondary_Contact"
+                                            (keypress)=_keyPress($event) (ngModelChange)="phone2()" class="form-control"
+                                            placeholder="Secondary Contact">
+                                        <span class="err" *ngIf="phone_err2">Enter Valid Phone Number.</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Owner Permanent
+                                        Address</label>
+                                    <div class="col-md-8">
+                                        <textarea name="PermanentAddress" [(ngModel)]="Owner_Permanent_Address" rows="4"
+                                            class="form-control" placeholder="Permanent Address"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Owner Pan Card
+                                        Number</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="pancard" [(ngModel)]="Owner_Pan_Card_Number"
+                                            class="form-control" placeholder="Owner Pan Card">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Owner Aadhar Number</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="Owner Adhar" [(ngModel)]="Owner_Aadhar_Number"
+                                            class="form-control" placeholder="Owner Aadhar No">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Mechanic Workshop Details</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Workshop Name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="WorkshopName" [(ngModel)]="Workshop_Name"
+                                            class="form-control" placeholder="Workshop Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Latitude</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="Latitude" rows="4" [(ngModel)]="Latitude"
+                                            class="form-control" placeholder="Latitude">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Longitude</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="Longitude" rows="4" [(ngModel)]="Longitude"
+                                            class="form-control" placeholder="Longitude">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Workshop Registration
+                                        Certificate</label>
+
+                                    <div class="col-md-6">
+                                        <input type="file" style="display: none;" #img (change)="fileupload3($event)"
+                                            id="imgfe" accept="application/pdf"><label class="img-label"
+                                            style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                            for="imgfe">Choose
+                                            file</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a target="_blank" [href]="Workshop_Registration_Certificate"><i
+                                                class="fa fa-file" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Workshop GST
+                                        Certificate</label>
+
+                                    <div class="col-md-6">
+                                        <input type="file" style="display: none;" #imgTy (change)="fileupload4($event)"
+                                            id="imgfi" accept="application/pdf"><label class="img-label"
+                                            style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                            for="imgfi">Choose
+                                            file</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a target="_blank" [href]="Workshop_GST_Certificate"><i class="fa fa-file"
+                                                aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Workshop Pan Card</label>
+
+                                    <div class="col-md-6">
+                                        <input type="file" style="display: none;" #imgT (change)="fileupload5($event)"
+                                            id="imgf" accept="application/pdf"><label class="img-label"
+                                            style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                            for="imgf">Choose
+                                            file</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a target="_blank" [href]="Workshop_Pan_Card"><i class="fa fa-file"
+                                                aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Map Link</label>
+                                    <div class="col-md-8">
+                                        <input type="text" [(ngModel)]="Map_Link" name="maplink" class="form-control"
+                                            placeholder="Map Link">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Workshop Address</label>
+                                    <div class="col-md-8">
+                                        <textarea name="PermanentName" [(ngModel)]="Workshop_Address" rows="5"
+                                            class="form-control" placeholder="Workshop Address"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Workshop Registration
+                                        Number</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="NomineeName" [(ngModel)]="Workshop_Registration_Number"
+                                            class="form-control" placeholder="Workshop Registration Number">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Workshop Gst Number</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="NomineeName" [(ngModel)]="Workshop_Gst_Number"
+                                            class="form-control" placeholder="Workshop GST Number">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">Workshop Pan card
+                                        Number</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="NomineeContact" [(ngModel)]="Workshop_Pan_card_Number"
+                                            class="form-control" placeholder="Workshop Pan card">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="text-input">GST Address</label>
+                                    <div class="col-md-8">
+                                        <textarea [(ngModel)]="GST_Address" name="gstaddress"
+                                            [ngModelOptions]="{standalone: true}" class="form-control"
+                                            placeholder="GST Address"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-10">
+                                <div class="form-group row">
+                                    <label class="col-md-5 col-form-label" for="text-input">Workshop service
+                                        Type</label>
+                                    <div class="col-md-5">
+                                        <select (change)="selectservicetype($event)" [(ngModel)]="Workshop_service_Type"
+                                            class="form-control">
+                                            <option value="Car">Car</option>
+                                            <option value="Bike">Bike</option>
+                                            <option value="Both">Both</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div *ngIf="carservice">
+                                    <div class="form-group row">
+                                        <label class="col-md-5 col-form-label" for="text-input">Workshop Car Service
+                                            Advisor
+                                            Name</label>
+                                        <div class="col-md-5">
+                                            <input type="text" [(ngModel)]="Workshop_Car_Service_Advisor_Name"
+                                                name="NomineeContact" class="form-control" placeholder="Advisor Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-5 col-form-label" for="text-input">Workshop Car Service
+                                            Advisor
+                                            Contact</label>
+                                        <div class="col-md-5">
+                                            <input type="text" [(ngModel)]="Workshop_Car_Service_Advisor_Contact"
+                                                (keypress)=_keyPress($event) (ngModelChange)="phone3()"
+                                                name="NomineeContact" class="form-control"
+                                                placeholder="Advisor Contact">
+                                            <span class="err" *ngIf="phone_err3">Enter Valid Phone Number.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="bikeservice">
+                                    <div class="form-group row">
+                                        <label class="col-md-5 col-form-label" for="text-input">Workshop Bike Service
+                                            Advisor Name</label>
+                                        <div class="col-md-5">
+                                            <input type="text" [(ngModel)]="Workshop_Bike_Service_Advisor_Name"
+                                                name="NomineeContact" class="form-control" placeholder="Advisor Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-5 col-form-label" for="text-input">Workshop Bike Service
+                                            Advisor Contact</label>
+                                        <div class="col-md-5">
+                                            <input type="text" [(ngModel)]="Workshop_Bike_Service_Advisor_Contact"
+                                                (keypress)=_keyPress($event) (ngModelChange)="phone4()"
+                                                name="NomineeContact" class="form-control"
+                                                placeholder="Advisor Contact">
+                                            <span class="err" *ngIf="phone_err4">Enter Valid Phone Number.</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-sm btn-primary" (click)="create()"><i
+                                class="fa fa-dot-circle-o"></i> Create</button>
+                        <button (click)="cancel()" class="btn btn-sm btn-danger">Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.row-->
+</div>

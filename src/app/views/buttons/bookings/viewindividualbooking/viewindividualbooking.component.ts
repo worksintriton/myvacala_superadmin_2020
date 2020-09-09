@@ -64,7 +64,8 @@ export class ViewindividualbookingComponent implements OnInit {
     this.FinalPayable = this.vehicle_list.Final_bill_payed
     this.Thmp_list1 = this.vehicle_list.Job_Card;
     this.WorkshopLocation = this.vehicle_list.Workshop_Location;
-    this.WorkshopName = this.vehicle_list.Workshop_Name
+    this.WorkshopName = this.vehicle_list.Workshop_Name;
+    this.WorkshopId = this.vehicle_list.Mechanicworkshop_ids;
     this.BookingStatus = this.vehicle_list.Booking_Status;
     this._api.mechanicList().subscribe(
       (response: any) => {
@@ -176,6 +177,7 @@ export class ViewindividualbookingComponent implements OnInit {
         "Customer_Invoice": this.Thmp_list,
         "Final_bill_payed": this.FinalPayable,
         "Job_Card": this.Thmp_list1,
+        "Mechanicworkshop_ids":this.WorkshopId,
         "Workshop_Location": this.WorkshopLocation,
         "Workshop_Name": this.WorkshopName,
         "Booking_Status": this.BookingStatus
@@ -188,7 +190,7 @@ export class ViewindividualbookingComponent implements OnInit {
           if (response.Code == 422) {
             alert(response.Message);
           } else {
-            alert(response.Message);
+            alert("Service booking details Updated");
             this.router.navigate(['/superadmin/master/View_MechanicBookingList'])
             // this.ngOnInit();
           }

@@ -23,6 +23,25 @@ export class QrcodeComponent implements OnInit {
   validate: boolean = false;
   update: boolean = false;
   id: any;
+  vendor_id_list: any;
+  id_list: any;
+  vehicle_type: any;
+  single_parking: any;
+  parking_id: any;
+  vehicle_list: any;
+  config = {
+    displayKey: "description", //if objects array passed which key to be displayed defaults to description
+    search: true, //true/false for the search functionlity defaults to false,
+    height: '250px', //height of the list so that if there are more no of items it can show a scroll defaults to auto. With auto height scroll will never appear
+    placeholder: 'Select', // text to be displayed when no item is selected defaults to Select,
+    customComparator: () => { },// a custom function using which user wants to sort the items. default is undefined and Array.sort() will be used in that case,
+    limitTo: 0, // number thats limits the no of options displayed in the UI (if zero, options will not be limited)
+    moreText: 'more', // text to be displayed whenmore than one items are selected like Option 1 + 5 more
+    noResultsFound: 'No results found!', // text to be displayed when no items are found while searching
+    searchPlaceholder: 'Search',// label thats displayed in search input,
+    searchOnKey: 'name',// key on which search should be performed this will be selective search. if undefined this will be extensive search on all keys
+  }
+  arealist: any = [];
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -31,11 +50,32 @@ export class QrcodeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this._api.vehiclelist().subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.vehicle_list = response.Data;
+        // console.log("vehicle_list");
+        // console.log(this.vehicle_list);
+      }
+    );
     this._api.qr_code_get().subscribe(
       (response: any) => {
         console.log(response.Data);
         this.qr_code_list = response.Data;
         console.log(this.qr_code_list);
+      }
+    );
+
+    this._api.list_parking().subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.vendor_id_list = response.Data;
+        console.log(this.vendor_id_list);
+        this.id_list = [];
+        for (let i = 0; i < this.vendor_id_list.length; i++) {
+          this.id_list.push(this.vendor_id_list[i].parking_vendor_id)
+        }
       }
     );
   }
@@ -62,14 +102,16 @@ export class QrcodeComponent implements OnInit {
           "Long": this.Longitude,
           "Entry": this.Entry,
           "Block_Name": this.Block,
+          "Vehicletype_id": this.vehicle_type,
         }
+        console.log(data)
         this._api.qr_code_create(data).subscribe((response: any) => {
           console.log(response);
           if (response.Code == 422) {
             alert(response.Message);
           } else {
             this.ngOnInit();
-            alert(response.Message);
+            alert("QR code generated successfully");
             this.reset();
             // this.router.navigate(['/superadmin/master/create_master_service'])
 
@@ -88,6 +130,7 @@ export class QrcodeComponent implements OnInit {
           "Long": this.Longitude,
           "Entry": this.Entry,
           "Block_Name": this.Block,
+          "Vehicletype_id": this.vehicle_type,
         }
         this._api.qr_code_edit(data).subscribe((response: any) => {
           console.log(response);
@@ -95,7 +138,7 @@ export class QrcodeComponent implements OnInit {
             alert(response.Message);
           } else {
             this.ngOnInit();
-            alert(response.Message);
+            alert("QR code detail updated successfully");
             this.reset();
             // this.router.navigate(['/superadmin/master/create_master_service'])
 
@@ -123,6 +166,10 @@ export class QrcodeComponent implements OnInit {
     this.Entry = undefined;
     this.Block = undefined;
     this.imgurl = undefined;
+    this.parking_id = undefined;
+    this.vehicle_type = undefined;
+    this.single_parking = undefined;
+    this.arealist = [];
   }
   edit(data) {
     this.update = true;
@@ -135,12 +182,15 @@ export class QrcodeComponent implements OnInit {
     this.Entry = data.Entry;
     this.Block = data.Block_Name;
     this.imgurl = data.QRcode_Image_URL;
-    window.scrollTo(0, 0)
+    this.vehicle_type = data.Vehicletype_id;
+    window.scrollTo(0, 0);
+    this.single_parking = this.vendor_id_list.filter((x: any) => this.Vendor_Id == x._id);
+    this.parking_id = this.single_parking[0].parking_vendor_id;
+    this.vechiletype_detail();
   }
 
   validation() {
-    if ((this.Vendor_Id != undefined && this.Vendor_Id != '') && (this.VendorName != undefined && this.VendorName != '') && (this.parkingarea != undefined && this.parkingarea != '')
-      && (this.Latitude != undefined && this.Latitude != '') && (this.Longitude != undefined && this.Longitude != '') && (this.Entry != undefined && this.Entry != '') && (this.Block != undefined && this.Block != '')) {
+    if (this.parking_id != undefined && this.VendorName != undefined && this.parkingarea != undefined && this.Latitude != undefined && this.Longitude != undefined && this.Entry != undefined && this.Block != undefined) {
       this.validate = true;
     }
     else {
@@ -157,12 +207,31 @@ export class QrcodeComponent implements OnInit {
         alert(response.Message);
       } else {
         this.ngOnInit();
-        alert(response.Message);
+        alert("QR code deleted successfully");
         this.reset();
         // this.router.navigate(['/superadmin/master/create_master_service'])
 
       }
 
     });
+  }
+
+  get_mech() {
+
+    this.single_parking = this.vendor_id_list.filter((x: any) => this.parking_id == x.parking_vendor_id);
+    this.Vendor_Id = this.single_parking[0]._id;
+    console.log(this.Vendor_Id)
+    console.log(this.single_parking);
+    this.VendorName = this.single_parking[0].parking_details_name
+    this.Latitude = this.single_parking[0].parking_details_lat;
+    this.Longitude = this.single_parking[0].parking_details_long;
+  }
+  vechiletype_detail() {
+    if (this.vehicle_type == "5f0c0cfc2f857d66950cf25f") {
+      this.arealist = this.single_parking[0].parking_details_slots_Car_details;
+    }
+    if (this.vehicle_type == "5f0c0d092f857d66950cf260") {
+      this.arealist = this.single_parking[0].parking_details_slots_Bike_details;
+    }
   }
 }

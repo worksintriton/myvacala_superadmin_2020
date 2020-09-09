@@ -23,11 +23,14 @@ export class ValidatorService {
 mobileValidator(data){
   if (data === undefined || data === '' || data === null) {
        return  true;
-  } else if (isNaN(data)){
+  } 
+  // else if (isNaN(data)){
+  //     return  true;
+  // }
+  else if (data.length !== 10){
       return  true;
-  }else if (data.length !== 10){
-      return  true;
-  }else {
+  }
+  else {
       return false;
   }
 }

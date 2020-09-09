@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../../api.service';
 import { ValidatorService } from '../../../../valitation.service'
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-editemployee',
   templateUrl: './editemployee.component.html',
@@ -110,14 +110,14 @@ export class EditemployeeComponent implements OnInit {
   validate: any;
   emailerror: boolean = false;
   phone_err1: boolean = false;
-  phone_err2:boolean = false;
-  phone_err3:boolean = false;
+  phone_err2: boolean = false;
+  phone_err3: boolean = false;
   constructor(
     private router: Router,
     private http: HttpClient,
     private _api: ApiService,
     private _val: ValidatorService,
-    private loction :Location,
+    private loction: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService) {
 
 
@@ -180,7 +180,7 @@ export class EditemployeeComponent implements OnInit {
     this.Temporaryaddress = this.EmployeeList.Temporaryaddress;
     this.AlterativeNumber = this.EmployeeList.Alternate_Contact;
     this.interests = this.EmployeeList.Sector;
-
+    this.password = this.EmployeeList.password;
     this.selectedpermissions = this.EmployeeList.Permissions;
     this.NomineeName = this.EmployeeList.Nomaniee_Name;
     this.Permanentaddress = this.EmployeeList.Permanentaddress;
@@ -350,7 +350,7 @@ export class EditemployeeComponent implements OnInit {
             this.Location_list[i].status = true;
             this.selectedlocations.push(this.Location_list[i]._id);
           }
-          else{
+          else {
             this.Location_list[i].status = false;
           }
         }
@@ -496,7 +496,7 @@ export class EditemployeeComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
         this.NomineeAadharCard_file = res.Data;
-        
+
       });
     if (this.NomineeAadharCard_file == undefined) {
       this.pdfname4 = "Document Not uploaded";
@@ -546,11 +546,12 @@ export class EditemployeeComponent implements OnInit {
         "Location": this.selectedlocations,
         "Sector": this.interests,
         "Permissions": this.selectedpermissions,
+        "password": this.password,
       }
       console.log(data)
       this._api.emp_edit(data).subscribe((res: any) => {
         console.log(res)
-        alert(res.Message);
+        alert("Employee details Updated successfully");
         this.router.navigate(['superadmin/master/listemployees']);
       })
     }
@@ -587,7 +588,7 @@ export class EditemployeeComponent implements OnInit {
       && (this.EmployeePanCard_file != undefined)
       && (this.EmployeeAadharCard_file != undefined)
       && (this.NomineePanCard_file != undefined)
-      && (this.NomineeAadharCard_file != undefined)
+      && (this.NomineeAadharCard_file != undefined) && (this.password != undefined && this.password != '')
       && this.emailerror == false && this.phone_err1 == false && this.phone_err2 == false && this.phone_err3 == false) {
       this.validate = true;
     }
@@ -602,12 +603,16 @@ export class EditemployeeComponent implements OnInit {
     this.phone_err1 = this._val.mobileValidator(this.PhoneNumber)
   }
   phone2() {
+
     this.phone_err2 = this._val.mobileValidator(this.AlterativeNumber)
+    if(this.PhoneNumber == this.AlterativeNumber) {
+      this.phone_err2 = true;
+    }
   }
   phone3() {
     this.phone_err3 = this._val.mobileValidator(this.MobileNumber)
   }
-  back(){
+  back() {
     this.loction.back();
   }
 }

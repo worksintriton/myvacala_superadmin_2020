@@ -27,10 +27,14 @@ export class FaqComponent implements OnInit {
     this._api.faq().subscribe(
       (response: any) => {
         console.log(response);
-        this.faqlist = response.Data;
+        this.faqlist = response.Data.reverse();
 
       }
     );
+  }
+  reset(){
+    this.question = undefined;
+      this.Answer = undefined;
   }
   Faq_Save()
   {
@@ -47,6 +51,7 @@ export class FaqComponent implements OnInit {
                 alert(response.Message);
               } else {
                 alert(response.Message);
+                this.ngOnInit();
                 }
             }
           );

@@ -176,8 +176,9 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">POC Email Id</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="poc_email" name="poc_email" class="form-control"
+                <input type="text" [(ngModel)]="poc_email" name="poc_email"  (ngModelChange)="emailcheck1()" class="form-control"
                   placeholder="POC Email Id">
+                  <span class="err" *ngIf="emailerror1">Enter Valid Email Address.</span>
               </div>
             </div>
 
@@ -204,7 +205,7 @@
                       <th>Block </th>
                       <th>Floor</th>
                       <th>Slot</th>
-                      <!-- <th>Action</th> -->
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -218,8 +219,7 @@
                           placeholder="Floor"></td>
                       <td><input type="text" [(ngModel)]="dynamic.slot" name="dynamic.slot" class="form-control"
                           placeholder="Slot Number"></td>
-
-                      <!-- <td> <button (click)="addcar(i)" class="btn btn-sm btn-primary">Save</button></td> -->
+                          <td> <button (click)="deletebike(i)" class="btn btn-sm btn-primary">Delete</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -247,7 +247,7 @@
                       <th>Block </th>
                       <th>Floor</th>
                       <th>Slot</th>
-                      <!-- <th>Action</th> -->
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -261,7 +261,7 @@
                           placeholder="Floor"></td>
                       <td><input type="text" [(ngModel)]="dyna.slot" name="dyna.slot" class="form-control"
                           placeholder="Slot Number"></td>
-                      <!-- <td> <button (click)="addcar(i)" class="btn btn-sm btn-primary">Save</button></td> -->
+                          <td> <button (click)="deletecar(i)" class="btn btn-sm btn-primary">Delete</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -772,7 +772,7 @@
                   <label class="col-md-3 col-form-label" for="text-input">Add Date</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Date</label>
-                    <input type="date" [(ngModel)]="bikeslotdate1" name="bikeslotdate1" class="form-control"
+                    <input type="date" [(ngModel)]="bikeslotdate1" name="bikeslotdate1" class="form-control"  (change)="bikedatechange()"
                      >
                   </div>
                   <div class="col-md-2">
@@ -1280,7 +1280,7 @@
                   <label class="col-md-3 col-form-label" for="text-input">Add Date</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Date</label>
-                    <input type="date" [(ngModel)]="slotdatee1" name="slotdatee1"  class="form-control"
+                    <input type="date" [(ngModel)]="slotdatee1" name="slotdatee1"  class="form-control" (change)="cardatechange()"
                       >
                   </div>
                   <div class="col-md-2">
@@ -1788,8 +1788,8 @@
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label" for="text-input">Add Date</label>
                   <div class="col-md-2">
-                    <label class="col-form-label" for="text-input">Date</label>
-                    <input type="date" [(ngModel)]="slotdateee1" name="slotdateee1"  class="form-control"
+                    <label class="col-form-label" for="text-input">Date</label> 
+                    <input type="date" [(ngModel)]="slotdateee1" name="slotdateee1"  class="form-control" (change)="bothdatechange()"
                       >
                   </div>
                   <div class="col-md-2">

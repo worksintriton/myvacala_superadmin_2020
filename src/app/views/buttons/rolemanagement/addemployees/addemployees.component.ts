@@ -73,8 +73,8 @@ export class AddemployeesComponent implements OnInit {
   validate: any;
   emailerror: any;
   phone_err1: any;
-  phone_err2:any;
-  phone_err3:any;
+  phone_err2: any;
+  phone_err3: any;
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -300,35 +300,44 @@ export class AddemployeesComponent implements OnInit {
         "Location": this.selectedlocations,
         "Sector": this.interests,
         "Permissions": this.selectedpermissions,
+        "password": this.password,
       }
       console.log(data)
       this._api.add_emp(data).subscribe((res: any) => {
         console.log(res)
-        this.FName = undefined;
-        this.LName = undefined;
-        this.empId = undefined;
-        this.designation = undefined;
-        this.PhoneNumber = undefined;
-        this.AlterativeNumber = undefined;
-        this.Temporaryaddress = undefined;
-        this.Permanentaddress = undefined;
-        this.EmployeePanCard = undefined;
-        this.EmployeeAadharCard = undefined;
-        this.EmployeePanCard_file = undefined;
-        this.EmployeeAadharCard_file = undefined;
-        this.NomineeName = undefined;
-        this.MobileNumber = undefined;
-        this.NomineePanCard = undefined;
-        this.NomineeAadharCard = undefined;
-        this.NomineePanCard_file = undefined;
-        this.NomineeAadharCard_file = undefined;
-        this.EmailId = undefined;
-        this.NomineeAddress = undefined;
-        this.selectedlocations = [];
-        this.interests = [];
-        this.ngOnInit();
-        window.location.reload();
-        alert(res.Message);
+        if (res.Code == 200) {
+          this.FName = undefined;
+          this.LName = undefined;
+          this.empId = undefined;
+          this.designation = undefined;
+          this.PhoneNumber = undefined;
+          this.AlterativeNumber = undefined;
+          this.Temporaryaddress = undefined;
+          this.Permanentaddress = undefined;
+          this.EmployeePanCard = undefined;
+          this.EmployeeAadharCard = undefined;
+          this.EmployeePanCard_file = undefined;
+          this.EmployeeAadharCard_file = undefined;
+          this.NomineeName = undefined;
+          this.MobileNumber = undefined;
+          this.NomineePanCard = undefined;
+          this.NomineeAadharCard = undefined;
+          this.NomineePanCard_file = undefined;
+          this.NomineeAadharCard_file = undefined;
+          this.EmailId = undefined;
+          this.NomineeAddress = undefined;
+          this.selectedlocations = [];
+          this.interests = [];
+          this.password = undefined;
+          this.ngOnInit();
+          // window.location.reload();
+          alert(res.Message);
+
+          this.router.navigate(['superadmin/master/listemployees']);
+        }
+        else{
+          alert(res.Message);
+        }
 
       })
     }
@@ -361,8 +370,8 @@ export class AddemployeesComponent implements OnInit {
       && (this.EmployeePanCard_file != undefined)
       && (this.EmployeeAadharCard_file != undefined)
       && (this.NomineePanCard_file != undefined)
-      && (this.NomineeAadharCard_file != undefined)
-      && this.emailerror == false && this.phone_err1 == false && this.phone_err2 == false && this.phone_err3 == false){
+      && (this.NomineeAadharCard_file != undefined) && (this.password != undefined && this.password != '')
+      && this.emailerror == false && this.phone_err1 == false && this.phone_err2 == false && this.phone_err3 == false) {
       this.validate = true;
     }
     else {
@@ -377,7 +386,11 @@ export class AddemployeesComponent implements OnInit {
     this.phone_err1 = this._val.mobileValidator(this.PhoneNumber)
   }
   phone2() {
+
     this.phone_err2 = this._val.mobileValidator(this.AlterativeNumber)
+    if(this.PhoneNumber == this.AlterativeNumber) {
+      this.phone_err2 = true;
+    }
   }
   phone3() {
     this.phone_err3 = this._val.mobileValidator(this.MobileNumber)

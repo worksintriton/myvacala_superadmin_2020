@@ -165,8 +165,9 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input">POC Email Id</label>
               <div class="col-md-6">
-                <input type="text" [(ngModel)]="poc_email" name="poc_email"  class="form-control"
+                <input type="text" [(ngModel)]="poc_email" name="poc_email"  (ngModelChange)="emailcheck1()" class="form-control"
                   placeholder="POC Email Id">
+                  <span class="err" *ngIf="emailerror1">Enter Valid Email Address.</span>
               </div>
             </div>
             
@@ -184,23 +185,23 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input"></label>
               <div class="col-md-6 mt-3">
-                <button (click)="deletebike()" class="btn btn-sm btn-primary mb-2">Delete Marked</button>
+                <!-- <button (click)="deletebike()" class="btn btn-sm btn-primary mb-2">Delete Marked</button> -->
                 <table class="table table-bordered table-striped table-sm">
                   <thead>
                     <tr>
                       <th>S.No</th>
-                      <th>Select</th>
+                      <!-- <th>Select</th> -->
                       <th>Block </th>
                       <th>Floor</th>
                       <th>Slot</th>
-                      <!-- <th>Action</th> -->
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
 
                     <tr *ngFor="let dynamic of include_bike1; let i = index;">
                       <td>{{i+1}}</td>
-                      <td><input type="checkbox" name="name" [(ngModel)]="name" > </td>
+                      <!-- <td><input type="checkbox" name="name" [(ngModel)]="name" > </td> -->
                       <td> <input type="text" [(ngModel)]="dynamic.area" name="Block"  class="form-control"
                           placeholder="Block"></td>
                       <td> <input type="text" [(ngModel)]="dynamic.floor" name="flooe"  class="form-control"
@@ -208,7 +209,7 @@
                       <td><input type="text" [(ngModel)]="dynamic.slot" name="slot"  class="form-control"
                           placeholder="Slot Number"></td>
                       
-                        <!-- <td> <button (click)="addcar(i)" class="btn btn-sm btn-primary">Save</button></td> -->
+                          <td> <button (click)="deletebike(i)" class="btn btn-sm btn-primary">Delete</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -228,30 +229,30 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="text-input"></label>
               <div class="col-md-6 mt-3">
-                <button (click)="deletebike()" class="btn btn-sm btn-primary mb-2">Delete Marked</button>
+                <!-- <button (click)="deletebike()" class="btn btn-sm btn-primary mb-2">Delete Marked</button> -->
                 <table class="table table-bordered table-striped table-sm">
                   <thead>
                     <tr>
                       <th>S.No</th>
-                      <th>Select</th>
+                      <!-- <th>Select</th> -->
                       <th>Block </th>
                       <th>Floor</th>
                       <th>Slot</th>
-                      <!-- <th>Action</th> -->
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
 
                     <tr *ngFor="let dyna of include_bike2; let i = index;">
                       <td>{{i+1}}</td>
-                      <td><input type="checkbox" name="name" [(ngModel)]="name" > </td>
+                      <!-- <td><input type="checkbox" name="name" [(ngModel)]="name" > </td> -->
                       <td> <input type="text" [(ngModel)]="dyna.area" name="Block1"  class="form-control"
                           placeholder="Block"></td>
                       <td> <input type="text" [(ngModel)]="dyna.floor" name="flooe1"  class="form-control"
                           placeholder="Floor"></td>
                       <td><input type="text" [(ngModel)]="dyna.slot" name="slot3"  class="form-control"
                           placeholder="Slot Number"></td>
-                      <!-- <td> <button (click)="addcar(i)" class="btn btn-sm btn-primary">Save</button></td> -->
+                      <td> <button (click)="deletecar(i)" class="btn btn-sm btn-primary">Delete</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -759,7 +760,7 @@
                   <label class="col-md-3 col-form-label" for="text-input">Add Date</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Date</label>
-                    <input type="date" [(ngModel)]="bikeslotdate1" name="bikeslotdate1" class="form-control"
+                    <input type="date" [(ngModel)]="bikeslotdate1" name="bikeslotdate1" class="form-control" (change)="bikedatechange()"
                      >
                   </div>
                   <div class="col-md-2">
@@ -1076,8 +1077,7 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
-    
+                </div>   
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label" for="text-input">Friday</label>
                   <div class="col-md-2">
@@ -1138,8 +1138,7 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
-    
+                </div>    
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label" for="text-input">Saturday</label>
                   <div class="col-md-2">
@@ -1200,8 +1199,7 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
-    
+                </div>   
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label" for="text-input">Sunday</label>
                   <div class="col-md-2">
@@ -1267,7 +1265,7 @@
                   <label class="col-md-3 col-form-label" for="text-input">Add Date</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Date</label>
-                    <input type="date" [(ngModel)]="slotdatee1" name="slotdatee1"  class="form-control"
+                    <input type="date" [(ngModel)]="slotdatee1" name="slotdatee1"  class="form-control" (change)="cardatechange()"
                       >
                   </div>
                   <div class="col-md-2">
@@ -1280,7 +1278,7 @@
                       </ng-container>
                     </select>
                     <!-- <input type="time" [(ngModel)]="SlotWeekDaytime32" name="SlotWeekDaytime15" 
-                      class="form-control" > -->
+                      class="form-control" -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1292,7 +1290,7 @@
                       </ng-container>
                     </select>
                     <!-- <input type="time" [(ngModel)]="SlotWeekDaytime33" name="SlotWeekDaytime16" 
-                      class="form-control" > -->
+                      class="form-control" -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1353,8 +1351,8 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime35" name="SlotWeekDaytime35" 
-                      class="form-control" > -->
+                    <!-- input type="time" [(ngModel)]="SlotWeekDaytime35" name="SlotWeekDaytime35" 
+                      class="form-control" -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1366,7 +1364,7 @@
                       </ng-container>
                     </select>
                     <!-- <input type="time" [(ngModel)]="SlotWeekDaytime36" name="SlotWeekDaytime36" 
-                      class="form-control" > -->
+                      class="form-control" -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1776,7 +1774,7 @@
                   <label class="col-md-3 col-form-label" for="text-input">Add Date</label>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Date</label>
-                    <input type="date" [(ngModel)]="slotdateee1" name="slotdateee1"  class="form-control"
+                    <input type="date" [(ngModel)]="slotdateee1" name="slotdateee1"  class="form-control" (change)="bothdatechange()"
                       >
                   </div>
                   <div class="col-md-2">

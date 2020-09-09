@@ -157,7 +157,7 @@ export class FueltypeComponent implements OnInit {
       (response: any) => {
         console.log(response);
         if (response.Code == 200) {
-          alert(response.Message);
+          alert("Fuel Type Updated Successfully");
           this.ngOnInit();
         }
         else {

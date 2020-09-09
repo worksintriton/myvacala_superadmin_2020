@@ -9,55 +9,95 @@
           <form class="form-horizontal">
             <div class="row">
               <div class="col-md-8">
+
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Vendor Id</label>
                   <div class="col-md-6">
-                    <input type="text" [(ngModel)]="Vendor_Id" name="Title-1"  class="form-control"
-                      placeholder="Vendor Id">
+                    <ngx-select-dropdown [config]="config" [options]="id_list" [(ngModel)]="parking_id"
+                      [ngModelOptions]="{standalone: true}" (ngModelChange)="get_mech()"></ngx-select-dropdown>
+
+
+
+                    <!-- <input type="text" [(ngModel)]="Vendor_Id" name="Title-1"  class="form-control"
+                      placeholder="Vendor Id"> -->
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Vendor Name</label>
                   <div class="col-md-6">
-                    <input type="text" [(ngModel)]="VendorName" name="VendorName"  class="form-control"
-                      placeholder="VendorName">
+                    <input type="text" [(ngModel)]="VendorName" name="VendorName" class="form-control"
+                      placeholder="Vendor Name" disabled>
+                  </div>
+                </div>
+                <div class="form-group row">
+
+                  <label class="col-md-4 col-form-label" for="text-input">Vehicle Type</label>
+                  <div class="col-md-6">
+                    <select class="form-control" [(ngModel)]="vehicle_type" name="vehicle_type" (ngModelChange)="vechiletype_detail()">
+                      <option value=undefined style="display: none;">Select Type</option>
+                      <ng-container *ngFor="let list of vehicle_list;">
+                        <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
+                      </ng-container>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Parking Area Name</label>
                   <div class="col-md-6">
+                    <select class="form-control" [(ngModel)]="parkingarea" name="parkingarea">
+                      <option value="undefined" style="display:none">Select</option>
+                      <ng-container *ngFor="let list of arealist;">
+                        <option value="{{list.area}}">{{list.area}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Block Name</label>
+                  <div class="col-md-6">
+                    <select class="form-control" [(ngModel)]="Block" name="Block">
+                      <option value="undefined" style="display:none">Select</option>
+                      <ng-container *ngFor="let list of arealist;">
+                        <option value="{{list.floor}}">{{list.floor}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+                <!-- <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="text-input">Parking Area Name</label>
+                  <div class="col-md-6">
                     <input type="text" [(ngModel)]="parkingarea" name="Title-2"  class="form-control"
-                      placeholder="Parking Area Name">
+                      placeholder="Parking Area Name" disabled>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Block Name</label>
                   <div class="col-md-6">
                     <input type="text" [(ngModel)]="Block" name="Title-3"  class="form-control"
-                      placeholder="Block Name">
+                      placeholder="Block Name" disabled>
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Latitude</label>
                   <div class="col-md-6">
-                    <input type="text" [(ngModel)]="Latitude" name="Title-4"  class="form-control"
-                      placeholder="Latitude">
+                    <input type="text" [(ngModel)]="Latitude" name="Title-4" class="form-control" placeholder="Latitude"
+                      disabled>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Longitude</label>
                   <div class="col-md-6">
-                    <input type="text" [(ngModel)]="Longitude" name="Title-5"  class="form-control"
-                      placeholder="Longitude">
+                    <input type="text" [(ngModel)]="Longitude" name="Title-5" class="form-control"
+                      placeholder="Longitude" disabled>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Entry</label>
                   <div class="col-md-6">
                     <select class="form-control" [(ngModel)]="Entry" name="entry">
-                      <option value="undefined">Select Option</option>
-                      <option value="CehckIn">CehckIn</option>
-                      <option value="CheckOut">CheckOut</option>
+                      <option value="undefined" style="display:none">Select</option>
+                      <option value="Check In">Check In</option>
+                      <option value="Check Out">Check Out</option>
                     </select>
                   </div>
                 </div>
@@ -93,17 +133,20 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <button (click)="createqr_code()" class="btn btn-sm btn-primary float-right mt-5"><i
-                      class="fa fa-save"></i> Save</button>
+                      class="fa fa-save"></i>
+                    <ng-container *ngIf="update == false">Save</ng-container>
+                    <ng-container *ngIf="update == true">Update</ng-container>
+                  </button>
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group"> 
-                  <button type="button" (click)="reset()" class="btn btn-sm btn-danger mt-5"><i class="fa fa-ban"></i> Reset</button>
+                <div class="form-group">
+                  <button type="button" (click)="reset()" class="btn btn-sm btn-danger mt-5">Cancel</button>
                 </div>
               </div>
             </div>
           </form>
-       
+
         </div>
       </div>
       <div class="card">
@@ -112,14 +155,13 @@
         </div>
         <div class="card-body">
           <div class="search-hero">
-            <input class="form-control" type="text" name="search2"
-                style="font-family: FontAwesome;" [(ngModel)]="searchCoupon" autocomplete="off"
-                placeholder="&#xf002; Search...">
-        </div>
-        <table class="table table-striped table-bordered table-sm" [svData]="qr_code_list"
-        #sv="svDataTable" [svRowsOnPage]="10" svSortBy="name" svSortOrder="asc">
-        <thead>
-            <tr>
+            <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+              [(ngModel)]="searchCoupon" autocomplete="off" placeholder="&#xf002; Search...">
+          </div>
+          <table class="table table-striped table-bordered table-sm" [svData]="qr_code_list" #sv="svDataTable"
+            [svRowsOnPage]="10" svSortBy="name" svSortOrder="asc">
+            <thead>
+              <tr>
                 <th>S.No</th>
                 <th>Vendor ID</th>
                 <th>Vendor Name</th>
@@ -129,11 +171,11 @@
                 <th>Longitude</th>
                 <th>Entry</th>
                 <th>Action</th>
-            </tr>
+              </tr>
 
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let item of sv.data | filter:searchCoupon ; let i = index;">
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let item of sv.data | filter:searchCoupon ; let i = index;">
                 <tr>
                   <td>{{i+1}}</td>
                   <td>{{item.Vendor_id}}</td>
@@ -144,30 +186,30 @@
                   <td>{{item.Long}}</td>
                   <td>{{item.Entry}}</td>
                   <td>
-                    <a (click)="downloadimg(item.QRcode_Image_URL)" download target="_self"><i class="fa fa-download btn btn-success" aria-hidden="true"></i></a>
-                    <i class="fa fa-qrcode btn btn-warning" (click)="open(item.QRcode_Image_URL)" aria-hidden="true"></i>
+                    <a (click)="downloadimg(item.QRcode_Image_URL)" download target="_self"><i
+                        class="fa fa-download btn btn-success" aria-hidden="true"></i></a>
+                    <i class="fa fa-qrcode btn btn-warning" (click)="open(item.QRcode_Image_URL)"
+                      aria-hidden="true"></i>
                     <i (click)="edit(item)" class="fa fa-pencil-square-o btn btn-primary" aria-hidden="true"></i>
                     <i (click)="delete(item._id)" class="fa fa-trash btn btn-danger" aria-hidden="true"></i>
 
                   </td>
                 </tr>
-            </ng-container>
-        </tbody>
-        <tfoot>
-            <tr>
+              </ng-container>
+            </tbody>
+            <tfoot>
+              <tr>
                 <td colspan="9">
-                    <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]">
-                    </sv-bootstrap-paginator>
+                  <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]">
+                  </sv-bootstrap-paginator>
                 </td>
-            </tr>
-        </tfoot>
-    </table>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
     </div>
   </div>
   <!--/.row-->
-  
+
 </div>
-
-

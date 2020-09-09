@@ -414,4 +414,14 @@ export class ApiService {
   mechanic_byid(data){
     return this.http.post(this.apiUrl + 'mechanic/getlist_by_id', data)
   }
+  mechanic_delete(data){
+    return this.http.post(this.apiUrl + 'mechanic/delete', data)
+  }
+  mechanic_edit(data){
+    return this.http.post(this.apiUrl + 'mechanic/edit', data)
+  }
+  emp_login(data){
+    return this.http.post(this.apiUrl + 'employee/admin_login', data)
+  }
+  
 }

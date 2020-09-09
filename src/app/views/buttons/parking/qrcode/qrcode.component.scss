@@ -3,3 +3,6 @@
     padding-bottom: 5px;
     margin:auto;
   }
+  :host::ng-deep .selected-items {
+    display: none !important;
+} 

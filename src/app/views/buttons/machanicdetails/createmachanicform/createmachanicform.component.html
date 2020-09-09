@@ -20,7 +20,8 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Primary Contact</label>
                   <div class="col-md-8">
-                    <input type="text"  name ="PrimaryConatct"  [(ngModel)]="Primary_Contact"   class="form-control" placeholder="Primary Contact">
+                    <input type="text"  name ="PrimaryConatct"  [(ngModel)]="Primary_Contact"  (keypress)=_keyPress($event) (ngModelChange)="phone1()" class="form-control" placeholder="Primary Contact">
+                    <span class="err" *ngIf="phone_err1">Enter Valid Phone Number.</span>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -32,13 +33,13 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Owner Pan Card</label>
                   <div class="col-md-8">
-                    <input type="file"   name ="DLNo"  (change)="fileupload1($event)" class="form-control" placeholder="Owner Pan Card">
+                    <input type="file"  accept="application/pdf"   name ="DLNo"  (change)="fileupload1($event)" class="form-control" placeholder="Owner Pan Card">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Owner Aadhar Card</label>
                   <div class="col-md-8">
-                    <input type="file"  name ="NomineeName"  (change)="fileupload2($event)" class="form-control" placeholder="Owner Adhar Card">
+                    <input type="file"  accept="application/pdf"  name ="NomineeName"  (change)="fileupload2($event)" class="form-control" placeholder="Owner Adhar Card">
                   </div>
                 </div>
               </div>
@@ -53,7 +54,8 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Secondary Contact</label>
                   <div class="col-md-8">
-                    <input type="text"  name ="SecondaryConatct"   [(ngModel)]="Secondary_Contact" class="form-control" placeholder="Secondary Contact">
+                    <input type="text"  name ="SecondaryConatct"   [(ngModel)]="Secondary_Contact" (keypress)=_keyPress($event)  (ngModelChange)="phone2()" class="form-control" placeholder="Secondary Contact">
+                    <span class="err" *ngIf="phone_err2">Enter Valid Phone Number.</span>
                   </div>
                 </div>
                 
@@ -112,19 +114,19 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Workshop Registration Certificate</label>
                   <div class="col-md-8">
-                    <input type="file"  name ="AddressProof"  (change)="fileupload3($event)"  class="form-control" placeholder="Address Proof">
+                    <input type="file"  accept="application/pdf"  name ="AddressProof"  (change)="fileupload3($event)"  class="form-control" placeholder="Address Proof">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Workshop GST Certificate</label>
                   <div class="col-md-8">
-                    <input type="file"  name ="GSTCertificate"   (change)="fileupload4($event)" class="form-control" placeholder="GST Certificate">
+                    <input type="file"  accept="application/pdf"  name ="GSTCertificate"   (change)="fileupload4($event)" class="form-control" placeholder="GST Certificate">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="text-input">Workshop Pan Card</label>
                   <div class="col-md-8">
-                    <input type="file"  name ="DLNo"   (change)="fileupload5($event)" class="form-control" placeholder="DL No">
+                    <input type="file"  accept="application/pdf"  name ="DLNo"   (change)="fileupload5($event)" class="form-control" placeholder="DL No">
                   </div>
                 </div>
                 
@@ -190,7 +192,8 @@
               <div class="form-group row">
                 <label class="col-md-5 col-form-label" for="text-input">Workshop Car Service Advisor Contact</label>
                 <div class="col-md-5">
-                  <input type="text"  [(ngModel)]="Workshop_Car_Service_Advisor_Contact" name ="NomineeContact"  class="form-control" placeholder="Advisor Contact">
+                  <input type="text"  [(ngModel)]="Workshop_Car_Service_Advisor_Contact" (keypress)=_keyPress($event) (ngModelChange)="phone3()" name ="NomineeContact"  class="form-control" placeholder="Advisor Contact">
+                  <span class="err" *ngIf="phone_err3">Enter Valid Phone Number.</span>
                 </div>
               </div>
             </div> 
@@ -204,7 +207,8 @@
               <div class="form-group row">
                 <label class="col-md-5 col-form-label" for="text-input">Workshop Bike Service Advisor Contact</label>
                 <div class="col-md-5">
-                  <input type="text" [(ngModel)]="Workshop_Bike_Service_Advisor_Contact"  name ="NomineeContact"  class="form-control" placeholder="Advisor Contact">
+                  <input type="text" [(ngModel)]="Workshop_Bike_Service_Advisor_Contact"  (keypress)=_keyPress($event) (ngModelChange)="phone4()" name ="NomineeContact"  class="form-control" placeholder="Advisor Contact">
+                  <span class="err" *ngIf="phone_err4">Enter Valid Phone Number.</span>
                 </div>
               </div>
             </div>

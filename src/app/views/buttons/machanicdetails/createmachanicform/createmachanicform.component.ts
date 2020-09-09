@@ -31,7 +31,7 @@ export class CreatemachanicformComponent implements OnInit {
   Workshop_Gst_Number: any;
   Workshop_Pan_card_Number: any;
   GST_Address: any;
-  Workshop_service_Type: any;
+  Workshop_service_Type: any="Car";
   Workshop_Car_Service_Advisor_Name: any;
   Workshop_Car_Service_Advisor_Contact: any;
   Workshop_Bike_Service_Advisor_Name: any;
@@ -41,6 +41,10 @@ export class CreatemachanicformComponent implements OnInit {
   Workshop_GST_Certificate: any;
   Workshop_Pan_Card: any;
   valid: boolean = false;
+  phone_err1: any;
+  phone_err2: any;
+  phone_err3: any;
+  phone_err4: any;
   constructor(
     private router: Router,
 
@@ -171,35 +175,35 @@ export class CreatemachanicformComponent implements OnInit {
       (this.Workshop_Pan_Card != undefined && this.Workshop_Pan_Card != '') &&
       (this.GST_Address != undefined && this.GST_Address != '') &&
       (this.Map_Link != undefined && this.Map_Link != '') &&
-      (this.Workshop_service_Type != undefined && this.Workshop_service_Type != '')) {
+      (this.Workshop_service_Type != undefined && this.Workshop_service_Type != '') && this.phone_err1 == false && this.phone_err2 == false) {
       if (this.Workshop_service_Type == "Both") {
         if ((this.Workshop_Bike_Service_Advisor_Contact != undefined && this.Workshop_Bike_Service_Advisor_Contact != '') &&
           (this.Workshop_Bike_Service_Advisor_Name != undefined && this.Workshop_Bike_Service_Advisor_Name != '') &&
           (this.Workshop_Car_Service_Advisor_Contact != undefined && this.Workshop_Car_Service_Advisor_Contact != '') &&
-          (this.Workshop_Car_Service_Advisor_Name != undefined && this.Workshop_Car_Service_Advisor_Name != '')) {
+          (this.Workshop_Car_Service_Advisor_Name != undefined && this.Workshop_Car_Service_Advisor_Name != '') && this.phone_err3 == false && this.phone_err4 == false) {
           this.valid = true;
         }
         else {
-          alert("Fill workshop service datail")
+         this.valid = false;
         }
       }
       if (this.Workshop_service_Type == "Bike") {
         if ((this.Workshop_Bike_Service_Advisor_Contact != undefined && this.Workshop_Bike_Service_Advisor_Contact != '') &&
-          (this.Workshop_Bike_Service_Advisor_Name != undefined && this.Workshop_Bike_Service_Advisor_Name != '')) {
+          (this.Workshop_Bike_Service_Advisor_Name != undefined && this.Workshop_Bike_Service_Advisor_Name != '') && this.phone_err4 == false ) {
           this.valid = true;
         }
         else {
-          alert("Fill workshop service datail")
+         this.valid = false;
         }
       }
       if (this.Workshop_service_Type == "Car") {
         if (
           (this.Workshop_Car_Service_Advisor_Contact != undefined && this.Workshop_Car_Service_Advisor_Contact != '') &&
-          (this.Workshop_Car_Service_Advisor_Name != undefined && this.Workshop_Car_Service_Advisor_Name != '')) {
+          (this.Workshop_Car_Service_Advisor_Name != undefined && this.Workshop_Car_Service_Advisor_Name != '') && this.phone_err3 == false) {
           this.valid = true;
         }
         else {
-          alert("Fill workshop service datail")
+         this.valid = false;
         }
       }
 
@@ -248,7 +252,7 @@ export class CreatemachanicformComponent implements OnInit {
       });
     }
     else {
-      alert("Fill all the fields")
+      alert("Fill all the fields with valid data")
     }
 
 
@@ -281,5 +285,26 @@ export class CreatemachanicformComponent implements OnInit {
     this.Workshop_Bike_Service_Advisor_Name = undefined;
     this.Workshop_Car_Service_Advisor_Contact = undefined;
     this.Workshop_Car_Service_Advisor_Name = undefined;
+  }
+
+  _keyPress(event: any) {
+    const pattern = /[0-9\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+
+    }
+  }
+  phone1() {
+    this.phone_err1 = this._val.mobileValidator(this.Primary_Contact)
+  }
+  phone2() {
+    this.phone_err2 = this._val.mobileValidator(this.Secondary_Contact)
+  }
+  phone3() {
+    this.phone_err3 = this._val.mobileValidator(this.Workshop_Car_Service_Advisor_Contact)
+  }
+  phone4() {
+    this.phone_err4 = this._val.mobileValidator(this.Workshop_Bike_Service_Advisor_Contact)
   }
 }

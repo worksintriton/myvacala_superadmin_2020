@@ -66,38 +66,38 @@ export const navItems: NavData[] = [
       },
     ]
   },
-  {
-    name: 'Customers',
-    url: '/buttons',
-    icon: 'icon-user',
-    children: [
-      {
-        name: 'Customer List',
-        url: '/superadmin/master/customer',
-        icon: 'icon-list'
-      },
+  // {
+  //   name: 'Customers',
+  //   url: '/buttons',
+  //   icon: 'icon-user',
+  //   children: [
+  //     {
+  //       name: 'Customer List',
+  //       url: '/superadmin/master/customer',
+  //       icon: 'icon-list'
+  //     },
 
 
-    ]
-  },
-  {
-    name: 'Bookings',
-    url: '/dashboard',
-    icon: 'icon-notebook',
-    children: [
-      {
-        name: 'Mechanic Bookings',
-        url: '/superadmin/master/view_bookings',
-        icon: 'icon-list'
-      },
-      {
-        name: 'Parking Bookings',
-        url: '/superadmin/master/booking_parking',
-        icon: 'icon-list',
-      },
+  //   ]
+  // },
+  // {
+  //   name: 'Bookings',
+  //   url: '/dashboard',
+  //   icon: 'icon-notebook',
+  //   children: [
+  //     {
+  //       name: 'Mechanic Bookings',
+  //       url: '/superadmin/master/view_bookings',
+  //       icon: 'icon-list'
+  //     },
+  //     {
+  //       name: 'Parking Bookings',
+  //       url: '/superadmin/master/booking_parking',
+  //       icon: 'icon-list',
+  //     },
 
-    ]
-  },
+  //   ]
+  // },
   {
     name: 'Vendor Onboarding',
     url: '/buttons',
@@ -157,11 +157,11 @@ export const navItems: NavData[] = [
     ],
   },
 
-  {
-    name: 'Statatics',
-    url: '/superadmin/master/charts',
-    icon: 'fa fa-line-chart'
-  },
+  // {
+  //   name: 'Statatics',
+  //   url: '/superadmin/master/charts',
+  //   icon: 'fa fa-line-chart'
+  // },
 
   {
     name: 'App features ',
@@ -281,6 +281,28 @@ export const navItems: NavData[] = [
             icon: 'nav-icon icon-cursor'
           },
           {
+            name: 'Banner',
+            url: '/buttons',
+            icon: 'fa fa-support',
+            children: [
+              {
+                name: 'Master Service Banner',
+                url: '/superadmin/master/MasterServiceBanner',
+                icon: 'nav-icon icon-cursor'
+              },
+              {
+                name: 'Main Service Banner',
+                url: '/superadmin/master/Main_SErvice_banner',
+                icon: 'nav-icon icon-cursor'
+              },
+              {
+                name: 'Splash Screen',
+                url: '/superadmin/master/FlashScreen',
+                icon: 'nav-icon icon-cursor'
+              },
+            ]
+          },
+          {
             name: 'Notification',
             url: '/superadmin/master/notification',
             icon: 'nav-icon icon-cursor'
@@ -304,55 +326,34 @@ export const navItems: NavData[] = [
       },
     ]
   },
-  {
-    name: 'Finance',
-    url: '/superadmin/master/payments',
-    icon: 'fa fa-money'
-  },
-  {
-    name: 'Banner',
-    url: '/buttons',
-    icon: 'fa fa-support',
-    children: [
-      {
-        name: 'Master Service Banner',
-        url: '/superadmin/master/MasterServiceBanner',
-        icon: 'nav-icon icon-cursor'
-      },
-      {
-        name: 'Main Service Banner',
-        url: '/superadmin/master/Main_SErvice_banner',
-        icon: 'nav-icon icon-cursor'
-      },
-      {
-        name: 'Splash Screen',
-        url: '/superadmin/master/FlashScreen',
-        icon: 'nav-icon icon-cursor'
-      },
-    ]
-  },
   // {
   //   name: 'Finance',
   //   url: '/superadmin/master/payments',
   //   icon: 'fa fa-money'
   // },
-  {
-    name: 'Customer care',
-    url: '/buttons',
-    icon: 'fa fa-support',
-    children: [
-      {
-        name: 'Team_1',
-        url: '/superadmin/master/team1',
-        icon: 'nav-icon icon-cursor'
-      },
-      {
-        name: 'Call Details',
-        url: '/superadmin/master/team2',
-        icon: 'nav-icon icon-cursor'
-      },
-    ]
-  },
+  
+  // {
+  //   name: 'Finance',
+  //   url: '/superadmin/master/payments',
+  //   icon: 'fa fa-money'
+  // },
+  // {
+  //   name: 'Customer care',
+  //   url: '/buttons',
+  //   icon: 'fa fa-support',
+  //   children: [
+  //     {
+  //       name: 'Team_1',
+  //       url: '/superadmin/master/team1',
+  //       icon: 'nav-icon icon-cursor'
+  //     },
+  //     {
+  //       name: 'Call Details',
+  //       url: '/superadmin/master/team2',
+  //       icon: 'nav-icon icon-cursor'
+  //     },
+  //   ]
+  // },
   {
     name: 'Operations',
     url: '/superadmin/master/cre_team',
