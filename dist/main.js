@@ -396,333 +396,6 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
-/***/ "./src/app/_nav.ts":
-/*!*************************!*\
-  !*** ./src/app/_nav.ts ***!
-  \*************************/
-/*! exports provided: navItems */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "navItems", function() { return navItems; });
-var navItems = [
-    {
-        name: 'Dashboard',
-        url: '/superadmin/dashboard',
-        icon: 'icon-speedometer',
-        badge: {
-            variant: 'info',
-            text: 'NEW'
-        }
-    },
-    {
-        name: 'Role management',
-        url: '/master',
-        icon: 'icon-support',
-        children: [
-            // {
-            //   name: 'Add Role',
-            //   url: '/superadmin/master/addrole',
-            //   icon: 'icon-plus'
-            // },
-            {
-                name: 'Add Employees',
-                url: '/superadmin/master/addemployees',
-                icon: 'icon-user'
-            },
-            {
-                name: 'List Employees',
-                url: '/superadmin/master/listemployees',
-                icon: 'icon-list'
-            },
-            {
-                name: 'Suspended Employees',
-                url: '/superadmin/master/revokemployees',
-                icon: 'icon-list'
-            },
-        ]
-    },
-    // {
-    //   name: 'Customers',
-    //   url: '/buttons',
-    //   icon: 'icon-user',
-    //   children: [
-    //     {
-    //       name: 'Customer List',
-    //       url: '/superadmin/master/customer',
-    //       icon: 'icon-list'
-    //     },
-    //   ]
-    // },
-    // {
-    //   name: 'Bookings',
-    //   url: '/dashboard',
-    //   icon: 'icon-notebook',
-    //   children: [
-    //     {
-    //       name: 'Mechanic Bookings',
-    //       url: '/superadmin/master/view_bookings',
-    //       icon: 'icon-list'
-    //     },
-    //     {
-    //       name: 'Parking Bookings',
-    //       url: '/superadmin/master/booking_parking',
-    //       icon: 'icon-list',
-    //     },
-    //   ]
-    // },
-    {
-        name: 'Vendor Onboarding',
-        url: '/buttons',
-        icon: 'icon-user',
-        children: [
-            {
-                name: 'Create Mechanic',
-                url: '/superadmin/master/create_mechanic',
-                icon: 'icon-plus'
-            },
-            // {
-            //   name: 'QRCodeGeneration',
-            //   url: '/superadmin/master/create_driver',
-            //   icon: 'icon-plus'          
-            // },
-            {
-                name: 'Vendor Parking',
-                url: '/buttons',
-                icon: 'icon-plus',
-                children: [
-                    {
-                        name: 'Create Parking',
-                        url: '/superadmin/master/parking',
-                        icon: 'icon-plus'
-                    },
-                    {
-                        name: 'QR Code Generation',
-                        url: '/superadmin/master/QRCodeGeneration',
-                        icon: 'icon-plus'
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        name: 'Vendor List',
-        url: '/buttons',
-        icon: 'icon-user',
-        children: [
-            {
-                name: 'List Mechanic Details',
-                url: '/superadmin/master/list_mechanic',
-                icon: 'icon-list'
-            },
-            //     {
-            //       name: 'List Drivers Details',
-            //       url: '/superadmin/master/list_driver',
-            //       icon: 'icon-list'
-            // },      
-            {
-                name: 'Vendor Parking List',
-                url: '/superadmin/master/list_parking',
-                icon: 'icon-list'
-            },
-        ],
-    },
-    // {
-    //   name: 'Statatics',
-    //   url: '/superadmin/master/charts',
-    //   icon: 'fa fa-line-chart'
-    // },
-    {
-        name: 'App features ',
-        url: '/superadmin/master/payments',
-        icon: 'fa fa-grav',
-        children: [
-            {
-                name: 'Vehicle Management',
-                url: '/superadmin/master/create_master_service',
-                icon: 'icon-plus',
-                children: [
-                    {
-                        name: 'Fuel Type',
-                        url: '/superadmin/master/Fuel_Type',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    // {
-                    //   name: 'Vehicle Type',
-                    //   url: '/superadmin/master/vehicle_type',
-                    //   icon: 'nav-icon icon-cursor'
-                    // },
-                    {
-                        name: 'Vehicle Body Type',
-                        url: '/superadmin/master/VehicleModel',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Engine CC',
-                        url: '/superadmin/master/Enginecc',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Vehicle Manufacturer',
-                        url: '/superadmin/master/Brand',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Create Vehicle Model',
-                        url: '/superadmin/master/VehicleName',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Vehicle List',
-                        url: '/superadmin/master/VehicleList',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Popular Vehicle',
-                        url: '/superadmin/master/PopularVehicle',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                ],
-            },
-            {
-                name: 'Service Management',
-                url: '/superadmin/master/create_master_service',
-                icon: 'icon-plus',
-                children: [
-                    {
-                        name: 'Master Service',
-                        url: '/superadmin/master/create_master_service',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Main Service',
-                        url: '/superadmin/master/create_main_service',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Subservices',
-                        url: '/superadmin/master/sub_service',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Popular Service',
-                        url: '/superadmin/master/PopularService',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    //    {
-                    //   name: 'Popular Sub Service',
-                    //   url: '/superadmin/master/PopularSubService',
-                    //   icon: 'nav-icon icon-cursor'
-                    // },
-                    {
-                        name: 'Popular SubService',
-                        url: '/superadmin/master/Popular_SubService',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Subscriptions',
-                        url: '/superadmin/master/Subscriptions',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Location',
-                        url: '/superadmin/master/Locations',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'User List',
-                        url: '/superadmin/master/userlist',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'User Location List',
-                        url: '/superadmin/master/userlocationlist',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Coupon code',
-                        url: '/superadmin/master/couponcode',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Banner',
-                        url: '/buttons',
-                        icon: 'fa fa-support',
-                        children: [
-                            {
-                                name: 'Master Service Banner',
-                                url: '/superadmin/master/MasterServiceBanner',
-                                icon: 'nav-icon icon-cursor'
-                            },
-                            {
-                                name: 'Main Service Banner',
-                                url: '/superadmin/master/Main_SErvice_banner',
-                                icon: 'nav-icon icon-cursor'
-                            },
-                            {
-                                name: 'Splash Screen',
-                                url: '/superadmin/master/FlashScreen',
-                                icon: 'nav-icon icon-cursor'
-                            },
-                        ]
-                    },
-                    {
-                        name: 'Notification',
-                        url: '/superadmin/master/notification',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'Cart',
-                        url: '/superadmin/master/cart',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                    {
-                        name: 'FAQ',
-                        url: '/superadmin/master/faq',
-                        icon: 'nav-icon icon-cursor'
-                    },
-                ],
-            },
-        ]
-    },
-    // {
-    //   name: 'Finance',
-    //   url: '/superadmin/master/payments',
-    //   icon: 'fa fa-money'
-    // },
-    // {
-    //   name: 'Finance',
-    //   url: '/superadmin/master/payments',
-    //   icon: 'fa fa-money'
-    // },
-    // {
-    //   name: 'Customer care',
-    //   url: '/buttons',
-    //   icon: 'fa fa-support',
-    //   children: [
-    //     {
-    //       name: 'Team_1',
-    //       url: '/superadmin/master/team1',
-    //       icon: 'nav-icon icon-cursor'
-    //     },
-    //     {
-    //       name: 'Call Details',
-    //       url: '/superadmin/master/team2',
-    //       icon: 'nav-icon icon-cursor'
-    //     },
-    //   ]
-    // },
-    {
-        name: 'Operations',
-        url: '/superadmin/master/cre_team',
-        icon: 'fa fa-user'
-    },
-];
-
-
-/***/ }),
-
 /***/ "./src/app/api.service.ts":
 /*!********************************!*\
   !*** ./src/app/api.service.ts ***!
@@ -1046,6 +719,9 @@ var ApiService = /** @class */ (function () {
     ApiService.prototype.add_emp = function (data) {
         return this.http.post(this.apiUrl + 'employee/create', data);
     };
+    ApiService.prototype.delete_emp = function (data) {
+        return this.http.post(this.apiUrl + 'employee/delete', data);
+    };
     ApiService.prototype.emp_list = function () {
         return this.http.get(this.apiUrl + 'employee/getlist');
     };
@@ -1111,6 +787,9 @@ var ApiService = /** @class */ (function () {
     };
     ApiService.prototype.emp_login = function (data) {
         return this.http.post(this.apiUrl + 'employee/admin_login', data);
+    };
+    ApiService.prototype.parkingbookinglist = function () {
+        return this.http.get(this.apiUrl + 'parking/parkingbooking/getlist');
     };
     ApiService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
@@ -1433,19 +1112,366 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_nav */ "./src/app/_nav.ts");
-/* harmony import */ var ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-webstorage-service */ "./node_modules/ngx-webstorage-service/fesm5/ngx-webstorage-service.js");
+/* harmony import */ var ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-webstorage-service */ "./node_modules/ngx-webstorage-service/fesm5/ngx-webstorage-service.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
 
 
 var DefaultLayoutComponent = /** @class */ (function () {
-    function DefaultLayoutComponent(_document, storage) {
+    function DefaultLayoutComponent(_document, storage, router) {
         var _this = this;
         this.storage = storage;
-        this.navItems = _nav__WEBPACK_IMPORTED_MODULE_3__["navItems"];
+        this.router = router;
+        this.navItems = [{
+                name: 'Dashboard',
+                url: '/superadmin/dashboard',
+                icon: 'icon-speedometer',
+            },];
         this.sidebarMinimized = true;
+        this.login_emp = this.getFromLocal('login_emp');
+        console.log(this.login_emp);
+        if (this.login_emp == undefined) {
+            this.router.navigate(['/']);
+        }
+        if (this.login_emp.Sector.some(function (x) { return (x == "AddEmployee" && _this.login_emp.Sector.every(function (y) { return y != "ListofEmployees"; })); })) {
+            this.navItems.push({
+                name: 'Role management',
+                url: '/master',
+                icon: 'icon-support',
+                children: [
+                    {
+                        name: 'Add Employees',
+                        url: '/superadmin/master/addemployees',
+                        icon: 'icon-user'
+                    },
+                ]
+            });
+        }
+        if (this.login_emp.Sector.some(function (x) { return (x == "ListofEmployees" && _this.login_emp.Sector.every(function (y) { return y != "AddEmployee"; })); })) {
+            this.navItems.push({
+                name: 'Role management',
+                url: '/master',
+                icon: 'icon-support',
+                children: [
+                    {
+                        name: 'List Employees',
+                        url: '/superadmin/master/listemployees',
+                        icon: 'icon-list'
+                    },
+                    {
+                        name: 'Suspended List',
+                        url: '/superadmin/master/revokemployees',
+                        icon: 'icon-list'
+                    },
+                ]
+            });
+        }
+        if (this.login_emp.Sector.some(function (x) { return (x == "ListofEmployees" && _this.login_emp.Sector.some(function (y) { return y == "AddEmployee"; })); })) {
+            this.navItems.push({
+                name: 'Role management',
+                url: '/master',
+                icon: 'icon-support',
+                children: [
+                    {
+                        name: 'Add Employees',
+                        url: '/superadmin/master/addemployees',
+                        icon: 'icon-user'
+                    },
+                    {
+                        name: 'List Employees',
+                        url: '/superadmin/master/listemployees',
+                        icon: 'icon-list'
+                    },
+                    {
+                        name: 'Suspended List',
+                        url: '/superadmin/master/revokemployees',
+                        icon: 'icon-list'
+                    },
+                ]
+            });
+        }
+        if (this.login_emp.Sector.some(function (x) { return (x == "MechanicOnbordation" && _this.login_emp.Sector.every(function (y) { return y != "parkingOnboradation"; })); })) {
+            this.navItems.push({
+                name: 'Vendor Onboarding',
+                url: '/buttons',
+                icon: 'icon-user',
+                children: [
+                    {
+                        name: 'Create Mechanic',
+                        url: '/superadmin/master/create_mechanic',
+                        icon: 'icon-plus'
+                    },
+                ],
+            });
+        }
+        if (this.login_emp.Sector.some(function (x) { return (x == "parkingOnboradation" && _this.login_emp.Sector.every(function (y) { return y != "MechanicOnbordation"; })); })) {
+            this.navItems.push({
+                name: 'Vendor Onboarding',
+                url: '/buttons',
+                icon: 'icon-user',
+                children: [
+                    {
+                        name: 'Vendor Parking',
+                        url: '/buttons',
+                        icon: 'icon-plus',
+                        children: [
+                            {
+                                name: 'Create Parking',
+                                url: '/superadmin/master/parking',
+                                icon: 'icon-plus'
+                            },
+                            {
+                                name: 'QR Code Generation',
+                                url: '/superadmin/master/QRCodeGeneration',
+                                icon: 'icon-plus'
+                            },
+                            {
+                                name: 'Coupon code',
+                                url: '/superadmin/master/parking_couponcode',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                        ],
+                    },
+                ],
+            });
+        }
+        if (this.login_emp.Sector.some(function (x) { return (x == "parkingOnboradation" && _this.login_emp.Sector.some(function (y) { return y == "MechanicOnbordation"; })); })) {
+            this.navItems.push({
+                name: 'Vendor Onboarding',
+                url: '/buttons',
+                icon: 'icon-user',
+                children: [
+                    {
+                        name: 'Create Mechanic',
+                        url: '/superadmin/master/create_mechanic',
+                        icon: 'icon-plus'
+                    },
+                    {
+                        name: 'Vendor Parking',
+                        url: '/buttons',
+                        icon: 'icon-plus',
+                        children: [
+                            {
+                                name: 'Create Parking',
+                                url: '/superadmin/master/parking',
+                                icon: 'icon-plus'
+                            },
+                            {
+                                name: 'QR Code Generation',
+                                url: '/superadmin/master/QRCodeGeneration',
+                                icon: 'icon-plus'
+                            },
+                            {
+                                name: 'Coupon code',
+                                url: '/superadmin/master/parking_couponcode',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                        ],
+                    },
+                ],
+            });
+        }
+        if (this.login_emp.Sector.some(function (x) { return (x == "MechanicList" && _this.login_emp.Sector.every(function (y) { return y != "ParkingList"; })); })) {
+            this.navItems.push({
+                name: 'Vendor List',
+                url: '/buttons',
+                icon: 'icon-user',
+                children: [
+                    {
+                        name: 'List Mechanic Details',
+                        url: '/superadmin/master/list_mechanic',
+                        icon: 'icon-list'
+                    },
+                ],
+            });
+        }
+        if (this.login_emp.Sector.some(function (x) { return (x == "ParkingList" && _this.login_emp.Sector.every(function (y) { return y != "MechanicList"; })); })) {
+            this.navItems.push({
+                name: 'Vendor List',
+                url: '/buttons',
+                icon: 'icon-user',
+                children: [
+                    {
+                        name: 'Vendor Parking List',
+                        url: '/superadmin/master/list_parking',
+                        icon: 'icon-list'
+                    },
+                ],
+            });
+        }
+        if (this.login_emp.Sector.some(function (x) { return (x == "ParkingList" && _this.login_emp.Sector.some(function (y) { return y == "MechanicList"; })); })) {
+            this.navItems.push({
+                name: 'Vendor List',
+                url: '/buttons',
+                icon: 'icon-user',
+                children: [
+                    {
+                        name: 'List Mechanic Details',
+                        url: '/superadmin/master/list_mechanic',
+                        icon: 'icon-list'
+                    },
+                    {
+                        name: 'Vendor Parking List',
+                        url: '/superadmin/master/list_parking',
+                        icon: 'icon-list'
+                    },
+                ],
+            });
+        }
+        if (this.login_emp.Sector.some(function (x) { return x == "AppFeatures"; })) {
+            this.navItems.push({
+                name: 'App features ',
+                url: '/superadmin/master/payments',
+                icon: 'fa fa-grav',
+                children: [
+                    {
+                        name: 'Vehicle Management',
+                        url: '/superadmin/master/create_master_service',
+                        icon: 'icon-plus',
+                        children: [
+                            {
+                                name: 'Fuel Type',
+                                url: '/superadmin/master/Fuel_Type',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Vehicle Body Type',
+                                url: '/superadmin/master/VehicleModel',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Engine CC',
+                                url: '/superadmin/master/Enginecc',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Vehicle Manufacturer',
+                                url: '/superadmin/master/Brand',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Create Vehicle Model',
+                                url: '/superadmin/master/VehicleName',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Vehicle List',
+                                url: '/superadmin/master/VehicleList',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Popular Vehicle',
+                                url: '/superadmin/master/PopularVehicle',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                        ],
+                    },
+                    {
+                        name: 'Service Management',
+                        url: '/superadmin/master/create_master_service',
+                        icon: 'icon-plus',
+                        children: [
+                            {
+                                name: 'Master Service',
+                                url: '/superadmin/master/create_master_service',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Main Service',
+                                url: '/superadmin/master/create_main_service',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Subservices',
+                                url: '/superadmin/master/sub_service',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Popular Service',
+                                url: '/superadmin/master/PopularService',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Popular SubService',
+                                url: '/superadmin/master/Popular_SubService',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Subscriptions',
+                                url: '/superadmin/master/Subscriptions',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Location',
+                                url: '/superadmin/master/Locations',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'User List',
+                                url: '/superadmin/master/userlist',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'User Location List',
+                                url: '/superadmin/master/userlocationlist',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Coupon code',
+                                url: '/superadmin/master/couponcode',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Banner',
+                                url: '/buttons',
+                                icon: 'fa fa-support',
+                                children: [
+                                    {
+                                        name: 'Master Service Banner',
+                                        url: '/superadmin/master/MasterServiceBanner',
+                                        icon: 'nav-icon icon-cursor'
+                                    },
+                                    {
+                                        name: 'Main Service Banner',
+                                        url: '/superadmin/master/Main_SErvice_banner',
+                                        icon: 'nav-icon icon-cursor'
+                                    },
+                                    {
+                                        name: 'Splash Screen',
+                                        url: '/superadmin/master/FlashScreen',
+                                        icon: 'nav-icon icon-cursor'
+                                    },
+                                ]
+                            },
+                            {
+                                name: 'Notification',
+                                url: '/superadmin/master/notification',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'Cart',
+                                url: '/superadmin/master/cart',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                            {
+                                name: 'FAQ',
+                                url: '/superadmin/master/faq',
+                                icon: 'nav-icon icon-cursor'
+                            },
+                        ],
+                    },
+                ]
+            });
+        }
+        if (this.login_emp.Sector.some(function (x) { return x == "Operations"; })) {
+            this.navItems.push({
+                name: 'Operations',
+                url: '/superadmin/master/cre_team',
+                icon: 'fa fa-user'
+            });
+        }
         this.changes = new MutationObserver(function (mutations) {
             _this.sidebarMinimized = _document.body.classList.contains('sidebar-minimized');
         });
@@ -1466,7 +1492,8 @@ var DefaultLayoutComponent = /** @class */ (function () {
     };
     DefaultLayoutComponent.ctorParameters = function () { return [
         { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["DOCUMENT"],] }] },
-        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_4__["SESSION_STORAGE"],] }] }
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_3__["SESSION_STORAGE"],] }] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
     ]; };
     DefaultLayoutComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1475,8 +1502,8 @@ var DefaultLayoutComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./default-layout.css */ "./src/app/containers/default-layout/default-layout.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_2__["DOCUMENT"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_4__["SESSION_STORAGE"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object, Object])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_3__["SESSION_STORAGE"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object, Object, _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], DefaultLayoutComponent);
     return DefaultLayoutComponent;
 }());
@@ -1492,7 +1519,7 @@ var DefaultLayoutComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host::ng-deep .sidebar-fixed .sidebar {\r\n    width: 250px !important;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29udGFpbmVycy9kZWZhdWx0LWxheW91dC9kZWZhdWx0LWxheW91dC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx1QkFBdUI7QUFDM0IiLCJmaWxlIjoic3JjL2FwcC9jb250YWluZXJzL2RlZmF1bHQtbGF5b3V0L2RlZmF1bHQtbGF5b3V0LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0OjpuZy1kZWVwIC5zaWRlYmFyLWZpeGVkIC5zaWRlYmFyIHtcclxuICAgIHdpZHRoOiAyNTBweCAhaW1wb3J0YW50O1xyXG59Il19 */"
+module.exports = ":host::ng-deep .sidebar-fixed .sidebar {\r\n    width: 250px !important;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL2NvbnRhaW5lcnMvZGVmYXVsdC1sYXlvdXQvZGVmYXVsdC1sYXlvdXQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksdUJBQXVCO0FBQzNCIiwiZmlsZSI6Ii4uLy4uLy4uLy4uL2NvbnRhaW5lcnMvZGVmYXVsdC1sYXlvdXQvZGVmYXVsdC1sYXlvdXQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3Q6Om5nLWRlZXAgLnNpZGViYXItZml4ZWQgLnNpZGViYXIge1xyXG4gICAgd2lkdGg6IDI1MHB4ICFpbXBvcnRhbnQ7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -1537,7 +1564,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".login_box {\n  position: relative;\n  top: 0px;\n  width: 100%;\n  height: 100vh;\n  max-height: 100vh;\n  text-align: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #f1f1f1;\n  background-image: url('Professional-Car-Mechanic.jpg');\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n\n.login_box_inner {\n  display: contents;\n  background-color: #fff;\n  padding: 50px;\n  border-radius: 8px;\n  box-shadow: 0px 0px 10px 0px #dadada;\n}\n\n.form-control {\n  border: 1px solid #323b92;\n}\n\n.login_form {\n  margin: 10px 0px;\n}\n\n.card .card-body {\n  text-align: left !important;\n}\n\n.form-control {\n  width: 300px !important;\n}\n\n.logo img {\n  margin: 0px 0px 24px 32%;\n  width: 100px;\n}\n\n.justify-center {\n  display: flex;\n  justify-content: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3MvYnV0dG9ucy9vdHBsb2dpbi9EOlxcTVlfT0ZGSUNFXFxteXZhY2FsYV9zdXBlcmFkbWluXzIwMjAvc3JjXFxhcHBcXHZpZXdzXFxidXR0b25zXFxvdHBsb2dpblxcb3RwbG9naW4uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3ZpZXdzL2J1dHRvbnMvb3RwbG9naW4vb3RwbG9naW4uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSx1QkFBQTtFQUNBLHlCQUFBO0VBQ0Esc0RBQUE7RUFDQSw0QkFBQTtFQUNBLHNCQUFBO0VBQ0EsMkJBQUE7QUNDSjs7QURFRTtFQUNFLGlCQUFBO0VBQ0Esc0JBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxvQ0FBQTtBQ0NKOztBREVFO0VBQ0UseUJBQUE7QUNDSjs7QURDRTtFQUNFLGdCQUFBO0FDRUo7O0FEQUU7RUFDRSwyQkFBQTtBQ0dKOztBRENFO0VBQ0UsdUJBQUE7QUNFSjs7QURBRTtFQUNFLHdCQUFBO0VBQ0MsWUFBQTtBQ0dMOztBRENFO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FDRUoiLCJmaWxlIjoic3JjL2FwcC92aWV3cy9idXR0b25zL290cGxvZ2luL290cGxvZ2luLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmxvZ2luX2JveCB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICB0b3A6IDBweDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDB2aDtcclxuICAgIG1heC1oZWlnaHQ6IDEwMHZoO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoLi4vLi4vLi4vLi4vYXNzZXRzL2ltZy9icmFuZC9Qcm9mZXNzaW9uYWwtQ2FyLU1lY2hhbmljLmpwZyk7XHJcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcclxuICB9XHJcbiAgXHJcbiAgLmxvZ2luX2JveF9pbm5lciB7XHJcbiAgICBkaXNwbGF5OiBjb250ZW50cztcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XHJcbiAgICBwYWRkaW5nOiA1MHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogOHB4O1xyXG4gICAgYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDBweCAjZGFkYWRhO1xyXG4gIH1cclxuICBcclxuICAuZm9ybS1jb250cm9sIHtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICMzMjNiOTI7XHJcbiAgfVxyXG4gIC5sb2dpbl9mb3JtIHtcclxuICAgIG1hcmdpbjogMTBweCAwcHg7XHJcbiAgfVxyXG4gIC5jYXJkIC5jYXJkLWJvZHkge1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdCAhaW1wb3J0YW50O1xyXG4gICAgLy8gcGFkZGluZzogMHB4ICFpbXBvcnRhbnQ7XHJcbiAgIC8vIGJveC1zaGFkb3c6IDAgMCAzNnB4ICNmZjAwMDA7XHJcbiAgfVxyXG4gIC5mb3JtLWNvbnRyb2wge1xyXG4gICAgd2lkdGg6IDMwMHB4ICFpbXBvcnRhbnQ7XHJcbiAgfVxyXG4gIC5sb2dvIGltZyB7XHJcbiAgICBtYXJnaW46IDBweCAwcHggMjRweCAzMiU7XHJcbiAgICAgd2lkdGg6IDEwMHB4O1xyXG4gICAgXHJcbiAgXHJcbiAgfVxyXG4gIC5qdXN0aWZ5LWNlbnRlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgfVxyXG4gIC8vIC5sb2dvIHtcclxuICAvLyAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAvLyAgIHdpZHRoOiA1MDBweDtcclxuICAvLyAgIGhlaWdodDogMjAwcHg7XHJcbiAgLy8gICBiYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL2xvZ28xLnBuZ1wiKSBuby1yZXBlYXQ7XHJcbiAgLy8gICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgLy8gfVxyXG4gIC8vIC5sb2dvOmhvdmVyIHtcclxuICAvLyAgIGJhY2tncm91bmQ6IHVybChcIi4uLy4uLy4uL2Fzc2V0cy9pbWcvYnJhbmQvbG9nbzIucG5nXCIpIG5vLXJlcGVhdDtcclxuICAvLyB9IiwiLmxvZ2luX2JveCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAwcHg7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMHZoO1xuICBtYXgtaGVpZ2h0OiAxMDB2aDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjFmMTtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKC4uLy4uLy4uLy4uL2Fzc2V0cy9pbWcvYnJhbmQvUHJvZmVzc2lvbmFsLUNhci1NZWNoYW5pYy5qcGcpO1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG59XG5cbi5sb2dpbl9ib3hfaW5uZXIge1xuICBkaXNwbGF5OiBjb250ZW50cztcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbiAgcGFkZGluZzogNTBweDtcbiAgYm9yZGVyLXJhZGl1czogOHB4O1xuICBib3gtc2hhZG93OiAwcHggMHB4IDEwcHggMHB4ICNkYWRhZGE7XG59XG5cbi5mb3JtLWNvbnRyb2wge1xuICBib3JkZXI6IDFweCBzb2xpZCAjMzIzYjkyO1xufVxuXG4ubG9naW5fZm9ybSB7XG4gIG1hcmdpbjogMTBweCAwcHg7XG59XG5cbi5jYXJkIC5jYXJkLWJvZHkge1xuICB0ZXh0LWFsaWduOiBsZWZ0ICFpbXBvcnRhbnQ7XG59XG5cbi5mb3JtLWNvbnRyb2wge1xuICB3aWR0aDogMzAwcHggIWltcG9ydGFudDtcbn1cblxuLmxvZ28gaW1nIHtcbiAgbWFyZ2luOiAwcHggMHB4IDI0cHggMzIlO1xuICB3aWR0aDogMTAwcHg7XG59XG5cbi5qdXN0aWZ5LWNlbnRlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufSJdfQ== */"
+module.exports = ".login_box {\n  position: relative;\n  top: 0px;\n  width: 100%;\n  height: 100vh;\n  max-height: 100vh;\n  text-align: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #f1f1f1;\n  background-image: url('Professional-Car-Mechanic.jpg');\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n\n.login_box_inner {\n  display: contents;\n  background-color: #fff;\n  padding: 50px;\n  border-radius: 8px;\n  box-shadow: 0px 0px 10px 0px #dadada;\n}\n\n.form-control {\n  border: 1px solid #323b92;\n}\n\n.login_form {\n  margin: 10px 0px;\n}\n\n.card .card-body {\n  text-align: left !important;\n}\n\n.form-control {\n  width: 300px !important;\n}\n\n.logo img {\n  margin: 0px 0px 24px 32%;\n  width: 100px;\n}\n\n.justify-center {\n  display: flex;\n  justify-content: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL290cGxvZ2luL0Q6XFxNWV9PRkZJQ0VcXG15dmFjYWxhX3N1cGVyYWRtaW5fMjAyMFxcc3JjXFxhcHBcXHZpZXdzXFxidXR0b25zXFxtYXN0ZXJcXGNhcnQvLi5cXC4uXFxvdHBsb2dpblxcb3RwbG9naW4uY29tcG9uZW50LnNjc3MiLCIuLi8uLi9vdHBsb2dpbi9vdHBsb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFBO0VBQ0EsUUFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0VBQ0EseUJBQUE7RUFDQSxzREFBQTtFQUNBLDRCQUFBO0VBQ0Esc0JBQUE7RUFDQSwyQkFBQTtBQ0NKOztBREVFO0VBQ0UsaUJBQUE7RUFDQSxzQkFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLG9DQUFBO0FDQ0o7O0FERUU7RUFDRSx5QkFBQTtBQ0NKOztBRENFO0VBQ0UsZ0JBQUE7QUNFSjs7QURBRTtFQUNFLDJCQUFBO0FDR0o7O0FEQ0U7RUFDRSx1QkFBQTtBQ0VKOztBREFFO0VBQ0Usd0JBQUE7RUFDQyxZQUFBO0FDR0w7O0FEQ0U7RUFDRSxhQUFBO0VBQ0EsdUJBQUE7QUNFSiIsImZpbGUiOiIuLi8uLi9vdHBsb2dpbi9vdHBsb2dpbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5sb2dpbl9ib3gge1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgdG9wOiAwcHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwdmg7XHJcbiAgICBtYXgtaGVpZ2h0OiAxMDB2aDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmMWYxO1xyXG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKC4uLy4uLy4uLy4uL2Fzc2V0cy9pbWcvYnJhbmQvUHJvZmVzc2lvbmFsLUNhci1NZWNoYW5pYy5qcGcpO1xyXG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XHJcbiAgfVxyXG4gIFxyXG4gIC5sb2dpbl9ib3hfaW5uZXIge1xyXG4gICAgZGlzcGxheTogY29udGVudHM7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xyXG4gICAgcGFkZGluZzogNTBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDhweDtcclxuICAgIGJveC1zaGFkb3c6IDBweCAwcHggMTBweCAwcHggI2RhZGFkYTtcclxuICB9XHJcbiAgXHJcbiAgLmZvcm0tY29udHJvbCB7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjMzIzYjkyO1xyXG4gIH1cclxuICAubG9naW5fZm9ybSB7XHJcbiAgICBtYXJnaW46IDEwcHggMHB4O1xyXG4gIH1cclxuICAuY2FyZCAuY2FyZC1ib2R5IHtcclxuICAgIHRleHQtYWxpZ246IGxlZnQgIWltcG9ydGFudDtcclxuICAgIC8vIHBhZGRpbmc6IDBweCAhaW1wb3J0YW50O1xyXG4gICAvLyBib3gtc2hhZG93OiAwIDAgMzZweCAjZmYwMDAwO1xyXG4gIH1cclxuICAuZm9ybS1jb250cm9sIHtcclxuICAgIHdpZHRoOiAzMDBweCAhaW1wb3J0YW50O1xyXG4gIH1cclxuICAubG9nbyBpbWcge1xyXG4gICAgbWFyZ2luOiAwcHggMHB4IDI0cHggMzIlO1xyXG4gICAgIHdpZHRoOiAxMDBweDtcclxuICAgIFxyXG4gIFxyXG4gIH1cclxuICAuanVzdGlmeS1jZW50ZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIH1cclxuICAvLyAubG9nbyB7XHJcbiAgLy8gICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgLy8gICB3aWR0aDogNTAwcHg7XHJcbiAgLy8gICBoZWlnaHQ6IDIwMHB4O1xyXG4gIC8vICAgYmFja2dyb3VuZDogdXJsKFwiLi4vLi4vLi4vYXNzZXRzL2ltZy9icmFuZC9sb2dvMS5wbmdcIikgbm8tcmVwZWF0O1xyXG4gIC8vICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIC8vIH1cclxuICAvLyAubG9nbzpob3ZlciB7XHJcbiAgLy8gICBiYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL2xvZ28yLnBuZ1wiKSBuby1yZXBlYXQ7XHJcbiAgLy8gfSIsIi5sb2dpbl9ib3gge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogMHB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgbWF4LWhlaWdodDogMTAwdmg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybCguLi8uLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL1Byb2Zlc3Npb25hbC1DYXItTWVjaGFuaWMuanBnKTtcbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xufVxuXG4ubG9naW5fYm94X2lubmVyIHtcbiAgZGlzcGxheTogY29udGVudHM7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XG4gIHBhZGRpbmc6IDUwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDhweDtcbiAgYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDBweCAjZGFkYWRhO1xufVxuXG4uZm9ybS1jb250cm9sIHtcbiAgYm9yZGVyOiAxcHggc29saWQgIzMyM2I5Mjtcbn1cblxuLmxvZ2luX2Zvcm0ge1xuICBtYXJnaW46IDEwcHggMHB4O1xufVxuXG4uY2FyZCAuY2FyZC1ib2R5IHtcbiAgdGV4dC1hbGlnbjogbGVmdCAhaW1wb3J0YW50O1xufVxuXG4uZm9ybS1jb250cm9sIHtcbiAgd2lkdGg6IDMwMHB4ICFpbXBvcnRhbnQ7XG59XG5cbi5sb2dvIGltZyB7XG4gIG1hcmdpbjogMHB4IDBweCAyNHB4IDMyJTtcbiAgd2lkdGg6IDEwMHB4O1xufVxuXG4uanVzdGlmeS1jZW50ZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn0iXX0= */"
 
 /***/ }),
 
@@ -1639,7 +1666,7 @@ var OtploginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".login_box {\n  position: relative;\n  top: 0px;\n  width: 100%;\n  height: 100vh;\n  max-height: 100vh;\n  text-align: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #f1f1f1;\n  background-image: url('hiring-Mobile-Mechanics.jpg');\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n\n.login_box_inner {\n  display: contents;\n  background-color: #fff;\n  padding: 50px;\n  border-radius: 8px;\n  box-shadow: 0px 0px 10px 0px #dadada;\n}\n\n.form-control {\n  border: 1px solid #323b92;\n}\n\n.login_form {\n  margin: 10px 0px;\n}\n\n.card .card-body {\n  text-align: left !important;\n}\n\n.form-control {\n  width: 300px !important;\n}\n\n.logo img {\n  margin: 0px 0px 24px 32%;\n  width: 100px;\n}\n\n.justify-center {\n  display: flex;\n  justify-content: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3MvYnV0dG9ucy9vdHB2YWxpZGF0aW9uL0Q6XFxNWV9PRkZJQ0VcXG15dmFjYWxhX3N1cGVyYWRtaW5fMjAyMC9zcmNcXGFwcFxcdmlld3NcXGJ1dHRvbnNcXG90cHZhbGlkYXRpb25cXG90cHZhbGlkYXRpb24uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3ZpZXdzL2J1dHRvbnMvb3RwdmFsaWRhdGlvbi9vdHB2YWxpZGF0aW9uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7RUFDQSxRQUFBO0VBQ0EsV0FBQTtFQUNBLGFBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsdUJBQUE7RUFDQSx5QkFBQTtFQUNBLG9EQUFBO0VBQ0EsNEJBQUE7RUFDQSxzQkFBQTtFQUNBLDJCQUFBO0FDQ0o7O0FERUU7RUFDRSxpQkFBQTtFQUNBLHNCQUFBO0VBQ0EsYUFBQTtFQUNBLGtCQUFBO0VBQ0Esb0NBQUE7QUNDSjs7QURFRTtFQUNFLHlCQUFBO0FDQ0o7O0FEQ0U7RUFDRSxnQkFBQTtBQ0VKOztBREFFO0VBQ0UsMkJBQUE7QUNHSjs7QURDRTtFQUNFLHVCQUFBO0FDRUo7O0FEQUU7RUFDRSx3QkFBQTtFQUNDLFlBQUE7QUNHTDs7QURDRTtFQUNFLGFBQUE7RUFDQSx1QkFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvdmlld3MvYnV0dG9ucy9vdHB2YWxpZGF0aW9uL290cHZhbGlkYXRpb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubG9naW5fYm94IHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIHRvcDogMHB4O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDEwMHZoO1xyXG4gICAgbWF4LWhlaWdodDogMTAwdmg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjFmMTtcclxuICAgIGJhY2tncm91bmQtaW1hZ2U6IHVybCguLi8uLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL2hpcmluZy1Nb2JpbGUtTWVjaGFuaWNzLmpwZyk7XHJcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcclxuICB9XHJcbiAgXHJcbiAgLmxvZ2luX2JveF9pbm5lciB7XHJcbiAgICBkaXNwbGF5OiBjb250ZW50cztcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XHJcbiAgICBwYWRkaW5nOiA1MHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogOHB4O1xyXG4gICAgYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDBweCAjZGFkYWRhO1xyXG4gIH1cclxuICBcclxuICAuZm9ybS1jb250cm9sIHtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICMzMjNiOTI7XHJcbiAgfVxyXG4gIC5sb2dpbl9mb3JtIHtcclxuICAgIG1hcmdpbjogMTBweCAwcHg7XHJcbiAgfVxyXG4gIC5jYXJkIC5jYXJkLWJvZHkge1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdCAhaW1wb3J0YW50O1xyXG4gICAgLy8gcGFkZGluZzogMHB4ICFpbXBvcnRhbnQ7XHJcbiAgIC8vIGJveC1zaGFkb3c6IDAgMCAzNnB4ICNmZjAwMDA7XHJcbiAgfVxyXG4gIC5mb3JtLWNvbnRyb2wge1xyXG4gICAgd2lkdGg6IDMwMHB4ICFpbXBvcnRhbnQ7XHJcbiAgfVxyXG4gIC5sb2dvIGltZyB7XHJcbiAgICBtYXJnaW46IDBweCAwcHggMjRweCAzMiU7XHJcbiAgICAgd2lkdGg6IDEwMHB4O1xyXG4gICAgXHJcbiAgXHJcbiAgfVxyXG4gIC5qdXN0aWZ5LWNlbnRlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgfVxyXG4gIC8vIC5sb2dvIHtcclxuICAvLyAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAvLyAgIHdpZHRoOiA1MDBweDtcclxuICAvLyAgIGhlaWdodDogMjAwcHg7XHJcbiAgLy8gICBiYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL2xvZ28xLnBuZ1wiKSBuby1yZXBlYXQ7XHJcbiAgLy8gICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgLy8gfVxyXG4gIC8vIC5sb2dvOmhvdmVyIHtcclxuICAvLyAgIGJhY2tncm91bmQ6IHVybChcIi4uLy4uLy4uL2Fzc2V0cy9pbWcvYnJhbmQvbG9nbzIucG5nXCIpIG5vLXJlcGVhdDtcclxuICAvLyB9IiwiLmxvZ2luX2JveCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAwcHg7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMHZoO1xuICBtYXgtaGVpZ2h0OiAxMDB2aDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjFmMTtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKC4uLy4uLy4uLy4uL2Fzc2V0cy9pbWcvYnJhbmQvaGlyaW5nLU1vYmlsZS1NZWNoYW5pY3MuanBnKTtcbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xufVxuXG4ubG9naW5fYm94X2lubmVyIHtcbiAgZGlzcGxheTogY29udGVudHM7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XG4gIHBhZGRpbmc6IDUwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDhweDtcbiAgYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDBweCAjZGFkYWRhO1xufVxuXG4uZm9ybS1jb250cm9sIHtcbiAgYm9yZGVyOiAxcHggc29saWQgIzMyM2I5Mjtcbn1cblxuLmxvZ2luX2Zvcm0ge1xuICBtYXJnaW46IDEwcHggMHB4O1xufVxuXG4uY2FyZCAuY2FyZC1ib2R5IHtcbiAgdGV4dC1hbGlnbjogbGVmdCAhaW1wb3J0YW50O1xufVxuXG4uZm9ybS1jb250cm9sIHtcbiAgd2lkdGg6IDMwMHB4ICFpbXBvcnRhbnQ7XG59XG5cbi5sb2dvIGltZyB7XG4gIG1hcmdpbjogMHB4IDBweCAyNHB4IDMyJTtcbiAgd2lkdGg6IDEwMHB4O1xufVxuXG4uanVzdGlmeS1jZW50ZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn0iXX0= */"
+module.exports = ".login_box {\n  position: relative;\n  top: 0px;\n  width: 100%;\n  height: 100vh;\n  max-height: 100vh;\n  text-align: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #f1f1f1;\n  background-image: url('hiring-Mobile-Mechanics.jpg');\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n\n.login_box_inner {\n  display: contents;\n  background-color: #fff;\n  padding: 50px;\n  border-radius: 8px;\n  box-shadow: 0px 0px 10px 0px #dadada;\n}\n\n.form-control {\n  border: 1px solid #323b92;\n}\n\n.login_form {\n  margin: 10px 0px;\n}\n\n.card .card-body {\n  text-align: left !important;\n}\n\n.form-control {\n  width: 300px !important;\n}\n\n.logo img {\n  margin: 0px 0px 24px 32%;\n  width: 100px;\n}\n\n.justify-center {\n  display: flex;\n  justify-content: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL290cHZhbGlkYXRpb24vRDpcXE1ZX09GRklDRVxcbXl2YWNhbGFfc3VwZXJhZG1pbl8yMDIwXFxzcmNcXGFwcFxcdmlld3NcXGJ1dHRvbnNcXG1hc3RlclxcY2FydC8uLlxcLi5cXG90cHZhbGlkYXRpb25cXG90cHZhbGlkYXRpb24uY29tcG9uZW50LnNjc3MiLCIuLi8uLi9vdHB2YWxpZGF0aW9uL290cHZhbGlkYXRpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSx1QkFBQTtFQUNBLHlCQUFBO0VBQ0Esb0RBQUE7RUFDQSw0QkFBQTtFQUNBLHNCQUFBO0VBQ0EsMkJBQUE7QUNDSjs7QURFRTtFQUNFLGlCQUFBO0VBQ0Esc0JBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxvQ0FBQTtBQ0NKOztBREVFO0VBQ0UseUJBQUE7QUNDSjs7QURDRTtFQUNFLGdCQUFBO0FDRUo7O0FEQUU7RUFDRSwyQkFBQTtBQ0dKOztBRENFO0VBQ0UsdUJBQUE7QUNFSjs7QURBRTtFQUNFLHdCQUFBO0VBQ0MsWUFBQTtBQ0dMOztBRENFO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FDRUoiLCJmaWxlIjoiLi4vLi4vb3RwdmFsaWRhdGlvbi9vdHB2YWxpZGF0aW9uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmxvZ2luX2JveCB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICB0b3A6IDBweDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDB2aDtcclxuICAgIG1heC1oZWlnaHQ6IDEwMHZoO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoLi4vLi4vLi4vLi4vYXNzZXRzL2ltZy9icmFuZC9oaXJpbmctTW9iaWxlLU1lY2hhbmljcy5qcGcpO1xyXG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XHJcbiAgfVxyXG4gIFxyXG4gIC5sb2dpbl9ib3hfaW5uZXIge1xyXG4gICAgZGlzcGxheTogY29udGVudHM7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xyXG4gICAgcGFkZGluZzogNTBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDhweDtcclxuICAgIGJveC1zaGFkb3c6IDBweCAwcHggMTBweCAwcHggI2RhZGFkYTtcclxuICB9XHJcbiAgXHJcbiAgLmZvcm0tY29udHJvbCB7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjMzIzYjkyO1xyXG4gIH1cclxuICAubG9naW5fZm9ybSB7XHJcbiAgICBtYXJnaW46IDEwcHggMHB4O1xyXG4gIH1cclxuICAuY2FyZCAuY2FyZC1ib2R5IHtcclxuICAgIHRleHQtYWxpZ246IGxlZnQgIWltcG9ydGFudDtcclxuICAgIC8vIHBhZGRpbmc6IDBweCAhaW1wb3J0YW50O1xyXG4gICAvLyBib3gtc2hhZG93OiAwIDAgMzZweCAjZmYwMDAwO1xyXG4gIH1cclxuICAuZm9ybS1jb250cm9sIHtcclxuICAgIHdpZHRoOiAzMDBweCAhaW1wb3J0YW50O1xyXG4gIH1cclxuICAubG9nbyBpbWcge1xyXG4gICAgbWFyZ2luOiAwcHggMHB4IDI0cHggMzIlO1xyXG4gICAgIHdpZHRoOiAxMDBweDtcclxuICAgIFxyXG4gIFxyXG4gIH1cclxuICAuanVzdGlmeS1jZW50ZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIH1cclxuICAvLyAubG9nbyB7XHJcbiAgLy8gICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgLy8gICB3aWR0aDogNTAwcHg7XHJcbiAgLy8gICBoZWlnaHQ6IDIwMHB4O1xyXG4gIC8vICAgYmFja2dyb3VuZDogdXJsKFwiLi4vLi4vLi4vYXNzZXRzL2ltZy9icmFuZC9sb2dvMS5wbmdcIikgbm8tcmVwZWF0O1xyXG4gIC8vICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIC8vIH1cclxuICAvLyAubG9nbzpob3ZlciB7XHJcbiAgLy8gICBiYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL2xvZ28yLnBuZ1wiKSBuby1yZXBlYXQ7XHJcbiAgLy8gfSIsIi5sb2dpbl9ib3gge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogMHB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgbWF4LWhlaWdodDogMTAwdmg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybCguLi8uLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL2hpcmluZy1Nb2JpbGUtTWVjaGFuaWNzLmpwZyk7XG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbn1cblxuLmxvZ2luX2JveF9pbm5lciB7XG4gIGRpc3BsYXk6IGNvbnRlbnRzO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xuICBwYWRkaW5nOiA1MHB4O1xuICBib3JkZXItcmFkaXVzOiA4cHg7XG4gIGJveC1zaGFkb3c6IDBweCAwcHggMTBweCAwcHggI2RhZGFkYTtcbn1cblxuLmZvcm0tY29udHJvbCB7XG4gIGJvcmRlcjogMXB4IHNvbGlkICMzMjNiOTI7XG59XG5cbi5sb2dpbl9mb3JtIHtcbiAgbWFyZ2luOiAxMHB4IDBweDtcbn1cblxuLmNhcmQgLmNhcmQtYm9keSB7XG4gIHRleHQtYWxpZ246IGxlZnQgIWltcG9ydGFudDtcbn1cblxuLmZvcm0tY29udHJvbCB7XG4gIHdpZHRoOiAzMDBweCAhaW1wb3J0YW50O1xufVxuXG4ubG9nbyBpbWcge1xuICBtYXJnaW46IDBweCAwcHggMjRweCAzMiU7XG4gIHdpZHRoOiAxMDBweDtcbn1cblxuLmp1c3RpZnktY2VudGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59Il19 */"
 
 /***/ }),
 
@@ -2198,7 +2225,7 @@ var P500Component = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".login_box {\n  position: relative;\n  top: 0px;\n  width: 100%;\n  height: 100vh;\n  max-height: 100vh;\n  text-align: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #f1f1f1;\n  background-image: url('hiring-Mobile-Mechanics.jpg');\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n\n.login_box_inner {\n  display: contents;\n  background-color: #fff;\n  padding: 50px;\n  border-radius: 8px;\n  box-shadow: 0px 0px 10px 0px #dadada;\n}\n\n.form-control {\n  border: 1px solid #323b92;\n}\n\n.login_form {\n  margin: 10px 0px;\n}\n\n.card .card-body {\n  text-align: left !important;\n}\n\n.form-control {\n  width: 300px !important;\n}\n\n.logo img {\n  margin: 0px 0px 24px 32%;\n  width: 100px;\n}\n\n.justify-center {\n  display: flex;\n  justify-content: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3MvbG9naW4vRDpcXE1ZX09GRklDRVxcbXl2YWNhbGFfc3VwZXJhZG1pbl8yMDIwL3NyY1xcYXBwXFx2aWV3c1xcbG9naW5cXGxvZ2luLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC92aWV3cy9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0VBQ0EsUUFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0VBQ0EseUJBQUE7RUFDQSxvREFBQTtFQUNBLDRCQUFBO0VBQ0Esc0JBQUE7RUFDQSwyQkFBQTtBQ0NGOztBREVBO0VBQ0UsaUJBQUE7RUFDQSxzQkFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLG9DQUFBO0FDQ0Y7O0FERUE7RUFDRSx5QkFBQTtBQ0NGOztBRENBO0VBQ0UsZ0JBQUE7QUNFRjs7QURBQTtFQUNFLDJCQUFBO0FDR0Y7O0FEQ0E7RUFDRSx1QkFBQTtBQ0VGOztBREFBO0VBQ0Usd0JBQUE7RUFDQyxZQUFBO0FDR0g7O0FEQ0E7RUFDRSxhQUFBO0VBQ0EsdUJBQUE7QUNFRiIsImZpbGUiOiJzcmMvYXBwL3ZpZXdzL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmxvZ2luX2JveCB7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHRvcDogMHB4O1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIGhlaWdodDogMTAwdmg7XHJcbiAgbWF4LWhlaWdodDogMTAwdmg7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmMWYxO1xyXG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybCguLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL2hpcmluZy1Nb2JpbGUtTWVjaGFuaWNzLmpwZyk7XHJcbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xyXG4gIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcclxufVxyXG5cclxuLmxvZ2luX2JveF9pbm5lciB7XHJcbiAgZGlzcGxheTogY29udGVudHM7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcclxuICBwYWRkaW5nOiA1MHB4O1xyXG4gIGJvcmRlci1yYWRpdXM6IDhweDtcclxuICBib3gtc2hhZG93OiAwcHggMHB4IDEwcHggMHB4ICNkYWRhZGE7XHJcbn1cclxuXHJcbi5mb3JtLWNvbnRyb2wge1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkICMzMjNiOTI7XHJcbn1cclxuLmxvZ2luX2Zvcm0ge1xyXG4gIG1hcmdpbjogMTBweCAwcHg7XHJcbn1cclxuLmNhcmQgLmNhcmQtYm9keSB7XHJcbiAgdGV4dC1hbGlnbjogbGVmdCAhaW1wb3J0YW50O1xyXG4gIC8vIHBhZGRpbmc6IDBweCAhaW1wb3J0YW50O1xyXG4gLy8gYm94LXNoYWRvdzogMCAwIDM2cHggI2ZmMDAwMDtcclxufVxyXG4uZm9ybS1jb250cm9sIHtcclxuICB3aWR0aDogMzAwcHggIWltcG9ydGFudDtcclxufVxyXG4ubG9nbyBpbWcge1xyXG4gIG1hcmdpbjogMHB4IDBweCAyNHB4IDMyJTtcclxuICAgd2lkdGg6IDEwMHB4O1xyXG4gIFxyXG5cclxufVxyXG4uanVzdGlmeS1jZW50ZXIge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbn1cclxuLy8gLmxvZ28ge1xyXG4vLyAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuLy8gICB3aWR0aDogNTAwcHg7XHJcbi8vICAgaGVpZ2h0OiAyMDBweDtcclxuLy8gICBiYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL2xvZ28xLnBuZ1wiKSBuby1yZXBlYXQ7XHJcbi8vICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4vLyB9XHJcbi8vIC5sb2dvOmhvdmVyIHtcclxuLy8gICBiYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL2xvZ28yLnBuZ1wiKSBuby1yZXBlYXQ7XHJcbi8vIH0iLCIubG9naW5fYm94IHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IDBweDtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwdmg7XG4gIG1heC1oZWlnaHQ6IDEwMHZoO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmMWYxO1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoLi4vLi4vLi4vYXNzZXRzL2ltZy9icmFuZC9oaXJpbmctTW9iaWxlLU1lY2hhbmljcy5qcGcpO1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG59XG5cbi5sb2dpbl9ib3hfaW5uZXIge1xuICBkaXNwbGF5OiBjb250ZW50cztcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbiAgcGFkZGluZzogNTBweDtcbiAgYm9yZGVyLXJhZGl1czogOHB4O1xuICBib3gtc2hhZG93OiAwcHggMHB4IDEwcHggMHB4ICNkYWRhZGE7XG59XG5cbi5mb3JtLWNvbnRyb2wge1xuICBib3JkZXI6IDFweCBzb2xpZCAjMzIzYjkyO1xufVxuXG4ubG9naW5fZm9ybSB7XG4gIG1hcmdpbjogMTBweCAwcHg7XG59XG5cbi5jYXJkIC5jYXJkLWJvZHkge1xuICB0ZXh0LWFsaWduOiBsZWZ0ICFpbXBvcnRhbnQ7XG59XG5cbi5mb3JtLWNvbnRyb2wge1xuICB3aWR0aDogMzAwcHggIWltcG9ydGFudDtcbn1cblxuLmxvZ28gaW1nIHtcbiAgbWFyZ2luOiAwcHggMHB4IDI0cHggMzIlO1xuICB3aWR0aDogMTAwcHg7XG59XG5cbi5qdXN0aWZ5LWNlbnRlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufSJdfQ== */"
+module.exports = ".login_box {\n  position: relative;\n  top: 0px;\n  width: 100%;\n  height: 100vh;\n  max-height: 100vh;\n  text-align: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #f1f1f1;\n  background-image: url('hiring-Mobile-Mechanics.jpg');\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n\n.login_box_inner {\n  display: contents;\n  background-color: #fff;\n  padding: 50px;\n  border-radius: 8px;\n  box-shadow: 0px 0px 10px 0px #dadada;\n}\n\n.form-control {\n  border: 1px solid #323b92;\n}\n\n.login_form {\n  margin: 10px 0px;\n}\n\n.card .card-body {\n  text-align: left !important;\n}\n\n.form-control {\n  width: 300px !important;\n}\n\n.logo img {\n  margin: 0px 0px 24px 32%;\n  width: 100px;\n}\n\n.justify-center {\n  display: flex;\n  justify-content: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xvZ2luL0Q6XFxNWV9PRkZJQ0VcXG15dmFjYWxhX3N1cGVyYWRtaW5fMjAyMFxcc3JjXFxhcHBcXHZpZXdzXFxidXR0b25zXFxtYXN0ZXJcXGNhcnQvLi5cXC4uXFwuLlxcbG9naW5cXGxvZ2luLmNvbXBvbmVudC5zY3NzIiwiLi4vLi4vLi4vbG9naW4vbG9naW4uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSx1QkFBQTtFQUNBLHlCQUFBO0VBQ0Esb0RBQUE7RUFDQSw0QkFBQTtFQUNBLHNCQUFBO0VBQ0EsMkJBQUE7QUNDRjs7QURFQTtFQUNFLGlCQUFBO0VBQ0Esc0JBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxvQ0FBQTtBQ0NGOztBREVBO0VBQ0UseUJBQUE7QUNDRjs7QURDQTtFQUNFLGdCQUFBO0FDRUY7O0FEQUE7RUFDRSwyQkFBQTtBQ0dGOztBRENBO0VBQ0UsdUJBQUE7QUNFRjs7QURBQTtFQUNFLHdCQUFBO0VBQ0MsWUFBQTtBQ0dIOztBRENBO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FDRUYiLCJmaWxlIjoiLi4vLi4vLi4vbG9naW4vbG9naW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubG9naW5fYm94IHtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgdG9wOiAwcHg7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgaGVpZ2h0OiAxMDB2aDtcclxuICBtYXgtaGVpZ2h0OiAxMDB2aDtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XHJcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKC4uLy4uLy4uL2Fzc2V0cy9pbWcvYnJhbmQvaGlyaW5nLU1vYmlsZS1NZWNoYW5pY3MuanBnKTtcclxuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xyXG59XHJcblxyXG4ubG9naW5fYm94X2lubmVyIHtcclxuICBkaXNwbGF5OiBjb250ZW50cztcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xyXG4gIHBhZGRpbmc6IDUwcHg7XHJcbiAgYm9yZGVyLXJhZGl1czogOHB4O1xyXG4gIGJveC1zaGFkb3c6IDBweCAwcHggMTBweCAwcHggI2RhZGFkYTtcclxufVxyXG5cclxuLmZvcm0tY29udHJvbCB7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgIzMyM2I5MjtcclxufVxyXG4ubG9naW5fZm9ybSB7XHJcbiAgbWFyZ2luOiAxMHB4IDBweDtcclxufVxyXG4uY2FyZCAuY2FyZC1ib2R5IHtcclxuICB0ZXh0LWFsaWduOiBsZWZ0ICFpbXBvcnRhbnQ7XHJcbiAgLy8gcGFkZGluZzogMHB4ICFpbXBvcnRhbnQ7XHJcbiAvLyBib3gtc2hhZG93OiAwIDAgMzZweCAjZmYwMDAwO1xyXG59XHJcbi5mb3JtLWNvbnRyb2wge1xyXG4gIHdpZHRoOiAzMDBweCAhaW1wb3J0YW50O1xyXG59XHJcbi5sb2dvIGltZyB7XHJcbiAgbWFyZ2luOiAwcHggMHB4IDI0cHggMzIlO1xyXG4gICB3aWR0aDogMTAwcHg7XHJcbiAgXHJcblxyXG59XHJcbi5qdXN0aWZ5LWNlbnRlciB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufVxyXG4vLyAubG9nbyB7XHJcbi8vICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4vLyAgIHdpZHRoOiA1MDBweDtcclxuLy8gICBoZWlnaHQ6IDIwMHB4O1xyXG4vLyAgIGJhY2tncm91bmQ6IHVybChcIi4uLy4uLy4uL2Fzc2V0cy9pbWcvYnJhbmQvbG9nbzEucG5nXCIpIG5vLXJlcGVhdDtcclxuLy8gICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbi8vIH1cclxuLy8gLmxvZ286aG92ZXIge1xyXG4vLyAgIGJhY2tncm91bmQ6IHVybChcIi4uLy4uLy4uL2Fzc2V0cy9pbWcvYnJhbmQvbG9nbzIucG5nXCIpIG5vLXJlcGVhdDtcclxuLy8gfSIsIi5sb2dpbl9ib3gge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogMHB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgbWF4LWhlaWdodDogMTAwdmg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybCguLi8uLi8uLi9hc3NldHMvaW1nL2JyYW5kL2hpcmluZy1Nb2JpbGUtTWVjaGFuaWNzLmpwZyk7XG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbn1cblxuLmxvZ2luX2JveF9pbm5lciB7XG4gIGRpc3BsYXk6IGNvbnRlbnRzO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xuICBwYWRkaW5nOiA1MHB4O1xuICBib3JkZXItcmFkaXVzOiA4cHg7XG4gIGJveC1zaGFkb3c6IDBweCAwcHggMTBweCAwcHggI2RhZGFkYTtcbn1cblxuLmZvcm0tY29udHJvbCB7XG4gIGJvcmRlcjogMXB4IHNvbGlkICMzMjNiOTI7XG59XG5cbi5sb2dpbl9mb3JtIHtcbiAgbWFyZ2luOiAxMHB4IDBweDtcbn1cblxuLmNhcmQgLmNhcmQtYm9keSB7XG4gIHRleHQtYWxpZ246IGxlZnQgIWltcG9ydGFudDtcbn1cblxuLmZvcm0tY29udHJvbCB7XG4gIHdpZHRoOiAzMDBweCAhaW1wb3J0YW50O1xufVxuXG4ubG9nbyBpbWcge1xuICBtYXJnaW46IDBweCAwcHggMjRweCAzMiU7XG4gIHdpZHRoOiAxMDBweDtcbn1cblxuLmp1c3RpZnktY2VudGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59Il19 */"
 
 /***/ }),
 
@@ -2303,9 +2330,10 @@ var LoginComponent = /** @class */ (function () {
                 console.log(res);
                 if (res.Code == 200) {
                     _this.router.navigateByUrl('/superadmin/dashboard');
+                    _this.saveInLocal('login_emp', res.Data);
                 }
-                else {
-                    alert('Invalid Login');
+                else if (res.Code == 404) {
+                    alert(res.Message);
                 }
             });
         }

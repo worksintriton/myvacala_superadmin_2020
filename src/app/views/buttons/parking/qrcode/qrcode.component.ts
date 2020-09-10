@@ -50,11 +50,10 @@ export class QrcodeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this._api.vehiclelist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.vehicle_list = response.Data;
+        this.vehicle_list = response.Data.reverse();
         // console.log("vehicle_list");
         // console.log(this.vehicle_list);
       }
@@ -62,15 +61,15 @@ export class QrcodeComponent implements OnInit {
     this._api.qr_code_get().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.qr_code_list = response.Data;
+        this.qr_code_list = response.Data.reverse();
         console.log(this.qr_code_list);
       }
     );
-
+    
     this._api.list_parking().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.vendor_id_list = response.Data;
+        this.vendor_id_list = response.Data.reverse();
         console.log(this.vendor_id_list);
         this.id_list = [];
         for (let i = 0; i < this.vendor_id_list.length; i++) {
@@ -217,7 +216,6 @@ export class QrcodeComponent implements OnInit {
   }
 
   get_mech() {
-
     this.single_parking = this.vendor_id_list.filter((x: any) => this.parking_id == x.parking_vendor_id);
     this.Vendor_Id = this.single_parking[0]._id;
     console.log(this.Vendor_Id)

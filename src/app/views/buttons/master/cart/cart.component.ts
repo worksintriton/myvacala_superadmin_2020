@@ -25,10 +25,14 @@ export class CartComponent implements OnInit {
     this._api.cart().subscribe(
       (response: any) => {
         console.log(response);
-        this.cartlist = response.Data;
+        this.cartlist = response.Data.reverse();
 
       }
     );
+  }
+  open(i){
+    this.saveInLocal('itemsingle', i)
+    this.router.navigateByUrl('/superadmin/master/view_cart_details');
   }
   saveInLocal(key, val): void {
     this.storage.set(key, val);

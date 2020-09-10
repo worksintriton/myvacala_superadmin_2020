@@ -46,7 +46,7 @@ export class ListparkingComponent implements OnInit {
           this.ngOnInit();
         }
         else {
-          alert("sorry");
+          alert(response.Message);
         }
       }
     );

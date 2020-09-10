@@ -113,8 +113,13 @@
                     </ng-container>
                   </td>
                   <td>{{item.employee_status}}</td>
-                  <td><button (click)="Edit_Employee(item)" type="button" id=""
-                      class="btn btn-sm btn-primary">Edit</button></td>
+                  <td>
+                    <button (click)="Edit_Employee(item)" type="button" id=""
+                      class="btn btn-sm btn-primary">Edit</button>
+                      <button (click)="delete(item._id)" class="btn btn-danger" style="margin-top: 5px;">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
                   <td> <button (click)="suspend(item._id)" class="btn btn-sm btn-primary"
                       [disabled]="item.employee_status == 'Suspended'">Suspend</button>
                   </td>

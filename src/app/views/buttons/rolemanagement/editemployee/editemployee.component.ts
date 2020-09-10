@@ -229,13 +229,13 @@ export class EditemployeeComponent implements OnInit {
     if (this.interests.some(x => x == "Operations")) {
       this.Operations_se = true;
     }
-    if (this.interests.some(x => x == "VendorList")) {
+    if (this.interests.some(x => x == "MechanicList")) {
       this.VendorList_se = true;
     }
-    if (this.interests.some(x => x == "VendorParking")) {
+    if (this.interests.some(x => x == "ParkingList")) {
       this.VendorParking_se = true;
     }
-    if (this.interests.some(x => x == "VendorOnbordation")) {
+    if (this.interests.some(x => x == "MechanicOnbordation")) {
       this.VendorOnbordation_se = true;
     }
     if (this.interests.some(x => x == "parkingOnboradation")) {

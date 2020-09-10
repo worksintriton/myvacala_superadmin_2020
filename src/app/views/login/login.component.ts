@@ -117,9 +117,10 @@ export class LoginComponent implements OnInit {
         console.log(res)
         if (res.Code == 200) {
           this.router.navigateByUrl('/superadmin/dashboard');
+          this.saveInLocal('login_emp', res.Data);
         }
-        else {
-          alert('Invalid Login');
+        else if(res.Code == 404) {
+          alert(res.Message);
         }
       });
 

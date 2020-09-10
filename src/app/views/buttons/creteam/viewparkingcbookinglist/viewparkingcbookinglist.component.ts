@@ -28,10 +28,10 @@ export class ViewparkingcbookinglistComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService) { }
     
   ngOnInit() {
-    this._api.parking_bookingList().subscribe(
+    this._api.parkingbookinglist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.parking_booking_list = response.Data;
+        this.parking_booking_list = response.Data.reverse();
         console.log(this.parking_booking_list);
       }
     ); 
@@ -50,6 +50,10 @@ export class ViewparkingcbookinglistComponent implements OnInit {
     
     getFromLocal(key): any {
       return this.storage.get(key);
+    }
+    edit(i){
+      this.saveInLocal('parkingbookingsingle',i)
+      this.router.navigate(['superadmin/master/operationparkingbookings']);
     }
   }
   

@@ -357,6 +357,9 @@ export class ApiService {
   add_emp(data) {
     return this.http.post(this.apiUrl + 'employee/create', data);
   }
+  delete_emp(data) {
+    return this.http.post(this.apiUrl + 'employee/delete', data);
+  }
   emp_list() {
     return this.http.get(this.apiUrl + 'employee/getlist');
   }
@@ -423,5 +426,7 @@ export class ApiService {
   emp_login(data){
     return this.http.post(this.apiUrl + 'employee/admin_login', data)
   }
-  
+  parkingbookinglist(){
+    return this.http.get(this.apiUrl + 'parking/parkingbooking/getlist');
+  }
 }

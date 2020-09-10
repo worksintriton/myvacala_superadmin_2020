@@ -61,10 +61,16 @@ export class CouponCodeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    let dte = new Date();
+    dte.setDate(dte.getDate() - 1);
+    this.options.minDate = dte;
+    console.log(dte.toString());
 
+    
     this._api.coupon_list().subscribe((res: any) => {
       console.log(res)
-      this.coupon_list = res.Data.reverse();
+      let list = res.Data.reverse();
+      this.coupon_list = list.filter((x)=> x.Masterservice_id._id =="5f1ac41b55abee4870516567")
     })
 
     this._api.user_list().subscribe(
@@ -159,7 +165,7 @@ export class CouponCodeComponent implements OnInit {
       this._api.coupon_codde_create(data).subscribe((response: any) => {
         console.log(response);
         if (response.Code == 422) {
-          alert(response.Message);
+          alert("Please provide valid Expiry_Date");
         } else {
           this.ngOnInit();
           alert(response.Message);

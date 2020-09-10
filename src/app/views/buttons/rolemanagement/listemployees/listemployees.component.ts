@@ -114,4 +114,22 @@ export class ListemployeesComponent implements OnInit {
     this.phone = undefined;
     this.status = undefined
   }
+  delete(i) {
+    let data = {
+      "_id": i
+    }
+    console.log(data);
+    this._api.delete_emp(data).subscribe(
+      (response: any) => {
+        console.log(response);
+        if (response.Code == 200) {
+          alert(response.Message);
+          this.ngOnInit();
+        }
+        else {
+          alert(response.Message);
+        }
+      }
+    );
+  }
 }

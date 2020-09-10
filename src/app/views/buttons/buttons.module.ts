@@ -118,7 +118,9 @@ import { PopularSubServiceComponent } from './master/popular-sub-service/popular
 import { ParkingEditComponent } from './parking/parking-edit/parking-edit.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { SelectDropDownModule } from 'ngx-select-dropdown'
-
+import { parkingCouponCodeComponent } from './parking/coupon-code/coupon-code.component';
+import { ViwecartComponent } from './master/cart/viwecart/viwecart.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   imports: [
     CommonModule,
@@ -131,7 +133,7 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
     DataTableModule,
     Ng2SearchPipeModule,
     AutocompleteLibModule,
-    SelectDropDownModule
+    SelectDropDownModule,
   ],
   declarations: [
     PatientListComponent,
@@ -231,7 +233,10 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
     EngineccComponent,
     PopularSubServiceComponent,
     ParkingEditComponent,
+    parkingCouponCodeComponent,
+    ViwecartComponent
     
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class ButtonsModule { }

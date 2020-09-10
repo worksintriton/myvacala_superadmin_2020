@@ -128,6 +128,11 @@ export const navItems: NavData[] = [
             url: '/superadmin/master/QRCodeGeneration',
             icon: 'icon-plus'
           },
+          {
+            name: 'Coupon code',
+            url: '/superadmin/master/parking_couponcode',
+            icon: 'nav-icon icon-cursor'
+          },
         ],
       },
     ],

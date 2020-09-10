@@ -99,6 +99,9 @@ import { EditemployeeComponent } from './rolemanagement/editemployee/editemploye
 import { EngineccComponent } from './master/enginecc/enginecc.component';
 import { PopularSubServiceComponent } from './master/popular-sub-service/popular-sub-service.component';
 import { ParkingEditComponent } from './parking/parking-edit/parking-edit.component';
+import { parkingCouponCodeComponent } from './parking/coupon-code/coupon-code.component';
+import { ViwecartComponent } from './master/cart/viwecart/viwecart.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -789,7 +792,13 @@ const routes: Routes = [
           title: 'Coupon Code'
         }
       },
-
+      {
+        path: 'parking_couponcode',
+        component: parkingCouponCodeComponent,
+        data: {
+          title: 'Coupon Code'
+        }
+      },
       {
         path: 'Popular_SubService',
         component: PopularSubServiceComponent,
@@ -797,7 +806,13 @@ const routes: Routes = [
           title: 'Popular_SubService'
         }
       },
-
+      {
+        path: 'view_cart_details',
+        component: ViwecartComponent,
+        data: {
+          title: 'Cart Details'
+        }
+      },
     ]
   }
 ];
