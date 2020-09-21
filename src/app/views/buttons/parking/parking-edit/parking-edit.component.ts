@@ -1075,7 +1075,7 @@ export class ParkingEditComponent implements OnInit {
 
   addweekdays2() {
     if (this.bikeslotdate1 != undefined && this.SlotWeekDaytime16 != undefined && this.SlotWeekDaytime17 != undefined && this.amount7) {
-      this.newInclude7 = { "dates": this.bikeslotdate1, "Start_time": this.SlotWeekDaytime16, "End_time": this.SlotWeekDaytime17, "Price": this.amount7 };
+      this.newInclude7 = { "dates": this.bikeslotdate1, "Start_time": this.SlotWeekDaytime16.toString(), "End_time": this.SlotWeekDaytime17.toString(), "Price": this.amount7 };
       this.parking_details_bike_price_spe_day.push(this.newInclude7);
       console.log(this.parking_details_bike_price_spe_day);
       this.bike_time8();
@@ -1615,7 +1615,7 @@ export class ParkingEditComponent implements OnInit {
 
   addweekdaysc2() {
     if (this.slotdatee1 != undefined && this.SlotWeekDaytime32 != undefined && this.SlotWeekDaytime33 != undefined && this.amount15) {
-      this.newIncludee7 = { "dates": this.slotdatee1, "Start_time": this.SlotWeekDaytime32, "End_time": this.SlotWeekDaytime33, "Price": this.amount15 };
+      this.newIncludee7 = { "dates": this.slotdatee1, "Start_time": this.SlotWeekDaytime32.toString(), "End_time": this.SlotWeekDaytime33.toString(), "Price": this.amount15 };
       this.parking_details_car_price_spe_day.push(this.newIncludee7);
       console.log(this.parking_details_car_price_spe_day);
       this.car_time8();
@@ -2143,7 +2143,7 @@ export class ParkingEditComponent implements OnInit {
 
   addweekdaysc2both() {
     if (this.slotdateee1 != undefined && this.SlotWeekDaytime49 != undefined && this.SlotWeekDaytime50 != undefined && this.amount24) {
-      this.newIncludeee7 = { "dates": this.slotdateee1, "Start_time": this.SlotWeekDaytime49, "End_time": this.SlotWeekDaytime50, "Price": this.amount24 };
+      this.newIncludeee7 = { "dates": this.slotdateee1, "Start_time": this.SlotWeekDaytime49.toString(), "End_time": this.SlotWeekDaytime50.toString(), "Price": this.amount24 };
       this.both_slot_per_day.push(this.newIncludeee7);
       console.log(this.both_slot_per_day);
       this.both_time8();
@@ -2439,7 +2439,7 @@ export class ParkingEditComponent implements OnInit {
   }
   biketime1() {
     console.log(this.SlotWeekDaytime1)
-    for (let i = (+this.SlotWeekDaytime1 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime1 ); i <= 24; i++) {
       this.bikeSlotWeekDaytime2.push(i);
     }
     console.log(this.bikeSlotWeekDaytime2)
@@ -2452,13 +2452,13 @@ export class ParkingEditComponent implements OnInit {
   }
   bike_time1() {
     this.bikeSlotWeekDaytime1 = []
-    this.bikeSlotWeekDaytime1.push(+this.SlotWeekDaytime2 + 1);
+    this.bikeSlotWeekDaytime1.push(+this.SlotWeekDaytime2 );
     this.bikeSlotWeekDaytime2 = [];
   }
 
   biketime2() {
     console.log(this.SlotWeekDaytime3)
-    for (let i = (+this.SlotWeekDaytime3 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime3 ); i <= 24; i++) {
       this.bikeSlotWeekDaytime4.push(i);
     }
     console.log(this.bikeSlotWeekDaytime4)
@@ -2470,13 +2470,13 @@ export class ParkingEditComponent implements OnInit {
   }
   bike_time2() {
     this.bikeSlotWeekDaytime3 = []
-    this.bikeSlotWeekDaytime3.push(+this.SlotWeekDaytime4 + 1);
+    this.bikeSlotWeekDaytime3.push(+this.SlotWeekDaytime4 );
     this.bikeSlotWeekDaytime4 = [];
   }
   biketime3() {
 
     console.log(this.SlotWeekDaytime5)
-    for (let i = (+this.SlotWeekDaytime5 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime5 ); i <= 24; i++) {
       this.bikeSlotWeekDaytime6.push(i);
     }
     console.log(this.bikeSlotWeekDaytime6)
@@ -2489,12 +2489,12 @@ export class ParkingEditComponent implements OnInit {
   }
   bike_time3() {
     this.bikeSlotWeekDaytime5 = []
-    this.bikeSlotWeekDaytime5.push(+this.SlotWeekDaytime6 + 1);
+    this.bikeSlotWeekDaytime5.push(+this.SlotWeekDaytime6 );
     this.bikeSlotWeekDaytime6 = [];
   }
   biketime4() {
     console.log(this.SlotWeekDaytime7)
-    for (let i = (+this.SlotWeekDaytime7 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime7 ); i <= 24; i++) {
       this.bikeSlotWeekDaytime8.push(i);
     }
     console.log(this.bikeSlotWeekDaytime8)
@@ -2509,12 +2509,12 @@ export class ParkingEditComponent implements OnInit {
   bike_time4() {
 
     this.bikeSlotWeekDaytime7 = []
-    this.bikeSlotWeekDaytime7.push(+this.SlotWeekDaytime8 + 1);
+    this.bikeSlotWeekDaytime7.push(+this.SlotWeekDaytime8 );
     this.bikeSlotWeekDaytime8 = [];
   }
   biketime5() {
     console.log(this.SlotWeekDaytime9)
-    for (let i = (+this.SlotWeekDaytime9 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime9 ); i <= 24; i++) {
       this.bikeSlotWeekDaytime10.push(i);
     }
     console.log(this.bikeSlotWeekDaytime10)
@@ -2527,13 +2527,13 @@ export class ParkingEditComponent implements OnInit {
   }
   bike_time5() {
     this.bikeSlotWeekDaytime9 = []
-    this.bikeSlotWeekDaytime9.push(+this.SlotWeekDaytime10 + 1);
+    this.bikeSlotWeekDaytime9.push(+this.SlotWeekDaytime10 );
     this.bikeSlotWeekDaytime10 = [];
 
   }
   biketime6() {
     console.log(this.SlotWeekDaytime11)
-    for (let i = (+this.SlotWeekDaytime11 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime11 ); i <= 24; i++) {
       this.bikeSlotWeekDaytime12.push(i);
     }
     console.log(this.bikeSlotWeekDaytime12)
@@ -2546,13 +2546,13 @@ export class ParkingEditComponent implements OnInit {
   }
   bike_time6() {
     this.bikeSlotWeekDaytime11 = []
-    this.bikeSlotWeekDaytime11.push(+this.SlotWeekDaytime12 + 1);
+    this.bikeSlotWeekDaytime11.push(+this.SlotWeekDaytime12 );
     this.bikeSlotWeekDaytime12 = [];
 
   }
   biketime7() {
     console.log(this.SlotWeekDaytime13)
-    for (let i = (+this.SlotWeekDaytime13 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime13 ); i <= 24; i++) {
       this.bikeSlotWeekDaytime14.push(i);
     }
     console.log(this.bikeSlotWeekDaytime14)
@@ -2565,13 +2565,13 @@ export class ParkingEditComponent implements OnInit {
   }
   bike_time7() {
     this.bikeSlotWeekDaytime13 = []
-    this.bikeSlotWeekDaytime13.push(+this.SlotWeekDaytime14 + 1);
+    this.bikeSlotWeekDaytime13.push(+this.SlotWeekDaytime14 );
     this.bikeSlotWeekDaytime14 = [];
 
   }
   biketime8() {
     console.log(this.SlotWeekDaytime16)
-    for (let i = (+this.SlotWeekDaytime16 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime16 ); i <= 24; i++) {
       this.bikeSlotWeekDaytime17.push(i);
     }
     console.log(this.bikeSlotWeekDaytime17)
@@ -2584,7 +2584,7 @@ export class ParkingEditComponent implements OnInit {
   }
   bike_time8() {
     this.bikeSlotWeekDaytime16 = []
-    this.bikeSlotWeekDaytime16.push(+this.SlotWeekDaytime17 + 1);
+    this.bikeSlotWeekDaytime16.push(+this.SlotWeekDaytime17 );
     this.bikeSlotWeekDaytime17 = [];
 
   }
@@ -2605,7 +2605,7 @@ export class ParkingEditComponent implements OnInit {
 
   cartime1() {
     console.log(this.SlotWeekDaytime18)
-    for (let i = (+this.SlotWeekDaytime18 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime18 ); i <= 24; i++) {
       this.carSlotWeekDaytime19.push(i);
     }
     console.log(this.carSlotWeekDaytime19)
@@ -2618,13 +2618,13 @@ export class ParkingEditComponent implements OnInit {
   }
   car_time1() {
     this.carSlotWeekDaytime18 = []
-    this.carSlotWeekDaytime18.push(+this.SlotWeekDaytime19 + 1);
+    this.carSlotWeekDaytime18.push(+this.SlotWeekDaytime19 );
     this.carSlotWeekDaytime19 = [];
 
   }
   cartime2() {
     console.log(this.SlotWeekDaytime20)
-    for (let i = (+this.SlotWeekDaytime20 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime20 ); i <= 24; i++) {
       this.carSlotWeekDaytime21.push(i);
     }
     console.log(this.carSlotWeekDaytime21)
@@ -2637,13 +2637,13 @@ export class ParkingEditComponent implements OnInit {
   }
   car_time2() {
     this.carSlotWeekDaytime20 = []
-    this.carSlotWeekDaytime20.push(+this.SlotWeekDaytime21 + 1);
+    this.carSlotWeekDaytime20.push(+this.SlotWeekDaytime21 );
     this.carSlotWeekDaytime21 = [];
 
   }
   cartime3() {
     console.log(this.SlotWeekDaytime22)
-    for (let i = (+this.SlotWeekDaytime22 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime22 ); i <= 24; i++) {
       this.carSlotWeekDaytime23.push(i);
     }
     console.log(this.carSlotWeekDaytime23)
@@ -2656,13 +2656,13 @@ export class ParkingEditComponent implements OnInit {
   }
   car_time3() {
     this.carSlotWeekDaytime22 = []
-    this.carSlotWeekDaytime22.push(+this.SlotWeekDaytime23 + 1);
+    this.carSlotWeekDaytime22.push(+this.SlotWeekDaytime23 );
     this.carSlotWeekDaytime23 = [];
 
   }
   cartime4() {
     console.log(this.SlotWeekDaytime24)
-    for (let i = (+this.SlotWeekDaytime24 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime24 ); i <= 24; i++) {
       this.carSlotWeekDaytime25.push(i);
     }
     console.log(this.carSlotWeekDaytime25)
@@ -2675,13 +2675,13 @@ export class ParkingEditComponent implements OnInit {
   }
   car_time4() {
     this.carSlotWeekDaytime24 = []
-    this.carSlotWeekDaytime24.push(+this.SlotWeekDaytime25 + 1);
+    this.carSlotWeekDaytime24.push(+this.SlotWeekDaytime25 );
     this.carSlotWeekDaytime25 = [];
 
   }
   cartime5() {
     console.log(this.SlotWeekDaytime26)
-    for (let i = (+this.SlotWeekDaytime26 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime26 ); i <= 24; i++) {
       this.carSlotWeekDaytime27.push(i);
     }
     console.log(this.carSlotWeekDaytime27)
@@ -2694,12 +2694,12 @@ export class ParkingEditComponent implements OnInit {
   }
   car_time5() {
     this.carSlotWeekDaytime26 = []
-    this.carSlotWeekDaytime26.push(+this.SlotWeekDaytime27 + 1);
+    this.carSlotWeekDaytime26.push(+this.SlotWeekDaytime27 );
     this.carSlotWeekDaytime27 = [];
   }
   cartime6() {
     console.log(this.SlotWeekDaytime28)
-    for (let i = (+this.SlotWeekDaytime28 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime28 ); i <= 24; i++) {
       this.carSlotWeekDaytime29.push(i);
     }
     console.log(this.carSlotWeekDaytime29)
@@ -2712,14 +2712,14 @@ export class ParkingEditComponent implements OnInit {
   }
   car_time6() {
     this.carSlotWeekDaytime28 = []
-    this.carSlotWeekDaytime28.push(+this.SlotWeekDaytime29 + 1);
+    this.carSlotWeekDaytime28.push(+this.SlotWeekDaytime29 );
     this.carSlotWeekDaytime29 = [];
 
   }
   cartime7() {
 
     console.log(this.SlotWeekDaytime30)
-    for (let i = (+this.SlotWeekDaytime30 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime30 ); i <= 24; i++) {
       this.carSlotWeekDaytime31.push(i);
     }
     console.log(this.carSlotWeekDaytime31)
@@ -2732,14 +2732,14 @@ export class ParkingEditComponent implements OnInit {
   }
   car_time7() {
     this.carSlotWeekDaytime30 = []
-    this.carSlotWeekDaytime30.push(+this.SlotWeekDaytime31 + 1);
+    this.carSlotWeekDaytime30.push(+this.SlotWeekDaytime31 );
     this.carSlotWeekDaytime31 = [];
 
   }
   cartime8() {
 
     console.log(this.SlotWeekDaytime32)
-    for (let i = (+this.SlotWeekDaytime32 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime32 ); i <= 24; i++) {
       this.carSlotWeekDaytime33.push(i);
     }
     console.log(this.carSlotWeekDaytime33)
@@ -2753,7 +2753,7 @@ export class ParkingEditComponent implements OnInit {
   }
   car_time8() {
     this.carSlotWeekDaytime32 = []
-    this.carSlotWeekDaytime32.push(+this.SlotWeekDaytime33 + 1);
+    this.carSlotWeekDaytime32.push(+this.SlotWeekDaytime33 );
     this.carSlotWeekDaytime33 = [];
   }
 
@@ -2773,7 +2773,7 @@ export class ParkingEditComponent implements OnInit {
   bothtime1() {
 
     console.log(this.SlotWeekDaytime35)
-    for (let i = (+this.SlotWeekDaytime35 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime35 ); i <= 24; i++) {
       this.bothSlotWeekDaytime36.push(i);
     }
     console.log(this.bothSlotWeekDaytime36)
@@ -2786,13 +2786,13 @@ export class ParkingEditComponent implements OnInit {
   }
   both_time1() {
     this.bothSlotWeekDaytime35 = []
-    this.bothSlotWeekDaytime35.push(+this.SlotWeekDaytime36 + 1);
+    this.bothSlotWeekDaytime35.push(+this.SlotWeekDaytime36 );
     this.bothSlotWeekDaytime36 = [];
 
   }
   bothtime2() {
     console.log(this.SlotWeekDaytime37)
-    for (let i = (+this.SlotWeekDaytime37 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime37 ); i <= 24; i++) {
       this.bothSlotWeekDaytime38.push(i);
     }
     console.log(this.bothSlotWeekDaytime38)
@@ -2805,13 +2805,13 @@ export class ParkingEditComponent implements OnInit {
   }
   both_time2() {
     this.bothSlotWeekDaytime37 = []
-    this.bothSlotWeekDaytime37.push(+this.SlotWeekDaytime38 + 1);
+    this.bothSlotWeekDaytime37.push(+this.SlotWeekDaytime38 );
     this.bothSlotWeekDaytime38 = [];
 
   }
   bothtime3() {
     console.log(this.SlotWeekDaytime39)
-    for (let i = (+this.SlotWeekDaytime39 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime39 ); i <= 24; i++) {
       this.bothSlotWeekDaytime40.push(i);
     }
     console.log(this.bothSlotWeekDaytime40)
@@ -2824,13 +2824,13 @@ export class ParkingEditComponent implements OnInit {
   }
   both_time3() {
     this.bothSlotWeekDaytime39 = []
-    this.bothSlotWeekDaytime39.push(+this.SlotWeekDaytime40 + 1);
+    this.bothSlotWeekDaytime39.push(+this.SlotWeekDaytime40 );
     this.bothSlotWeekDaytime40 = [];
 
   }
   bothtime4() {
     console.log(this.SlotWeekDaytime41)
-    for (let i = (+this.SlotWeekDaytime41 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime41 ); i <= 24; i++) {
       this.bothSlotWeekDaytime42.push(i);
     }
     console.log(this.bothSlotWeekDaytime42)
@@ -2843,13 +2843,13 @@ export class ParkingEditComponent implements OnInit {
   }
   both_time4() {
     this.bothSlotWeekDaytime41 = []
-    this.bothSlotWeekDaytime41.push(+this.SlotWeekDaytime42 + 1);
+    this.bothSlotWeekDaytime41.push(+this.SlotWeekDaytime42 );
     this.bothSlotWeekDaytime42 = [];
 
   }
   bothtime5() {
     console.log(this.SlotWeekDaytime43)
-    for (let i = (+this.SlotWeekDaytime43 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime43 ); i <= 24; i++) {
       this.bothSlotWeekDaytime44.push(i);
     }
     console.log(this.bothSlotWeekDaytime44)
@@ -2862,13 +2862,13 @@ export class ParkingEditComponent implements OnInit {
   }
   both_time5() {
     this.bothSlotWeekDaytime43 = []
-    this.bothSlotWeekDaytime43.push(+this.SlotWeekDaytime44 + 1);
+    this.bothSlotWeekDaytime43.push(+this.SlotWeekDaytime44 );
     this.bothSlotWeekDaytime44 = [];
 
   }
   bothtime6() {
     console.log(this.SlotWeekDaytime45)
-    for (let i = (+this.SlotWeekDaytime45 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime45 ); i <= 24; i++) {
       this.bothSlotWeekDaytime46.push(i);
     }
     console.log(this.bothSlotWeekDaytime46)
@@ -2881,14 +2881,14 @@ export class ParkingEditComponent implements OnInit {
   }
   both_time6() {
     this.bothSlotWeekDaytime45 = []
-    this.bothSlotWeekDaytime45.push(+this.SlotWeekDaytime46 + 1);
+    this.bothSlotWeekDaytime45.push(+this.SlotWeekDaytime46 );
     this.bothSlotWeekDaytime46 = [];
 
 
   }
   bothtime7() {
     console.log(this.SlotWeekDaytime47)
-    for (let i = (+this.SlotWeekDaytime47 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime47 ); i <= 24; i++) {
       this.bothSlotWeekDaytime48.push(i);
     }
     console.log(this.bothSlotWeekDaytime48)
@@ -2900,13 +2900,13 @@ export class ParkingEditComponent implements OnInit {
   }
   both_time7() {
     this.bothSlotWeekDaytime47 = []
-    this.bothSlotWeekDaytime47.push(+this.SlotWeekDaytime48 + 1);
+    this.bothSlotWeekDaytime47.push(+this.SlotWeekDaytime48 );
     this.bothSlotWeekDaytime48 = [];
 
   }
   bothtime8() {
     console.log(this.SlotWeekDaytime49)
-    for (let i = (+this.SlotWeekDaytime49 + 1); i <= 24; i++) {
+    for (let i = (+this.SlotWeekDaytime49 ); i <= 24; i++) {
       this.bothSlotWeekDaytime50.push(i);
     }
     console.log(this.bothSlotWeekDaytime50)
@@ -2919,7 +2919,7 @@ export class ParkingEditComponent implements OnInit {
   }
   both_time8() {
     this.bothSlotWeekDaytime49 = []
-    this.bothSlotWeekDaytime49.push(+this.SlotWeekDaytime50 + 1);
+    this.bothSlotWeekDaytime49.push(+this.SlotWeekDaytime50 );
     this.bothSlotWeekDaytime50 = [];
 
   }
