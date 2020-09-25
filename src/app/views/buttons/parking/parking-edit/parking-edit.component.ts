@@ -611,7 +611,7 @@ export class ParkingEditComponent implements OnInit {
 
   // Bike-------
   BikeAddmonday() {
-    this.newInclude = { "Start_time": this.SlotWeekDaytime1, "End_time": this.SlotWeekDaytime2, "Price": this.amount };
+    this.newInclude = { "Start_time": this.SlotWeekDaytime1.toString(), "End_time": this.SlotWeekDaytime2.toString(), "Price": this.amount };
     this.Included_new.push(this.newInclude);
     console.log(this.Included_new);
     this.bike_time1();
@@ -681,7 +681,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   BikeAddtuesday() {
-    this.newInclude1 = { "Start_time": this.SlotWeekDaytime3, "End_time": this.SlotWeekDaytime4, "Price": this.amount1 };
+    this.newInclude1 = { "Start_time": this.SlotWeekDaytime3.toString(), "End_time": this.SlotWeekDaytime4.toString(), "Price": this.amount1 };
     this.Included_new1.push(this.newInclude1);
     console.log(this.Included_new1);
     this.bike_time2();
@@ -747,7 +747,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addwedday() {
-    this.newInclude2 = { "Start_time": this.SlotWeekDaytime5, "End_time": this.SlotWeekDaytime6, "Price": this.amount2 };
+    this.newInclude2 = { "Start_time": this.SlotWeekDaytime5.toString(), "End_time": this.SlotWeekDaytime6.toString(), "Price": this.amount2 };
     this.Included_new2.push(this.newInclude2);
     console.log(this.Included_new2);
     this.bike_time3();
@@ -812,7 +812,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addthursday() {
-    this.newInclude3 = { "Start_time": this.SlotWeekDaytime7, "End_time": this.SlotWeekDaytime8, "Price": this.amount3 };
+    this.newInclude3 = { "Start_time": this.SlotWeekDaytime7.toString(), "End_time": this.SlotWeekDaytime8.toString(), "Price": this.amount3 };
     this.Included_new3.push(this.newInclude3);
     console.log(this.Included_new3);
     this.bike_time4();
@@ -877,7 +877,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addfriday() {
-    this.newInclude4 = { "Start_time": this.SlotWeekDaytime9, "End_time": this.SlotWeekDaytime10, "Price": this.amount4 };
+    this.newInclude4 = { "Start_time": this.SlotWeekDaytime9.toString(), "End_time": this.SlotWeekDaytime10.toString(), "Price": this.amount4 };
     this.Included_new4.push(this.newInclude4);
     console.log(this.Included_new4);
     this.bike_time5();
@@ -943,7 +943,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addsaturday() {
-    this.newInclude5 = { "Start_time": this.SlotWeekDaytime11, "End_time": this.SlotWeekDaytime12, "Price": this.amount5 };
+    this.newInclude5 = { "Start_time": this.SlotWeekDaytime11.toString(), "End_time": this.SlotWeekDaytime12.toString(), "Price": this.amount5 };
     this.Included_new5.push(this.newInclude5);
     console.log(this.Included_new5);
     this.bike_time6();
@@ -1008,7 +1008,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addsunday() {
-    this.newInclude6 = { "Start_time": this.SlotWeekDaytime13, "End_time": this.SlotWeekDaytime14, "Price": this.amount6 };
+    this.newInclude6 = { "Start_time": this.SlotWeekDaytime13.toString(), "End_time": this.SlotWeekDaytime14.toString(), "Price": this.amount6 };
     this.Included_new6.push(this.newInclude6);
     console.log(this.Included_new6);
     this.bike_time7();
@@ -1149,7 +1149,7 @@ export class ParkingEditComponent implements OnInit {
 
   // Car------
   carAddmonday() {
-    this.newIncludee = { "Start_time": this.SlotWeekDaytime18, "End_time": this.SlotWeekDaytime19, "Price": this.amount8 };
+    this.newIncludee = { "Start_time": this.SlotWeekDaytime18.toString(), "End_time": this.SlotWeekDaytime19.toString(), "Price": this.amount8 };
     this.Included_newe.push(this.newIncludee);
     console.log(this.Included_newe);
     this.car_time1();
@@ -1214,7 +1214,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   carAddtuesday() {
-    this.newIncludee1 = { "Start_time": this.SlotWeekDaytime20, "End_time": this.SlotWeekDaytime21, "Price": this.amount9 };
+    this.newIncludee1 = { "Start_time": this.SlotWeekDaytime20.toString(), "End_time": this.SlotWeekDaytime21.toString(), "Price": this.amount9 };
     this.Included_newe1.push(this.newIncludee1);
     console.log(this.Included_newe1);
     this.car_time2();
@@ -1281,7 +1281,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addweddayc() {
-    this.newIncludee2 = { "Start_time": this.SlotWeekDaytime22, "End_time": this.SlotWeekDaytime23, "Price": this.amount10 };
+    this.newIncludee2 = { "Start_time": this.SlotWeekDaytime22.toString(), "End_time": this.SlotWeekDaytime23.toString(), "Price": this.amount10 };
     this.Included_newe2.push(this.newIncludee2);
     console.log(this.Included_newe2);
     this.car_time3();
@@ -1348,7 +1348,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addthursdayc() {
-    this.newIncludee3 = { "Start_time": this.SlotWeekDaytime24, "End_time": this.SlotWeekDaytime25, "Price": this.amount11 };
+    this.newIncludee3 = { "Start_time": this.SlotWeekDaytime24.toString(), "End_time": this.SlotWeekDaytime25.toString(), "Price": this.amount11 };
     this.Included_newe3.push(this.newIncludee3);
     console.log(this.Included_newe3);
     this.car_time4();
@@ -1414,7 +1414,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addfridayc() {
-    this.newIncludee4 = { "Start_time": this.SlotWeekDaytime26, "End_time": this.SlotWeekDaytime27, "Price": this.amount12 };
+    this.newIncludee4 = { "Start_time": this.SlotWeekDaytime26.toString(), "End_time": this.SlotWeekDaytime27.toString(), "Price": this.amount12 };
     this.Included_newe4.push(this.newIncludee4);
     console.log(this.Included_newe4);
     this.car_time5();
@@ -1481,7 +1481,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addsaturdayc() {
-    this.newIncludee5 = { "Start_time": this.SlotWeekDaytime28, "End_time": this.SlotWeekDaytime29, "Price": this.amount13 };
+    this.newIncludee5 = { "Start_time": this.SlotWeekDaytime28.toString(), "End_time": this.SlotWeekDaytime29.toString(), "Price": this.amount13 };
     this.Included_newe5.push(this.newIncludee5);
     console.log(this.Included_new5);
     this.car_time6();
@@ -1547,7 +1547,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addsundayc() {
-    this.newIncludee6 = { "Start_time": this.SlotWeekDaytime30, "End_time": this.SlotWeekDaytime31, "Price": this.amount14 };
+    this.newIncludee6 = { "Start_time": this.SlotWeekDaytime30.toString(), "End_time": this.SlotWeekDaytime31.toString(), "Price": this.amount14 };
     this.Included_newe6.push(this.newIncludee6);
     console.log(this.Included_new6);
     this.car_time7();
@@ -1686,7 +1686,7 @@ export class ParkingEditComponent implements OnInit {
   //  Both----
 
   carAddmondayboth() {
-    this.newIncludeee = { "Start_time": this.SlotWeekDaytime35, "End_time": this.SlotWeekDaytime36, "Price": this.amount17 };
+    this.newIncludeee = { "Start_time": this.SlotWeekDaytime35.toString(), "End_time": this.SlotWeekDaytime36.toString(), "Price": this.amount17 };
     this.Included_newee.push(this.newIncludeee);
     console.log(this.Included_newee);
     this.both_time1();
@@ -1752,7 +1752,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   carAddtuesdayboth() {
-    this.newIncludeee1 = { "Start_time": this.SlotWeekDaytime37, "End_time": this.SlotWeekDaytime38, "Price": this.amount18 };
+    this.newIncludeee1 = { "Start_time": this.SlotWeekDaytime37.toString(), "End_time": this.SlotWeekDaytime38.toString(), "Price": this.amount18 };
     this.Included_newee1.push(this.newIncludeee1);
     console.log(this.Included_newee1);
     this.both_time2();
@@ -1819,7 +1819,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addweddaycboth() {
-    this.newIncludeee2 = { "Start_time": this.SlotWeekDaytime39, "End_time": this.SlotWeekDaytime40, "Price": this.amount19 };
+    this.newIncludeee2 = { "Start_time": this.SlotWeekDaytime39.toString(), "End_time": this.SlotWeekDaytime40.toString(), "Price": this.amount19 };
     this.Included_newee2.push(this.newIncludeee2);
     console.log(this.Included_newee2);
     this.both_time3();
@@ -1885,7 +1885,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addthursdaycboth() {
-    this.newIncludeee3 = { "Start_time": this.SlotWeekDaytime41, "End_time": this.SlotWeekDaytime42, "Price": this.amount20 };
+    this.newIncludeee3 = { "Start_time": this.SlotWeekDaytime41.toString(), "End_time": this.SlotWeekDaytime42.toString(), "Price": this.amount20 };
     this.Included_newee3.push(this.newIncludeee3);
     console.log(this.Included_newee3);
     this.both_time4();
@@ -1950,7 +1950,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addfridaycboth() {
-    this.newIncludeee4 = { "Start_time": this.SlotWeekDaytime43, "End_time": this.SlotWeekDaytime44, "Price": this.amount21 };
+    this.newIncludeee4 = { "Start_time": this.SlotWeekDaytime43.toString(), "End_time": this.SlotWeekDaytime44.toString(), "Price": this.amount21 };
     this.Included_newee4.push(this.newIncludeee4);
     console.log(this.Included_newee4);
     this.both_time5();
@@ -2016,7 +2016,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addsaturdaycboth() {
-    this.newIncludeee5 = { "Start_time": this.SlotWeekDaytime45, "End_time": this.SlotWeekDaytime46, "Price": this.amount22 };
+    this.newIncludeee5 = { "Start_time": this.SlotWeekDaytime45.toString(), "End_time": this.SlotWeekDaytime46.toString(), "Price": this.amount22 };
     this.Included_newee5.push(this.newIncludeee5);
     console.log(this.Included_newee5);
     this.both_time6();
@@ -2082,7 +2082,7 @@ export class ParkingEditComponent implements OnInit {
 
   }
   addsundaycboth() {
-    this.newIncludee6 = { "Start_time": this.SlotWeekDaytime47, "End_time": this.SlotWeekDaytime48, "Price": this.amount23 };
+    this.newIncludee6 = { "Start_time": this.SlotWeekDaytime47.toString(), "End_time": this.SlotWeekDaytime48.toString(), "Price": this.amount23 };
     this.Included_newee6.push(this.newIncludee6);
     console.log(this.Included_newee6);
     this.both_time7();
