@@ -73,7 +73,7 @@ export class QrcodeComponent implements OnInit {
         console.log(this.vendor_id_list);
         this.id_list = [];
         for (let i = 0; i < this.vendor_id_list.length; i++) {
-          this.id_list.push(this.vendor_id_list[i].parking_vendor_id)
+          this.id_list.push(this.vendor_id_list[i]._id)
         }
       }
     );
@@ -216,7 +216,7 @@ export class QrcodeComponent implements OnInit {
   }
 
   get_mech() {
-    this.single_parking = this.vendor_id_list.filter((x: any) => this.parking_id == x.parking_vendor_id);
+    this.single_parking = this.vendor_id_list.filter((x: any) => this.parking_id == x._id);
     this.Vendor_Id = this.single_parking[0]._id;
     console.log(this.Vendor_Id)
     console.log(this.single_parking);
