@@ -2269,7 +2269,7 @@ export class ParkingComponent implements OnInit {
   addfiles2() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedfile1, this.selectedfile1.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.pancard = res.Data;
@@ -2284,7 +2284,7 @@ export class ParkingComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedfile1, this.selectedfile1.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.adarcard = res.Data;
@@ -2299,7 +2299,7 @@ export class ParkingComponent implements OnInit {
   addfiles3() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedfile1, this.selectedfile1.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.gstdoc = res.Data;

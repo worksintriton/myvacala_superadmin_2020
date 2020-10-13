@@ -94,7 +94,7 @@ export class FlashscreenComponent implements OnInit {
         this.width = img.width;
         this.height = img.height;
         console.log(this.width, this.height);
-        if(this.width == 630 && this.height == 300){
+        if(this.width == 640 && this.height == 300){
           this.addfiles1();
         }
         else{
@@ -116,7 +116,7 @@ export class FlashscreenComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.Pic = res.Data;

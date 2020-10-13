@@ -434,7 +434,7 @@ export class EditemployeeComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedfile1, this.selectedfile1.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.EmployeePanCard_file = res.Data;
@@ -454,7 +454,7 @@ export class EditemployeeComponent implements OnInit {
   addfiles2() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedfile2, this.selectedfile2.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.EmployeeAadharCard_file = res.Data;
@@ -473,7 +473,7 @@ export class EditemployeeComponent implements OnInit {
   addfiles3() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedfile3, this.selectedfile3.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.NomineePanCard_file = res.Data;
@@ -492,7 +492,7 @@ export class EditemployeeComponent implements OnInit {
   addfiles4() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedfile4, this.selectedfile4.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.NomineeAadharCard_file = res.Data;

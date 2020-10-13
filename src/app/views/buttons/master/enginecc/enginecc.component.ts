@@ -18,7 +18,7 @@ export class EngineccComponent implements OnInit {
   vehiclemodelErrorMsg: any;
   vehiclemodelId: any;
   selectedimgae: any;
-  Pic: any = "http://3.101.31.129:3000/api/uploads/82ea92a8-3833-4aa9-84c7-772d1eb28186.png";
+  Pic: any = "https://myvacala.com/api/uploads/bd581539-ae61-41ba-b92c-8766ded48781.jpg";
   vehicle_list: any;
   VehicleType: any = "Two Wheeler";
   Vehiclecc: any;
@@ -105,7 +105,7 @@ export class EngineccComponent implements OnInit {
         {
           "Vehiclemodel_id": this.vehiclemodelId,
           "VehicleModel_Name": this.Vehiclecc,
-          "VehicleModel_Image": this.Pic,
+          "VehicleModel_Image": 'https://myvacala.com/api/uploads/bd581539-ae61-41ba-b92c-8766ded48781.jpg',
           "Vehicle_Type": this.VehicleType,
 
 
@@ -149,7 +149,7 @@ export class EngineccComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.Pic = res.Data;

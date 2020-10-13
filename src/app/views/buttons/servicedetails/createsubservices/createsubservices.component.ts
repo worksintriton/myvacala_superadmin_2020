@@ -567,7 +567,7 @@ export class CreatesubservicesComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.Pic = res.Data;
@@ -606,7 +606,7 @@ export class CreatesubservicesComponent implements OnInit {
   addfiles() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae1, this.selectedimgae1.name);
-    this.http.post('http://3.101.31.129:3000/upload', fd)
+    this.http.post('https://myvacala.com/api/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.Pic1 = res.Data;
