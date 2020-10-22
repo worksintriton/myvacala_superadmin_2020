@@ -36,7 +36,7 @@ export class CreateLocationComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService) { }
 
   ngOnInit() {
-    this._api.LocationList().subscribe(
+    this._api.parkLocationList().subscribe(
       (response: any) => {
         console.log(response.Data);
         this.Location_list = response.Data.reverse();
@@ -69,7 +69,7 @@ export class CreateLocationComponent implements OnInit {
         "Pincodes": this.pin
       }
       console.log(data);
-      this._api.LocationSave(data).subscribe(
+      this._api.parkLocationSave(data).subscribe(
         (response: any) => {
           console.log(response.Data);
           this.saveInLocal('Location_list', response.data);
@@ -119,7 +119,7 @@ export class CreateLocationComponent implements OnInit {
 
     }
     console.log(data);
-    this._api.LocationDelete(data).subscribe(
+    this._api.parkLocationDelete(data).subscribe(
       (response: any) => {
         console.log(response);
         if (response.Code == 200) {
@@ -172,7 +172,7 @@ export class CreateLocationComponent implements OnInit {
           "Pincodes": this.pin
         }
         console.log(data);
-        this._api.LocationEdit(data).subscribe(
+        this._api.parkLocationEdit(data).subscribe(
           (response: any) => {
             console.log(response.Data);
             this.saveInLocal('Location_list', response.data);

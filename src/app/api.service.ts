@@ -280,6 +280,18 @@ export class ApiService {
   LocationEdit(data) {
     return this.http.put(this.apiUrl + 'location/edit', data);
   }
+  parkLocationList() {
+    return this.http.get(this.apiUrl + 'parkinglocation/admin/getlist');
+  }
+  parkLocationSave(data) {
+    return this.http.post(this.apiUrl + 'parkinglocation/create', data);
+  }
+  parkLocationDelete(data) {
+    return this.http.post(this.apiUrl + 'parkinglocation/delete', data);
+  }
+  parkLocationEdit(data) {
+    return this.http.put(this.apiUrl + 'parkinglocation/edit', data);
+  }
   popular_service(data) {
     return this.http.post(this.apiUrl + 'vehiclebrand/popular/create', data);
   }
