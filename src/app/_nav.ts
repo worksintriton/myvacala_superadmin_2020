@@ -133,6 +133,11 @@ export const navItems: NavData[] = [
             url: '/superadmin/master/parking_couponcode',
             icon: 'nav-icon icon-cursor'
           },
+          {
+            name: 'Create Location',
+            url: '/superadmin/master/Create_Location',
+            icon: 'nav-icon icon-cursor'
+          },
         ],
       },
     ],

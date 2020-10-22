@@ -121,6 +121,7 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { parkingCouponCodeComponent } from './parking/coupon-code/coupon-code.component';
 import { ViwecartComponent } from './master/cart/viwecart/viwecart.component';
 import { DatePipe } from '@angular/common';
+import { CreateLocationComponent } from './parking/create-location/create-location.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -234,7 +235,8 @@ import { DatePipe } from '@angular/common';
     PopularSubServiceComponent,
     ParkingEditComponent,
     parkingCouponCodeComponent,
-    ViwecartComponent
+    ViwecartComponent,
+    CreateLocationComponent
     
   ],
   providers: [DatePipe]

@@ -128,6 +128,11 @@ export class DefaultLayoutComponent implements OnDestroy {
                 url: '/superadmin/master/parking_couponcode',
                 icon: 'nav-icon icon-cursor'
               },
+              {
+                name: 'Create Location',
+                url: '/superadmin/master/Create_Location',
+                icon: 'nav-icon icon-cursor'
+              },
             ],
           },
         ],
@@ -163,6 +168,11 @@ export class DefaultLayoutComponent implements OnDestroy {
               {
                 name: 'Coupon code',
                 url: '/superadmin/master/parking_couponcode',
+                icon: 'nav-icon icon-cursor'
+              },
+              {
+                name: 'Create Location',
+                url: '/superadmin/master/Create_Location',
                 icon: 'nav-icon icon-cursor'
               },
             ],

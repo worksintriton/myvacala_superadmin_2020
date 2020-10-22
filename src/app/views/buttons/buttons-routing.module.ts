@@ -101,6 +101,7 @@ import { PopularSubServiceComponent } from './master/popular-sub-service/popular
 import { ParkingEditComponent } from './parking/parking-edit/parking-edit.component';
 import { parkingCouponCodeComponent } from './parking/coupon-code/coupon-code.component';
 import { ViwecartComponent } from './master/cart/viwecart/viwecart.component';
+import { CreateLocationComponent } from './parking/create-location/create-location.component';
 
 const routes: Routes = [
   {
@@ -606,7 +607,7 @@ const routes: Routes = [
         component: ListparkingComponent,
         data: {
           title: 'Parking List'
-        }
+        },
       },
       {
         path: 'edit_parking',
@@ -812,6 +813,13 @@ const routes: Routes = [
         data: {
           title: 'Cart Details'
         }
+      },
+      {
+        path: 'Create_Location',
+        component: CreateLocationComponent,
+        data: {
+          title: 'Create Location'
+        },
       },
     ]
   }
