@@ -462,7 +462,7 @@ export class ParkingComponent implements OnInit {
             "parking_details_update_status": "Updated",
             "parking_details_price_bike_type": this.fortwowheeler,
             "parking_details_price_both_type": false,
-            "parking_details_price_car_type": this.forwfourwheeler,
+            "parking_details_price_car_type": false,
           }
           console.log(data)
           this._api.Parking_owner_edit(data).subscribe((res: any) => {
@@ -493,7 +493,7 @@ export class ParkingComponent implements OnInit {
           "parking_details_car_price_spe_day": this.parking_details_car_price_spe_day,
           "parking_details_bike_price_spe_day": this.parking_details_bike_price_spe_day,
           "parking_details_update_status": "Updated",
-          "parking_details_price_bike_type": this.fortwowheeler,
+          "parking_details_price_bike_type": false,
           "parking_details_price_both_type": false,
           "parking_details_price_car_type": this.forwfourwheeler,
         }
@@ -2315,6 +2315,18 @@ export class ParkingComponent implements OnInit {
 
 
   validation() {
+    let data = {
+      "owner_name": this.Ownername,
+      "owner_email": this.owner_email,
+      "owner_pri_contact": this.ownerprimarycontact,
+      "owner_sec_contact": this.Secondcontact,
+      "owner_pan_no": this.pancardno,
+      "owner_pan_file": this.pancard,
+      "owner_aadhar_no": this.adharno,
+      "owner_aadhar_file": this.adarcard,
+      "owner_res_address": this.resaddress
+    }
+    console.log(data)
     if (this.Ownername != undefined && this.Ownername != '' && this.owner_email != undefined && this.ownerprimarycontact != undefined && this.Secondcontact != undefined && this.pancardno != undefined
       && this.pancardno != '' && this.pancard != undefined && this.adharno != undefined && this.adharno != '' && this.adarcard != undefined && this.resaddress != undefined && this.resaddress != ''
       && this.emailerror == false && this.phone_err1 == false && this.phone_err2 == false) {
