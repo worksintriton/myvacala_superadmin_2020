@@ -39,7 +39,11 @@
                     <td>{{item.Vehicle_type }}</td>
                     <td>
                       <button (click)="open(item)" class="btn btn-sm btn-success">Open
-                      </button></td>
+                      </button>
+                      <button (click)="cart_delete(item._id)" class="btn btn-danger" style="margin: 5px;">
+                        <li class="fa fa-trash"></li>
+                    </button>
+                    </td>
                   </tr>
                 </ng-container>
               </tbody>

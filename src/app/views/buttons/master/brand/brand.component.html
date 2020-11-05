@@ -14,7 +14,7 @@
                             <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
                             <div class="col-md-6">
                                 <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType">
-                                    <option value=undefined selected>Select Vehicle Type</option>
+                                    <option value=undefined style="display: none;" selected>Select Vehicle Type</option>
                                     <ng-container *ngFor="let list of vehicle_list;">
                                         <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
                                     </ng-container>
@@ -102,7 +102,7 @@
                         <tbody>
                             <tr *ngFor="let item of sv.data | filter:searchQR; let i = index;">
                                 <td>{{i+1}}</td>
-                                <td>{{item.Vehicle_Type_id}}</td>
+                                <td>{{item.Vehicle_Type_id.Vehicle_Type}}</td>
                                 <td>{{item.Vehicle_Brand_Name}}</td>
                                 <!-- <td><img height="50" width="50" src={{item.Vehicle_Brand_Image}} alt="No image"></td> -->
                                 <td><button (click)="editvehicle_brand(item)" class="btn btn-sm btn-success">

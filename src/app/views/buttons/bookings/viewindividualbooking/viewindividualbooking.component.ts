@@ -16,7 +16,7 @@ export class ViewindividualbookingComponent implements OnInit {
   cname: any;
   vehicletype: any;
   vehicle_list: any;
-  WorkshopId: any =undefined;
+  WorkshopId: any = undefined;
   FinalPayable: any;
   selectedimgae: any;
   Pic: any;
@@ -167,9 +167,12 @@ export class ViewindividualbookingComponent implements OnInit {
     }
   }
   edit() {
-    if ((this.FinalPayable != undefined && this.FinalPayable != '') && this.Thmp_list.length > 0 && this.Thmp_list1.length > 0 && (this.WorkshopName != undefined && this.WorkshopName != '') && (this.WorkshopLocation != undefined && this.WorkshopLocation != '') && this.BookingStatus != undefined) {
+    console.log(this.BookingStatus)
+    // if ((this.FinalPayable != undefined && this.FinalPayable != '') && this.Thmp_list.length > 0 && this.Thmp_list1.length > 0 && (this.WorkshopName != undefined && this.WorkshopName != '') && (this.WorkshopLocation != undefined && this.WorkshopLocation != '') && this.BookingStatus != undefined) {
 
-      // (this.WorkshopId != undefined && this.WorkshopId != '') 
+
+    // (this.WorkshopId != undefined && this.WorkshopId != '') 
+    if (this.BookingStatus != undefined) {
       let data = {
         "Booking_id": this.vehicle_list.Booking_id,
         // "Status_history_text": [{ "title": "Teseing", "date": "23-20-2034 Thus morning 10:20 am" }],
@@ -177,7 +180,7 @@ export class ViewindividualbookingComponent implements OnInit {
         "Customer_Invoice": this.Thmp_list,
         "Final_bill_payed": this.FinalPayable,
         "Job_Card": this.Thmp_list1,
-        "Mechanicworkshop_ids":this.WorkshopId,
+        "Mechanicworkshop_ids": this.WorkshopId,
         "Workshop_Location": this.WorkshopLocation,
         "Workshop_Name": this.WorkshopName,
         "Booking_Status": this.BookingStatus
@@ -198,12 +201,12 @@ export class ViewindividualbookingComponent implements OnInit {
       );
     }
     else {
-      alert("Please fill all the fields")
+      alert("Please select booking status")
     }
   }
   get_mech() {
     console.log(this.WorkshopId);
-    if(this.WorkshopId !=undefined){
+    if (this.WorkshopId != undefined) {
       let id = {
         "Mechanic_id": this.WorkshopId
       }
@@ -217,10 +220,10 @@ export class ViewindividualbookingComponent implements OnInit {
           else {
             alert(response.Message)
           }
-  
+
         }
       );
     }
-  
+
   }
 }

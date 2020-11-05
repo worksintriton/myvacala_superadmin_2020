@@ -23,7 +23,7 @@
                             <label class="col-md-3 col-form-label" for="text-input">Vehicle Type</label>
                             <div class="col-md-6">
                                 <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType">
-                                    <option value=undefined>Select Vehicle Type</option>
+                                    <option value=undefined style="display:none">Select Vehicle Type</option>
                                     <ng-container *ngFor="let list of vehicle_list;">
                                         <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
                                     </ng-container>

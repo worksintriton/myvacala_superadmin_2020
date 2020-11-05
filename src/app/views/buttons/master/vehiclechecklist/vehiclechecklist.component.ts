@@ -48,6 +48,7 @@ export class VehiclechecklistComponent implements OnInit {
   body_typ:any=[];
   width: any;
   height: any;
+  create: boolean = true;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   constructor(
     private router: Router,
@@ -57,10 +58,11 @@ export class VehiclechecklistComponent implements OnInit {
     private _api: ApiService,
     @Inject(SESSION_STORAGE) private storage: StorageService) {
     this.singlevehicle_data = this.getFromLocal('vehicle');
-
+   
   }
 
   ngOnInit() {
+    
     this._api.getfuellist().subscribe(
       (response: any) => {
         console.log(response.Data);
@@ -114,9 +116,13 @@ export class VehiclechecklistComponent implements OnInit {
       if (this.singlevehicle_data != undefined) {
         this.edit();
         console.log("dataget+")
-        this.saveInLocal('vehicle', undefined)
+        this.saveInLocal('vehicle', undefined);
+        this.create =  false;
       }
-    }, 4000)
+    }, 3000)
+
+
+
 
   }
   vechiclt_type_select(event) {
@@ -290,7 +296,7 @@ export class VehiclechecklistComponent implements OnInit {
           (response: any) => {
             console.log(response);
             this.saveInLocal('service_list', response.data);
-            alert(response.Message);
+            alert("Vechile model created successfully");
             this.ngOnInit();
             // this.router.navigateByUrl('/superadmin/master/listemployees');
             this.router.navigate(['superadmin', 'master', 'VehicleList']);
@@ -318,7 +324,7 @@ export class VehiclechecklistComponent implements OnInit {
           (response: any) => {
             console.log(response);
             this.saveInLocal('service_list', response.data);
-            alert(response.Message);
+            alert("Vechile model updated successfully");
             this.ngOnInit();
             // this.router.navigateByUrl('/superadmin/master/listemployees');
             this.router.navigate(['superadmin', 'master', 'VehicleList']);

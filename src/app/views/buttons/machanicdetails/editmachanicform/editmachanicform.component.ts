@@ -298,7 +298,7 @@ export class EditmachanicformComponent implements OnInit {
       this._api.mechanic_edit(data).subscribe((res: any) => {
         console.log(res)
         if (res.Code == 200) {
-          alert("Mechanic Details updated successfully");
+          alert("Mechanic details updated successfully");
           this.reset();
           this.router.navigate(['superadmin/master/list_mechanic']);
         }

@@ -63,7 +63,7 @@ export class ViewPatientDetailsComponent implements OnInit {
       this._api.DeleteMembers(a).subscribe(
         (response: any) => {
            console.log(response);
-           alert("User Deleted successfully");
+           alert("User deleted successfully");
            this.Listmembers(this.patient_id);
         }
         );

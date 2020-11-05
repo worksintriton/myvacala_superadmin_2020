@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatepickerOptions } from 'ng2-datepicker';
 import * as frLocale from 'date-fns/locale/fr';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-coupon-code',
   templateUrl: './coupon-code.component.html',
@@ -249,6 +251,16 @@ export class CouponCodeComponent implements OnInit {
     );
   }
   delete(id) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        
     let data = {
       "_id": id,
     }
@@ -258,13 +270,27 @@ export class CouponCodeComponent implements OnInit {
         alert(response.Message);
       } else {
         this.ngOnInit();
-        alert(response.Message);
+        alert("Coupon code deleted successfully");
         this.reset();
         // this.router.navigate(['/superadmin/master/create_master_service'])
 
       }
 
     });
+
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
+      }
+    })
   }
   date() {
     console.log(this.Start_Date)

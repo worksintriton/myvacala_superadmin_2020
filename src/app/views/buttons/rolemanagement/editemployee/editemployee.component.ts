@@ -551,7 +551,7 @@ export class EditemployeeComponent implements OnInit {
       console.log(data)
       this._api.emp_edit(data).subscribe((res: any) => {
         console.log(res)
-        alert("Employee details Updated successfully");
+        alert("Employee details updated successfully");
         this.router.navigate(['superadmin/master/listemployees']);
       })
     }

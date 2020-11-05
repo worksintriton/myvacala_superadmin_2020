@@ -179,7 +179,7 @@ export class CreatemasterserviceComponent implements OnInit {
               } else {
                 this.reset() ;
                 this.saveInLocal('service_list', response.data);
-                alert(response.Message);
+                alert("Master service created successfully");
                 this.ngOnInit();
 
               }
@@ -217,7 +217,7 @@ export class CreatemasterserviceComponent implements OnInit {
                 this.reset() ;
                 this.ngOnInit();
                 this.saveInLocal('service_list', response.data);
-                alert(response.Message);
+                alert("Master service updated successfully");
                 this.saveInLocal("PickupBoy_Details", "");
                 this.saveInLocal("foredit", true);
                 this.router.navigate(['/superadmin/master/create_master_service']);
@@ -242,25 +242,51 @@ export class CreatemasterserviceComponent implements OnInit {
   }
   
   deleteservice(i) {
-    let data = {
 
-      "Service_id": i
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+   
+        let data = {
 
-    }
-    console.log(data);
-    this._api.deleteservice_list(data).subscribe(
-      (response: any) => {
-        console.log(response);
-        if (response.Code == 200) {
-          alert(response.Message);
-          this.ngOnInit();
+          "Service_id": i
+    
         }
-        else {
-          alert("sorry");
-        }
-
+        console.log(data);
+        this._api.deleteservice_list(data).subscribe(
+          (response: any) => {
+            console.log(response);
+            if (response.Code == 200) {
+              alert("Master service deleted successfully");
+              this.ngOnInit();
+            }
+            else {
+              alert("sorry");
+            }
+    
+          }
+        ); 
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
       }
-    );
+    })
+
+    
   }
   saveInLocal(key, val): void {
     this.storage.set(key, val);

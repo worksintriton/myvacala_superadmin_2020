@@ -12,7 +12,7 @@
                             <div class="col-md-6">
                                 <select class="form-control" [(ngModel)]="customers" (ngModelChange)="addarray()"
                                     name="customers">
-                                    <option value=undefined> Select Customers</option>
+                                    <option value=undefined style="display: none;"> Select Customers</option>
                                     <option value="all"> For all Customers</option>
                                     <option value="selected"> Selected Customers</option>
                                 </select>
@@ -96,7 +96,7 @@
                             <div class="col-md-6">
                                 <select class="form-control" [(ngModel)]="mainservice_id" name="mainServiceId"
                                     [disabled]="VehicleType == undefined">
-                                    <option value=undefined>Select Main Service</option>
+                                    <option value=undefined style="display: none;">Select Main Service</option>
                                     <ng-container *ngFor="let list of mainservice_list">
                                         <option value="{{list._id}}">{{list.Service_Name}}</option>
                                     </ng-container>
@@ -127,7 +127,7 @@
                             <label class="col-md-3 col-form-label" for="text-input">Value Type</label>
                             <div class="col-md-6">
                                 <select class="form-control" [(ngModel)]="Value_Type" name="Value_Type">
-                                    <option value=undefined> Select Value Type</option>
+                                    <option value=undefined style="display: none;"> Select Value Type</option>
                                     <option value="Per"> Percentage</option>
                                     <option value="Amt"> Amount</option>
                                 </select>

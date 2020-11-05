@@ -35,7 +35,7 @@ export class PatientListComponent {
     this._api.DeletePatient(i).subscribe(
       (response: any) => {
          console.log(response);
-         alert("User Deleted successfully");
+         alert("User deleted successfully");
          this.ngOnInit();
       }
       );

@@ -68,14 +68,14 @@ export const routes: Routes = [
         path: '',
         component: DashboardComponent,
         data: {
-          title: 'Login Page'
+          title: 'Dashboard'
         }
       },
       {
         path: 'dashboard',
         component: DashboardComponent,
         data: {
-          title: 'Login Page'
+          title: 'Dashboard'
         }
       },
 

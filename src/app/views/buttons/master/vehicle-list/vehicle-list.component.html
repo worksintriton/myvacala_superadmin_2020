@@ -13,6 +13,7 @@
                                 <label class="col-form-label" for="text-input">Vehicle Type:</label>
                                 <select class="form-control" [(ngModel)]="VehicleType" name="VehicleType">
                                     <option value=undefined style="display: none;">Select Type</option>
+                                    <option value="All">All</option>
                                     <ng-container *ngFor="let list of vehicle_list;">
                                         <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
                                     </ng-container>
@@ -26,6 +27,7 @@
 
                                 <select class="form-control" [(ngModel)]="VehicleBrand" name="VehicleBrand">
                                     <option value=undefined style="display: none;">Select Manufacturer</option>
+                                    <option value="All">All</option>
                                     <ng-container *ngFor="let list of vehicle_brand_list;">
                                         <option value="{{list._id}}">{{list.Vehicle_Brand_Name}}</option>
                                     </ng-container>
@@ -39,6 +41,7 @@
 
                                 <select class="form-control" [(ngModel)]="VehicleModel" name="VehicleModel">
                                     <option value=undefined style="display: none;">Select Model</option>
+                                    <option value="All">All</option>
                                     <ng-container *ngFor="let list of List;">
                                         <option value="{{list.Vehicle_Name}}">{{list.Vehicle_Name}}</option>
                                     </ng-container>
@@ -52,6 +55,7 @@
 
                                 <select class="form-control" [(ngModel)]="fuletype" name="fuletype">
                                     <option value=undefined style="display: none;">Select Fuel Type</option>
+                                    <option value="All">All</option>
                                     <ng-container *ngFor="let list of fuelList;">
                                         <option value="{{list._id}}">{{list.Fuel_Type}}</option>
                                     </ng-container>
@@ -65,6 +69,7 @@
 
                                 <select class="form-control" [(ngModel)]="vehiclebody" name="vehiclebody">
                                     <option value=undefined style="display: none;">Select Body Type</option>
+                                    <option value="All">All</option>
                                     <ng-container *ngFor="let list of vehiclebody_list;">
                                         <option value="{{list._id}}">{{list.VehicleModel_Name}}</option>
                                     </ng-container>

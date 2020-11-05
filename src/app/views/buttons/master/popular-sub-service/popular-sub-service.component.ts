@@ -218,7 +218,7 @@ export class PopularSubServiceComponent implements OnInit {
             } else {
               this.ngOnInit();
               this.reset();
-              alert(response.Message);
+              alert("Popular subservice created successfully");
 
               // this.router.navigate(['/superadmin/master/create_master_service'])
 
@@ -254,7 +254,7 @@ export class PopularSubServiceComponent implements OnInit {
             } else {
               this.ngOnInit();
               this.reset();
-              alert(response.Message);
+              alert("Popular subservice updated successfully");
               this.forcreate = true;
               //this.router.navigate(['/superadmin/master/create_master_service']);
 
@@ -345,6 +345,16 @@ export class PopularSubServiceComponent implements OnInit {
   //   }
   // }
   deleteservice(i) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        
     let data = {
 
       "Subservice_id": i
@@ -355,7 +365,7 @@ export class PopularSubServiceComponent implements OnInit {
       (response: any) => {
         console.log(response);
         if (response.Code == 200) {
-          alert(response.Message);
+          alert("popular subservice deleted successfully");
           this.ngOnInit();
         }
         else {
@@ -364,6 +374,22 @@ export class PopularSubServiceComponent implements OnInit {
 
       }
     );
+        
+         // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
+      }
+    })
+
+   
   }
 
   deleteRow_new(dynamic, i) {

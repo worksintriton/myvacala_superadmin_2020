@@ -63,7 +63,7 @@ export class RevokeemployeeComponent implements OnInit {
     this._api.emp_edit(data).subscribe(
       (response: any) => {
         console.log(response);
-        alert("Employee revoked Successfully");
+        alert("Employee revoked successfully");
         this.ngOnInit();
       }
     );

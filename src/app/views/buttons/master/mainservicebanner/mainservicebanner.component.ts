@@ -138,6 +138,17 @@ export class MainservicebannerComponent implements OnInit {
   }
 
   deleteservice(data) {
+    
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        
     let id = {
       "ServiceBanner_id": data
     }
@@ -147,12 +158,25 @@ export class MainservicebannerComponent implements OnInit {
         if (response.Code == 401) {
           alert(response.Message);
         } else {
-          alert(response.Message);
+          alert("Main service banner deleted successfully");
 
         }
         this.ngOnInit();
       }
     );
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
+      }
+    })
   }
   valitation(){
     if( this.Pic != undefined && this.MasterServiceName != undefined && (this.Title != undefined && this.Title != '') && (this.Description != undefined && this.Description != '') && this.Status != undefined){

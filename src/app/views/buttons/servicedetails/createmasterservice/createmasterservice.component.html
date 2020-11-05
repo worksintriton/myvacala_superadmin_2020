@@ -123,7 +123,7 @@
                             </div>
                         </div>
                     </form>
-                    <h4 class="card-title pt-4">Service List</h4>
+                    <h4 class="card-title pt-4">Master Service List</h4>
                     <div class=" box-filter col-md-12" style="padding-bottom: 20px;">
                         <label class="col-form-label" style="font-weight: 600;width: 100%;" for="text-input">Location</label>
                         <div style="width: 30%; display: inline-block;">
@@ -172,6 +172,8 @@
                                 <td><button (click)="editservice(item)" class="btn btn-sm btn-success">
                                         <li class="fa fa-edit"></li>
                                     </button>
+                                    <button (click)="deleteservice(item._id)" class="btn btn-sm btn-danger"><li class="fa fa-trash"></li> </button></td>
+
                                     <!-- <button (click)="deleteservice(item._id)" class="btn btn-sm btn-danger">Delete</button></td> -->
                                     <!-- <td><button (click)="open_mainservice(item._id)" class="btn btn-sm btn-danger"><li class="fa fa-ban">Disable</li> </button></td> -->
                             </tr>

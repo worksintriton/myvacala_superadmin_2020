@@ -224,7 +224,7 @@ export class CreatesubservicesComponent implements OnInit {
             } else {
               this.ngOnInit();
               this.reset();
-              alert(response.Message);
+              alert("Sub service created successfully");
               console.log("this.vehicledetails_list")
               console.log(this.vehicledetails_list)
               // this.router.navigate(['/superadmin/master/create_master_service'])
@@ -261,7 +261,7 @@ export class CreatesubservicesComponent implements OnInit {
             } else {
               this.ngOnInit();
               this.reset();
-              alert(response.Message);
+              alert("Sub service updated successfully");
               console.log("this.edit")
               console.log(this.vehicledetails_list)
               this.forcreate = true;
@@ -354,25 +354,48 @@ export class CreatesubservicesComponent implements OnInit {
   //   }
   // }
   deleteservice(i) {
-    let data = {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        let data = {
 
-      "Subservice_id": i
-
-    }
-    console.log(data);
-    this._api.deletesubservice_list(data).subscribe(
-      (response: any) => {
-        console.log(response);
-        if (response.Code == 200) {
-          alert(response.Message);
-          this.ngOnInit();
+          "Subservice_id": i
+    
         }
-        else {
-          alert("sorry");
-        }
-
+        console.log(data);
+        this._api.deletesubservice_list(data).subscribe(
+          (response: any) => {
+            console.log(response);
+            if (response.Code == 200) {
+              alert("Sub service deleted successfully");
+              this.ngOnInit();
+            }
+            else {
+              alert("sorry");
+            }
+    
+          }
+        );
+       // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
       }
-    );
+    })
+    
   }
 
   deleteRow_new(dynamic, i) {
@@ -545,13 +568,13 @@ export class CreatesubservicesComponent implements OnInit {
         this.width = img.width;
         this.height = img.height;
         console.log(this.width, this.height);
-        if (this.width == 100 && this.height == 100) {
+        if (this.width == 650 && this.height == 300) {
           this.addfiles1();
         }
         else {
           Swal.fire(
             'Sorry',
-            'Image Size Should be 100*100',
+            'Image Size Should be 650*300',
             'error'
           )
 

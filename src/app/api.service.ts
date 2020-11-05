@@ -310,6 +310,9 @@ export class ApiService {
   cart() {
     return this.http.get(this.apiUrl + 'cart/admin/getlist');
   }
+  cart_delete(data) {
+    return this.http.post(this.apiUrl + 'cart/admin/delete', data);
+  }
   faq() {
     return this.http.get(this.apiUrl + 'faq/getlist');
   }

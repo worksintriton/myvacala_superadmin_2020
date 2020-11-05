@@ -90,7 +90,7 @@ export class VehicleModelComponent implements OnInit {
                 alert(response.Message);
               } else {
                 this.saveInLocal('VehicleDetails', response.data);
-                alert("Vehicle Body Type Created Successfully");
+                alert("Vehicle body type created successfully");
                 this.ngOnInit();
                 this.reset();
               }
@@ -122,7 +122,7 @@ export class VehicleModelComponent implements OnInit {
                 alert(response.Message);
               } else {
                 this.saveInLocal('VehicleDetails', response.data);
-                alert("Vehicle Body Type Updated Successfully");
+                alert("Vehicle body type updated successfully");
                 this.reset();
                 this.ngOnInit();
 
@@ -142,25 +142,51 @@ export class VehicleModelComponent implements OnInit {
   }
  
   VehicleModel_delete(i) {
-    let data = {
 
-      "Vehiclemodel_id": i
 
-    }
-    console.log(data);
-    this._api.VehicleModel_delete(data).subscribe(
-      (response: any) => {
-        console.log(response);
-        if (response.Code == 200) {
-          alert("Vehicle Body Type Deleted Successfully");
-          this.ngOnInit();
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        let data = {
+
+          "Vehiclemodel_id": i
+    
         }
-        else {
-          alert("sorry");
-        }
-
+        console.log(data);
+        this._api.VehicleModel_delete(data).subscribe(
+          (response: any) => {
+            console.log(response);
+            if (response.Code == 200) {
+              alert("Vehicle body type deleted successfully");
+              this.ngOnInit();
+            }
+            else {
+              alert("sorry");
+            }
+    
+          }
+        );
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
       }
-    );
+    })
+
+   
   }
   saveInLocal(key, val): void {
     this.storage.set(key, val);

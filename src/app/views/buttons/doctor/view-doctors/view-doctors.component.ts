@@ -228,7 +228,7 @@ this._api.CreateDoctor1(data).subscribe(
     if(response.Code == 300){
       alert("There Was a Problem in register this doctor try it again");
     }else{
-      alert('Data Uploaded SuccessFully');
+      alert('Data uploaded successfully');
     }
   }
 );

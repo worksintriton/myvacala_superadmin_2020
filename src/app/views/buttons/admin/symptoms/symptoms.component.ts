@@ -83,7 +83,7 @@ export class SymptomsComponent implements OnInit {
           if(response.Code == 300){
             alert("There Was a Problem in register this doctor try it again");
           }else{
-            alert('Data Uploaded SuccessFully');
+            alert('Data uploaded successfully');
             this.Symptoms_image = '';
             this.Symptoms_Shown = '';
             this.Specialisation = '';
@@ -170,7 +170,7 @@ export class SymptomsComponent implements OnInit {
             if(response.Code == 300){
               alert("There Was a Problem in register this doctor try it again");
             }else{
-              alert('Data Uploaded SuccessFully');
+              alert('Data uploaded successfully');
               this.Specialisation = '';
               this.Specialisation_List = [];
               this.Symptoms_list = [];

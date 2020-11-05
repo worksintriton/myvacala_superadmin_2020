@@ -60,7 +60,7 @@ export class ServiceofsubservicesComponent implements OnInit {
     this._api.getmainservicelist().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.List= response.Data;
+        this.List= response.Data.reverse();
         for (let i = 0; i < this.List.length; i++) {
           if (this.List[i].Popular == false) {
             this.mainservice_list.push(this.List[i])
@@ -116,6 +116,17 @@ export class ServiceofsubservicesComponent implements OnInit {
   
   }
   deleteservice(i) {
+    
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        
     let data = {
 
       "Service_id": i
@@ -126,7 +137,7 @@ export class ServiceofsubservicesComponent implements OnInit {
       (response: any) => {
         console.log(response);
         if (response.Code == 200) {
-          alert(response.Message);
+          alert("Main service deleted successfully");
           this.ngOnInit();
         }
         else {
@@ -135,6 +146,22 @@ export class ServiceofsubservicesComponent implements OnInit {
 
       }
     );
+        
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
+      }
+    })
+
+    
   }
   open_banner(item) {
     //this.saveInLocal('Master_Service',item);
@@ -258,7 +285,7 @@ export class ServiceofsubservicesComponent implements OnInit {
             if (response.Code == 422) {
               alert(response.Message);
             } else {
-              alert(response.Message);
+              alert("Main service created successfully");
               // this.router.navigate(['/superadmin/master/create_master_service'])
               this.ngOnInit();
             }
@@ -288,7 +315,7 @@ export class ServiceofsubservicesComponent implements OnInit {
             if (response.Code == 401) {
               alert(response.Message);
             } else {
-              alert(response.Message);
+              alert("Main service updated successfully");
               this.forcreate = true;
               //this.router.navigate(['/superadmin/master/create_master_service']);
               this.ngOnInit();

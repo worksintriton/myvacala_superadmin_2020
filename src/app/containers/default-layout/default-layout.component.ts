@@ -284,6 +284,28 @@ export class DefaultLayoutComponent implements OnDestroy {
             icon: 'icon-plus',
             children: [
               {
+                name: 'Banner',
+                url: '/buttons',
+                icon: 'fa fa-support',
+                children: [
+                  {
+                    name: 'Master Service Banner',
+                    url: '/superadmin/master/MasterServiceBanner',
+                    icon: 'nav-icon icon-cursor'
+                  },
+                  {
+                    name: 'Main Service Banner',
+                    url: '/superadmin/master/Main_SErvice_banner',
+                    icon: 'nav-icon icon-cursor'
+                  },
+                  {
+                    name: 'Splash Screen',
+                    url: '/superadmin/master/FlashScreen',
+                    icon: 'nav-icon icon-cursor'
+                  },
+                ]
+              },
+              {
                 name: 'Master Service',
                 url: '/superadmin/master/create_master_service',
                 icon: 'nav-icon icon-cursor'
@@ -335,28 +357,6 @@ export class DefaultLayoutComponent implements OnDestroy {
                 name: 'Coupon code',
                 url: '/superadmin/master/couponcode',
                 icon: 'nav-icon icon-cursor'
-              },
-              {
-                name: 'Banner',
-                url: '/buttons',
-                icon: 'fa fa-support',
-                children: [
-                  {
-                    name: 'Master Service Banner',
-                    url: '/superadmin/master/MasterServiceBanner',
-                    icon: 'nav-icon icon-cursor'
-                  },
-                  {
-                    name: 'Main Service Banner',
-                    url: '/superadmin/master/Main_SErvice_banner',
-                    icon: 'nav-icon icon-cursor'
-                  },
-                  {
-                    name: 'Splash Screen',
-                    url: '/superadmin/master/FlashScreen',
-                    icon: 'nav-icon icon-cursor'
-                  },
-                ]
               },
               {
                 name: 'Notification',

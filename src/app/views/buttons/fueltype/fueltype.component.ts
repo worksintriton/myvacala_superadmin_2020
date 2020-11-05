@@ -3,7 +3,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../../../api.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-fueltype',
   templateUrl: './fueltype.component.html',
@@ -93,7 +93,7 @@ export class FueltypeComponent implements OnInit {
                 alert(response.Message);
               } else {
                 this.saveInLocal('fuelList', response.data);
-                alert("Fuel Type Created Successfully");
+                alert("Fuel type created successfully");
                 this.ngOnInit();
                 this.fuelType = undefined;
                 this.colorCode = undefined;
@@ -124,10 +124,10 @@ export class FueltypeComponent implements OnInit {
             (response: any) => {
               console.log(response);
               if (response.Code == 401) {
-                alert("Fuel Type Updated Successfully");
+                alert(response.Message);
               } else {
                 this.saveInLocal('FuelDetails', response.data);
-                alert(response.Message);
+                alert("Fuel type updated successfully");
                 this.saveInLocal("foredit", true);
                 this.ngOnInit();
                 this.fuelType = undefined;
@@ -147,25 +147,50 @@ export class FueltypeComponent implements OnInit {
 
   }
   FuelType_delete(i) {
-    let data = {
 
-      "Fuel_id": i
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        let data = {
 
-    }
-    console.log(data);
-    this._api.FuelType_delete(data).subscribe(
-      (response: any) => {
-        console.log(response);
-        if (response.Code == 200) {
-          alert("Fuel Type Updated Successfully");
-          this.ngOnInit();
+          "Fuel_id": i
+    
         }
-        else {
-          alert("sorry");
-        }
-
+        console.log(data);
+        this._api.FuelType_delete(data).subscribe(
+          (response: any) => {
+            console.log(response);
+            if (response.Code == 200) {
+              alert("Fuel type deleted successfully");
+              this.ngOnInit();
+            }
+            else {
+              alert("sorry");
+            }
+    
+          }
+        );
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
       }
-    );
+    })
+
+    
   }
   saveInLocal(key, val): void {
     this.storage.set(key, val);

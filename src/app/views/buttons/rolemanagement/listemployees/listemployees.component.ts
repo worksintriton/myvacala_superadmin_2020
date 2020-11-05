@@ -56,7 +56,7 @@ export class ListemployeesComponent implements OnInit {
     this._api.emp_edit(data).subscribe(
       (response: any) => {
         console.log(response);
-        alert("Employee Suspended Successfully");
+        alert("Employee suspended successfully");
         // this.router.navigate(['superadmin/master/revokemployees']);
         this.ngOnInit();
       }

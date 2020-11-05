@@ -12,7 +12,7 @@
                             <div class="col-md-6">
                                 <select class="form-control" (change)="vechiclt_type_select()" [(ngModel)]="VehicleType"
                                     name="VehicleType">
-                                    <option value=undefined>Select Vehicle Type</option>
+                                    <option value=undefined style="display:none">Select Vehicle Type</option>
                                     <ng-container *ngFor="let list of vehicle_type;">
                                         <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
                                     </ng-container>
@@ -41,12 +41,12 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="text-input">Specifications</label>
                                 <div class="col-md-4">
-                                    <input type="text" name="subtitle" [(ngModel)]="subtitle" id="text-input"
+                                    <input type="text" [disabled]="specification_new.length == 4" name="subtitle" [(ngModel)]="subtitle" id="text-input"
                                         class="form-control" placeholder="Specifications">
                                 </div>
                                 <div class="col-md-2">
                                     <div class="">
-                                        <button (click)="addspecificationRow()" class="btn btn-sm btn-primary"><i
+                                        <button [disabled]="specification_new.length == 4" (click)="addspecificationRow()" class="btn btn-sm btn-primary"><i
                                                 class="fa fa-plus"></i>Add</button>
                                     </div>
                                 </div>
@@ -138,13 +138,13 @@
                                         image</label> <img *ngIf="Pic != undefined" src="{{Pic}}"
                                         style="float: right;;width: 30px;height: 30px;">
 
-                                    <span class="img-size">Image Size Should be 100*100</span>
+                                    <span class="img-size">Image Size Should be 650*300</span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="text-input">Thump Line Image</label>
                                 <div class="col-md-5">
-                                    <input type="file" style="display: none;" #imgType1 (change)="fileupload1($event)"
+                                    <input [disabled]="Thmp_list.length == 4"  type="file" style="display: none;" #imgType1 (change)="fileupload1($event)"
                                         id="imgFile" accept=".png, .jpg, .jpeg"><label class="img-label"
                                         style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
                                         for="imgFile">Choose
@@ -155,7 +155,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <div class="">
-                                        <button (click)="addimg()" class="btn btn-sm btn-primary"><i
+                                        <button [disabled]="Thmp_list.length == 4"  (click)="addimg()" class="btn btn-sm btn-primary"><i
                                                 class="fa fa-plus"></i>Add</button>
                                     </div>
                                 </div>

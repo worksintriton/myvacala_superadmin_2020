@@ -141,25 +141,49 @@ export class PopularserviceComponent implements OnInit {
 
   }
   deleteservice(i) {
-    let data = {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        let data = {
 
-      "Service_id": i
-
-    }
-    console.log(data);
-    this._api.deletemainservice(data).subscribe(
-      (response: any) => {
-        console.log(response);
-        if (response.Code == 200) {
-          alert(response.Message);
-          this.ngOnInit();
+          "Service_id": i
+    
         }
-        else {
-          alert("sorry");
-        }
-
+        console.log(data);
+        this._api.deletemainservice(data).subscribe(
+          (response: any) => {
+            console.log(response);
+            if (response.Code == 200) {
+              alert("popular service deleted successfully");
+              this.ngOnInit();
+            }
+            else {
+              alert("sorry");
+            }
+    
+          }
+        );
+         // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
       }
-    );
+    })
+
+   
   }
   open_banner(item) {
     //this.saveInLocal('Master_Service',item);
@@ -298,7 +322,7 @@ export class PopularserviceComponent implements OnInit {
             if (response.Code == 422) {
               alert(response.Message);
             } else {
-              alert(response.Message);
+              alert("popular service created successfully");
               // this.router.navigate(['/superadmin/master/create_master_service'])
               this.ngOnInit();
             }
@@ -328,7 +352,7 @@ export class PopularserviceComponent implements OnInit {
             if (response.Code == 401) {
               alert(response.Message);
             } else {
-              alert(response.Message);
+              alert("popular service updated successfully");
               this.forcreate = true;
               //this.router.navigate(['/superadmin/master/create_master_service']);
               this.ngOnInit();

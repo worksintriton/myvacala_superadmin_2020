@@ -3,6 +3,8 @@ import { ApiService } from '../../../../api.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-vehicle-list',
   templateUrl: './vehicle-list.component.html',
@@ -76,22 +78,47 @@ export class VehicleListComponent implements OnInit {
     );
   }
   get_fuel_list(item) {
-    // console.log(item)
-    let data = {
-      "_id": item._id
-    }
-    this._api.vehiclenameDelete(data).subscribe(
-      (response: any) => {
-        // console.log(response);
-        if (response.Code == 200) {
-          alert(response.Message);
-          this.ngOnInit();
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        let data = {
+          "_id": item._id
         }
-        else {
-          alert("sorry");
-        }
+        this._api.vehiclenameDelete(data).subscribe(
+          (response: any) => {
+            // console.log(response);
+            if (response.Code == 200) {
+              alert("Vehicle Deleted successfully");
+              this.ngOnInit();
+            }
+            else {
+              alert("sorry");
+            }
+          }
+        );
+       
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
       }
-    );
+    })
+    // console.log(item)
+    
   }
   edit_list_data(item) {
     this.saveInLocal('vehicle', item);
@@ -112,24 +139,54 @@ export class VehicleListComponent implements OnInit {
     if (this.VehicleType != undefined || this.VehicleBrand != undefined || this.VehicleModel != undefined || this.fuletype != undefined || this.vehiclebody != undefined) {
       this.vehicledetails_list = this.List;
       if (this.VehicleType != undefined) {
-        this.vehicledetails_list = this.vehicledetails_list.filter((x) => x.Vehicle_Type._id == this.VehicleType)
-        console.log(this.vehicledetails_list)
+        if(this.VehicleType == "All"){
+          this.vehicledetails_list = this.List;
+        }
+        else{
+          this.vehicledetails_list = this.vehicledetails_list.filter((x) => x.Vehicle_Type._id == this.VehicleType)
+          console.log(this.vehicledetails_list)
+        }
+      
       }
       if (this.VehicleBrand != undefined) {
-        this.vehicledetails_list = this.vehicledetails_list.filter((x) => x.Vehicle_Brand_id._id == this.VehicleBrand)
-        console.log(this.vehicledetails_list)
+        if(this.VehicleBrand == "All"){
+          this.vehicledetails_list = this.vehicledetails_list;
+        }
+        else{
+          this.vehicledetails_list = this.vehicledetails_list.filter((x) => x.Vehicle_Brand_id._id == this.VehicleBrand)
+          console.log(this.vehicledetails_list)
+        }
+       
       }
       if (this.VehicleModel != undefined) {
-        this.vehicledetails_list = this.vehicledetails_list.filter((x) => x.Vehicle_Name == this.VehicleModel)
-        console.log(this.vehicledetails_list)
+        if(this.VehicleModel == "All"){
+          this.vehicledetails_list = this.vehicledetails_list;
+        }
+        else{
+          this.vehicledetails_list = this.vehicledetails_list.filter((x) => x.Vehicle_Name == this.VehicleModel)
+          console.log(this.vehicledetails_list)
+        }
+        
       }
       if (this.fuletype != undefined) {
-        this.vehicledetails_list = this.vehicledetails_list.filter((x) => x.Fuel_Type.some((y) => y._id == this.fuletype))
-        console.log(this.vehicledetails_list)
+        if(this.fuletype == "All"){
+          this.vehicledetails_list = this.vehicledetails_list;
+        }
+        else{
+          this.vehicledetails_list = this.vehicledetails_list.filter((x) => x.Fuel_Type.some((y) => y._id == this.fuletype))
+          console.log(this.vehicledetails_list)
+        }
+        
       }
       if (this.vehiclebody != undefined) {
-        this.vehicledetails_list = this.vehicledetails_list.filter((x) => x.Vehicle_Model.some((y) => y._id == this.vehiclebody))
-        console.log(this.vehicledetails_list)
+        if(this.vehiclebody == "All"){
+          this.vehicledetails_list = this.vehicledetails_list;
+        }
+        else{
+          this.vehicledetails_list = this.vehicledetails_list.filter((x) => x.Vehicle_Model.some((y) => y._id == this.vehiclebody))
+          console.log(this.vehicledetails_list)
+        }
+        
       }
     }
     else {

@@ -3,6 +3,7 @@ import { ApiService } from '../../../../api.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-brand',
@@ -54,25 +55,49 @@ export class BrandComponent implements OnInit {
     this.router.navigate(['/superadmin/master/Vehiclechecklist']);
   }
   deletebrand(i) {
-    let data = {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        let data = {
 
-      "_id": i
-
-    }
-    console.log(data);
-    this._api.vehiclebrand_delete(data).subscribe(
-      (response: any) => {
-        console.log(response);
-        if (response.Code == 200) {
-          alert(response.Message);
-          this.ngOnInit();
+          "_id": i
+    
         }
-        else {
-          alert("sorry");
-        }
-
+        console.log(data);
+        this._api.vehiclebrand_delete(data).subscribe(
+          (response: any) => {
+            console.log(response);
+            if (response.Code == 200) {
+              alert("Vehicle manufacturer Deleted successfully");
+              this.ngOnInit();
+            }
+            else {
+              alert("sorry");
+            }
+    
+          }
+        );
+       // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
       }
-    );
+    })
+    
+    
   }
   editvehicle_brand(item) {
     console.log(item);
@@ -129,7 +154,7 @@ export class BrandComponent implements OnInit {
             if (response.Code == 422) {
               alert(response.Message);
             } else {
-              alert("Vehicle Manufacturer Created Successfully");
+              alert("Vehicle manufacturer created successfully");
               // this.router.navigate(['/superadmin/master/create_master_service'])
               this.ngOnInit();
               this.VehicleType = undefined;
@@ -157,7 +182,7 @@ export class BrandComponent implements OnInit {
             if (response.Code == 401) {
               alert(response.Message);
             } else {
-              alert("Vehicle Manufacturer Updated Successfully");
+              alert("Vehicle manufacturer updated successfully");
               // this.saveInLocal("foredit", true);
               //this.router.navigate(['/superadmin/master/create_master_service']);
               this.ngOnInit();

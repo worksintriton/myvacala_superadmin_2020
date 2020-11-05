@@ -1,4 +1,7 @@
-<div class="animated fadeIn">
+<div *ngIf="create == true && singlevehicle_data != undefiend">
+  <h3 style="text-align: center;color: #c72f34;padding: 120px 0px;">Loding...</h3>
+</div>
+<div class="animated fadeIn" *ngIf="(create == true && singlevehicle_data == undefiend) || (create == false && singlevehicle_data != undefiend)">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -14,7 +17,7 @@
               <div class="col-md-6">
                 <select class="form-control" (change)="vechiclt_type_select($event)" [(ngModel)]="VehicleType"
                   name="VehicleType">
-                  <option value=undefined>Select Vehicle Type</option>
+                  <option value=undefined style="display: none;">Select Vehicle Type</option>
                   <ng-container *ngFor="let list of vehicle_list;">
                     <option value="{{list._id}}">{{list.Vehicle_Type}}</option>
                   </ng-container>
@@ -26,7 +29,7 @@
                 <label class="col-md-3 col-form-label" for="text-input">Vehicle Manufacturer</label>
                 <div class="col-md-6">
                   <select class="form-control" [(ngModel)]="VehicleBrand" name="VehicleBrand">
-                    <option value=undefined>Select Vehicle Manufacturer</option>
+                    <option value=undefined style="display: none;">Select Vehicle Manufacturer</option>
                     <ng-container *ngFor="let list of brand_list;
                               ">
                       <option value="{{list._id}}">{{list.Vehicle_Brand_Name}}</option>

@@ -691,7 +691,7 @@ const routes: Routes = [
         path: 'VehicleName',
         component: VehiclechecklistComponent,
         data: {
-          title: 'PopularVehicle'
+          title: 'Vehicle'
         }
       },
       {

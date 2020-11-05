@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject ,  ViewChild, AfterViewInit, ElementRef} from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { ApiService } from '../../../../api.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -49,7 +49,7 @@ export class LocationComponent implements OnInit {
       this.DisplayName != undefined &&
       this.latitude != undefined &&
       this.longitude != undefined &&
-      this.pincode != undefined&&
+      this.pincode != undefined &&
       this.LocationName != '' &&
       this.DisplayName != '' &&
       this.latitude != '' &&
@@ -72,7 +72,7 @@ export class LocationComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           this.saveInLocal('Location_list', response.data);
-          alert(response.Message);
+          alert("Location created successfully");
           this.ngOnInit();
           // this.router.navigateByUrl('/superadmin/master/listemployees');
           this.Pic = undefined;
@@ -85,12 +85,12 @@ export class LocationComponent implements OnInit {
         }
       );
     } else {
-      if(this.Pic == undefined){
+      if (this.Pic == undefined) {
         alert('Please upload Image')
       }
-     else{
-      alert('Fill all the inputs')
-     }
+      else {
+        alert('Fill all the inputs')
+      }
     }
 
   }
@@ -112,25 +112,50 @@ export class LocationComponent implements OnInit {
   }
 
   VehicleModel_delete(i) {
-    let data = {
 
-      "Location_id": i
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'If you delete this data it will affect existing user details.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
 
-    }
-    console.log(data);
-    this._api.LocationDelete(data).subscribe(
-      (response: any) => {
-        console.log(response);
-        if (response.Code == 200) {
-          alert(response.Message);
-          this.ngOnInit();
+        let data = {
+
+          "Location_id": i
+
         }
-        else {
-          alert("sorry");
-        }
+        console.log(data);
+        this._api.LocationDelete(data).subscribe(
+          (response: any) => {
+            console.log(response);
+            if (response.Code == 200) {
+              alert("Location deleted successfully");
+              this.ngOnInit();
+            }
+            else {
+              alert("sorry");
+            }
 
+          }
+        );
+
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your imaginary file has been deleted.',
+        //   'success'
+        // )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe.',
+          'error'
+        )
       }
-    );
+    })
   }
   editservice(data) {
     window.scroll(0, 0);
@@ -151,54 +176,54 @@ export class LocationComponent implements OnInit {
       this.DisplayName != undefined &&
       this.latitude != undefined &&
       this.longitude != undefined &&
-      this.pincode != undefined&&
+      this.pincode != undefined &&
       this.LocationName != '' &&
       this.DisplayName != '' &&
       this.latitude != '' &&
       this.longitude != '' &&
       this.pincode != '') {
-        let str = this.pincode.split(" ").join("");
-        console.log(str)
-        this.pin = str.split(',');
-        console.log(this.pin)
-        let data = {
-          "Location_id": this.id,
-          "Image": this.Pic,
-          "Location_Name": this.LocationName,
-          "Display_Name": this.DisplayName,
-          "Lat": this.latitude,
-          "Long": this.longitude,
-          "Pincodes": this.pin
+      let str = this.pincode.split(" ").join("");
+      console.log(str)
+      this.pin = str.split(',');
+      console.log(this.pin)
+      let data = {
+        "Location_id": this.id,
+        "Image": this.Pic,
+        "Location_Name": this.LocationName,
+        "Display_Name": this.DisplayName,
+        "Lat": this.latitude,
+        "Long": this.longitude,
+        "Pincodes": this.pin
+      }
+      console.log(data);
+      this._api.LocationEdit(data).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          this.saveInLocal('Location_list', response.data);
+          alert("Location updated successfully");
+          this.ngOnInit();
+          // this.router.navigateByUrl('/superadmin/master/listemployees');
+
+          this.id = undefined;
+          this.edit = false;
+          this.Pic = undefined;
+          this.LocationName = undefined;
+          this.DisplayName = undefined;
+          this.latitude = undefined;
+          this.longitude = undefined;
+          this.pincode = undefined;
         }
-        console.log(data);
-        this._api.LocationEdit(data).subscribe(
-          (response: any) => {
-            console.log(response.Data);
-            this.saveInLocal('Location_list', response.data);
-            alert(response.Message);
-            this.ngOnInit();
-            // this.router.navigateByUrl('/superadmin/master/listemployees');
-    
-            this.id = undefined;
-            this.edit = false;
-            this.Pic = undefined;
-            this.LocationName = undefined;
-            this.DisplayName = undefined;
-            this.latitude = undefined;
-            this.longitude = undefined;
-            this.pincode = undefined;
-          }
-        );
+      );
+    }
+    else {
+      if (this.Pic == undefined) {
+        alert('Please upload Image')
       }
       else {
-        if(this.Pic == undefined){
-          alert('Please upload Image')
-        }
-       else{
         alert('Fill all the inputs')
-       }
       }
-  
+    }
+
   }
 
   fileupload(event) {
@@ -211,16 +236,16 @@ export class LocationComponent implements OnInit {
         this.width = img.width;
         this.height = img.height;
         console.log(this.width, this.height);
-        if(this.width == 100 && this.height == 100){
+        if (this.width == 100 && this.height == 100) {
           this.addfiles1();
         }
-        else{
+        else {
           Swal.fire(
             'Sorry',
             'Image Size Should be 100*100',
             'error'
           )
-      
+
         }
       };
 
