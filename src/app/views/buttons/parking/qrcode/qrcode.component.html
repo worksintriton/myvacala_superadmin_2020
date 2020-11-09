@@ -15,9 +15,6 @@
                   <div class="col-md-6">
                     <ngx-select-dropdown [config]="config" [options]="id_list" [(ngModel)]="parking_id"
                       [ngModelOptions]="{standalone: true}" (ngModelChange)="get_mech()"></ngx-select-dropdown>
-
-
-
                     <!-- <input type="text" [(ngModel)]="Vendor_Id" name="Title-1"  class="form-control"
                       placeholder="Vendor Id"> -->
                   </div>
@@ -30,10 +27,10 @@
                   </div>
                 </div>
                 <div class="form-group row">
-
                   <label class="col-md-4 col-form-label" for="text-input">Vehicle Type</label>
                   <div class="col-md-6">
-                    <select class="form-control" [(ngModel)]="vehicle_type" name="vehicle_type" (ngModelChange)="vechiletype_detail()">
+                    <select class="form-control" [(ngModel)]="vehicle_type" name="vehicle_type"
+                      (ngModelChange)="vechiletype_detail()">
                       <option value=undefined style="display: none;">Select Type</option>
                       <ng-container *ngFor="let list of vehicle_list;">
                         <option value="{{list._id}}">{{list.Vehicle_Type}}</option>

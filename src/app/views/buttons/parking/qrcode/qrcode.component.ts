@@ -73,7 +73,7 @@ export class QrcodeComponent implements OnInit {
         console.log(this.vendor_id_list);
         this.id_list = [];
         for (let i = 0; i < this.vendor_id_list.length; i++) {
-          this.id_list.push(this.vendor_id_list[i]._id)
+          this.id_list.push(this.vendor_id_list[i].parking_owner_id.parking_vendor_id)
         }
       }
     );
