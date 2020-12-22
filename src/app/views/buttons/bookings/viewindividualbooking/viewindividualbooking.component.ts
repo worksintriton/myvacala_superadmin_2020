@@ -29,7 +29,7 @@ export class ViewindividualbookingComponent implements OnInit {
   BookingStatus: any;
   mechanic_list: any = [];
   id_list: any = [];
-
+  Order:any;
   config = {
     displayKey: "description", //if objects array passed which key to be displayed defaults to description
     search: true, //true/false for the search functionlity defaults to false,
@@ -42,7 +42,8 @@ export class ViewindividualbookingComponent implements OnInit {
     searchPlaceholder: 'Search',// label thats displayed in search input,
     searchOnKey: 'name',// key on which search should be performed this will be selective search. if undefined this will be extensive search on all keys
   }
-
+  pickuplocation:any;
+  Booking_Date:any;
   constructor(
     private router: Router,
 
@@ -63,10 +64,13 @@ export class ViewindividualbookingComponent implements OnInit {
     this.Thmp_list = this.vehicle_list.Customer_Invoice;
     this.FinalPayable = this.vehicle_list.Final_bill_payed
     this.Thmp_list1 = this.vehicle_list.Job_Card;
-    this.WorkshopLocation = this.vehicle_list.Workshop_Location;
+    this.WorkshopLocation = this.vehicle_list.Workshop_Location[0];
     this.WorkshopName = this.vehicle_list.Workshop_Name;
     this.WorkshopId = this.vehicle_list.Mechanicworkshop_ids;
     this.BookingStatus = this.vehicle_list.Booking_Status;
+    this.Order = this.vehicle_list.Order_Value;
+    this.pickuplocation = this.vehicle_list.Customer_Address;
+    this.Booking_Date = this.vehicle_list.createdAt;
     this._api.mechanicList().subscribe(
       (response: any) => {
         console.log(response.Data);

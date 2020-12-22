@@ -13,6 +13,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Booking Date & Time</label>
+                            <div class="col-md-6">
+                                <input type="text" [(ngModel)]="Booking_Date" name="Booking_Date" class="form-control"
+                                    disabled placeholder="vehicle TypeBooking Date & Time">
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Mobile No</label>
                             <div class="col-md-6">
                                 <input type="text" [(ngModel)]="mobile" name="mobile" class="form-control" disabled
@@ -42,9 +49,16 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Pickup Location</label>
+                            <div class="col-md-6">
+                                <input type="text" [(ngModel)]="pickuplocation" name="pickuplocation" class="form-control"
+                                    disabled placeholder="Pickup location">
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Order Value</label>
                             <div class="col-md-6">
-                                <input type="text" name="OrderValue" value="500" class="form-control" disabled
+                                <input type="text" [(ngModel)]="Order" name="OrderValue" class="form-control" disabled
                                     placeholder="Order Value">
                             </div>
                         </div>
@@ -55,48 +69,7 @@
                                     placeholder="Final Payable Amount">
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="text-input">Customer Invoice</label>
-                            <div class="col-md-3">
-                                <input type="file" style="display: none;" (change)="fileupload($event)" id="myFile">
-                                <label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
-                                    for="myFile">Choose file</label>
-                                <span *ngIf="Pic != undefined">{{Pic | slice:37}}</span>
-                            </div>
-                            <!-- <div class="col-md-3">
-                                <input type="file" [(ngModel)]="FinalPayable" name="invoice"  class="form-control">
-                            </div> -->
-                            <div class="col=md-3">
-                                <button (click)="addimg()" class="btn btn-sm btn-primary"><i
-                                        class="fa fa-edit"></i>Add</button>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="text-input">Customer Invoice Option</label>
-                            <div class="col-md-3">
-                                <table class="table table-bordered table-striped table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th>S.No</th>
-                                            <th>Documents</th>
-                                            <th>View</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let dynamic of Thmp_list; let i = index;">
-                                            <td>{{i+1}}</td>
-                                            <td>Document</td>
-                                            <td style="text-align: center;"><a href="{{dynamic.doc_link}}"
-                                                    target="_blank" class="btn  btn-sm btn-danger">View</a></td>
-                                            <td style="text-align: center;"> <button (click)="deleteimg(dynamic,i)"
-                                                    class="btn  btn-sm btn-danger">Delete</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
+                       
                         <!-- <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input"></label>
                             <div class="col-md-3">
@@ -106,54 +79,12 @@
                                 <button class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Edit</button>
                             </div>
                         </div> -->
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="text-input">Job Card</label>
-                            <div class="col-md-3">
-                                <input type="file" style="display: none;" (change)="fileupload1($event)" id="myFi">
-                                <label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
-                                    for="myFi">Choose file</label>
-                                <span *ngIf="Pic1 != undefined">{{Pic1 | slice:37}}</span>
-                            </div>
-                            <!-- <div class="col-md-3">
-                                <input type="file" [(ngModel)]="FinalPayable" name="invoice"  class="form-control">
-                            </div> -->
-                            <div class="col=md-3">
-                                <button (click)="addimg1()" class="btn btn-sm btn-primary"><i
-                                        class="fa fa-edit"></i>Add</button>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="text-input">Job Option</label>
-                            <div class="col-md-3">
-                                <table class="table table-bordered table-striped table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th>S.No</th>
-                                            <th>Documents</th>
-                                            <th>View</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let dynamic of Thmp_list1; let i = index;">
-                                            <td>{{i+1}}</td>
-                                            <td>Document</td>
-                                            <td style="text-align: center;"><a href="{{dynamic.doc_link}}"
-                                                    target="_blank" class="btn  btn-sm btn-danger">View</a></td>
-                                            <td style="text-align: center;"> <button (click)="deleteimg1(dynamic,i)"
-                                                    class="btn  btn-sm btn-danger">Delete</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Workshop Id</label>
                             <div class="col-md-6">
                                 <ngx-select-dropdown [config]="config" [options]="id_list"
                                 [(ngModel)]="WorkshopId" [ngModelOptions]="{standalone: true}" (ngModelChange)="get_mech()"></ngx-select-dropdown>
-
-                                
 
 
 
@@ -190,11 +121,94 @@
                                     <option value="Service Started">Service Started</option>
                                     <option value="Service Completed">Service Completed</option>
                                     <option value="Vehicle Delivered">Vehicle Delivered </option>
+                                    <option value="Jobcard Raised">Jobcard Raised </option>
+                                    <option value="Invoice Submitted">Invoice Submitted </option>
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group row" *ngIf="BookingStatus=='Jobcard Raised'">
+                            <label class="col-md-3 col-form-label" for="text-input">Job Card</label>
+                            <div class="col-md-3">
+                                <input type="file" style="display: none;" (change)="fileupload1($event)" id="myFi" accept="application/pdf,image/jpeg">
+                                <label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                    for="myFi">Choose file</label>
+                                <span *ngIf="Pic1 != undefined">{{Pic1 | slice:37}}</span>
+                            </div>
+                            <!-- <div class="col-md-3">
+                                <input type="file" [(ngModel)]="FinalPayable" name="invoice"  class="form-control">
+                            </div> -->
+                            <div class="col=md-3">
+                                <button (click)="addimg1()" class="btn btn-sm btn-primary"><i
+                                        class="fa fa-edit"></i>Add</button>
+                            </div>
+                        </div>
+                        <div class="form-group row" *ngIf="BookingStatus=='Jobcard Raised'">
+                            <label class="col-md-3 col-form-label" for="text-input">Job Option</label>
+                            <div class="col-md-3">
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No</th>
+                                            <th>Documents</th>
+                                            <th>View</th> 
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let dynamic of Thmp_list1; let i = index;">
+                                            <td>{{i+1}}</td>
+                                            <td>Document</td>
+                                            <td style="text-align: center;"><a href="{{dynamic.doc_link}}"
+                                                    target="_blank" class="btn  btn-sm btn-danger">View</a></td>
+                                            <td style="text-align: center;"> <button (click)="deleteimg1(dynamic,i)"
+                                                    class="btn  btn-sm btn-danger">Delete</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-group row" *ngIf="BookingStatus=='Invoice Submitted'">
+                            <label class="col-md-3 col-form-label" for="text-input">Customer Invoice</label>
+                            <div class="col-md-3">
+                                <input type="file" style="display: none;" (change)="fileupload($event)" id="myFile" accept="application/pdf">
+                                <label style="padding: 3px;font-size: 11px;font-weight: 500; border: 1px solid #c8c6c6;"
+                                    for="myFile">Choose file</label>
+                                <span *ngIf="Pic != undefined">{{Pic | slice:37}}</span>
+                            </div>
+                            <!-- <div class="col-md-3">
+                                <input type="file" [(ngModel)]="FinalPayable" name="invoice"  class="form-control">
+                            </div> -->
+                            <div class="col=md-3">
+                                <button (click)="addimg()" class="btn btn-sm btn-primary"><i
+                                        class="fa fa-edit"></i>Add</button>
+                            </div>
+                        </div>
+                        <div class="form-group row" *ngIf="BookingStatus=='Invoice Submitted'">
+                            <label class="col-md-3 col-form-label" for="text-input">Customer Invoice Option</label>
+                            <div class="col-md-3">
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No</th>
+                                            <th>Documents</th>
+                                            <th>View</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let dynamic of Thmp_list; let i = index;">
+                                            <td>{{i+1}}</td>
+                                            <td>Document</td>
+                                            <td style="text-align: center;"><a href="{{dynamic.doc_link}}"
+                                                    target="_blank" class="btn  btn-sm btn-danger">View</a></td>
+                                            <td style="text-align: center;"> <button (click)="deleteimg(dynamic,i)"
+                                                    class="btn  btn-sm btn-danger">Delete</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">

@@ -1,187 +1,172 @@
 <div class="animated fadeIn">
 
-    <div class="row mt-2">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <i class="fa fa-align-justify"></i>Parking Booking List
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <button class="btn btn-sm btn-primary float-right mt-2"><i
-                                    class="fa fa-save"></i>Excel</button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <button type="reset" class="btn btn-sm btn-primary mt-2"><i class="fa fa-share"></i>
-                                Share</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                          <div class="form-group">          
-                          <input type="text" [(ngModel)]="BookingId" name="BookingId" id="text-input" class="form-control"
-                          placeholder="Booking Id">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                          <div class="form-group">          
-                          <input type="text" [(ngModel)]="CustomerNumber" name="CustomerNumber" id="text-input" class="form-control"
-                          placeholder="Customer Number">
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                          <div class="form-group">          
-                          <input type="text" [(ngModel)]="VehicleNumber" name="VehicleNumber" id="text-input" class="form-control"
-                          placeholder="Vehicle Number">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <input type="text" [(ngModel)]="map" name="map" id="text-input" class="form-control"
-                            placeholder="Vehicle Type">
-                            </div>
-                        </div>      
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <input type="text" [(ngModel)]="ParkingAreaName" name="ParkingAreaName" id="text-input" class="form-control"
-                            placeholder="Parking Area Name">
-                            </div>
-                        </div>     
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <input type="text" [(ngModel)]="ParkingAreaLocation" name="ParkingAreaLocation" id="text-input" class="form-control"
-                            placeholder="Parking Area Location">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <input type="text" [(ngModel)]="CityofBooking" name="CityofBooking" id="text-input" class="form-control"
-                            placeholder="City of Booking">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                          <div class="form-group">          
-                          <input type="text" [(ngModel)]="FloorName" name="FloorName" id="text-input" class="form-control"
-                          placeholder="Floor Name">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <input type="text" [(ngModel)]="SubFloorName" name="SubFloorName" id="text-input" class="form-control"
-                            placeholder="Sub Floor Name">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                          <div class="form-group">
-                           <button class="btn btn-primary">Search</button>
-                            </div>
-                        </div>
-                      </div>
-                      <div clss="col-md-8">
-                        <div class="row">
-                          <label class="col-md-2 col-form-label" for="text-input">Booking Start Date</label>
-                          <div class="col-md-2">
-                            <input type="date" class="form-control datetimepicker-input" name="todate" data-target="#reservationdate_to" required/>
-                                </div>
-                     
-                        <label class="col-md-2 col-form-label" for="text-input">Booking End Date</label>
-                        <div class="col-md-2"> 
-                            <input type="date" class="form-control datetimepicker-input" name="todate" data-target="#reservationdate_to" required/>
-                           
-                        </div>
-                        </div>
-                      </div>
+  <div class="row mt-2">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>Parking Booking List
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-right">
+            <div class="form-group">
+              <button style="margin-right: 10px;" class="btn btn-sm btn-primary float-right mt-2"
+                (click)="exportAsXLSX()"><i class="fa fa-save"></i>Excel</button>
+            </div>
+          </div>
+          <!-- <div class="col-md-6">
+            <div class="form-group">
+              <button type="reset" class="btn btn-sm btn-primary mt-2"><i class="fa fa-share"></i>
+                Share</button>
+            </div>
+          </div> -->
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" [(ngModel)]="Booking_id" name="Booking_id" id="text-input" class="form-control"
+                  placeholder="Booking Id">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <select [(ngModel)]="Booking_sta" class="form-control">
+                  <option value="undefined" style="display: none;">Select Booking status</option>
+                  <option value="Upcoming">Upcoming</option>
+                  <option value="Check-out">Check-out</option>
+                  <option value="Check-iut">Check-iut</option>
+                </select>
+              </div>
 
-                    <div style="overflow-x:auto;margin-top: 15px;">
-                      <div class="search-hero">
-                        <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
-                          [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
-                      </div>
-                      <table class="table table-striped table-bordered table-sm" [svData]="parking_booking_list" #sv="svDataTable"
-                        [svRowsOnPage]="5" svSortBy="name" svSortOrder="asc">
-                            <thead>
-                                <tr>
-                                    <!-- <th><input type="checkbox" [(ngModel)]="select" name="bookingtablelist" id="Parking"
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" [(ngModel)]="VehicleNumber" name="VehicleNumber" id="text-input" class="form-control"
+                  placeholder="Vehicle Number">
+              </div>
+            </div>
+            <!-- <div class="col-md-3">
+              <div class="form-group">
+                <select [(ngModel)]="Vehicle_type" class="form-control">
+                  <option value="undefined" style="display: none;">Select Vehicle Type</option>
+                  <option value="Four Wheeler">Four Wheeler</option>
+                  <option value="Two Wheeler">Two Wheeler</option>
+                </select>
+              </div>
+            </div> -->
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" [(ngModel)]="CityofBooking" name="CityofBooking" id="text-input" class="form-control"
+                  placeholder="City of Booking">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <button class="btn btn-primary" (click)="filter()">Search</button>
+                <button class="btn btn-primary" (click)="Refresh()">Refresh</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-md-2 col-form-label" for="text-input">Booking Start Date:</label>
+            <div class="col-md-4">
+              <input type="date" class="form-control datetimepicker-input" name="todate"
+                data-target="#reservationdate_to" required />
+            </div>
+
+            <label class="col-md-2 col-form-label" for="text-input">Booking End Date:</label>
+            <div class="col-md-4">
+              <input type="date" class="form-control datetimepicker-input" name="todate"
+                data-target="#reservationdate_to" required />
+
+            </div>
+          </div>
+
+          <div style="overflow-x:auto;margin-top: 15px;">
+            <div class="search-hero">
+              <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+                [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
+            </div>
+            <table class="table table-striped table-bordered table-sm" [svData]="parking_booking_list" #sv="svDataTable"
+              [svRowsOnPage]="5" svSortBy="name" svSortOrder="asc">
+              <thead>
+                <tr>
+                  <!-- <th><input type="checkbox" [(ngModel)]="select" name="bookingtablelist" id="Parking"
                                             value="Parking" (change)="changepermission_parking($event)"> </th> -->
-                                    <th>S.No</th>
-                                    <!-- <th>Vendor Id</th> -->
-                                    <th>Booking Id</th>
-                                    <th>Customer Name</th>
-                                    <th>Booked Date&Time</th>
-                                    <th>Vehicle Name</th>
-                                    <th>Vehicle type</th>
-                                    <th>Booking status</th>
-                                    <th>Parking shop Name</th>
-                                    <th>Block</th>
-                                    <th>Floor</th>
-                                    <th>Slot </th>
-                                    <!-- <th>Booking_Date</th>
+                  <th>S.No</th>
+                  <!-- <th>Vendor Id</th> -->
+                  <th>Booking Id</th>
+                  <th>Customer Name</th>
+                  <th>Booked Date&Time</th>
+                  <th>Vehicle Name</th>
+                  <th>Vehicle type</th>
+                  <th>Booking status</th>
+                  <th>Parking shop Name</th>
+                  <th>Block</th>
+                  <th>Floor</th>
+                  <th>Slot </th>
+                  <!-- <th>Booking_Date</th>
                                     <th>Booking Time</th> -->
-                                    <th>Booking_Start_Date</th>
-                                    <th>Booking Start Time</th>
-                                    <th>Booking_End_Date</th>
-                                    <th>Booked End Time</th>
-                                    <!-- <th>Number of Hours Booked</th> -->
-                                    <th>CheckIn_Date&Time</th>
-                                    <th>CkeckOut_Date&Time</th>
-                                    <th>Total Hours</th>
-                                    <th>Booking Amount</th>
-                                    <th>Final Amount</th>
-                                    <!-- <th>Rate PerHour</th>
+                  <th>Booking_Start_Date</th>
+                  <th>Booking Start Time</th>
+                  <th>Booking_End_Date</th>
+                  <th>Booked End Time</th>
+                  <!-- <th>Number of Hours Booked</th> -->
+                  <th>CheckIn_Date&Time</th>
+                  <th>CkeckOut_Date&Time</th>
+                  <th>Total Hours</th>
+                  <th>Booking Amount</th>
+                  <th>Final Amount</th>
+                  <!-- <th>Rate PerHour</th>
                                     <th>Customer Invoice</th>
                                     <th>Vendor Invoice</th> -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <ng-container *ngFor="let item of sv.data | filter:searchQR ; let i = index;">
-                                    <tr>
-                                        <!-- <td><input type="checkbox" name="{{item.select_status}}"
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let item of sv.data | filter:searchQR ; let i = index;">
+                  <tr>
+                    <!-- <td><input type="checkbox" name="{{item.select_status}}"
                                                 [(ngModel)]="item.select_status" (change)="selectall($event)"></td> -->
-                                        <td>{{i+1}}</td>
-                                        <!-- <td>JDSE879876FG</td> -->
-                                        <td><a (click)="edit(item)"
-                                                style="color: blue; text-decoration: underline;">{{item.Booking_id}}</a>
-                                        </td>
-                                        <td>{{item.Customer_id.Name}}</td>
-                                        <td>{{item.Booked_Date_and_Time}}</td>
-                                        <td>{{item.Vehicle_details[0].Vehicle_Name}}</td>
-                                        <td>{{item.Vehicle_details[0].Vehicletype_Name }}</td>
-                                        
-                                        <td>{{item.Booking_status}}</td>
-                                        <td>{{item.parking_shop_name}}</td>
-                                        <td>{{item.block}}</td>
-                                        <td>{{item.floor}}</td>
-                                        <td>{{item.slot}}</td>
-                                        <td>{{item.booking_start_date}}</td>
-                                        <td>{{item.booking_start_time}}</td>
-                                        <td>{{item.booking_end_date}}</td>
-                                        <td>{{item.booking_end_time}}</td>
-                                        <!-- <td>{{item.total_checking_duration}}</td> -->
-                                        <td>{{item.Checking_date}}</td>
-                                        <td>{{item.Checkout_date}}</td>
-                                        <td>{{item.total_hrs}}</td>
-                                        <td>{{item.amount}}</td>
-                                        <td>{{item.total_amount}}</td>
-                                    </tr>
-                                </ng-container>
-                            </tbody>
-                            <tfoot>
-                              <tr>
-                                <td colspan="22">
-                                  <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
-                                </td>
-                              </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                    <td>{{i+1}}</td>
+                    <!-- <td>JDSE879876FG</td> -->
+                    <td><a (click)="edit(item)" style="color: blue; text-decoration: underline;">{{item.Booking_id}}</a>
+                    </td>
+                    <td>{{item.Customer_id.Name}}</td>
+                    <td>{{item.Booked_Date_and_Time}}</td>
+                    <td>{{item.Vehicle_details[0].Vehicle_Name}}</td>
+                    <td>{{item.Vehicle_details[0].Vehicletype_Name }}</td>
+
+                    <td>{{item.Booking_status}}</td>
+                    <td>{{item.parking_shop_name}}</td>
+                    <td>{{item.block}}</td>
+                    <td>{{item.floor}}</td>
+                    <td>{{item.slot}}</td>
+                    <td>{{item.booking_start_date}}</td>
+                    <td>{{item.booking_start_time}}</td>
+                    <td>{{item.booking_end_date}}</td>
+                    <td>{{item.booking_end_time}}</td>
+                    <!-- <td>{{item.total_checking_duration}}</td> -->
+                    <td>{{item.Checking_date}}</td>
+                    <td>{{item.Checkout_date}}</td>
+                    <td>{{item.total_hrs}}</td>
+                    <td>{{item.amount}}</td>
+                    <td>{{item.total_amount}}</td>
+                  </tr>
+                </ng-container>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="22">
+                    <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

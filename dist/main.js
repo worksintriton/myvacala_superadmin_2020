@@ -675,7 +675,7 @@ var ApiService = /** @class */ (function () {
         return this.http.get(this.apiUrl + 'cart/admin/getlist');
     };
     ApiService.prototype.cart_delete = function (data) {
-        return this.http.post(this.apiUrl + 'cart/admin/delete', data);
+        return this.http.post(this.apiUrl + 'cart/delete', data);
     };
     ApiService.prototype.faq = function () {
         return this.http.get(this.apiUrl + 'faq/getlist');

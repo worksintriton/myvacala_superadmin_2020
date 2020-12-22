@@ -377,7 +377,8 @@ export class ParkingComponent implements OnInit {
       && this.lang != undefined && this.lang != ''
       && this.lang != undefined && this.lang != ''
       && this.poc_email != undefined && this.poc_email != ''
-      && (this.include_bike1.length > 0 || this.include_bike2.length > 0) &&this.emailerror1 != true
+      // && (this.include_bike1.length > 0 || this.include_bike2.length > 0) 
+      &&this.emailerror1 != true
     ){
       this.step2 = true;
       let data = {
