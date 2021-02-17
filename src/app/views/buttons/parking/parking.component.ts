@@ -297,6 +297,15 @@ export class ParkingComponent implements OnInit {
   car_spec_day_date: any;
   both_spec_day_date: any;
   emailerror1: boolean;
+  hour1: any;
+  hour2: any;
+  houramt: any;
+  hourtimearr1: any = []
+  hourtimearr: any = [];
+  hourlytablearr: any = [];
+  monthlyamt:any;
+  monthlyamtarr:any=[];
+  Dailyamt:any;
   constructor(
     private router: Router,
 
@@ -378,8 +387,8 @@ export class ParkingComponent implements OnInit {
       && this.lang != undefined && this.lang != ''
       && this.poc_email != undefined && this.poc_email != ''
       // && (this.include_bike1.length > 0 || this.include_bike2.length > 0) 
-      &&this.emailerror1 != true
-    ){
+      && this.emailerror1 != true
+    ) {
       this.step2 = true;
       let data = {
         "_id": this.parking_Details._id,
@@ -403,13 +412,13 @@ export class ParkingComponent implements OnInit {
         alert(res.Message);
       });
     }
-    else{
+    else {
       alert("Fill all the fields with valid data")
     }
-     
+
   }
 
-  
+
   parkingslotCreation() {
     if (this.forboth == true) {
       if (
@@ -444,40 +453,40 @@ export class ParkingComponent implements OnInit {
       }
 
     }
-    else if(this.fortwowheeler == true){
-        if (
-          this.Included_new.length > 0 &&
-          this.Included_new1.length > 0 &&
-          this.Included_new2.length > 0 &&
-          this.Included_new3.length > 0 &&
-          this.Included_new4.length > 0 &&
-          this.Included_new5.length > 0 &&
-          this.Included_new6.length > 0
-        ) {
-          let data = {
-            "_id": this.parking_Details._id,
-            "parking_details_bike_price_day": this.parking_details_bike_price_day,
-            "parking_details_car_price_day": this.parking_details_car_price_day,
-            "parking_details_car_price_spe_day": this.parking_details_car_price_spe_day,
-            "parking_details_bike_price_spe_day": this.parking_details_bike_price_spe_day,
-            "parking_details_update_status": "Updated",
-            "parking_details_price_bike_type": this.fortwowheeler,
-            "parking_details_price_both_type": false,
-            "parking_details_price_car_type": false,
-          }
-          console.log(data)
-          this._api.Parking_owner_edit(data).subscribe((res: any) => {
-            console.log(res)
-            alert(res.Message);
-            this.router.navigateByUrl('/superadmin/master/list_parking');
-          });
+    else if (this.fortwowheeler == true) {
+      if (
+        this.Included_new.length > 0 &&
+        this.Included_new1.length > 0 &&
+        this.Included_new2.length > 0 &&
+        this.Included_new3.length > 0 &&
+        this.Included_new4.length > 0 &&
+        this.Included_new5.length > 0 &&
+        this.Included_new6.length > 0
+      ) {
+        let data = {
+          "_id": this.parking_Details._id,
+          "parking_details_bike_price_day": this.parking_details_bike_price_day,
+          "parking_details_car_price_day": this.parking_details_car_price_day,
+          "parking_details_car_price_spe_day": this.parking_details_car_price_spe_day,
+          "parking_details_bike_price_spe_day": this.parking_details_bike_price_spe_day,
+          "parking_details_update_status": "Updated",
+          "parking_details_price_bike_type": this.fortwowheeler,
+          "parking_details_price_both_type": false,
+          "parking_details_price_car_type": false,
         }
-        else {
-          alert("Fill data for all days")
-        }
-     
+        console.log(data)
+        this._api.Parking_owner_edit(data).subscribe((res: any) => {
+          console.log(res)
+          alert(res.Message);
+          this.router.navigateByUrl('/superadmin/master/list_parking');
+        });
+      }
+      else {
+        alert("Fill data for all days")
+      }
+
     }
-    else if(this.forwfourwheeler == true){
+    else if (this.forwfourwheeler == true) {
       if (
         this.Included_newe.length > 0 &&
         this.Included_newe1.length > 0 &&
@@ -508,8 +517,8 @@ export class ParkingComponent implements OnInit {
       else {
         alert("Fill data for all days")
       }
-   
-  }
+
+    }
   }
 
   create_parking_slot() {
@@ -2423,6 +2432,7 @@ export class ParkingComponent implements OnInit {
       this.bothSlotWeekDaytime45.push(i);
       this.bothSlotWeekDaytime47.push(i);
       this.bothSlotWeekDaytime49.push(i);
+      this.hourtimearr1.push(i)
     }
   }
   biketime1() {
@@ -2923,4 +2933,86 @@ export class ParkingComponent implements OnInit {
       }
     }
   }
+
+
+
+  hourtime1() {
+    console.log(this.hour1)
+    for (let i = (+this.hour1); i <= 24; i++) {
+      this.hourtimearr.push(i);
+    }
+    console.log(this.hourtimearr)
+    if (this.hour1 == 24) {
+      for (let i = 1; i <= 23; i++) {
+        this.hourtimearr.push(i);
+      }
+    }
+
+  }
+
+  addhourly() {
+    let a = { "Start_time": this.hour1.toString(), "End_time": this.hour2.toString(), "Price": this.houramt };
+    this.hourlytablearr.push(a);
+    console.log(this.hourlytablearr);
+    this.hour2 =undefined;
+    this.hour1 = undefined;
+    this.houramt = undefined;
+  }
+
+  addhourlyremove(i) {
+    if (i < this.hourlytablearr.length - 1) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'If you want to remove this time period, you have to reset the remaining time periods',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.hourlytablearr.splice(i, (this.hourlytablearr.length - i));
+          this.hourtimearr1 = [];
+          this.hourtimearr = [];
+          if (this.hourlytablearr.length == 0) {
+            for (let i = 1; i <= 24; i++) {
+              this.hourtimearr1.push(i);
+            }
+          }
+          else {
+            for (let i = (+this.hourlytablearr[this.hourlytablearr.length - 1].End_time + 1); i <= 24; i++) {
+              this.hourtimearr1.push(i);
+            }
+          }
+          Swal.fire(
+            'Deleted!',
+            'Time Periods has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
+    }
+    else {
+      this.hourlytablearr.splice(i, 1);
+      this.hourtimearr1 = [];
+      this.hourtimearr = [];
+      if (this.hourlytablearr.length == 0) {
+        for (let i = 1; i <= 24; i++) {
+          this.hourtimearr1.push(i);
+        }
+      }
+      else {
+        for (let i = (+this.hourlytablearr[this.hourlytablearr.length - 1].End_time + 1); i <= 24; i++) {
+          this.hourtimearr1.push(i);
+        }
+      }
+    }
+
+  }
+
 }

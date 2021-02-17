@@ -320,12 +320,97 @@
               </div> -->
             </div>
           <div *ngIf="fortwowheeler">
-            <!--  -->
+            
             <div class="card">
               <div class="card-header">
                 <h4>Two Wheeler</h4>
               </div>
+
+
+
+
               <div class="card-body">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Hourly</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <select [(ngModel)]="hour1" class="form-control" [ngModelOptions]="{standalone: true}" (change)="hourtime1()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of hourtimearr1">
+                       <option *ngIf="opt != 24" value="{{opt}}">{{opt}}:00</option> 
+                        <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
+                      </ng-container>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <select [(ngModel)]="hour2" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of hourtimearr">
+                       <option *ngIf="opt != 24" value="{{opt}}">{{opt}}:00</option> 
+                        <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
+                      </ng-container>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="houramt" class="form-control" placeholder="Amount" name="amount">
+                  </div>
+                  <div class="col-md-2">
+                    <button (click)="addhourly()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        <tr *ngFor="let dynamic of hourlytablearr; let i = index;">
+                          <td>{{i+1}}</td>
+                           <td><ng-container *ngIf="dynamic.Start_time != 24">{{dynamic.Start_time}}:00</ng-container><ng-container *ngIf="dynamic.Start_time == 24" >00:00</ng-container></td>
+                          <td><ng-container *ngIf="dynamic.End_time != 24">{{dynamic.End_time}}:00</ng-container><ng-container *ngIf="dynamic.End_time == 24">00:00</ng-container></td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="addhourlyremove(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Monthly</label>
+                 
+                  <div class="col-md-6">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="monthlyamt" class="form-control" placeholder="Amount" name="amount">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Daily</label>
+                  
+                  <div class="col-md-6 ">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="Dailyamt" class="form-control" placeholder="Amount" name="amount">
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+              <!-- <div class="card-body">
 
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label" for="text-input">Monday</label>
@@ -338,8 +423,6 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" min="08:00" max="20:00" [(ngModel)]="SlotWeekDaytime1" name="SlotWeekDaytime1" 
-                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -350,8 +433,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime2" name="SlotWeekDaytime2" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -398,8 +480,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime3" name="SlotWeekDaytime3" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -410,8 +491,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime4" name="SlotWeekDaytime4" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -459,8 +539,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime5" name="SlotWeekDaytime5" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -471,8 +550,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime6" name="SlotWeekDaytime6" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -520,8 +598,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime7" name="SlotWeekDaytime7" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -532,8 +609,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime8" name="SlotWeekDaytime8" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -582,8 +658,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime9" name="SlotWeekDaytime9" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -594,8 +669,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime10" name="SlotWeekDaytime10" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -644,8 +718,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime11" name="SlotWeekDaytime12" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -656,8 +729,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime12" name="SlotWeekDaytime12" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -706,8 +778,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime13" name="SlotWeekDaytime14" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -718,8 +789,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime14" name="SlotWeekDaytime15" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -772,8 +842,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime16" name="SlotWeekDaytime16" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -784,8 +853,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime17" name="SlotWeekDaytime17" 
-                      class="form-control"> -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -823,17 +891,102 @@
                     </table>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
           <div *ngIf="forwfourwheeler" >
-            <!-- -->
+         
             <div class="card">
               <div class="card-header">
                 <h4>Four Wheeler</h4>
               </div>
+              
+
+
+
               <div class="card-body">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Hourly</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <select [(ngModel)]="hour1" class="form-control" [ngModelOptions]="{standalone: true}" (change)="hourtime1()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of hourtimearr1">
+                       <option *ngIf="opt != 24" value="{{opt}}">{{opt}}:00</option> 
+                        <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
+                      </ng-container>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <select [(ngModel)]="hour2" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of hourtimearr">
+                       <option *ngIf="opt != 24" value="{{opt}}">{{opt}}:00</option> 
+                        <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
+                      </ng-container>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="houramt" class="form-control" placeholder="Amount" name="amount">
+                  </div>
+                  <div class="col-md-2">
+                    <button (click)="addhourly()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        <tr *ngFor="let dynamic of hourlytablearr; let i = index;">
+                          <td>{{i+1}}</td>
+                           <td><ng-container *ngIf="dynamic.Start_time != 24">{{dynamic.Start_time}}:00</ng-container><ng-container *ngIf="dynamic.Start_time == 24" >00:00</ng-container></td>
+                          <td><ng-container *ngIf="dynamic.End_time != 24">{{dynamic.End_time}}:00</ng-container><ng-container *ngIf="dynamic.End_time == 24">00:00</ng-container></td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="addhourlyremove(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Monthly</label>
+                 
+                  <div class="col-md-6">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="monthlyamt" class="form-control" placeholder="Amount" name="amount">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Daily</label>
+                  
+                  <div class="col-md-6 ">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="Dailyamt" class="form-control" placeholder="Amount" name="amount">
+                  </div>
+                </div>
+              </div>        
+
+
+              
+
+
+
+              <!-- <div class="card-body">
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label" for="text-input">Monday</label>
                   <div class="col-md-2">
@@ -845,8 +998,6 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime18" name="SlotWeekDaytime18" 
-                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -857,8 +1008,6 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime19" name="SlotWeekDaytime19" 
-                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -906,8 +1055,6 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime20" name="SlotWeekDaytime20" 
-                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -918,8 +1065,6 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime21" name="SlotWeekDaytime21" 
-                      class="form-control" > -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -967,8 +1112,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime22" name="SlotWeekDaytime22" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -979,8 +1123,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime23" name="SlotWeekDaytime23" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1028,8 +1171,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime24" name="SlotWeekDaytime24" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1040,8 +1182,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime25" name="SlotWeekDaytime25" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1089,8 +1230,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime26" name="SlotWeekDaytime26" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1101,8 +1241,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime27" name="SlotWeekDaytime27" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1150,8 +1289,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime28" name="SlotWeekDaytime28" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1162,8 +1300,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime29" name="SlotWeekDaytime29" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1211,8 +1348,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime30" name="SlotWeekDaytime30" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1223,8 +1359,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime31" name="SlotWeekDaytime31" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1277,8 +1412,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime32" name="SlotWeekDaytime15" 
-                      class="form-control" -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1289,8 +1423,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime33" name="SlotWeekDaytime16" 
-                      class="form-control" -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1328,18 +1461,102 @@
                     </table>
                   </div>
                 </div>
-                </div>
+                </div> -->
             </div>
            
           </div>
           
           <div *ngIf="forboth">
-            <!--  -->
+         
             <div class="card">
               <div class="card-header">
                 <h4>Two Wheeler & Four Wheeler</h4>
               </div>
+              
+
+
               <div class="card-body">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Hourly</label>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">From Time</label>
+                    <select [(ngModel)]="hour1" class="form-control" [ngModelOptions]="{standalone: true}" (change)="hourtime1()">
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of hourtimearr1">
+                       <option *ngIf="opt != 24" value="{{opt}}">{{opt}}:00</option> 
+                        <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
+                      </ng-container>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">To Time</label>
+                    <select [(ngModel)]="hour2" class="form-control" [ngModelOptions]="{standalone: true}" >
+                      <option value="undefined" style="display:none;">Select</option>
+                      <ng-container  *ngFor="let opt of hourtimearr">
+                       <option *ngIf="opt != 24" value="{{opt}}">{{opt}}:00</option> 
+                        <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
+                      </ng-container>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="houramt" class="form-control" placeholder="Amount" name="amount">
+                  </div>
+                  <div class="col-md-2">
+                    <button (click)="addhourly()" class="btn btn-sm btn-primary">Add</button>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input"></label>
+                  <div class="col-md-6 mt-3">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>From Time </th>
+                          <th>To Time</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        <tr *ngFor="let dynamic of hourlytablearr; let i = index;">
+                          <td>{{i+1}}</td>
+                           <td><ng-container *ngIf="dynamic.Start_time != 24">{{dynamic.Start_time}}:00</ng-container><ng-container *ngIf="dynamic.Start_time == 24" >00:00</ng-container></td>
+                          <td><ng-container *ngIf="dynamic.End_time != 24">{{dynamic.End_time}}:00</ng-container><ng-container *ngIf="dynamic.End_time == 24">00:00</ng-container></td>
+                          <td>{{dynamic.Price}}</td>
+                          <td>
+                            <button (click)="addhourlyremove(i)" class="btn btn-sm btn-primary">Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Monthly</label>
+                 
+                  <div class="col-md-6">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="monthlyamt" class="form-control" placeholder="Amount" name="amount">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">Daily</label>
+                  
+                  <div class="col-md-6 ">
+                    <label class="col-form-label" for="text-input">Amount</label>
+                    <input type="number" [(ngModel)]="Dailyamt" class="form-control" placeholder="Amount" name="amount">
+                  </div>
+                </div>
+              </div>
+
+
+              
+
+
+
+              <!-- <div class="card-body">
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label" for="text-input">Monday</label>
                   <div class="col-md-2">
@@ -1351,8 +1568,6 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- input type="time" [(ngModel)]="SlotWeekDaytime35" name="SlotWeekDaytime35" 
-                      class="form-control" -->
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1363,8 +1578,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime36" name="SlotWeekDaytime36" 
-                      class="form-control" -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1412,8 +1626,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime37" name="SlotWeekDaytime37" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1424,8 +1637,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime38" name="SlotWeekDaytime38" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1473,8 +1685,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime39" name="SlotWeekDaytime39" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1485,8 +1696,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime40" name="SlotWeekDaytime40" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1534,8 +1744,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime41" name="SlotWeekDaytime41" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1546,8 +1755,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime42" name="SlotWeekDaytime42" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1596,8 +1804,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime43" name="SlotWeekDaytime43" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1608,8 +1815,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime44" name="SlotWeekDaytime44" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1658,8 +1864,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime45" name="SlotWeekDaytime45" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1670,8 +1875,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime46" name="SlotWeekDaytime46" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1720,8 +1924,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime47" name="SlotWeekDaytime47" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1732,8 +1935,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime48" name="SlotWeekDaytime48" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1786,8 +1988,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime49" name="SlotWeekDaytime49" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">To Time</label>
@@ -1798,8 +1999,7 @@
                         <option *ngIf="opt == 24" value="{{opt}}">00:00</option> 
                       </ng-container>
                     </select>
-                    <!-- <input type="time" [(ngModel)]="SlotWeekDaytime50" name="SlotWeekDaytime50" 
-                      class="form-control" > -->
+                    
                   </div>
                   <div class="col-md-2">
                     <label class="col-form-label" for="text-input">Amount</label>
@@ -1837,7 +2037,7 @@
                     </table>
                   </div>
                 </div>
-                </div>
+                </div> -->
             </div>
           </div>
             <div class="row">
